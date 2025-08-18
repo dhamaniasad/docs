@@ -1,0 +1,287 @@
+---
+title: "Gemini"
+description: "Complete guide to using MemoryPlugin with Google Gemini"
+icon: "robot"
+---
+
+# Gemini Integration
+
+Google Gemini is a powerful multimodal AI that works seamlessly with MemoryPlugin through the browser extension, bringing persistent memory to your AI conversations.
+
+## Integration Method
+
+<Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+  Primary integration method for Gemini
+  - **URL**: gemini.google.com
+  - **Setup**: Simple browser extension installation
+  - **Features**: Full memory support with visual interface
+</Card>
+
+## Quick Start
+
+<Steps>
+  <Step title="Install Extension">
+    Install the [MemoryPlugin Browser Extension](/integrations/browser-extension) for Chrome or other Chromium browsers
+  </Step>
+  <Step title="Navigate to Gemini">
+    Go to [gemini.google.com](https://gemini.google.com)
+  </Step>
+  <Step title="Sign In">
+    Log in to both Gemini and MemoryPlugin accounts
+  </Step>
+  <Step title="Activate MemoryPlugin">
+    Click the MemoryPlugin button to inject your memories
+  </Step>
+  <Step title="Start Chatting">
+    Gemini now has access to your memory context
+  </Step>
+</Steps>
+
+## Gemini-Specific Features
+
+### Multimodal Memory Support
+
+Gemini's multimodal capabilities work well with memories:
+- **Text Memories**: Standard conversational context
+- **Image Context**: Remember descriptions of images you've shared
+- **Code Snippets**: Store programming patterns and solutions
+- **Document Summaries**: Save key points from analyzed documents
+
+### Integration with Google Workspace
+
+When using Gemini with Google Workspace:
+- Store project details from Google Docs
+- Remember spreadsheet structures and formulas
+- Save presentation talking points
+- Keep email templates and responses
+
+### Gemini Advanced Features
+
+With Gemini Advanced (Ultra model):
+- Handle larger memory collections efficiently
+- More sophisticated memory reasoning
+- Better context understanding across sessions
+- Enhanced code generation with memory context
+
+## Using MemoryPlugin with Gemini
+
+### Memory Injection Process
+
+1. **Locate the Button**: Look for the MemoryPlugin button (bottom-right or near input)
+2. **Click to Activate**: Injects memories into the conversation
+3. **Visual Confirmation**: See memories added to chat context
+4. **Ready to Use**: Gemini processes memories for the conversation
+
+### Creating Memories in Gemini
+
+Tell Gemini to remember information:
+- "Remember that I'm working on [project name]"
+- "Add to memory: My preferred coding language is Python"
+- "Save this for later: [important information]"
+
+The extension detects memory creation patterns:
+```
+to=memoryplugin&&memory=[Your memory content]
+```
+
+### Managing Buckets
+
+Through the MemoryPlugin interface:
+1. Click the MemoryPlugin button
+2. Select your active bucket from the dropdown
+3. Memories from that bucket will be used
+4. Switch buckets for different contexts
+
+## Best Practices for Gemini
+
+<AccordionGroup>
+  <Accordion title="Workspace Integration">
+    - Create buckets for different Google Workspace projects
+    - Store document structures and templates
+    - Remember collaboration preferences
+    - Save frequently used formulas and code
+  </Accordion>
+  <Accordion title="Multimodal Usage">
+    - Describe images you frequently reference
+    - Store chart and diagram explanations
+    - Remember visual design preferences
+    - Save screenshot contexts
+  </Accordion>
+  <Accordion title="Research Tasks">
+    - Build topic-specific knowledge bases
+    - Store research findings and sources
+    - Remember search strategies that worked
+    - Save useful links and references
+  </Accordion>
+  <Accordion title="Creative Projects">
+    - Maintain character and story details
+    - Store writing style preferences
+    - Remember project timelines
+    - Save creative constraints and goals
+  </Accordion>
+</AccordionGroup>
+
+## Gemini Interface Elements
+
+### Button Placement
+- **Primary**: Round button in bottom-right corner
+- **Alternative**: Small button near message input
+- **Mobile**: Adapted placement for mobile browsers
+
+### Visual Indicators
+- **Active State**: Button highlighted when memories loaded
+- **Success Checkmark**: Green ✓ when memory added
+- **Loading State**: Spinner during operations
+
+## Advanced Gemini Features
+
+### Code Development
+
+Gemini excels at coding with MemoryPlugin:
+- Store project structure and dependencies
+- Remember debugging solutions
+- Save API documentation snippets
+- Keep track of optimization strategies
+
+### Data Analysis
+
+For data science tasks:
+- Remember dataset characteristics
+- Store analysis methodologies
+- Save visualization preferences
+- Keep statistical insights
+
+### Learning and Education
+
+Using Gemini for learning:
+- Track learning progress
+- Store concept explanations
+- Remember problem-solving patterns
+- Save study materials and notes
+
+## Platform Comparison
+
+### Gemini vs ChatGPT
+- **Similar**: Browser extension integration
+- **Different**: No custom GPT equivalent
+- **Advantage**: Better Google Workspace integration
+- **Missing**: Memory import feature
+
+### Gemini vs Claude
+- **Similar**: Browser-based integration
+- **Different**: No desktop app with MCP
+- **Advantage**: Multimodal capabilities
+- **Trade-off**: Manual memory injection
+
+## Troubleshooting Gemini Issues
+
+<AccordionGroup>
+  <Accordion title="Button not appearing">
+    - Refresh the Gemini page
+    - Check extension is enabled
+    - Verify you're on gemini.google.com
+    - Try clearing browser cache
+  </Accordion>
+  <Accordion title="Memories not injecting">
+    - Ensure you're logged into MemoryPlugin
+    - Check internet connection
+    - Try clicking button again
+    - Verify bucket has memories
+  </Accordion>
+  <Accordion title="Memory creation failing">
+    - Check format is recognized by extension
+    - Look for green checkmark confirmation
+    - Verify in Dashboard if memory was saved
+    - Try explicit memory format
+  </Accordion>
+  <Accordion title="Performance issues">
+    - Reduce number of memories loaded
+    - Use specific buckets for contexts
+    - Enable Smart Memory if available
+    - Clear old browser data
+  </Accordion>
+</AccordionGroup>
+
+## Gemini-Specific Tips
+
+### Optimizing for Gemini
+
+1. **Concise Memories**: Gemini works best with clear, concise memory entries
+2. **Structured Information**: Use bullet points and lists in memories
+3. **Context Clues**: Include context about when/why information is relevant
+4. **Regular Updates**: Keep memories current and relevant
+
+### Effective Memory Prompts
+
+- "Remember for my project..."
+- "Add to memory for future reference..."
+- "Store this configuration..."
+- "Save this solution for later..."
+
+### Google Ecosystem Integration
+
+Maximize value with Google services:
+- Link memories to Drive documents
+- Reference Calendar events
+- Store Maps locations and routes
+- Save YouTube video summaries
+
+## Limitations and Workarounds
+
+### Current Limitations
+- No automatic memory loading (requires button click)
+- No native Gemini API for memories
+- Mobile app doesn't support extensions
+
+### Workarounds
+- Create memory templates for quick injection
+- Use keyboard shortcuts where available
+- Set up routine memory review sessions
+- Consider MCP-compatible alternatives for automation
+
+## Use Cases
+
+### Professional
+- **Project Management**: Track project details and decisions
+- **Documentation**: Remember documentation structure
+- **Client Work**: Store client preferences and requirements
+- **Team Collaboration**: Share knowledge through memory buckets
+
+### Personal
+- **Learning**: Build personal knowledge base
+- **Creative Writing**: Maintain story continuity
+- **Research**: Accumulate research findings
+- **Planning**: Remember goals and strategies
+
+### Academic
+- **Study Notes**: Store key concepts and formulas
+- **Research Papers**: Track citations and arguments
+- **Assignments**: Remember requirements and deadlines
+- **Collaboration**: Share study materials via buckets
+
+## Future Enhancements
+
+Expected improvements for Gemini integration:
+- Potential API access for automated memory
+- Enhanced multimodal memory handling
+- Better mobile support
+- Deeper Google Workspace integration
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Install Browser Extension"
+    icon="browser"
+    href="/integrations/browser-extension"
+  >
+    Get started with MemoryPlugin on Gemini
+  </Card>
+  <Card
+    title="Organize with Buckets"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Structure your Gemini memories effectively
+  </Card>
+</CardGroup>

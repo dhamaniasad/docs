@@ -1,0 +1,184 @@
+---
+title: "Browser Extension"
+description: "Use MemoryPlugin with any Chromium-based browser or Safari on iOS and macOS"
+icon: "browser"
+---
+
+# Browser Extension
+
+The Browser Extension for MemoryPlugin is supported on Chrome and Chromium-based browsers (Arc, Opera, Edge, Vivaldi, Brave, Kiwi on Android, etc.) and Safari on iOS and macOS.
+
+MemoryPlugin can be used with any Chromium-based browser and with Safari on iOS and macOS.
+
+You will find links to both the iOS (and macOS) apps and the Chrome Web Store on your [Dashboard](https://memoryplugin.com/dashboard).
+
+## Installation
+
+<CardGroup cols={2}>
+  <Card
+    title="Chrome Web Store"
+    icon="chrome"
+    href="#"
+  >
+    Install for Chrome and Chromium-based browsers
+  </Card>
+  <Card
+    title="Safari App Store"
+    icon="safari"
+    href="#"
+  >
+    Install for Safari on iOS and macOS
+  </Card>
+</CardGroup>
+
+<Note>
+Installation links are available on your MemoryPlugin Dashboard after signing up.
+</Note>
+
+## How to Use the Browser Extension
+
+Once you install the browser extension, when you open supported AI tool websites, you will see a round MemoryPlugin button at the bottom right of the page. If you click on this button, you will be able to see all your memories and switch between active buckets.
+
+### Button Variations
+
+Depending on the platform you are using, you will see:
+
+1. **Quick Inject Button**: A larger button with "Quick Inject" text on top
+2. **Small MemoryPlugin Button**: A smaller button near the chat input box
+
+Both buttons perform the same function - activating MemoryPlugin for your current chat.
+
+## Injecting Memories
+
+<Warning>
+The browser extension does not automatically inject memories into your chats. You need to press the MemoryPlugin button to activate MemoryPlugin for a given chat.
+</Warning>
+
+When you press the MemoryPlugin button, two things are added to the chat:
+
+1. **Your memories** from the chosen bucket in the MemoryPlugin window
+2. **Instructions for the AI** on how and when to add new memories
+
+Without this activation step, MemoryPlugin is not active for the chat and your AI will not be able to read existing memories or create new ones.
+
+When you press the MemoryPlugin button, you will see text added to the chat input field that:
+
+1. Instructs the AI about what MemoryPlugin is and how to use it
+2. Contains current memories from your chosen bucket  
+3. Instructs the AI on what to add to memory, and how
+
+## Adding New Memories
+
+When you activate MemoryPlugin for a chat, the AI is instructed how to add new memories using a specific format:
+
+```
+to=memoryplugin&&memory=[memory text here]
+```
+
+The AI will trigger a new memory addition in one of two cases:
+
+- **Automatic**: It thinks something is worth remembering long term
+- **Manual**: You explicitly ask it to remember something
+
+### Visual Feedback
+
+When a new memory is added, you will see the round MemoryPlugin button briefly show a checkmark (✓) to indicate it has detected and successfully added the new memory.
+
+## Supported Platforms
+
+The browser extension works with all major AI platforms:
+
+<CardGroup cols={3}>
+  <Card title="ChatGPT" icon="robot">
+    chat.openai.com, chatgpt.com
+  </Card>
+  <Card title="Claude" icon="robot">
+    claude.ai
+  </Card>
+  <Card title="Gemini" icon="robot">
+    gemini.google.com
+  </Card>
+  <Card title="Perplexity" icon="robot">
+    perplexity.ai
+  </Card>
+  <Card title="Grok" icon="robot">
+    grok.com
+  </Card>
+  <Card title="Deepseek" icon="robot">
+    chat.deepseek.com
+  </Card>
+  <Card title="AI Studio" icon="robot">
+    aistudio.google.com
+  </Card>
+  <Card title="Mistral" icon="robot">
+    chat.mistral.ai
+  </Card>
+  <Card title="LibreChat" icon="robot">
+    Self-hosted instances
+  </Card>
+</CardGroup>
+
+## Special Feature: Import from ChatGPT
+
+With the MemoryPlugin browser extension, you can import all your existing memories from ChatGPT into MemoryPlugin in one click!
+
+<Steps>
+  <Step title="Install Extension">
+    Make sure you have the browser extension installed
+  </Step>
+  <Step title="Open ChatGPT Settings">
+    Go to ChatGPT in your browser and open Settings
+  </Step>
+  <Step title="Navigate to Personalization">
+    Click on the Personalization tab in settings
+  </Step>
+  <Step title="Manage Memories">
+    Click on "Manage memories"
+  </Step>
+  <Step title="Sync Memories">
+    Look for the "Sync Memories" button with the MemoryPlugin logo and click it
+  </Step>
+  <Step title="Wait for Completion">
+    The button will show "Syncing..." and then complete in a couple of minutes
+  </Step>
+</Steps>
+
+<Info>
+You can safely run the sync multiple times without worrying about duplicate memories being created.
+</Info>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Button not appearing">
+    Make sure you're on a supported platform and the extension is enabled. Try refreshing the page.
+  </Accordion>
+  <Accordion title="Memories not loading">
+    Check that you're signed in to your MemoryPlugin account and have an active internet connection.
+  </Accordion>
+  <Accordion title="Sync not working">
+    Ensure you're signed in to both ChatGPT and MemoryPlugin, and that you have memories in ChatGPT to sync.
+  </Accordion>
+  <Accordion title="Extension permissions">
+    Make sure the extension has permission to run on the AI platform websites you're using.
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Organize with Buckets"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Learn how to organize your memories into different contexts
+  </Card>
+  <Card
+    title="Try MCP Server"
+    icon="server"
+    href="/integrations/mcp-server"
+  >
+    Use MemoryPlugin with desktop AI applications
+  </Card>
+</CardGroup>

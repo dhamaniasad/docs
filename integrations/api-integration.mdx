@@ -1,0 +1,273 @@
+---
+title: "API Integration"
+description: "Build custom integrations with MemoryPlugin using our OpenAPI specification"
+icon: "code"
+---
+
+# API Integration
+
+For developers who want to create custom integrations or use MemoryPlugin on unsupported platforms, we provide a comprehensive OpenAPI specification that you can use to build your own integrations.
+
+## OpenAPI Specification
+
+Our API is fully documented using the industry-standard OpenAPI format:
+
+<Card
+  title="MemoryPlugin OpenAPI Spec"
+  icon="external-link"
+  href="https://www.memoryplugin.com/openapi.json"
+>
+  Access the complete OpenAPI specification
+</Card>
+
+The OpenAPI spec includes:
+- All API endpoints with detailed documentation
+- Request/response schemas and examples
+- Authentication requirements
+- Machine-readable instructions for automated tools
+
+## Supported Integration Tools
+
+The OpenAPI specification can be imported into many platforms and tools:
+
+### Automation Platforms
+- **n8n**: Create custom nodes using our OpenAPI spec
+- **Zapier**: Build custom integrations (if they support OpenAPI import)
+- **Make (formerly Integromat)**: Custom API connections
+- **Microsoft Power Automate**: Custom connector creation
+
+### Development Tools
+- **Postman**: Import for API testing and development
+- **Insomnia**: API client for testing endpoints
+- **Swagger UI**: Interactive API documentation
+- **Code Generators**: Generate client libraries in various languages
+
+### AI Platforms
+- **LibreChat**: Import as actions for enhanced AI conversations
+- **Other AI Clients**: Many third-party AI applications support OpenAPI imports
+
+## Example: n8n Integration
+
+Here's how you can use our OpenAPI spec with n8n:
+
+<Steps>
+  <Step title="Install n8n OpenAPI Node">
+    Use the community package: [n8n-openapi-node](https://github.com/devlikeapro/n8n-openapi-node)
+  </Step>
+  <Step title="Import OpenAPI Spec">
+    Configure the node to use: `https://www.memoryplugin.com/openapi.json`
+  </Step>
+  <Step title="Set Authentication">
+    Configure Bearer token authentication with your MemoryPlugin API key
+  </Step>
+  <Step title="Create Workflows">
+    Build n8n workflows that interact with your MemoryPlugin memories
+  </Step>
+</Steps>
+
+## Authentication
+
+All API requests require authentication using a Bearer token:
+
+```http
+Authorization: Bearer YOUR_API_TOKEN_HERE
+```
+
+### Getting Your API Token
+
+<Steps>
+  <Step title="Access Dashboard">
+    Go to your [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard)
+  </Step>
+  <Step title="Find API Section">
+    Look for the API or Auth Token section
+  </Step>
+  <Step title="Copy Token">
+    Copy your authentication token
+  </Step>
+  <Step title="Keep Secure">
+    Treat this token like a password - keep it secure and regenerate if compromised
+  </Step>
+</Steps>
+
+## Core API Endpoints
+
+The MemoryPlugin API provides endpoints for:
+
+### Memory Management
+- **GET /memories** - Retrieve memories
+- **POST /memories** - Create new memories
+- **PUT /memories/{id}** - Update existing memories
+- **DELETE /memories/{id}** - Delete memories
+
+### Bucket Management
+- **GET /buckets** - List memory buckets
+- **POST /buckets** - Create new buckets
+- **PUT /buckets/{id}** - Update bucket details
+- **DELETE /buckets/{id}** - Delete buckets
+
+### Search & Retrieval
+- **GET /memories/search** - Search through memories
+- **GET /memories/recent** - Get recently updated memories
+- **GET /buckets/{id}/memories** - Get memories from specific bucket
+
+## Example Integration Code
+
+Here's a simple example of how to interact with the MemoryPlugin API:
+
+<CodeGroup>
+
+```javascript JavaScript/Node.js
+const axios = require('axios');
+
+const client = axios.create({
+  baseURL: 'https://api.memoryplugin.com',
+  headers: {
+    'Authorization': 'Bearer YOUR_TOKEN_HERE',
+    'Content-Type': 'application/json'
+  }
+});
+
+// Get all memories
+async function getMemories() {
+  try {
+    const response = await client.get('/memories');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching memories:', error);
+  }
+}
+
+// Create a new memory
+async function createMemory(content, bucketId = null) {
+  try {
+    const response = await client.post('/memories', {
+      content: content,
+      bucketId: bucketId
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error creating memory:', error);
+  }
+}
+```
+
+```python Python
+import requests
+
+class MemoryPluginClient:
+    def __init__(self, api_token):
+        self.base_url = 'https://api.memoryplugin.com'
+        self.headers = {
+            'Authorization': f'Bearer {api_token}',
+            'Content-Type': 'application/json'
+        }
+    
+    def get_memories(self):
+        response = requests.get(
+            f'{self.base_url}/memories',
+            headers=self.headers
+        )
+        return response.json()
+    
+    def create_memory(self, content, bucket_id=None):
+        data = {'content': content}
+        if bucket_id:
+            data['bucketId'] = bucket_id
+            
+        response = requests.post(
+            f'{self.base_url}/memories',
+            json=data,
+            headers=self.headers
+        )
+        return response.json()
+
+# Usage
+client = MemoryPluginClient('YOUR_TOKEN_HERE')
+memories = client.get_memories()
+```
+
+```curl cURL
+# Get all memories
+curl -X GET "https://api.memoryplugin.com/memories" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json"
+
+# Create a new memory
+curl -X POST "https://api.memoryplugin.com/memories" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content": "Remember that the user prefers technical explanations",
+    "bucketId": "bucket-id-here"
+  }'
+```
+
+</CodeGroup>
+
+## Use Cases for Custom Integrations
+
+<CardGroup cols={2}>
+  <Card title="Workflow Automation" icon="gear">
+    Integrate memory creation/retrieval into business process automation
+  </Card>
+  <Card title="Custom AI Applications" icon="robot">
+    Build your own AI applications with persistent memory capabilities
+  </Card>
+  <Card title="Data Migration" icon="database">
+    Import existing knowledge bases or customer data into MemoryPlugin
+  </Card>
+  <Card title="Analytics & Reporting" icon="chart-line">
+    Extract memory data for analysis and reporting purposes
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Rate Limiting">
+    Respect API rate limits and implement appropriate retry logic in your integrations.
+  </Accordion>
+  <Accordion title="Error Handling">
+    Always implement proper error handling for API calls and network issues.
+  </Accordion>
+  <Accordion title="Token Security">
+    Never expose your API tokens in client-side code or public repositories.
+  </Accordion>
+  <Accordion title="Data Validation">
+    Validate data before sending it to the API to avoid errors and ensure data quality.
+  </Accordion>
+</AccordionGroup>
+
+## Support and Resources
+
+<CardGroup cols={2}>
+  <Card
+    title="API Documentation"
+    icon="book"
+    href="/api-reference/introduction"
+  >
+    Detailed API reference documentation
+  </Card>
+  <Card
+    title="OpenAPI Spec"
+    icon="file-code"
+    href="https://www.memoryplugin.com/openapi.json"
+  >
+    Machine-readable API specification
+  </Card>
+  <Card
+    title="Example Integrations"
+    icon="code-branch"
+    href="https://github.com/devlikeapro/n8n-openapi-node"
+  >
+    Community examples and tools
+  </Card>
+  <Card
+    title="Developer Support"
+    icon="headset"
+    href="mailto:support@memoryplugin.com"
+  >
+    Get help with your custom integration
+  </Card>
+</CardGroup>

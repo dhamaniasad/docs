@@ -1,0 +1,196 @@
+---
+title: "Integrate into Your Own Custom GPT"
+description: "Add long-term memory to your own Custom GPTs with MemoryPlugin"
+icon: "puzzle-piece"
+---
+
+# Integrate MemoryPlugin into Your Own Custom GPT
+
+Add long-term memory functionality to your own Custom GPTs with MemoryPlugin! We make this very easy to do by providing everything you need to integrate our memory system.
+
+## What are Custom GPTs?
+
+Custom GPTs are a feature in ChatGPT that let you create customized versions of ChatGPT with:
+- Custom instructions and personality
+- Document knowledge bases
+- External API integrations
+- Specialized functionality
+
+With MemoryPlugin, you can add **long-term memory functionality** to any Custom GPT!
+
+## Key Concepts
+
+Before setting up the integration, understand these concepts:
+
+<Tabs>
+  <Tab title="APIs">
+    APIs let computer systems communicate. In Custom GPTs, APIs let your GPT use external tools like MemoryPlugin.
+  </Tab>
+  <Tab title="OpenAPI Spec">
+    A file that describes all API functionality that Custom GPTs can import and use directly.
+  </Tab>
+  <Tab title="Auth Token">
+    Your authentication credentials to access the MemoryPlugin API. Get this from your [Dashboard](https://memoryplugin.com/dashboard).
+  </Tab>
+  <Tab title="Custom Instructions">
+    Text prompts that guide how the AI should use MemoryPlugin within your Custom GPT.
+  </Tab>
+</Tabs>
+
+## Step-by-Step Setup
+
+### Step 1: Access GPT Builder
+
+1. Open the edit window for your existing Custom GPT, or create a new one
+2. Navigate to the **Configure** tab
+3. Scroll down to find the **Actions** section
+
+### Step 2: Create New Action
+
+1. Click **Create new action**
+2. Click **Import from URL**
+3. Enter this URL:
+   ```
+   https://www.memoryplugin.com/openapi.json
+   ```
+
+### Step 3: Configure Authentication
+
+1. In the Authentication section, click the Settings icon
+2. Select **API key**
+3. Choose **Bearer** from the options
+4. Get your Auth Token from the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard)
+5. Enter your token (keep it confidential!)
+
+<Warning>
+Your Auth Token is like a password to your account. Keep it confidential and regenerate it if accidentally exposed.
+</Warning>
+
+### Step 4: Add Instructions
+
+In the **Instructions** section of the Configure tab, add the MemoryPlugin instructions after your existing custom instructions:
+
+```text
+VERY IMPORTANT: ALWAYS fetch all memories at the start of each chat before responding (unless explicitly instructed otherwise), so you have context about me and can help me better. Use the `GetMemoriesAndBuckets` operation to do this.
+
+The `memory` tool allows you to persist information across conversations. Add to memory any information you want to remember. The information will appear in the context in future conversations.
+
+- Memories are stored in "buckets"
+- If you do not supply a bucket id when loading memories, all memories are loaded
+- if you do supply a bucket id, only those buckets memories are loaded
+- by default memories are added to the "General" bucket
+- new buckets cannot be named "General"
+- If you supply the bucketId when creating a new memory, it will be added to that bucket instead
+- Do not guess bucket IDs, they are random
+- When using bucket IDs, please make sure they are correct and are sent in the correct parameter.
+- When explicitly instructed to add a memory by the user, follow the users instructions strictly.
+
+I can use \m or +m as a shortcut to create a new memory.
+
+- before using any tool, review the tool use instructions thoroughly
+- Double-check the function schemas to make sure you are using the correct expected format.
+- Make sure your tool and/or function call matches the expected format and schema
+- if a JSON schema is specified, adhere to it strictly.
+- Verify all your tool calls with the usage instructions in the system prompt.
+```
+
+### Step 5: Save and Test
+
+1. Click **Save** to save your action configuration
+2. Test your Custom GPT by starting a new conversation
+3. The GPT should automatically load your memories at the start
+
+## Visual Guide
+
+<Steps>
+  <Step title="Configure Tab">
+    Navigate to the Configure tab in your Custom GPT editor
+  </Step>
+  <Step title="Actions Section">
+    Scroll down to find the Actions section
+  </Step>
+  <Step title="Import API">
+    Import the MemoryPlugin OpenAPI specification
+  </Step>
+  <Step title="Set Authentication">
+    Configure Bearer token authentication with your API key
+  </Step>
+  <Step title="Add Instructions">
+    Include the MemoryPlugin prompt in your instructions
+  </Step>
+  <Step title="Test Integration">
+    Start a conversation to verify memory loading works
+  </Step>
+</Steps>
+
+## Features Your GPT Will Gain
+
+Once integrated, your Custom GPT will be able to:
+
+- **Auto-load memories** at the start of conversations
+- **Remember important information** from previous chats
+- **Organize memories** into different buckets/contexts
+- **Search through memories** to find relevant information
+- **Persist knowledge** across all conversations
+- **Share memories** with other MemoryPlugin integrations
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Memory Management" icon="brain">
+    Instruct your GPT on what types of information to remember based on your use case
+  </Card>
+  <Card title="Bucket Strategy" icon="folder">
+    Use specific buckets for different contexts or topics your GPT handles
+  </Card>
+  <Card title="User Shortcuts" icon="keyboard">
+    Tell users about the \m and +m shortcuts for quick memory creation
+  </Card>
+  <Card title="Privacy" icon="shield">
+    Be mindful of what information gets stored and inform users appropriately
+  </Card>
+</CardGroup>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="OpenAPI import failed">
+    Ensure you're using the correct URL: `https://www.memoryplugin.com/openapi.json`
+  </Accordion>
+  <Accordion title="Authentication errors">
+    Verify your Auth Token is correct and hasn't expired. Regenerate if necessary.
+  </Accordion>
+  <Accordion title="Memories not loading">
+    Check that the GPT instructions include the memory loading commands and are properly formatted.
+  </Accordion>
+  <Accordion title="Function call errors">
+    Ensure the instructions emphasize following the schema and format requirements strictly.
+  </Accordion>
+</AccordionGroup>
+
+## Example Use Cases
+
+- **Personal Assistant GPT**: Remember preferences, schedule, and important personal information
+- **Learning Companion**: Track learning progress, remember concepts studied, and build knowledge
+- **Project Manager**: Remember project details, team information, and progress across conversations
+- **Writing Assistant**: Remember writing style, character details, plot points across sessions
+- **Customer Service**: Remember customer interactions, preferences, and history
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api-reference/introduction"
+  >
+    Explore the full MemoryPlugin API capabilities
+  </Card>
+  <Card
+    title="Memory Buckets Guide"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Learn how to organize memories effectively
+  </Card>
+</CardGroup>

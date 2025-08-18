@@ -1,0 +1,122 @@
+---
+title: "Custom GPT"
+description: "Use MemoryPlugin with OpenAI's Custom GPT system"
+icon: "robot"
+---
+
+# Custom GPT Integration
+
+Custom GPTs are plugins for the ChatGPT app that can be used on mobile, desktop, and web. MemoryPlugin is offered as a Custom GPT that automatically manages your memories.
+
+## MemoryPlugin Custom GPT
+
+MemoryPlugin is available as an official Custom GPT:
+
+<Card
+  title="MemoryPlugin Custom GPT"
+  icon="external-link"
+  href="https://chatgpt.com/g/g-pPRwrR7LI-memoryplugin"
+>
+  Access the official MemoryPlugin Custom GPT
+</Card>
+
+## How to Use
+
+When using MemoryPlugin via the Custom GPT, you need to start chats with the Custom GPT for it to automatically add and load memories.
+
+<Warning>
+Custom GPTs only support GPT-4o and do not let you switch models. If you want to use other models, the [browser extension](/integrations/browser-extension) is a better choice.
+</Warning>
+
+### Starting a New Chat
+
+1. Navigate to the MemoryPlugin Custom GPT
+2. Start a new conversation - memories will load automatically
+3. The GPT will fetch your existing memories at the beginning of each chat
+4. You can ask it to load memories from a specific bucket if needed
+
+### Using in Existing Chats
+
+On web and desktop, you can invoke the Custom GPT into an existing chat with certain models:
+
+1. Type `@` in the chat input
+2. Type "MemoryPlugin" to find and select it
+3. Once selected, all messages will be processed by GPT-4o instead of your chosen model
+4. You can ask it to load memories or add new memories while active
+
+## Features
+
+### Automatic Memory Loading
+
+The Custom GPT is instructed to automatically load memories at the start of new chats, providing immediate context about you and your previous conversations.
+
+### Memory Management
+
+- **Add memories**: Ask the GPT to remember specific information
+- **Load from buckets**: Request memories from specific buckets
+- **Search memories**: Find relevant information from your stored memories
+- **Organize**: The GPT can help organize and categorize your memories
+
+### Cross-Platform Sync
+
+Memories created through the Custom GPT are synchronized with all other MemoryPlugin integrations, so they're available in the browser extension, MCP server, and other integrations.
+
+## Limitations
+
+<Warning>
+Keep these limitations in mind when using the Custom GPT:
+</Warning>
+
+- Only works with GPT-4o model
+- Cannot switch to other models while the Custom GPT is active
+- Requires starting new chats with the Custom GPT for automatic memory loading
+- When invoked with `@` in existing chats, all subsequent messages use GPT-4o
+
+## Use Cases
+
+The Custom GPT integration is ideal for:
+
+- **Mobile users** who want memory functionality on their phones
+- **Quick memory access** without needing to install extensions
+- **GPT-4o workflows** where the model restriction isn't an issue
+- **Automatic memory management** with minimal setup required
+
+## Getting Started
+
+<Steps>
+  <Step title="Visit Custom GPT">
+    Go to the [MemoryPlugin Custom GPT](https://chatgpt.com/g/g-pPRwrR7LI-memoryplugin)
+  </Step>
+  <Step title="Start Conversation">
+    Begin a new chat - the GPT will automatically load your memories
+  </Step>
+  <Step title="Set Bucket (Optional)">
+    Ask to load memories from a specific bucket: "Load memories from my Work bucket"
+  </Step>
+  <Step title="Use Normally">
+    Chat normally - the GPT will automatically save important information
+  </Step>
+</Steps>
+
+## Creating Your Own Custom GPT
+
+Want to integrate MemoryPlugin into your own Custom GPT? See our guide on [integrating into your own Custom GPT](/integrations/custom-gpt-integration) for detailed instructions.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Memory Buckets"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Learn how to organize memories into different contexts
+  </Card>
+  <Card
+    title="Browser Extension"
+    icon="browser"
+    href="/integrations/browser-extension"
+  >
+    Try the browser extension for more model flexibility
+  </Card>
+</CardGroup>

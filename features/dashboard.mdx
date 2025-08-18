@@ -1,0 +1,214 @@
+---
+title: "Dashboard"
+description: "Manage your memories, buckets, and settings from the MemoryPlugin web dashboard"
+icon: "gauge"
+---
+
+# Dashboard
+
+The MemoryPlugin Dashboard is your central hub for managing all aspects of your memory system. Access it at [memoryplugin.com/dashboard](https://memoryplugin.com/dashboard).
+
+## Overview
+
+The Dashboard provides a comprehensive interface for:
+- Managing your memories and buckets
+- Configuring account settings
+- Accessing your Auth Token for integrations
+- Viewing usage statistics
+- Managing your subscription
+
+## Key Features
+
+### Memory Management
+
+<CardGroup cols={2}>
+  <Card title="View All Memories" icon="list">
+    Browse through all your stored memories in one place
+  </Card>
+  <Card title="Search & Filter" icon="search">
+    Quickly find specific memories using search and filters
+  </Card>
+  <Card title="Edit Memories" icon="edit">
+    Modify existing memories to keep them accurate and relevant
+  </Card>
+  <Card title="Delete Memories" icon="trash">
+    Remove outdated or unnecessary memories
+  </Card>
+</CardGroup>
+
+### Bucket Organization
+
+The Dashboard is where you create and manage your [Memory Buckets](/features/memory-buckets):
+
+- **Create New Buckets**: Click the "New" button to create buckets
+- **View Bucket Contents**: See all memories within each bucket
+- **Switch Between Buckets**: Easily navigate between different contexts
+- **Manage Bucket Settings**: Configure bucket-specific options
+
+### Auth Token Access
+
+<Warning>
+Your Auth Token is like a password. Keep it confidential and regenerate it if accidentally exposed.
+</Warning>
+
+To access your Auth Token:
+
+<Steps>
+  <Step title="Sign In">
+    Log in to your MemoryPlugin account at the Dashboard
+  </Step>
+  <Step title="Locate Token Section">
+    Find the Auth Token or API section on the Dashboard
+  </Step>
+  <Step title="Copy Token">
+    Click to copy your token to the clipboard
+  </Step>
+  <Step title="Use in Integrations">
+    Paste the token into your chosen integration (MCP Server, Custom GPT, etc.)
+  </Step>
+</Steps>
+
+### Installation Links
+
+The Dashboard provides direct links to install MemoryPlugin across platforms:
+
+- **Chrome Extension**: Link to Chrome Web Store
+- **Safari Extension**: Link to iOS/macOS App Store
+- **MCP Server**: NPM package installation instructions
+- **Custom GPT**: Direct link to the MemoryPlugin GPT
+
+### Usage Analytics
+
+Track your MemoryPlugin usage:
+
+- **Memory Count**: Total memories across all buckets
+- **Token Usage**: Track token consumption for Smart Memory
+- **Activity History**: See when memories were created or accessed
+- **Storage Metrics**: Monitor your memory storage usage
+
+## Dashboard Sections
+
+### Home
+The main overview showing:
+- Quick stats (total memories, buckets, recent activity)
+- Quick actions (create memory, new bucket)
+- Recent memories list
+
+### Memories
+Detailed memory management interface:
+- Full list of all memories with pagination
+- Search bar for finding specific memories
+- Filters for bucket, date range, and more
+- Bulk selection for operations
+
+### Buckets
+Bucket management area:
+- List of all buckets with memory counts
+- Create new bucket button
+- Bucket settings and configuration
+- Move memories between buckets
+
+### Settings
+Account and integration settings:
+- Profile information
+- Auth Token management
+- Notification preferences
+- Privacy settings
+- Subscription management
+
+### Import
+Tools for importing data:
+- ChatGPT memory import status
+- Claude conversation import (coming soon)
+- Bulk import from CSV/JSON
+- Import history and logs
+
+## Dashboard Tips
+
+<AccordionGroup>
+  <Accordion title="Keyboard Shortcuts">
+    - `Cmd/Ctrl + K`: Quick search
+    - `Cmd/Ctrl + N`: New memory
+    - `Cmd/Ctrl + B`: New bucket
+    - `Esc`: Close modals
+  </Accordion>
+  <Accordion title="Bulk Operations">
+    Select multiple memories using checkboxes to:
+    - Move to different bucket
+    - Delete multiple at once
+    - Export selected memories
+  </Accordion>
+  <Accordion title="Search Syntax">
+    Use advanced search operators:
+    - `bucket:work` - Search within specific bucket
+    - `created:2024` - Filter by creation date
+    - `"exact phrase"` - Search for exact matches
+  </Accordion>
+  <Accordion title="Export Options">
+    Export your memories in multiple formats:
+    - JSON for programmatic use
+    - CSV for spreadsheet analysis
+    - Markdown for documentation
+  </Accordion>
+</AccordionGroup>
+
+## Mobile Access
+
+The Dashboard is fully responsive and works on mobile devices:
+
+- **Touch-optimized**: Easy navigation on touchscreens
+- **Mobile menu**: Collapsible navigation for small screens
+- **Swipe actions**: Swipe to delete or edit memories
+- **Progressive Web App**: Install as an app on your phone
+
+## Security Features
+
+Your Dashboard includes multiple security measures:
+
+- **Secure Authentication**: Industry-standard secure login
+- **Session Management**: Automatic logout after inactivity
+- **Token Regeneration**: Regenerate Auth Token anytime
+- **Activity Logs**: Track access and changes to your account
+- **Data Encryption**: All data encrypted in transit and at rest
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Can't access Dashboard">
+    - Check your internet connection
+    - Clear browser cache and cookies
+    - Try a different browser
+    - Contact support if issue persists
+  </Accordion>
+  <Accordion title="Auth Token not working">
+    - Verify you copied the complete token
+    - Check for extra spaces or characters
+    - Regenerate token if needed
+    - Ensure token hasn't expired
+  </Accordion>
+  <Accordion title="Memories not appearing">
+    - Refresh the Dashboard page
+    - Check selected bucket filter
+    - Verify memories were saved successfully
+    - Check your subscription status
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Create Your First Bucket"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Learn how to organize memories with buckets
+  </Card>
+  <Card
+    title="Import from ChatGPT"
+    icon="download"
+    href="/features/chat-history-import"
+  >
+    Import your existing ChatGPT memories
+  </Card>
+</CardGroup>

@@ -1,0 +1,176 @@
+---
+title: "Memory Buckets"
+description: "Organize your memories into separate contexts with MemoryPlugin's bucket system"
+icon: "folder"
+---
+
+# Memory Buckets
+
+An organizational system within MemoryPlugin that lets you group related memories together into their own isolated collection.
+
+## What are Buckets?
+
+Memory Buckets are "folders" for your memories. You can use them to store memories for different projects or contexts, and they will be isolated from each other.
+
+You can have separate buckets for different purposes:
+- **Personal vs. Work** memories
+- **Project X, Project Y, and Project Z**
+- **Different clients or customers**
+- **Various topics or subjects**
+
+The possibilities are endless!
+
+<Info>
+By default, every account starts with a bucket called **"General"**. All your memories go into this bucket by default, and it cannot be deleted.
+</Info>
+
+## Creating a Bucket
+
+It's very simple to create a new bucket:
+
+<Steps>
+  <Step title="Open Dashboard">
+    Navigate to the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard)
+  </Step>
+  <Step title="Click New Button">
+    Look for and click the "New" button
+  </Step>
+  <Step title="Name Your Bucket">
+    Give your bucket a descriptive name
+  </Step>
+  <Step title="Create">
+    Click "Create" and you're done!
+  </Step>
+</Steps>
+
+<Warning>
+Bucket names cannot be numbers alone. You can include numbers in your bucket name, but the name needs to include other characters to be valid.
+</Warning>
+
+## Using Buckets
+
+### With Browser Extension
+When using the browser extension, you can switch between buckets using the MemoryPlugin interface. Click the MemoryPlugin button to see your buckets and select which one to use for the current conversation.
+
+### With MCP Server
+Specify which bucket to load memories from in your MCP client configuration or during conversations by asking the AI to load memories from a specific bucket.
+
+### With Custom GPT
+You can ask the MemoryPlugin Custom GPT to load memories from a specific bucket: "Load memories from my Work bucket"
+
+## Benefits of Using Buckets
+
+<CardGroup cols={2}>
+  <Card title="Context Separation" icon="layer-group">
+    Keep work and personal memories completely separate
+  </Card>
+  <Card title="Project Organization" icon="folder-tree">
+    Organize memories by project, client, or topic
+  </Card>
+  <Card title="Focused Loading" icon="bullseye">
+    Load only relevant memories for better AI performance
+  </Card>
+  <Card title="Team Collaboration" icon="users">
+    Share specific buckets with team members (coming soon)
+  </Card>
+</CardGroup>
+
+## Bucket Limits
+
+<Info>
+For most users, there are virtually no limits to the number of buckets you can create. You can create dozens and hundreds of buckets without any issues.
+</Info>
+
+If you need to create more than a few hundred buckets, please reach out to us through the MemoryPlugin website.
+
+## Managing Buckets
+
+### Viewing Buckets
+All your buckets are visible in the MemoryPlugin Dashboard where you can:
+- See bucket names and memory counts
+- Access memories within each bucket
+- Switch between buckets easily
+
+### Moving Memories
+You can move memories between buckets using:
+- The dashboard interface
+- [Bulk operations](/features/bulk-operations) for multiple memories
+- API calls for programmatic management
+
+### Deleting Buckets
+You can delete buckets you no longer need, with these restrictions:
+- The "General" bucket cannot be deleted
+- Deleting a bucket will also delete all memories within it
+- This action cannot be undone, so be careful!
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Naming Convention">
+    Use clear, descriptive names that will make sense to you months later. Consider using prefixes like "Project-", "Client-", or "Personal-" for consistency.
+  </Accordion>
+  <Accordion title="Bucket Strategy">
+    Plan your bucket structure before creating many memories. Consider how you work and what contexts you need to keep separate.
+  </Accordion>
+  <Accordion title="Regular Review">
+    Periodically review your buckets and memories to ensure they're still organized in a way that serves your needs.
+  </Accordion>
+  <Accordion title="Team Coordination">
+    If you're planning to use team features, coordinate bucket naming and organization with your team members.
+  </Accordion>
+</AccordionGroup>
+
+## Example Bucket Structures
+
+### Freelancer/Consultant
+- `General` (default)
+- `Client-Acme Corp`
+- `Client-Beta LLC`
+- `Personal Projects`
+- `Learning & Development`
+
+### Software Developer
+- `General` (default)
+- `Project-WebApp`
+- `Project-MobileApp`
+- `Technical Research`
+- `Work Notes`
+- `Personal Coding`
+
+### Content Creator
+- `General` (default)
+- `YouTube Channel`
+- `Blog Content`
+- `Client Work`
+- `Research & Ideas`
+- `Personal Brand`
+
+## Integration with Other Features
+
+### Smart Memory
+[Smart Memory](/features/smart-memory) works at the bucket level, creating high-level overviews of memories within each bucket for more efficient AI interactions.
+
+### Bulk Operations
+Use [bulk operations](/features/bulk-operations) to move multiple memories between buckets or perform actions on entire bucket contents.
+
+### Chat History Import
+When importing from ChatGPT, you can specify which bucket to import memories into, keeping your imported data organized from the start.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Smart Memory"
+    icon="brain"
+    href="/features/smart-memory"
+  >
+    Learn how Smart Memory optimizes bucket performance
+  </Card>
+  <Card
+    title="Bulk Operations"
+    icon="list"
+    href="/features/bulk-operations"
+  >
+    Manage multiple memories and buckets efficiently
+  </Card>
+</CardGroup>

@@ -1,0 +1,154 @@
+---
+title: "MCP Server"
+description: "Use MemoryPlugin across dozens of AI tools through the Model Context Protocol"
+icon: "server"
+---
+
+# MCP Server
+
+MemoryPlugin can be used across dozens of AI tools (list growing every day) through the use of our MCP Server.
+
+The Desktop app for [Claude](https://claude.ai/download) is one of the most popular MCP clients (as they are the creators of the MCP protocol), but there are many others that support MCP too.
+
+## What is MCP?
+
+Model Context Protocol is a new system developed by Anthropic to standardize how AI systems communicate with and use external data sources and tools.
+
+<Info>
+Think of MCP Clients as the app you're using to chat with your AI, and the MCP servers are the tools that are made available to that app.
+</Info>
+
+In this context, MemoryPlugin is available as an MCP Server.
+
+## Installation
+
+<Warning>
+MCP is currently not very end-user friendly and is more tailored to developers.
+</Warning>
+
+The MemoryPlugin MCP server is based on NodeJS. You will need to ensure you have NodeJS installed to be able to use the MemoryPlugin MCP.
+
+### Prerequisites
+
+1. **NodeJS** - Install from [nodejs.org](https://nodejs.org)
+2. **MCP Client** - Such as Claude Desktop, Cursor, or another supported client
+
+### Setup Instructions
+
+1. Follow the [MCP quickstart guide](https://modelcontextprotocol.io/quickstart/user) to understand how to set up MCP servers
+
+2. Install the MemoryPlugin MCP server:
+   ```bash
+   npm install @memoryplugin/mcp-server
+   ```
+
+3. Get your Auth Token from the [Dashboard](https://memoryplugin.com/dashboard) and set it in the `MEMORY_PLUGIN_TOKEN` environment variable
+
+4. Configure your MCP client to use the MemoryPlugin server
+
+For detailed instructions, visit our [NPM package page](https://www.npmjs.com/package/@memoryplugin/mcp-server?activeTab=readme).
+
+## Supported MCP Clients
+
+<CardGroup cols={2}>
+  <Card title="Claude Code" icon="code" href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview">
+    Anthropic's official CLI tool
+  </Card>
+  <Card title="Cursor" icon="cursor" href="https://www.cursor.com/">
+    AI-powered code editor
+  </Card>
+  <Card title="Windsurf" icon="wind" href="https://docs.windsurf.com/windsurf/mcp">
+    AI development environment
+  </Card>
+  <Card title="Cline" icon="terminal" href="https://github.com/cline/cline">
+    AI assistant for developers
+  </Card>
+  <Card title="Sage" icon="brain" href="https://sageapp.ai/">
+    AI assistant application
+  </Card>
+  <Card title="Roo-Code" icon="code-branch" href="https://github.com/RooVetGit/Roo-Code">
+    AI coding assistant
+  </Card>
+  <Card title="VS Code Copilot" icon="microsoft" href="https://code.visualstudio.com/docs/copilot/chat/mcp-servers">
+    GitHub Copilot Chat in VS Code
+  </Card>
+  <Card title="And many more..." icon="ellipsis" href="#">
+    The list is growing every day
+  </Card>
+</CardGroup>
+
+## Configuration Example
+
+Here's an example configuration for Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "memoryplugin": {
+      "command": "npx",
+      "args": ["@memoryplugin/mcp-server"],
+      "env": {
+        "MEMORY_PLUGIN_TOKEN": "your-auth-token-here"
+      }
+    }
+  }
+}
+```
+
+## Features Available via MCP
+
+- **Load Memories**: Access your stored memories in any conversation
+- **Create Memories**: Save important information for future reference
+- **Manage Buckets**: Organize memories into different contexts
+- **Search Memories**: Find specific information quickly
+- **Cross-Platform Sync**: Access the same memories across all your tools
+
+## Getting Your Auth Token
+
+<Steps>
+  <Step title="Visit Dashboard">
+    Go to the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard)
+  </Step>
+  <Step title="Sign In">
+    Log in to your MemoryPlugin account
+  </Step>
+  <Step title="Copy Token">
+    Find and copy your Auth Token from the dashboard
+  </Step>
+  <Step title="Set Environment Variable">
+    Set the `MEMORY_PLUGIN_TOKEN` environment variable to your token
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="NodeJS not found">
+    Make sure NodeJS is installed and available in your PATH. You can test this by running `node --version` in your terminal.
+  </Accordion>
+  <Accordion title="Auth token invalid">
+    Verify your auth token is correct and hasn't expired. You can regenerate it from your dashboard if needed.
+  </Accordion>
+  <Accordion title="MCP server not connecting">
+    Check your MCP client configuration and ensure the server command and arguments are correct.
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Learn About Memory Buckets"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Organize your memories into separate contexts
+  </Card>
+  <Card
+    title="Try Browser Extension"
+    icon="globe"
+    href="/integrations/browser-extension"
+  >
+    Alternative integration for web-based AI tools
+  </Card>
+</CardGroup>
