@@ -1,0 +1,77 @@
+---
+title: "Getting Started"
+description: "Welcome to MemoryPlugin, the solution to AI amnesia that works across all your favorite AI tools!"
+---
+
+# Getting Started with MemoryPlugin
+
+Welcome to MemoryPlugin, the solution to AI amnesia that works across all your favorite AI tools!
+
+If you are just starting to use MemoryPlugin, this guide will help you understand everything you need to know to start making the most of MemoryPlugin!
+
+## Why does my AI need this in the first place?
+
+Whether you're using ChatGPT, Claude, Gemini, or another AI tool, you're interacting with something called a Large Language Model (LLM). All LLMs are "stateless" - they are fundamentally incapable of learning new information due to their design.
+
+When you chat with an AI and it responds to you and remembers what was said five messages ago, that's because every single message is resent to the AI for each new response.
+
+<Info>
+For an AI to "know" anything, it needs to receive that information within the chat context.
+</Info>
+
+## How does MemoryPlugin work?
+
+MemoryPlugin does two things:
+
+1. **Store new information to memory**
+2. **Supply existing memories to the AI**
+
+We support many different AI platforms, and exactly how these two steps take place can differ across them, but ultimately whether you use the:
+
+- [MCP Server](/integrations/mcp-server)
+- [Browser Extension](/integrations/browser-extension)
+- [TypingMind Plugin](/integrations/typingmind-plugin)
+- Or another integration
+
+This is what MemoryPlugin is doing for you behind the scenes.
+
+## How does MemoryPlugin create new memories?
+
+Within any chat, once MemoryPlugin is activated, it tells the AI that it has access to this memory system, and that it should add important details that will be useful across chats to the memory.
+
+Then, when either the AI thinks something is worth remembering, or you ask it to remember something, it will send this information to MemoryPlugin to have it saved in the memory.
+
+## How does MemoryPlugin access the memories in new chats?
+
+MemoryPlugin will load the memories into the chat by adding their text content to the chat. This is essentially the same as if you copy pasted the information into the chat yourself, just smoother. 
+
+<Note>
+Exactly how this is done differs based on what Integration Option you are using.
+</Note>
+
+## How much information can I store in the memory?
+
+MemoryPlugin itself imposes no limits on the amount of information you can store in your memories.
+
+## Can MemoryPlugin remember entire chats?
+
+As of the moment, no. If you would like to see this feature, please add your vote here: [Full Chat History based memory](https://help.memoryplugin.com/submissions/67f4e839a36484cd74568751).
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Understand How It Works"
+    icon="gear"
+    href="/getting-started/how-it-works"
+  >
+    Learn the technical details of how MemoryPlugin operates
+  </Card>
+  <Card
+    title="Choose Integration"
+    icon="plug"
+    href="/integrations/mcp-server"
+  >
+    Pick the integration method that works best for your setup
+  </Card>
+</CardGroup>

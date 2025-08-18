@@ -1,0 +1,104 @@
+---
+title: "How MemoryPlugin Works"
+description: "Understanding how MemoryPlugin adds long-term memory capabilities to AI tools"
+---
+
+# How MemoryPlugin Works
+
+This page covers common questions about how MemoryPlugin works across various AI tools.
+
+## Introduction
+
+MemoryPlugin adds long-term memory capabilities to your favorite AI tools. At its core, MemoryPlugin solves a fundamental limitation of current AI models: they don't inherently "remember" information between sessions.
+
+## Understanding AI Memory
+
+Modern AI models don't actually have persistent memory. Even during a multi-turn conversation, the AI appears to "remember" previous exchanges only because the entire conversation history is fed back into its context window with each new message. 
+
+<Info>
+The context window is essentially the amount of text an AI can process at one time.
+</Info>
+
+## How MemoryPlugin Bridges the Gap
+
+MemoryPlugin works by:
+
+1. **Storing important information** from your conversations
+2. **Injecting those memories** back into the AI's context window when needed
+
+Think of it as creating a digital notepad of important information that gets automatically shared with your AI at the start of relevant conversations.
+
+## Two Core Functions
+
+MemoryPlugin performs two key functions:
+
+### 1. Storing Memories
+
+Not everything should be remembered. MemoryPlugin is designed to capture truly relevant information through:
+
+- **User-directed storage**: Explicitly telling the AI what to remember
+- **AI-assisted recognition**: The AI identifying potentially important information worth remembering
+
+The storage mechanism varies slightly depending on which integration you're using:
+
+<Tabs>
+  <Tab title="Browser Extension">
+    The AI formats important information in a specific way that our extension recognizes and sends to our secure servers
+  </Tab>
+  <Tab title="Custom GPT">
+    Uses function/tool calls to store memories directly
+  </Tab>
+  <Tab title="MCP Server">
+    Similar to Custom GPT, uses equivalent tool calls for memory storage
+  </Tab>
+</Tabs>
+
+<Note>
+All processing happens on your device, and only the specifically formatted memory text is sent to our servers.
+</Note>
+
+### 2. Making Memories Available
+
+When you start a new conversation, MemoryPlugin makes your stored memories available to the AI through one of several methods:
+
+- **Browser Extension**: A button press injects your memories into the chat
+- **Custom GPT**: Automatically loads memories through function calls
+- **MCP Server**: Loads memories when instructed, either in project instructions or within a chat
+
+In all cases, the system is taking your stored memory text and strategically placing it in the AI's context window, allowing the AI to "remember" important information from past interactions.
+
+## Cross-Platform Power
+
+What makes MemoryPlugin truly powerful is its ability to work across dozens of different AI platforms. Instead of being limited to the memory system of a single AI tool, your memories travel with you across:
+
+- ChatGPT
+- Claude
+- Gemini
+- TypingMind
+- LibreChat
+- And many others
+
+This creates a seamless memory experience regardless of which AI assistant you're using at any given moment.
+
+## In Summary
+
+MemoryPlugin enhances AI tools by creating a persistent memory layer that works across platforms. By strategically storing relevant information and intelligently injecting it back into conversations when needed, MemoryPlugin makes AI interactions more personalized, efficient, and valuable.
+
+## Ready to Get Started?
+
+<CardGroup cols={2}>
+  <Card
+    title="Choose Your Integration"
+    icon="puzzle-piece"
+    href="/integrations/mcp-server"
+  >
+    Select the integration method that works best for your workflow
+  </Card>
+  <Card
+    title="Learn About Features"
+    icon="star"
+    href="/features/memory-buckets"
+  >
+    Explore MemoryPlugin's powerful features and capabilities
+  </Card>
+</CardGroup>
