@@ -8,7 +8,7 @@
     "dark": "#4338CA"
   },
   "favicon": "/favicon.svg",
-  "openapi": "https://www.memoryplugin.com/openapi.json",
+  "openapi": "/openapi.json",
   "metadata": {
     "og:title": "MemoryPlugin Documentation",
     "og:description": "Cure your AI of amnesia with long-term memory across all your favorite AI platforms",
@@ -87,12 +87,18 @@
             ]
           },
           {
-            "group": "Endpoints",
+            "group": "Memory Endpoints",
             "pages": [
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/endpoint/search-memories"
+            ]
+          },
+          {
+            "group": "Bucket Endpoints",
+            "pages": [
+              "api-reference/endpoint/get-buckets",
+              "api-reference/endpoint/create-bucket"
             ]
           }
         ]
