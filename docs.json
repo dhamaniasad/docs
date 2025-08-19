@@ -42,6 +42,7 @@
           {
             "group": "Integrations",
             "pages": [
+              "integrations/overview",
               "integrations/mcp-server",
               "integrations/browser-extension",
               "integrations/custom-gpt",

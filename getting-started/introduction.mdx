@@ -1,63 +1,118 @@
 ---
-title: "Getting Started"
-description: "Welcome to MemoryPlugin, the solution to AI amnesia that works across all your favorite AI tools!"
+title: "Quick Setup"
+description: "Set up MemoryPlugin in 3 simple steps and give your AI perfect memory"
 ---
 
-# Getting Started with MemoryPlugin
+Give your AI perfect memory in just 3 simple steps. This guide will walk you through everything you need to know.
 
-Welcome to MemoryPlugin, the solution to AI amnesia that works across all your favorite AI tools!
+## Setup Steps
 
-If you are just starting to use MemoryPlugin, this guide will help you understand everything you need to know to start making the most of MemoryPlugin!
+<Steps>
+  <Step title="Create Your Account">
+    Sign up at [memoryplugin.com](https://memoryplugin.com)
+    
+    You'll get:
+    - Access to all integration methods
+    - Your personal API key
+    - Full memory management dashboard
+  </Step>
+  
+  <Step title="Choose Your Integration">
+    Pick how you want to use MemoryPlugin:
+    
+    **Most Popular:**
+    - **[Browser Extension](/integrations/browser-extension)** - Works with Claude, ChatGPT, Gemini, and 10+ other platforms
+    - **[MCP Server](/integrations/mcp-server)** - Native integration for Claude Desktop
+    - **[Custom GPT](/integrations/custom-gpt)** - Pre-configured ChatGPT assistant
+    
+    Not sure? Start with the browser extension - it's the most versatile.
+  </Step>
+  
+  <Step title="Start Using Memory">
+    Once installed:
+    - **Browser Extension**: Click the "Quick Inject" button in each chat to activate memory
+    - **MCP Server**: Add custom instructions to your MCP client to enable memory
+    - **Custom GPT**: Ready to use immediately - just start chatting!
+    
+    After activation, MemoryPlugin will save important information and retrieve relevant memories across all your conversations.
+  </Step>
+</Steps>
 
-## Why does my AI need this in the first place?
+## Understanding AI Memory
 
-Whether you're using ChatGPT, Claude, Gemini, or another AI tool, you're interacting with something called a Large Language Model (LLM). All LLMs are "stateless" - they are fundamentally incapable of learning new information due to their design.
+### The Problem: AI Amnesia
 
-When you chat with an AI and it responds to you and remembers what was said five messages ago, that's because every single message is resent to the AI for each new response.
+Every time you start a new chat with ChatGPT, Claude, or any AI, it has no memory of your previous conversations. You're starting from scratch every single time.
 
-<Info>
-For an AI to "know" anything, it needs to receive that information within the chat context.
-</Info>
+<Warning>
+Without MemoryPlugin, you need to re-explain your context, preferences, and important details in every new conversation.
+</Warning>
 
-## How does MemoryPlugin work?
+### The Solution: Persistent Memory
 
-MemoryPlugin does two things:
+MemoryPlugin creates a memory layer that works across all AI platforms. Information you share once is remembered forever (or until you delete it).
 
-1. **Store new information to memory**
-2. **Supply existing memories to the AI**
+## How It Works
 
-We support many different AI platforms, and exactly how these two steps take place can differ across them, but ultimately whether you use the:
+<Tabs>
+  <Tab title="Storing Memories">
+    **Automatic Memory Creation**
+    ```
+    You: "I'm working on a React project using TypeScript and Tailwind CSS"
+    AI: "I'll remember that for future conversations..."
+    ```
+    
+    **Manual Memory Creation**
+    ```
+    You: "Remember that my dog's name is Max and he's a golden retriever"
+    AI: "I've saved that to your memory..."
+    ```
+  </Tab>
+  
+  <Tab title="Using Memories">
+    In a new conversation:
+    ```
+    You: "What kind of dog do I have?"
+    AI: "You have a golden retriever named Max."
+    ```
+    
+    The AI automatically retrieves relevant memories based on context.
+  </Tab>
+</Tabs>
 
-- [MCP Server](/integrations/mcp-server)
-- [Browser Extension](/integrations/browser-extension)
-- [TypingMind Plugin](/integrations/typingmind-plugin)
-- Or another integration
+## Key Features
 
-This is what MemoryPlugin is doing for you behind the scenes.
+<AccordionGroup>
+  <Accordion title="Intelligent Retrieval" icon="brain">
+    MemoryPlugin automatically retrieves the most relevant memories based on your conversation context, without overwhelming you.
+  </Accordion>
+  
+  <Accordion title="Cross-Platform Sync" icon="arrows-rotate">
+    Memories created in ChatGPT are instantly available in Claude, Gemini, and all other supported platforms.
+  </Accordion>
+  
+  <Accordion title="Memory Buckets" icon="folder">
+    Organize memories into categories like Work, Personal, Projects for better context management.
+  </Accordion>
+  
+  <Accordion title="Privacy First" icon="lock">
+    Your memories are encrypted and private. You have full control to view, edit, or delete them anytime.
+  </Accordion>
+</AccordionGroup>
 
-## How does MemoryPlugin create new memories?
+## Common Questions
 
-Within any chat, once MemoryPlugin is activated, it tells the AI that it has access to this memory system, and that it should add important details that will be useful across chats to the memory.
+**How much can I store?**
+Store as much as you need - there are no artificial limits on memory storage.
 
-Then, when either the AI thinks something is worth remembering, or you ask it to remember something, it will send this information to MemoryPlugin to have it saved in the memory.
+**Is my data private?**
+Yes, your memories are encrypted and only accessible by you.
 
-## How does MemoryPlugin access the memories in new chats?
+**Can I delete memories?**
+Yes, you have full control through the dashboard.
 
-MemoryPlugin will load the memories into the chat by adding their text content to the chat. This is essentially the same as if you copy pasted the information into the chat yourself, just smoother. 
-
-<Note>
-Exactly how this is done differs based on what Integration Option you are using.
-</Note>
-
-## How much information can I store in the memory?
-
-MemoryPlugin itself imposes no limits on the amount of information you can store in your memories.
-
-## Can MemoryPlugin remember entire chats?
-
-As of the moment, no. If you would like to see this feature, please add your vote here: [Full Chat History based memory](https://help.memoryplugin.com/submissions/67f4e839a36484cd74568751).
-
-## Next Steps
+**Does it work on mobile?**
+Yes, through the ChatGPT mobile app with our Custom GPT, or any mobile browser.
 
 <CardGroup cols={2}>
   <Card
