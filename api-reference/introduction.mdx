@@ -1,33 +1,80 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'API Introduction'
+description: 'Learn how to integrate with the MemoryPlugin API'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Welcome to the MemoryPlugin API
 
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+The MemoryPlugin API allows you to programmatically manage and query user memories across different AI platforms. Our RESTful API provides endpoints for storing, retrieving, and managing memory buckets.
 
 <Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  title="MemoryPlugin API Specification"
+  icon="code"
+  href="https://www.memoryplugin.com/openapi.json"
 >
-  View the OpenAPI specification file
+  View the complete OpenAPI specification
 </Card>
+
+## Base URL
+
+All API requests should be made to:
+
+```
+https://www.memoryplugin.com
+```
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API endpoints require authentication using an API key. You can obtain your API key from the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard).
+
+Include your API key in the request headers:
+
+```bash
+Authorization: Bearer YOUR_API_KEY
+```
+
+## Rate Limits
+
+API requests are rate-limited to ensure fair usage:
+- **Free tier**: 100 requests per hour
+- **Pro tier**: 1,000 requests per hour
+- **Team tier**: 10,000 requests per hour
+
+## Response Format
+
+All API responses are returned in JSON format with the following structure:
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+{
+  "success": true,
+  "data": {
+    // Response data
+  },
+  "error": null
+}
 ```
+
+## Error Handling
+
+When an error occurs, the API returns an appropriate HTTP status code along with an error message:
+
+```json
+{
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human-readable error message"
+  }
+}
+```
+
+## Available Endpoints
+
+The MemoryPlugin API provides the following endpoints:
+
+- **Memory Management**: Store and retrieve memories
+- **Bucket Management**: Organize memories into buckets
+- **Search**: Query memories using semantic search
+
+Explore the endpoint documentation to learn more about each operation.

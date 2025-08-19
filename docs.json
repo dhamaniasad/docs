@@ -8,6 +8,24 @@
     "dark": "#4338CA"
   },
   "favicon": "/favicon.svg",
+  "openapi": "https://www.memoryplugin.com/openapi.json",
+  "metadata": {
+    "og:title": "MemoryPlugin Documentation",
+    "og:description": "Cure your AI of amnesia with long-term memory across all your favorite AI platforms",
+    "og:image": "/images/opengraph-image.png",
+    "twitter:title": "MemoryPlugin Documentation",
+    "twitter:description": "Cure your AI of amnesia with long-term memory across all your favorite AI platforms",
+    "twitter:image": "/images/twitter-image.png",
+    "twitter:card": "summary_large_image"
+  },
+  "analytics": {
+    "gtm": {
+      "tagId": "GTM-XXXXXXX"
+    }
+  },
+  "search": {
+    "prompt": "Search MemoryPlugin docs..."
+  },
   "navigation": {
     "tabs": [
       {
