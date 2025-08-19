@@ -66,7 +66,13 @@
               "platforms/supported-platforms",
               "platforms/chatgpt",
               "platforms/claude",
-              "platforms/gemini"
+              "platforms/gemini",
+              "platforms/google-ai-studio",
+              "platforms/typingmind",
+              "platforms/grok",
+              "platforms/poe",
+              "platforms/deepseek",
+              "platforms/qwen"
             ]
           },
           {
@@ -158,5 +164,107 @@
       "x": "https://x.com/memoryplugin",
       "github": "https://github.com/memoryplugin"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/articles/8771372-getting-started",
+      "destination": "/getting-started/introduction"
+    },
+    {
+      "source": "/articles/9283429-how-memoryplugin-works",
+      "destination": "/getting-started/how-it-works"
+    },
+    {
+      "source": "/articles/4856554-memory-buckets",
+      "destination": "/features/memory-buckets"
+    },
+    {
+      "source": "/articles/1275443-chat-with-memories-experimental",
+      "destination": "/features/smart-memory"
+    },
+    {
+      "source": "/articles/0103080-interactive-onboarding-experimental",
+      "destination": "/getting-started/introduction"
+    },
+    {
+      "source": "/articles/4605052-smart-memory-experimental",
+      "destination": "/features/smart-memory"
+    },
+    {
+      "source": "/articles/7292300-dashboard",
+      "destination": "/features/dashboard"
+    },
+    {
+      "source": "/articles/0562383-bulk-operations",
+      "destination": "/features/bulk-operations"
+    },
+    {
+      "source": "/articles/4726334-import-from-chatgpt",
+      "destination": "/features/chat-history-import"
+    },
+    {
+      "source": "/articles/2696110-mcp-server",
+      "destination": "/integrations/mcp-server"
+    },
+    {
+      "source": "/articles/3438002-browser-extension",
+      "destination": "/integrations/browser-extension"
+    },
+    {
+      "source": "/articles/7177619-custom-gpt",
+      "destination": "/integrations/custom-gpt"
+    },
+    {
+      "source": "/articles/8332217-typingmind-plugin",
+      "destination": "/integrations/typingmind-plugin"
+    },
+    {
+      "source": "/articles/4249275-openapi-spec-for-custom-integrations",
+      "destination": "/integrations/api-integration"
+    },
+    {
+      "source": "/articles/7022436-integrate-into-your-own-custom-gpt",
+      "destination": "/integrations/custom-gpt-integration"
+    },
+    {
+      "source": "/articles/7212509-claude",
+      "destination": "/platforms/claude"
+    },
+    {
+      "source": "/articles/9843452-chatgpt",
+      "destination": "/platforms/chatgpt"
+    },
+    {
+      "source": "/articles/5997475-gemini",
+      "destination": "/platforms/gemini"
+    },
+    {
+      "source": "/articles/3103107-google-ai-studio",
+      "destination": "/platforms/google-ai-studio"
+    },
+    {
+      "source": "/articles/9652399-typingmind",
+      "destination": "/platforms/typingmind"
+    },
+    {
+      "source": "/articles/2274862-grok",
+      "destination": "/platforms/grok"
+    },
+    {
+      "source": "/articles/3672383-poe",
+      "destination": "/platforms/poe"
+    },
+    {
+      "source": "/articles/0204482-deepseek",
+      "destination": "/platforms/deepseek"
+    },
+    {
+      "source": "/articles/1461599-qwen",
+      "destination": "/platforms/qwen"
+    },
+    {
+      "source": "/articles/9176137-memoryplugin-for-typingmind-custom",
+      "destination": "/teams/typingmind-custom"
+    }
+  ]
 }
