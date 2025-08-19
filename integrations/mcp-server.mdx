@@ -4,49 +4,58 @@ description: "Use MemoryPlugin across dozens of AI tools through the Model Conte
 icon: "server"
 ---
 
-# MCP Server
+MemoryPlugin can be used across dozens of AI tools through our MCP Server implementation.
 
-MemoryPlugin can be used across dozens of AI tools (list growing every day) through the use of our MCP Server.
-
-The Desktop app for [Claude](https://claude.ai/download) is one of the most popular MCP clients (as they are the creators of the MCP protocol), but there are many others that support MCP too.
+<Info>
+[Claude Desktop](https://claude.ai/download) is one of the most popular MCP clients since Anthropic created the MCP protocol, but there are 100+ other tools that support MCP.
+</Info>
 
 ## What is MCP?
 
 Model Context Protocol is a new system developed by Anthropic to standardize how AI systems communicate with and use external data sources and tools.
 
+MCP works with two components:
+
+- **MCP Clients**: The applications you use to interact with AI (like Claude Desktop, Cursor, Windsurf, etc.)
+- **MCP Servers**: Tools that provide capabilities to those clients (like MemoryPlugin for memory, file access tools, web search, etc.)
+
 <Info>
-Think of MCP Clients as the app you're using to chat with your AI, and the MCP servers are the tools that are made available to that app.
+Think of it like this: The MCP Client is your AI chat app, and MCP Servers are plugins that give your AI new abilities. MemoryPlugin is one such server that adds memory capabilities.
 </Info>
 
-In this context, MemoryPlugin is available as an MCP Server.
-
-## Installation
+## Setup Requirements
 
 <Warning>
-MCP is currently not very end-user friendly and is more tailored to developers.
+MCP setup is currently more technical and requires some developer knowledge. We're working on making this easier.
 </Warning>
-
-The MemoryPlugin MCP server is based on NodeJS. You will need to ensure you have NodeJS installed to be able to use the MemoryPlugin MCP.
 
 ### Prerequisites
 
-1. **NodeJS** - Install from [nodejs.org](https://nodejs.org)
-2. **MCP Client** - Such as Claude Desktop, Cursor, or another supported client
+1. **Node.js** - Required to run the MCP server. [Download from nodejs.org](https://nodejs.org)
+2. **An MCP Client** - Such as Claude Desktop, Cursor, Windsurf, or another supported application
+3. **MemoryPlugin Account** - To get your authentication token
 
-### Setup Instructions
+### How to Set Up
 
-1. Follow the [MCP quickstart guide](https://modelcontextprotocol.io/quickstart/user) to understand how to set up MCP servers
+MCP servers are not "installed" like traditional software. Instead, you configure your MCP client to run the MemoryPlugin server when needed.
 
-2. Install the MemoryPlugin MCP server:
-   ```bash
-   npm install @memoryplugin/mcp-server
-   ```
+<Steps>
+  <Step title="Get Your Auth Token">
+    Sign in to the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard) and copy your authentication token
+  </Step>
+  
+  <Step title="Configure Your MCP Client">
+    Add the MemoryPlugin server configuration to your MCP client's settings file (see example below)
+  </Step>
+  
+  <Step title="Add Custom Instructions">
+    Tell your AI to use MemoryPlugin for memory operations
+  </Step>
+</Steps>
 
-3. Get your Auth Token from the [Dashboard](https://memoryplugin.com/dashboard) and set it in the `MEMORY_PLUGIN_TOKEN` environment variable
-
-4. Configure your MCP client to use the MemoryPlugin server
-
-For detailed instructions, visit our [NPM package page](https://www.npmjs.com/package/@memoryplugin/mcp-server?activeTab=readme).
+For detailed setup instructions specific to your MCP client:
+- **Official MCP Documentation**: [modelcontextprotocol.io/quickstart/user](https://modelcontextprotocol.io/quickstart/user)
+- **MemoryPlugin NPM Page**: [@memoryplugin/mcp-server](https://www.npmjs.com/package/@memoryplugin/mcp-server)
 
 ## Supported MCP Clients
 
@@ -79,7 +88,7 @@ For detailed instructions, visit our [NPM package page](https://www.npmjs.com/pa
 
 ## Configuration Example
 
-Here's an example configuration for Claude Desktop:
+Each MCP client has its own configuration format, but they all work similarly. Here's an example for Claude Desktop:
 
 ```json
 {
@@ -95,7 +104,13 @@ Here's an example configuration for Claude Desktop:
 }
 ```
 
+<Info>
+This configuration tells your MCP client to run `npx @memoryplugin/mcp-server` when needed, which downloads and executes the MemoryPlugin server automatically. No installation required!
+</Info>
+
 ## Features Available via MCP
+
+When using MemoryPlugin through MCP, you get:
 
 - **Load Memories**: Access your stored memories in any conversation
 - **Create Memories**: Save important information for future reference
@@ -103,34 +118,22 @@ Here's an example configuration for Claude Desktop:
 - **Search Memories**: Find specific information quickly
 - **Cross-Platform Sync**: Access the same memories across all your tools
 
-## Getting Your Auth Token
-
-<Steps>
-  <Step title="Visit Dashboard">
-    Go to the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard)
-  </Step>
-  <Step title="Sign In">
-    Log in to your MemoryPlugin account
-  </Step>
-  <Step title="Copy Token">
-    Find and copy your Auth Token from the dashboard
-  </Step>
-  <Step title="Set Environment Variable">
-    Set the `MEMORY_PLUGIN_TOKEN` environment variable to your token
-  </Step>
-</Steps>
-
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="NodeJS not found">
-    Make sure NodeJS is installed and available in your PATH. You can test this by running `node --version` in your terminal.
+  <Accordion title="Node.js not found">
+    Make sure Node.js is installed and available in your PATH. Test by running `node --version` in your terminal. You should see a version number like `v20.10.0`.
   </Accordion>
   <Accordion title="Auth token invalid">
-    Verify your auth token is correct and hasn't expired. You can regenerate it from your dashboard if needed.
+    Verify your auth token is correct and copied completely from the dashboard. The token should be a long string of characters.
   </Accordion>
   <Accordion title="MCP server not connecting">
-    Check your MCP client configuration and ensure the server command and arguments are correct.
+    1. Check your MCP client's configuration file for typos
+    2. Ensure the configuration is in the correct location for your client
+    3. Try running `npx @memoryplugin/mcp-server` directly in terminal to test if it works
+  </Accordion>
+  <Accordion title="Memories not loading">
+    Make sure you've added custom instructions telling your AI to use MemoryPlugin for memory operations.
   </Accordion>
 </AccordionGroup>
 
