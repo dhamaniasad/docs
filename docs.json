@@ -34,9 +34,9 @@
           {
             "group": "Getting Started",
             "pages": [
-              "index",
               "getting-started/introduction",
-              "getting-started/how-it-works"
+              "getting-started/how-it-works",
+              "feedback"
             ]
           },
           {
@@ -118,9 +118,19 @@
           "icon": "gauge"
         },
         {
-          "anchor": "Website",
-          "href": "https://memoryplugin.com",
-          "icon": "globe"
+          "anchor": "Feedback",
+          "href": "https://feedback.memoryplugin.com",
+          "icon": "comment"
+        },
+        {
+          "anchor": "Roadmap",
+          "href": "https://feedback.memoryplugin.com/roadmap",
+          "icon": "map"
+        },
+        {
+          "anchor": "Changelog",
+          "href": "https://feedback.memoryplugin.com/changelog",
+          "icon": "list"
         },
         {
           "anchor": "Support",
