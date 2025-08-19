@@ -4,11 +4,32 @@ description: "Use MemoryPlugin with any Chromium-based browser or Safari on iOS 
 icon: "browser"
 ---
 
-The Browser Extension for MemoryPlugin is supported on Chrome and Chromium-based browsers (Arc, Opera, Edge, Vivaldi, Brave, Kiwi on Android, etc.) and Safari on iOS and macOS.
+The Browser Extension for MemoryPlugin provides seamless integration with AI chat platforms through your web browser.
 
-MemoryPlugin can be used with any Chromium-based browser and with Safari on iOS and macOS.
+## Browser Compatibility
 
-You will find links to both the iOS (and macOS) apps and the Chrome Web Store on your [Dashboard](https://memoryplugin.com/dashboard).
+<Tabs>
+  <Tab title="Chromium Browsers">
+    Works with all Chromium-based browsers:
+    - Chrome
+    - Arc
+    - Opera
+    - Microsoft Edge
+    - Vivaldi
+    - Brave
+    - Kiwi Browser (Android)
+    - And other Chromium derivatives
+  </Tab>
+  <Tab title="Safari">
+    Available for Safari on:
+    - iOS (iPhone and iPad)
+    - macOS (Mac computers)
+  </Tab>
+</Tabs>
+
+<Info>
+Extension download links are available on your [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard) after signing up.
+</Info>
 
 ## Installation
 
@@ -39,6 +60,16 @@ Once you install the browser extension, when you open supported AI tool websites
 
 ![MemoryPlugin panel showing memories and bucket selector](/images/browser-extension/memory-panel.png)
 
+### Extension Interface
+
+The MemoryPlugin panel provides:
+
+- **Memory List**: View all memories in your selected bucket
+- **Bucket Selector**: Switch between different memory buckets (contexts)
+- **Search**: Find specific memories quickly
+- **Memory Count**: See how many memories are in each bucket
+- **Sync Status**: Check if memories are up to date
+
 ### Button Variations
 
 Depending on the platform you are using, you will see:
@@ -49,6 +80,19 @@ Depending on the platform you are using, you will see:
 ![Quick Inject button near the chat input](/images/browser-extension/quick-inject-button.png)
 
 Both buttons perform the same function - activating MemoryPlugin for your current chat.
+
+### Memory Buckets
+
+Organize your memories into different contexts using buckets:
+
+- **Personal**: Personal information and preferences
+- **Work**: Professional context and work-related information
+- **Projects**: Specific project details and requirements
+- **Custom Buckets**: Create your own categories as needed
+
+<Tip>
+Switch between buckets using the dropdown in the MemoryPlugin panel before injecting memories to use the appropriate context for your conversation.
+</Tip>
 
 ## Injecting Memories
 
@@ -90,6 +134,23 @@ When a new memory is added, you will see the round MemoryPlugin button briefly s
 
 ![Success indicator showing memory was saved](/images/browser-extension/success-indicator.png)
 
+## Smart Mode
+
+The browser extension supports Smart Mode on compatible platforms, which provides enhanced memory management:
+
+<Info>
+Smart Mode automatically organizes memories into intelligent categories and provides more contextual memory retrieval.
+</Info>
+
+### Features
+- **Automatic Categorization**: Memories are automatically organized into relevant categories
+- **Contextual Retrieval**: Only relevant memories are injected based on conversation context
+- **Category Management**: View and switch between different memory categories
+- **Enhanced Instructions**: AI receives more sophisticated instructions for memory handling
+
+### Supported Platforms for Smart Mode
+Most major platforms support Smart Mode, including ChatGPT, Claude, Gemini, Perplexity, and others. The extension automatically detects platform capabilities.
+
 ## Supported Platforms
 
 The browser extension works with all major AI platforms:
@@ -112,6 +173,15 @@ The browser extension works with all major AI platforms:
   </Card>
   <Card title="Deepseek" icon="robot">
     chat.deepseek.com
+  </Card>
+  <Card title="Qwen" icon="robot">
+    chat.qwen.ai
+  </Card>
+  <Card title="Poe" icon="robot">
+    poe.com
+  </Card>
+  <Card title="TypingMind" icon="robot">
+    typingmind.com
   </Card>
   <Card title="AI Studio" icon="robot">
     aistudio.google.com
@@ -153,6 +223,24 @@ With the MemoryPlugin browser extension, you can import all your existing memori
 You can safely run the sync multiple times without worrying about duplicate memories being created.
 </Info>
 
+## Privacy & Security
+
+<Info>
+Your memories are stored securely on MemoryPlugin servers and are only accessible to you when logged in.
+</Info>
+
+### Data Handling
+- **Local Processing**: The extension processes memories locally before sending to servers
+- **Secure Transmission**: All data is transmitted over HTTPS
+- **Authentication**: Requires login to access your memories
+- **No Auto-Collection**: Memories are only added when you explicitly activate MemoryPlugin
+
+### Permissions
+The extension requires certain permissions to function:
+- **Storage**: To cache authentication and preferences
+- **Host Access**: To inject UI into supported AI platforms
+- **Cookies**: To maintain your login session
+
 ## Troubleshooting
 
 <AccordionGroup>
@@ -167,6 +255,12 @@ You can safely run the sync multiple times without worrying about duplicate memo
   </Accordion>
   <Accordion title="Extension permissions">
     Make sure the extension has permission to run on the AI platform websites you're using.
+  </Accordion>
+  <Accordion title="Memory not being added">
+    Ensure the AI's response contains the proper format: `to=memoryplugin&&memory=[text]`
+  </Accordion>
+  <Accordion title="Canvas mode issues">
+    The extension adapts to ChatGPT's Canvas mode - refresh if buttons don't appear correctly.
   </Accordion>
 </AccordionGroup>
 
