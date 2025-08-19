@@ -3,8 +3,6 @@ title: "How MemoryPlugin Works"
 description: "Understanding how MemoryPlugin adds long-term memory capabilities to AI tools"
 ---
 
-# How MemoryPlugin Works
-
 This page covers common questions about how MemoryPlugin works across various AI tools.
 
 ## Introduction
@@ -46,15 +44,18 @@ The storage mechanism varies slightly depending on which integration you're usin
     The AI formats important information in a specific way that our extension recognizes and sends to our secure servers
   </Tab>
   <Tab title="Custom GPT">
-    Uses function/tool calls to store memories directly
+    Uses function/tool calls to store memories directly through OpenAI's system
   </Tab>
   <Tab title="MCP Server">
-    Similar to Custom GPT, uses equivalent tool calls for memory storage
+    Uses tool calls for memory storage through your MCP client
+  </Tab>
+  <Tab title="TypingMind Plugin">
+    Uses tool calls to store memories through the plugin interface
   </Tab>
 </Tabs>
 
 <Note>
-All processing happens on your device, and only the specifically formatted memory text is sent to our servers.
+Privacy: Only the memory text itself is sent to MemoryPlugin servers, never your full chat history. This applies to all integration methods.
 </Note>
 
 ### 2. Making Memories Available
