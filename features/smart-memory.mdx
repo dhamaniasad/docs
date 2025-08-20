@@ -1,6 +1,6 @@
 ---
-title: "Smart Memory (Experimental)"
-description: "AI-powered memory optimization that saves up to 90% on tokens while maintaining context"
+title: "Smart Memory (Beta)"
+description: "AI-powered memory organization with intelligent categories and context-aware retrieval"
 icon: "brain"
 author: "asad"
 lastUpdated: "2025-08-20"
@@ -11,10 +11,10 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 <ArticleInfo author="asad" lastUpdated="2025-08-20" />
 
 <Note>
-This feature is currently under development. If you want to receive early access, reach out to us through the MemoryPlugin website.
+Smart Memory is currently in Beta and available for all users, rolling out gradually across the platform.
 </Note>
 
-Smart Memory is a revolutionary feature within MemoryPlugin that makes it easier and more efficient to work with large numbers of memories.
+Smart Memory is an AI-powered organizational system that automatically categorizes your memories into meaningful groups for more efficient and relevant AI interactions.
 
 ## The Problem Smart Memory Solves
 
@@ -34,87 +34,101 @@ Until recently, MemoryPlugin operated as a simple list. You would add new memori
 
 ## What is Smart Memory?
 
-Smart Memory is an intelligent system that creates efficient, AI-optimized summaries of your memory collections.
+Smart Memory automatically analyzes and organizes your memories into intelligent categories with AI-generated summaries.
 
 ### How It Works
 
 Smart Memory operates at the [Memory Bucket](/features/memory-buckets) level:
 
-1. **Analysis**: Takes all memories within a given bucket
-2. **Summarization**: Creates a high-level overview of the memories
-3. **Contextualization**: Provides the AI with summary information instead of full memory text
-4. **On-Demand Access**: Gives the AI details on what additional information is available and allows it to request full memories when necessary
+1. **Analysis**: AI analyzes all memories within a bucket to identify themes and patterns
+2. **Categorization**: Groups related memories into meaningful categories like "Work Projects", "Learning Goals", "Health & Wellness"
+3. **Summarization**: Creates concise summaries for each category 
+4. **Selective Loading**: AI can load specific categories relevant to the conversation context
 
 <Info>
-The AI receives a concise overview but can always request the full memory details when they're actually needed for the conversation.
+Instead of loading all memories, the AI can focus on just the categories relevant to your conversation, making interactions more efficient and contextual.
 </Info>
 
 ## Benefits
 
-### Token Savings
-Smart Memory can save up to **90% on tokens** by:
-- Providing summaries instead of full memory text
-- Only loading detailed memories when actually needed
-- Eliminating redundant or irrelevant information from context
+### Better Context Efficiency
+Smart Memory improves AI interactions by:
+- Loading only relevant memory categories instead of everything
+- Providing focused context that matches your conversation topic
+- Preserving context window space for actual conversation
 
-### Improved Performance
-- **Reduced confusion**: AI receives only relevant, summarized information
-- **Faster processing**: Less text to process means faster responses
-- **Better focus**: AI can concentrate on what's actually important for the conversation
+### Improved Organization
+- **Automatic categorization**: AI identifies themes and groups related memories
+- **Clear summaries**: Each category gets a concise overview of its contents
+- **Easy filtering**: Focus on specific categories in the dashboard
 
-### Enhanced Scalability
-- **Handle more memories**: Your memory collection can grow without performance degradation
-- **Maintain responsiveness**: Large memory sets don't slow down your AI interactions
-- **Preserve context space**: More room for your actual work and conversation
+### Enhanced Scalability  
+- **Handle more memories**: Categories keep large collections organized and accessible
+- **Maintain performance**: Selective loading prevents information overload
+- **Better relevance**: AI gets context that actually matters for the conversation
 
-## Technical Implementation
+## How Smart Memory Categories Work
 
-### Memory Hierarchy
-Smart Memory creates a hierarchical structure:
+### Category Creation
+Smart Memory analyzes your memories to create categories:
 
 ```
-Bucket: "Work Project Alpha"
-├── Summary: "Project involving client onboarding system..."
-├── Key Topics: ["authentication", "user interface", "database design"]
-├── Available Details: [Memory IDs and brief descriptions]
-└── Full Memories: [Available on request]
+Bucket: "Personal Development"
+├── Work Projects (12 memories)
+│   Summary: "Current job responsibilities, team meetings, project updates..."
+├── Health & Fitness (8 memories)  
+│   Summary: "Exercise routines, nutrition goals, health tracking..."
+└── Learning Goals (15 memories)
+    Summary: "Programming courses, book notes, skill development..."
 ```
 
-### AI Integration
-When Smart Memory is active:
+### Requirements and Limits
+- **Minimum**: 30 memories required in a bucket for categorization
+- **Maximum**: Works with buckets up to 600,000 tokens or 2,000 memories
+- **Manual Process**: Categories must be created by clicking the dashboard button
 
-1. **Initial Load**: AI receives the bucket summary and available memory topics
-2. **Contextual Awareness**: AI understands what detailed information is available
-3. **Selective Access**: AI can request specific memories when they become relevant
-4. **Dynamic Loading**: Full memory content is loaded only when needed
+## Using Smart Memory
 
-## Compatibility
+### Getting Started
+Smart Memory requires manual activation in your dashboard:
 
-Smart Memory works with all MemoryPlugin integrations:
+1. **Add 30+ memories** to any bucket
+2. **Click "Create Smart Categories"** button in the dashboard 
+3. **Wait for processing** (usually takes a few minutes)
+4. **View your organized categories** with summaries and additional context
 
-- **Browser Extension**: Automatically uses Smart Memory when available
-- **MCP Server**: Provides Smart Memory summaries through MCP protocol
-- **Custom GPT**: Integrates Smart Memory into GPT function calls
-- **API**: Smart Memory accessible through API endpoints
+### In the Dashboard
+Once categories are created, you can:
+- **Browse categories**: Each shows a summary and additional information
+- **Filter by category**: Focus on specific themes
+- **Refresh categories**: Click the refresh button to update organization
+- **View memory counts**: See how many memories are in each category
 
-## Getting Early Access
+### Category Information
+Each category provides multiple layers of information:
 
-Smart Memory is currently in development and testing. To get early access:
+- **Category Name**: AI-generated theme (e.g., "Work Projects", "Health Goals")
+- **Summary**: High-level overview of what memories in this category contain
+- **Additional Information**: Deeper context about the category's contents, including:
+  - Key topics and themes within the category
+  - Specific details that distinguish this category from others
+  - Context that helps AI assistants understand when this category is relevant
+  - More granular information about the types of memories included
+- **Memory Count**: Number of memories grouped in this category
 
-<Steps>
-  <Step title="Contact Us">
-    Reach out through the MemoryPlugin website or dashboard
-  </Step>
-  <Step title="Provide Use Case">
-    Tell us about your memory usage patterns and needs
-  </Step>
-  <Step title="Join Beta">
-    We'll add you to our beta testing program
-  </Step>
-  <Step title="Provide Feedback">
-    Help us refine the feature with your real-world usage
-  </Step>
-</Steps>
+The **Additional Information** field is particularly useful for AI interactions - it provides context that helps determine when to load this category's memories during conversations, making the AI's responses more accurate and relevant.
+
+## Availability
+
+Smart Memory is currently in Beta and rolling out gradually to all users.
+
+### With AI Integrations
+Once you have Smart Memory categories set up:
+
+- **Browser Extension**: Categories are available when using AI platforms like ChatGPT, Claude, etc.
+- **MCP Server**: Smart Memory integration is being developed for MCP-compatible clients
+- **Custom GPT**: Smart Memory integration is planned for future development
+- **API**: Smart Memory endpoints are currently internal-only
 
 ## Use Cases
 
@@ -135,22 +149,22 @@ Smart Memory is particularly valuable for:
 - Rate-limited environments where efficiency is crucial
 - Performance-sensitive applications
 
-## Future Enhancements
+## Example Categories
 
-Planned improvements for Smart Memory include:
+Smart Memory might organize your memories into categories like:
 
 <CardGroup cols={2}>
-  <Card title="Semantic Clustering" icon="network-wired">
-    Group related memories automatically based on content similarity
+  <Card title="Work Projects" icon="briefcase">
+    Meeting notes, project updates, deadlines, team communications
   </Card>
-  <Card title="Temporal Organization" icon="clock">
-    Organize memories by time relevance and recency
+  <Card title="Health & Wellness" icon="heart">
+    Exercise routines, nutrition goals, medical appointments, wellness tracking
   </Card>
-  <Card title="Custom Summarization" icon="user-gear">
-    Allow users to customize how memories are summarized
+  <Card title="Learning & Development" icon="book">
+    Course notes, tutorials, skill development, book summaries
   </Card>
-  <Card title="Learning Optimization" icon="graduation-cap">
-    Improve summaries based on which memories are accessed most often
+  <Card title="Personal Goals" icon="target">
+    Life goals, habit tracking, personal reflections, milestone planning
   </Card>
 </CardGroup>
 
@@ -158,27 +172,27 @@ Planned improvements for Smart Memory include:
 
 | Aspect | Traditional Memory | Smart Memory |
 |--------|-------------------|--------------|
-| **Context Usage** | Full memory text always loaded | Summaries + on-demand details |
-| **Token Efficiency** | 100% of memory tokens used | Up to 90% reduction |
-| **Relevance** | All memories regardless of relevance | Contextually relevant information |
-| **Scalability** | Degrades with more memories | Maintains performance at scale |
-| **AI Performance** | Can be overwhelmed by information | Focused on relevant context |
+| **Organization** | Chronological list of all memories | Themed categories with summaries |
+| **Context Loading** | All memories loaded at once | Relevant categories loaded selectively |
+| **Scalability** | Gets unwieldy with many memories | Stays organized regardless of size |
+| **AI Relevance** | AI sees everything, relevant or not | AI gets focused, contextual information |
+| **Dashboard View** | Simple memory list | Organized by categories with filtering |
 
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Request Early Access"
-    icon="envelope"
-    href="mailto:support@memoryplugin.com"
-  >
-    Get early access to Smart Memory features
-  </Card>
-  <Card
-    title="Optimize Your Buckets"
+    title="Memory Buckets"
     icon="folder"
     href="/features/memory-buckets"
   >
-    Prepare your memory organization for Smart Memory
+    Learn how to organize memories into buckets for Smart Memory
+  </Card>
+  <Card
+    title="Dashboard Guide"
+    icon="chart-bar"
+    href="/dashboard/overview"
+  >
+    Get started with creating and managing your Smart Memory categories
   </Card>
 </CardGroup>
