@@ -8,8 +8,9 @@ export const ArticleInfo = ({ author, lastUpdated, avatar = null }) => {
       const date = new Date(dateInput);
       const now = new Date();
       const diffTime = Math.abs(now - date);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
       
+      if (diffDays === 0) return 'today';
       if (diffDays === 1) return '1 day ago';
       if (diffDays < 7) return `${diffDays} days ago`;
       if (diffDays < 30) return `${Math.ceil(diffDays / 7)} week${Math.ceil(diffDays / 7) > 1 ? 's' : ''} ago`;
@@ -24,18 +25,19 @@ export const ArticleInfo = ({ author, lastUpdated, avatar = null }) => {
     <div style={{
       display: "flex", 
       alignItems: "center", 
-      gap: "12px", 
-      marginBottom: "24px", 
-      padding: "16px", 
-      backgroundColor: "var(--ifm-background-surface-color)", 
-      borderRadius: "8px", 
+      gap: "8px", 
+      marginBottom: "16px", 
+      padding: "8px 12px", 
+      backgroundColor: "var(--ifm-color-emphasis-100)", 
+      borderRadius: "6px", 
       fontSize: "14px", 
       color: "var(--ifm-color-content-secondary)",
-      border: "1px solid var(--ifm-color-emphasis-200)"
+      border: "1px solid var(--ifm-color-emphasis-200)",
+      opacity: "0.8"
     }}>
       <div style={{
-        width: "40px", 
-        height: "40px", 
+        width: "32px", 
+        height: "32px", 
         borderRadius: "50%", 
         background: avatar || "linear-gradient(45deg, #4F46E5, #7C3AED)", 
         display: "flex", 
@@ -43,13 +45,13 @@ export const ArticleInfo = ({ author, lastUpdated, avatar = null }) => {
         justifyContent: "center", 
         color: "white", 
         fontWeight: "bold", 
-        fontSize: "16px"
+        fontSize: "14px"
       }}>
         {avatar ? <img src={avatar} alt={author} style={{width: "100%", height: "100%", borderRadius: "50%"}} /> : author?.[0]?.toUpperCase()}
       </div>
       <div>
-        <div style={{fontWeight: "500", color: "var(--ifm-color-content)"}}>Written by {author}</div>
-        <div>Last updated {formatDate(lastUpdated)}</div>
+        <div style={{fontWeight: "400", fontSize: "14px"}}>Written by <span style={{fontWeight: "600"}}>{author}</span></div>
+        <div style={{fontSize: "14px"}}>Last updated <span style={{fontWeight: "600"}}>{formatDate(lastUpdated)}</span></div>
       </div>
     </div>
   );
