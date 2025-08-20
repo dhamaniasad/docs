@@ -57,7 +57,7 @@
               "features/memory-buckets",
               "features/smart-memory",
               "features/dashboard",
-              "features/chat-history-import",
+              "features/chatgpt-memory-import",
               "features/bulk-operations"
             ]
           },
@@ -211,7 +211,7 @@
     },
     {
       "source": "/articles/4726334-import-from-chatgpt",
-      "destination": "/features/chat-history-import"
+      "destination": "/features/chatgpt-memory-import"
     },
     {
       "source": "/articles/2696110-mcp-server",

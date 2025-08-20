@@ -1,0 +1,108 @@
+---
+title: "Import from ChatGPT"
+description: "Import your ChatGPT saved memories into MemoryPlugin with one click"
+icon: "download"
+author: "asad"
+lastUpdated: "2025-08-20"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="asad" lastUpdated="2025-08-20" />
+
+Import all your ChatGPT saved memories into MemoryPlugin instantly using the browser extension's sync feature.
+
+<Info>
+This imports ChatGPT's "saved memories" - the personal information ChatGPT remembers about you, not your chat conversation history.
+</Info>
+
+## What You Need
+
+- [MemoryPlugin Browser Extension](/integrations/browser-extension) installed
+- ChatGPT account with saved memories
+- MemoryPlugin account (signed in)
+
+## How to Import
+
+<Steps>
+  <Step title="Open ChatGPT">
+    Go to ChatGPT in your browser where the extension is installed
+  </Step>
+  <Step title="Open Settings">
+    Click Settings from your profile menu
+  </Step>
+  <Step title="Go to Personalization">
+    Click on the "Personalization" tab
+  </Step>
+  <Step title="Manage Memories">
+    Click "Manage memories" to see your saved memories
+    
+    ![ChatGPT Personalization Settings](/images/chatgpt-import/chatgpt-personalization.png)
+  </Step>
+  <Step title="Find the Sync Button">
+    Look for the "Sync Memories" button with the MemoryPlugin logo
+    
+    ![Sync Memories Button](/images/chatgpt-import/sync-button.png)
+  </Step>
+  <Step title="Click Sync">
+    Click the button - it will show "Syncing..." while importing
+    
+    ![Syncing Progress](/images/chatgpt-import/syncing-progress.png)
+  </Step>
+  <Step title="Wait for Completion">
+    The sync typically takes a couple minutes depending on how many memories you have. **Keep this browser tab open** and **don't navigate away** - closing the tab or using ChatGPT will interrupt the sync.
+  </Step>
+</Steps>
+
+## What Happens During Sync
+
+- All your ChatGPT memories are copied to MemoryPlugin
+- No duplicates are created if you run sync multiple times  
+- The sync runs in the browser - **don't close the tab or navigate away**
+- Imported memories go to your "General" bucket by default
+
+## After Import
+
+1. **Check your dashboard** - Go to [memoryplugin.com/dashboard](https://memoryplugin.com/dashboard) to see your imported memories
+2. **Organize if needed** - Move memories to different [buckets](/features/memory-buckets) for better organization
+3. **Use across platforms** - Your ChatGPT memories now work with Claude, Gemini, and other AI platforms
+
+## Common Issues
+
+<AccordionGroup>
+  <Accordion title="Don't see the Sync button?">
+    - Make sure the browser extension is installed and enabled
+    - Refresh the ChatGPT page
+    - Check you're in Settings > Personalization > Manage memories
+    - Try logging out and back into both ChatGPT and MemoryPlugin
+  </Accordion>
+  <Accordion title="Sync seems stuck?">
+    - Large memory collections may take several minutes
+    - Check your MemoryPlugin dashboard to see if memories are appearing
+    - You can safely try clicking sync again - it won't create duplicates
+  </Accordion>
+  <Accordion title="Memories not showing in dashboard?">
+    - Refresh your dashboard page
+    - Make sure you're signed into the correct MemoryPlugin account
+    - Wait a few more minutes - processing can take time
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Organize with Buckets"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Learn how to organize your imported memories
+  </Card>
+  <Card
+    title="Use Smart Memory"
+    icon="brain"
+    href="/features/smart-memory"
+  >
+    Get AI-organized categories for your memories
+  </Card>
+</CardGroup>
