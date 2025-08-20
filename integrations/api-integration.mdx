@@ -41,7 +41,7 @@ The OpenAPI specification can be imported into many platforms and tools:
 - **Code Generators**: Generate client libraries in various languages
 
 ### AI Platforms
-- **LibreChat**: Import as actions for enhanced AI conversations
+- **[LibreChat](https://www.librechat.ai/docs/features/agents#actions)**: Import as actions for enhanced AI conversations
 - **Other AI Clients**: Many third-party AI applications support OpenAPI imports
 
 ## Example: n8n Integration
@@ -93,130 +93,42 @@ Authorization: Bearer YOUR_API_TOKEN_HERE
 The MemoryPlugin API provides endpoints for:
 
 ### Memory Management
-- **GET /memories** - Retrieve memories
-- **POST /memories** - Create new memories
-- **PUT /memories/{id}** - Update existing memories
-- **DELETE /memories/{id}** - Delete memories
+- **GET /api/memory** - Retrieve and search memories
+- **POST /api/memory** - Create new memories
 
 ### Bucket Management
-- **GET /buckets** - List memory buckets
-- **POST /buckets** - Create new buckets
-- **PUT /buckets/{id}** - Update bucket details
-- **DELETE /buckets/{id}** - Delete buckets
+- **GET /api/buckets** - List memory buckets
+- **POST /api/buckets** - Create new buckets
 
-### Search & Retrieval
-- **GET /memories/search** - Search through memories
-- **GET /memories/recent** - Get recently updated memories
-- **GET /buckets/{id}/memories** - Get memories from specific bucket
+### Combined Operations  
+- **GET /api/v2/memory** - Get memories and buckets in a single request
 
-## Example Integration Code
+<Card
+  title="Full API Reference"
+  icon="book"
+  href="/api-reference/introduction"
+>
+  Complete documentation for all endpoints, parameters, and examples
+</Card>
 
-Here's a simple example of how to interact with the MemoryPlugin API:
+## Implementation
 
-<CodeGroup>
-
-```javascript JavaScript/Node.js
-const axios = require('axios');
-
-const client = axios.create({
-  baseURL: 'https://api.memoryplugin.com',
-  headers: {
-    'Authorization': 'Bearer YOUR_TOKEN_HERE',
-    'Content-Type': 'application/json'
-  }
-});
-
-// Get all memories
-async function getMemories() {
-  try {
-    const response = await client.get('/memories');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching memories:', error);
-  }
-}
-
-// Create a new memory
-async function createMemory(content, bucketId = null) {
-  try {
-    const response = await client.post('/memories', {
-      content: content,
-      bucketId: bucketId
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error creating memory:', error);
-  }
-}
-```
-
-```python Python
-import requests
-
-class MemoryPluginClient:
-    def __init__(self, api_token):
-        self.base_url = 'https://api.memoryplugin.com'
-        self.headers = {
-            'Authorization': f'Bearer {api_token}',
-            'Content-Type': 'application/json'
-        }
-    
-    def get_memories(self):
-        response = requests.get(
-            f'{self.base_url}/memories',
-            headers=self.headers
-        )
-        return response.json()
-    
-    def create_memory(self, content, bucket_id=None):
-        data = {'content': content}
-        if bucket_id:
-            data['bucketId'] = bucket_id
-            
-        response = requests.post(
-            f'{self.base_url}/memories',
-            json=data,
-            headers=self.headers
-        )
-        return response.json()
-
-# Usage
-client = MemoryPluginClient('YOUR_TOKEN_HERE')
-memories = client.get_memories()
-```
-
-```curl cURL
-# Get all memories
-curl -X GET "https://api.memoryplugin.com/memories" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
-  -H "Content-Type: application/json"
-
-# Create a new memory
-curl -X POST "https://api.memoryplugin.com/memories" \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "content": "Remember that the user prefers technical explanations",
-    "bucketId": "bucket-id-here"
-  }'
-```
-
-</CodeGroup>
+For detailed implementation examples, request/response schemas, and code samples, see our comprehensive API reference documentation.
 
 ## Use Cases for Custom Integrations
 
 <CardGroup cols={2}>
   <Card title="Workflow Automation" icon="gear">
-    Integrate memory creation/retrieval into business process automation
+    Integrate memory creation/retrieval into personal or team automation workflows
   </Card>
   <Card title="Custom AI Applications" icon="robot">
     Build your own AI applications with persistent memory capabilities
   </Card>
   <Card title="Data Migration" icon="database">
-    Import existing knowledge bases or customer data into MemoryPlugin
+    Import existing knowledge bases or personal data into MemoryPlugin
   </Card>
-  <Card title="Analytics & Reporting" icon="chart-line">
-    Extract memory data for analysis and reporting purposes
+  <Card title="Platform Integration" icon="plug">
+    Add MemoryPlugin to platforms that don't have native support
   </Card>
 </CardGroup>
 
