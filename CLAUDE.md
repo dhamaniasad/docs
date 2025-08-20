@@ -1,1 +1,2 @@
 - always update the lastUpdated timestamp when updating a doc
+- always cross reference the actual memoryplugin repo where appropriate at /Users/asad/repos/memoryplugin
