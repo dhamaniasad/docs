@@ -72,11 +72,29 @@ You can ask the MemoryPlugin Custom GPT to work with specific buckets:
   </Card>
 </CardGroup>
 
-## Are there any limits on the number of buckets I can create?
+## Are there any limits on buckets?
 
-There are no enforced limits on the number of buckets you can create. You can create as many buckets as you need to organize your memories effectively.
+### Bucket Creation
+There are no limits on the number of buckets you can create. You can create as many buckets as you need to organize your memories effectively.
 
-For enterprise or high-volume use cases, feel free to reach out to us if you have specific requirements.
+### Feature Limitations
+Some advanced features have requirements or limits based on your bucket's size:
+
+**Minimum Requirements:**
+- **Smart Memory Categories**: Requires at least 30 memories in a bucket to generate meaningful category groupings
+
+**Maximum Limits:**
+- **Smart Memory Categories**: Won't process buckets larger than 600,000 tokens or 2,000 memories (for performance)
+- **Memory Suggestions**: Automatically skips individual memories with >10,000 tokens during analysis
+
+**Context Window Limits:**
+The dashboard shows how your bucket size compares to different AI model limits:
+- ChatGPT Plus: 32,000 tokens
+- ChatGPT Pro: 128,000 tokens  
+- Claude: 200,000 tokens
+- Gemini: 1,000,000 tokens
+
+These limitations help ensure optimal performance and meaningful results from AI-powered features.
 
 ## Managing Buckets
 
