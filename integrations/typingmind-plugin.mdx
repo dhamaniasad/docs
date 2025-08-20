@@ -4,11 +4,7 @@ description: "Use MemoryPlugin with TypingMind for enhanced AI conversations"
 icon: "keyboard"
 ---
 
-MemoryPlugin offers native integration with TypingMind through our dedicated plugin. TypingMind is a popular alternative interface for various AI models that provides enhanced features and customization options.
-
-<Info>
-The TypingMind Plugin content was limited in our source material. This integration is available and supported - check the MemoryPlugin dashboard for specific setup instructions.
-</Info>
+MemoryPlugin offers native integration with TypingMind through our dedicated plugin. The plugin provides full memory functionality including storing, searching, and organizing memories across different AI models within TypingMind.
 
 ## What is TypingMind?
 
@@ -17,127 +13,178 @@ TypingMind is a powerful alternative interface for AI models that offers:
 - Support for multiple AI providers (OpenAI, Claude, Gemini, etc.)
 - Enhanced conversation management
 - Custom prompts and templates
-- Plugin ecosystem
+- Plugin ecosystem for extended functionality
 - Team collaboration features
 
 ## Installation
 
-1. Access your MemoryPlugin [Dashboard](https://memoryplugin.com/dashboard)
-2. Look for TypingMind integration options
-3. Follow the provided setup instructions for connecting MemoryPlugin to your TypingMind instance
+Installing MemoryPlugin for TypingMind is a simple one-click process:
+
+<Steps>
+  <Step title="Get Plugin Link">
+    Visit your [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard) and find the TypingMind plugin installation link
+  </Step>
+  <Step title="One-Click Install">
+    Click the TypingMind plugin link from your dashboard - this will automatically install the plugin in TypingMind
+  </Step>
+  <Step title="Configure Authentication">
+    Enter your MemoryPlugin Auth Token in the plugin settings (available from your dashboard)
+  </Step>
+  <Step title="Start Using">
+    The plugin is now ready to use across all your TypingMind conversations
+  </Step>
+</Steps>
+
+<Info>
+The plugin installation link in your MemoryPlugin Dashboard ensures you always get the latest version with all improvements and fixes.
+</Info>
+
+<Warning>
+Keep your Auth Token confidential - it provides access to your MemoryPlugin account.
+</Warning>
+
+## Plugin Modes
+
+The MemoryPlugin for TypingMind supports four main operation modes:
+
+<Tabs>
+  <Tab title="Store Mode">
+    **Purpose**: Add new memories  
+    **Usage**: AI automatically stores important information or when user uses `\m`  
+    **Parameters**: 
+    - `memory` (required): Text to remember
+    - `bucket` (optional): Specific bucket to store in
+  </Tab>
+  <Tab title="Search Mode">
+    **Purpose**: Find specific memories  
+    **Usage**: Look up specific information when memories haven't been loaded  
+    **Parameters**:
+    - `query` (required): Search term to find memories
+  </Tab>
+  <Tab title="Load All Mode">
+    **Purpose**: Load all memories  
+    **Usage**: Only when explicitly requested by user  
+    **Parameters**: None required
+  </Tab>
+  <Tab title="Load Bucket Mode">
+    **Purpose**: Load memories from specific bucket  
+    **Usage**: When user specifies a particular context/bucket  
+    **Parameters**:
+    - `bucket` (required): Name of bucket to load from
+  </Tab>
+</Tabs>
 
 ## Features
 
 When integrated with TypingMind, MemoryPlugin provides:
 
-- **Persistent Memory**: Remember information across all TypingMind conversations
+- **Automatic Memory Storage**: AI proactively stores important information
 - **Cross-Model Memory**: Share memories between different AI models in TypingMind
-- **Memory Buckets**: Organize memories for different projects or contexts
-- **Team Memory**: Share memories across team members (with TypingMind Custom)
+- **Memory Buckets**: Organize memories for different projects or contexts  
+- **Search Functionality**: Find specific memories using natural language queries
+- **Date Stamping**: Automatically adds dates to stored memories
 
-## TypingMind Custom for Teams
+## How to Use
 
-MemoryPlugin offers special integration with TypingMind Custom, which is often used by teams or businesses. This integration is currently under development.
+### Basic Usage
 
-### For Internal Teams
+1. **Start a conversation** in TypingMind with MemoryPlugin enabled
+2. **The AI will automatically store** important information as you chat
+3. **Use `\m` at the end** of a message to explicitly request memory storage
+4. **Specify buckets** when you want to organize memories by context
 
-MemoryPlugin can save time and ensure consistency by providing the ability to:
-- Learn and recall important information about your business
-- Remember product details and specifications  
-- Maintain your preferred writing style and tone
-- Build an internal knowledge base that grows automatically over time
+### Working with Buckets
 
-### For End-User Applications
+```text
+"Load my work bucket" - AI uses load_bucket mode
+"Remember this in my personal bucket: I prefer morning meetings" - AI stores in specific bucket
+"Search my project memories for deadlines" - AI searches within context
+```
 
-For TypingMind Custom instances serving end-users, MemoryPlugin enables:
-- Better customer relationships through remembered preferences
-- Greater personalization as the AI learns about each user
-- Higher engagement since conversations don't start from scratch
-- Improved user experience with contextual conversations
+### Memory Shortcuts
 
-## Getting Early Access
+- **`\m`**: Add the preceding information to memory
+- **Automatic Storage**: AI detects and stores important information
+- **Smart Loading**: AI loads relevant memories based on conversation context
 
-<Note>
-MemoryPlugin for Teams and TypingMind Custom integration are currently under development.
-</Note>
+## Plugin Behavior
 
-If you would like to get early access to the team functionality and help shape its development, please contact us through:
+### Automatic Features
 
-- The MemoryPlugin website
-- Your MemoryPlugin dashboard
-- Direct outreach to our team
+- **Proactive Storage**: The AI automatically detects and stores important information
+- **Context Awareness**: Uses conversation context to determine what's worth remembering
+- **Date Stamping**: All memories include timestamps for better organization
+- **Error Handling**: Shows helpful messages if authentication fails
 
-## Benefits for Teams
+### User Controls
+
+- **Explicit Memory**: Use `\m` to force storage of specific information
+- **Bucket Selection**: Direct the AI to use specific memory buckets
+- **Search Queries**: Find specific information from your memory collection
+
+## Best Practices
 
 <CardGroup cols={2}>
-  <Card title="Knowledge Continuity" icon="brain">
-    Team knowledge persists across conversations and team members
+  <Card title="Organize with Buckets" icon="folder">
+    Use different buckets for work, personal, and project-specific memories
   </Card>
-  <Card title="Consistency" icon="check-circle">
-    Maintain consistent responses and information across interactions
+  <Card title="Be Specific" icon="target">
+    Clear, specific information gets stored and retrieved more effectively
   </Card>
-  <Card title="Learning System" icon="graduation-cap">
-    Automatically grows and evolves your team's knowledge base
+  <Card title="Use \m Shortcut" icon="keyboard">
+    Explicitly mark important information you want remembered
   </Card>
-  <Card title="Personalization" icon="user">
-    Remember individual customer preferences and interaction history
+  <Card title="Regular Review" icon="eye">
+    Periodically check your stored memories through the dashboard
   </Card>
 </CardGroup>
 
-## Use Cases
+## Troubleshooting
 
-### Internal Team Use
-- **Customer Support**: Remember customer issues and solutions across team members
-- **Sales**: Track prospect preferences and conversation history
-- **Product Development**: Maintain feature requirements and user feedback
-- **Marketing**: Keep brand voice and messaging consistent
-
-### Customer-Facing Use
-- **E-commerce**: Remember customer preferences and purchase history
-- **Consulting**: Track client project details and requirements
-- **Education**: Remember student progress and learning preferences
-- **Healthcare**: Maintain patient interaction history (with appropriate privacy measures)
-
-## Setup Requirements
-
-For TypingMind Custom integration, you'll typically need:
-
-1. **TypingMind Custom Instance**: A TypingMind Custom deployment
-2. **MemoryPlugin Account**: Active MemoryPlugin subscription
-3. **API Configuration**: Proper API keys and authentication setup
-4. **Team Coordination**: Planning for how memories will be organized and shared
+<AccordionGroup>
+  <Accordion title="Plugin not working">
+    Ensure your Auth Token is correctly entered in the plugin settings and is valid
+  </Accordion>
+  <Accordion title="Memories not loading">
+    Check that the plugin is enabled and your internet connection is stable
+  </Accordion>
+  <Accordion title="Bucket errors">
+    Verify bucket names are correct - they're case-sensitive
+  </Accordion>
+  <Accordion title="Authentication failed">
+    Regenerate your Auth Token from the MemoryPlugin dashboard
+  </Accordion>
+</AccordionGroup>
 
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Contact for Early Access"
-    icon="envelope"
-    href="mailto:support@memoryplugin.com"
+    title="Memory Buckets Guide"
+    icon="folder"
+    href="/features/memory-buckets"
   >
-    Get early access to team features and TypingMind Custom integration
+    Learn how to organize your memories effectively
   </Card>
   <Card
-    title="Try Browser Extension"
+    title="MemoryPlugin Dashboard"
+    icon="chart-line"
+    href="https://memoryplugin.com/dashboard"
+  >
+    Manage your memories and get your Auth Token
+  </Card>
+  <Card
+    title="Browser Extension"
     icon="browser"
     href="/integrations/browser-extension"
   >
-    Use MemoryPlugin with other platforms while waiting for teams features
+    Use MemoryPlugin with other AI platforms
+  </Card>
+  <Card
+    title="API Documentation"
+    icon="code"
+    href="/integrations/api-integration"
+  >
+    Build custom integrations with our API
   </Card>
 </CardGroup>
-
-## Alternative Integrations
-
-While waiting for the full TypingMind integration, you can use:
-
-- **Browser Extension**: Works with TypingMind web interface
-- **MCP Server**: If TypingMind supports MCP protocol
-- **API Integration**: Custom integration using our OpenAPI specification
-
-<Card
-  title="API Documentation"
-  icon="code"
-  href="/integrations/api-integration"
->
-  Learn how to build custom integrations with our API
-</Card>
