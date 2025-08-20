@@ -1,6 +1,6 @@
 ---
 title: "Claude"
-description: "Complete guide to using MemoryPlugin with Claude AI"
+description: "Using MemoryPlugin with Claude AI"
 icon: "robot"
 author: "asad"
 lastUpdated: "2025-08-20"
@@ -10,301 +10,37 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 
 <ArticleInfo author="asad" lastUpdated="2025-08-20" />
 
-Claude, created by Anthropic, offers excellent MemoryPlugin integration with native MCP (Model Context Protocol) support, making it one of the best-supported platforms.
+Use MemoryPlugin with Claude AI assistant at [claude.ai](https://claude.ai).
 
-## Integration Methods
+## How to Use
 
-<CardGroup cols={2}>
-  <Card title="MCP Server (Recommended)" icon="server" href="/integrations/mcp-server">
-    Native integration with Claude Desktop
-  </Card>
-  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
-    For Claude web interface
-  </Card>
-</CardGroup>
+### Browser Extension (Recommended)
+1. Install the [MemoryPlugin Browser Extension](/integrations/browser-extension)
+2. Go to [claude.ai](https://claude.ai)
+3. Click the MemoryPlugin button to inject memories
+4. Start chatting with memory context
 
-## Why Claude + MemoryPlugin?
-
-Claude is special because:
-- **Native MCP Support**: Anthropic created the MCP protocol
-- **Seamless Integration**: Built-in support in Claude Desktop
-- **Automatic Loading**: Memories load without manual intervention
-- **Better Performance**: Direct protocol integration
-
-## Quick Start Guide
-
-### Method 1: MCP Server (Claude Desktop)
-
-<Steps>
-  <Step title="Install Claude Desktop">
-    Download from [claude.ai/download](https://claude.ai/download)
-  </Step>
-  <Step title="Install Node.js">
-    Required for MCP server - get from [nodejs.org](https://nodejs.org)
-  </Step>
-  <Step title="Configure MCP">
-    Add MemoryPlugin to your Claude MCP configuration:
-    ```json
-    {
-      "mcpServers": {
-        "memoryplugin": {
-          "command": "npx",
-          "args": ["@memoryplugin/mcp-server"],
-          "env": {
-            "MEMORY_PLUGIN_TOKEN": "your-token-here"
-          }
-        }
-      }
-    }
-    ```
-  </Step>
-  <Step title="Restart Claude">
-    Restart Claude Desktop to load the MCP server
-  </Step>
-  <Step title="Use Memories">
-    Your memories are now available in all Claude conversations
-  </Step>
-</Steps>
-
-### Method 2: Browser Extension (Claude.ai)
-
-<Steps>
-  <Step title="Install Extension">
-    Add the [MemoryPlugin Browser Extension](/integrations/browser-extension)
-  </Step>
-  <Step title="Visit Claude.ai">
-    Go to [claude.ai](https://claude.ai) in your browser
-  </Step>
-  <Step title="Activate MemoryPlugin">
-    Click the MemoryPlugin button to inject memories
-  </Step>
-  <Step title="Start Chatting">
-    Claude now has access to your memory context
-  </Step>
-</Steps>
-
-## Claude-Specific Features
-
-### Projects Integration
-
-Claude Projects work excellently with MemoryPlugin:
-- Create project-specific memory buckets
-- Load relevant memories per project
-- Maintain context across project conversations
-- Combine project knowledge with personal memories
-
-### Artifacts Support
-
-When Claude creates artifacts (code, documents):
-- Memories provide context for artifact generation
-- Save artifact details as memories for future reference
-- Maintain consistency across artifact iterations
-
-### Long Context Window
-
-Claude's large context window (100K+ tokens) means:
-- Can handle extensive memory collections
-- Smart Memory less critical but still beneficial
-- Complex, detailed memories are fully usable
-- Great for comprehensive project documentation
-
-## MCP Server Configuration
-
-### Basic Setup
-
-Location of Claude's configuration file:
-- **macOS**: `~/Library/Application Support/Claude/config.json`
-- **Windows**: `%APPDATA%\Claude\config.json`
-- **Linux**: `~/.config/Claude/config.json`
-
-### Advanced Configuration
-
-```json
-{
-  "mcpServers": {
-    "memoryplugin": {
-      "command": "npx",
-      "args": ["@memoryplugin/mcp-server"],
-      "env": {
-        "MEMORY_PLUGIN_TOKEN": "your-token-here",
-        "DEFAULT_BUCKET": "Work",
-        "AUTO_LOAD": "true"
-      }
-    }
-  }
-}
-```
-
-### Multiple MCP Servers
-
-Claude supports multiple MCP servers simultaneously:
-
-```json
-{
-  "mcpServers": {
-    "memoryplugin": {
-      // MemoryPlugin configuration
-    },
-    "filesystem": {
-      // Another MCP server
-    },
-    "github": {
-      // Yet another MCP server
-    }
-  }
-}
-```
-
-## Using MemoryPlugin with Claude
-
-### Memory Operations
-
-In Claude Desktop with MCP:
-- **Load memories**: Happens automatically or with "Load my memories"
-- **Create memory**: "Remember that..." or "Add to memory..."
-- **Search memories**: "What do you remember about..."
-- **Switch buckets**: "Load memories from my Work bucket"
-
-### Best Practices
-
-<AccordionGroup>
-  <Accordion title="Project Organization">
-    - Create a bucket for each Claude Project
-    - Use consistent naming between Projects and buckets
-    - Store project-specific context as memories
-    - Keep general memories in the default bucket
-  </Accordion>
-  <Accordion title="Conversation Flow">
-    - Let MCP auto-load memories at conversation start
-    - Explicitly request specific buckets when needed
-    - Add important discoveries as memories during chat
-    - Review and clean memories periodically
-  </Accordion>
-  <Accordion title="Performance Optimization">
-    - Use Smart Memory for large collections
-    - Keep individual memories concise
-    - Archive old project memories
-    - Use bucket organization to reduce noise
-  </Accordion>
-</AccordionGroup>
-
-## Claude Web vs Desktop
-
-| Feature | Claude Desktop (MCP) | Claude.ai (Extension) |
-|---------|---------------------|----------------------|
-| **Auto-load** | ✅ Automatic | ❌ Manual button |
-| **Performance** | ⚡ Native | 🚀 Fast |
-| **Setup** | Technical | Simple |
-| **Memory Ops** | Full API | Basic |
-| **Projects** | ✅ Integrated | ✅ Supported |
-
-## Advanced Claude Features
-
-### Code Development
-
-When coding with Claude:
-- Store language preferences as memories
-- Save project structure and conventions
-- Remember debugging context between sessions
-- Keep API keys and configs (safely abstracted)
-
-### Writing Projects
-
-For long-form writing:
-- Save character descriptions and plot points
-- Remember style guidelines and tone
-- Store research notes and references
-- Maintain consistency across sessions
-
-### Research Tasks
-
-During research with Claude:
-- Build knowledge base incrementally
-- Save important findings as memories
-- Create topic-specific buckets
-- Cross-reference across conversations
-
-## Troubleshooting Claude Integration
-
-<AccordionGroup>
-  <Accordion title="MCP server not connecting">
-    - Check Node.js is installed: `node --version`
-    - Verify config file location and syntax
-    - Ensure auth token is valid
-    - Restart Claude Desktop completely
-    - Check logs in Claude's developer console
-  </Accordion>
-  <Accordion title="Memories not loading">
-    - Confirm MCP server is running (check Claude's UI)
-    - Try manually requesting: "Load my memories"
-    - Verify bucket selection is correct
-    - Check MemoryPlugin Dashboard for memories
-  </Accordion>
-  <Accordion title="Browser extension issues">
-    - Refresh claude.ai page
-    - Check extension is enabled for claude.ai
-    - Clear site cookies and cache
-    - Try incognito mode to isolate issues
-  </Accordion>
-  <Accordion title="Performance problems">
-    - Reduce memory count with Smart Memory
-    - Organize into more specific buckets
-    - Archive old, unused memories
-    - Check system resources (CPU/RAM)
-  </Accordion>
-</AccordionGroup>
-
-## Claude-Specific Tips
-
-### Maximizing Claude's Strengths
-
-- **Deep Analysis**: Store complex context for thorough analysis
-- **Code Review**: Save coding standards and patterns
-- **Writing**: Maintain style guides and character details
-- **Research**: Build comprehensive knowledge bases
-
-### Memory Prompting
-
-Effective memory commands for Claude:
-- "Remember that I prefer..." - Style preferences
-- "Add to memory: ..." - Explicit memory creation
-- "Update my memory about..." - Modify existing memories
-- "What do you remember about..." - Query memories
-
-### Context Management
-
-- Use Claude's Projects for topic separation
-- Align memory buckets with Projects
-- Leverage Claude's long context wisely
-- Clean up memories regularly
-
-## Integration Comparison
-
-### vs ChatGPT
-- **Better**: Native MCP support, longer context
-- **Similar**: Browser extension experience
-- **Missing**: Built-in memory import
-
-### vs Gemini
-- **Better**: MCP protocol, desktop app
-- **Similar**: Browser extension support
-- **Different**: Project organization approach
+### MCP Server (Alternative)
+For Claude Desktop users:
+1. Install [Claude Desktop](https://claude.ai/download) 
+2. Configure the [MCP Server](/integrations/mcp-server)
+3. Memories load automatically in new chats
 
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Set Up MCP Server"
+    title="Browser Extension Setup"
+    icon="browser"
+    href="/integrations/browser-extension"
+  >
+    Quick setup guide
+  </Card>
+  <Card
+    title="MCP Server Setup"
     icon="server"
     href="/integrations/mcp-server"
   >
-    Configure native Claude Desktop integration
-  </Card>
-  <Card
-    title="Organize with Projects"
-    icon="folder"
-    href="/features/memory-buckets"
-  >
-    Align memory buckets with Claude Projects
+    For Claude Desktop
   </Card>
 </CardGroup>

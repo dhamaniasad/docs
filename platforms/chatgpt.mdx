@@ -1,6 +1,6 @@
 ---
 title: "ChatGPT"
-description: "Complete guide to using MemoryPlugin with ChatGPT"
+description: "Using MemoryPlugin with ChatGPT"
 icon: "robot"
 author: "asad"
 lastUpdated: "2025-08-20"
@@ -10,250 +10,50 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 
 <ArticleInfo author="asad" lastUpdated="2025-08-20" />
 
-ChatGPT is one of MemoryPlugin's most popular and well-supported platforms, offering multiple integration methods and special features.
+Use MemoryPlugin with ChatGPT at [chat.openai.com](https://chat.openai.com) or [chatgpt.com](https://chatgpt.com).
 
-## Integration Methods
+## How to Use
 
-<CardGroup cols={3}>
-  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
-    Best for flexibility and all models
-  </Card>
-  <Card title="Custom GPT" icon="puzzle-piece" href="/integrations/custom-gpt">
-    Best for automatic memory loading
-  </Card>
-  <Card title="Custom Integration" icon="code" href="/integrations/custom-gpt-integration">
-    Add memory to your own GPTs
-  </Card>
-</CardGroup>
+### Browser Extension (Recommended)
+1. Install the [MemoryPlugin Browser Extension](/integrations/browser-extension)
+2. Go to ChatGPT
+3. Click the MemoryPlugin button to inject memories
+4. Start chatting with memory context
 
-## Quick Start
+### Custom GPT (Alternative)
+Use the [MemoryPlugin Custom GPT](https://chatgpt.com/g/g-pPRwrR7LI-memoryplugin) - memories load automatically.
 
-### Method 1: Browser Extension (Recommended)
+### Add to Your Own GPT
+Follow the [Custom GPT Integration](/integrations/custom-gpt-integration) guide to add memory to your own GPTs.
 
-<Steps>
-  <Step title="Install Extension">
-    Install the [MemoryPlugin Browser Extension](/integrations/browser-extension)
-  </Step>
-  <Step title="Navigate to ChatGPT">
-    Go to [chat.openai.com](https://chat.openai.com) or [chatgpt.com](https://chatgpt.com)
-  </Step>
-  <Step title="Activate MemoryPlugin">
-    Click the MemoryPlugin button or Quick Inject button
-  </Step>
-  <Step title="Start Chatting">
-    Your memories are now active in the conversation
-  </Step>
-</Steps>
+## Special Features
 
-### Method 2: Custom GPT
-
-<Steps>
-  <Step title="Access Custom GPT">
-    Go to the [MemoryPlugin Custom GPT](https://chatgpt.com/g/g-pPRwrR7LI-memoryplugin)
-  </Step>
-  <Step title="Start New Chat">
-    Begin a conversation - memories load automatically
-  </Step>
-  <Step title="Use Normally">
-    Chat as usual with full memory context
-  </Step>
-</Steps>
-
-## Platform-Specific Features
-
-### Memory Import from ChatGPT
-
-ChatGPT offers a unique feature - importing existing ChatGPT memories:
-
-1. **Access ChatGPT Settings** → Personalization → Manage memories
-2. **Click Sync Button** with MemoryPlugin logo
-3. **Wait for Import** to complete (usually 2-3 minutes)
-4. **Verify in Dashboard** that memories were imported
+### Import ChatGPT Memories
+Transfer your existing ChatGPT memories to MemoryPlugin:
+1. Go to ChatGPT Settings → Personalization → Manage memories
+2. Click the "Sync Memories" button (MemoryPlugin logo)
+3. Wait for import to complete
+4. Check your [Dashboard](https://memoryplugin.com/dashboard) to see imported memories
 
 <Info>
-This is the only platform that allows importing existing platform memories into MemoryPlugin.
+Keep the browser tab open during sync - closing it will interrupt the process.
 </Info>
-
-### Canvas Mode Support
-
-MemoryPlugin now supports ChatGPT's Canvas mode with enhanced compatibility:
-- Memory injection works in Canvas conversations
-- Code and document editing maintains memory context
-- Improved text processing in v2.0.3
-
-### Model Flexibility
-
-With the browser extension, you can use MemoryPlugin with:
-- GPT-4o
-- GPT-4o mini
-- o1-preview
-- o1-mini
-- Any new models OpenAI releases
-
-## Interface Elements
-
-### Button Locations
-
-Depending on your ChatGPT interface, you'll see:
-
-1. **Quick Inject Button**: Large button overlay with "Quick Inject" text
-2. **Input Button**: Small MemoryPlugin icon near the message input
-3. **Both Options**: Some interfaces show both for convenience
-
-### Visual Feedback
-
-- **Green Checkmark**: Memory successfully added
-- **Loading Spinner**: Processing memory operations
-- **Button Highlight**: Active memory session
-
-## How Memories Work in ChatGPT
-
-### Memory Creation
-
-ChatGPT creates memories when:
-- You explicitly ask: "Remember that I prefer..."
-- Important information is shared: project details, preferences
-- The AI recognizes significant facts worth preserving
-
-### Memory Format
-
-Behind the scenes, memories are formatted as:
-```
-to=memoryplugin&&memory=[Your memory content here]
-```
-
-### Memory Context
-
-When MemoryPlugin is active:
-1. Existing memories are injected at conversation start
-2. New memories are captured in real-time
-3. Context persists across chat sessions
-
-## Best Practices for ChatGPT
-
-<AccordionGroup>
-  <Accordion title="Model Selection">
-    - Use GPT-4o for complex memory operations
-    - GPT-4o mini works well for simple memory tasks
-    - o1 models excel at reasoning with memory context
-  </Accordion>
-  <Accordion title="Memory Prompting">
-    Be explicit about what to remember:
-    - "Remember that I work at [Company]"
-    - "Add to memory: My preferred coding style is..."
-    - "Save this for future reference: [information]"
-  </Accordion>
-  <Accordion title="Canvas Mode">
-    When using Canvas:
-    - Inject memories before starting Canvas
-    - Memories persist through Canvas edits
-    - Re-inject if Canvas session seems to lose context
-  </Accordion>
-  <Accordion title="Conversation Management">
-    - Start fresh conversations for new topics
-    - Use different buckets for different conversation types
-    - Clear old conversation history periodically
-  </Accordion>
-</AccordionGroup>
-
-## Advanced Features
-
-### Using with Voice Mode
-
-MemoryPlugin works with ChatGPT's voice features:
-- Inject memories before starting voice conversation
-- Voice responses consider memory context
-- New memories can be created through voice
-
-### Mobile App Integration
-
-While the mobile app doesn't support extensions:
-- Use the Custom GPT on mobile
-- Memories sync across all devices
-- Access same memory context everywhere
-
-### Team Collaboration
-
-For ChatGPT Team or Enterprise:
-- Each user maintains their own memories
-- Share memory buckets for team knowledge (coming soon)
-- Consistent context across team interactions
-
-## Troubleshooting ChatGPT Issues
-
-<AccordionGroup>
-  <Accordion title="Extension not working">
-    - Update to latest extension version
-    - Clear ChatGPT cookies and cache
-    - Try incognito/private mode
-    - Check extension permissions
-  </Accordion>
-  <Accordion title="Memories not persisting">
-    - Ensure MemoryPlugin is activated (button clicked)
-    - Check you're logged into MemoryPlugin
-    - Verify memory creation format is correct
-    - Look for the green checkmark confirmation
-  </Accordion>
-  <Accordion title="Custom GPT issues">
-    - GPT may need to be refreshed
-    - Start a new conversation
-    - Check MemoryPlugin Custom GPT is accessible
-    - Verify your ChatGPT plan includes GPTs
-  </Accordion>
-  <Accordion title="Import problems">
-    - Ensure you have ChatGPT memories to import
-    - Browser extension must be installed
-    - Try the sync multiple times (it's safe)
-    - Check Dashboard for imported memories
-  </Accordion>
-</AccordionGroup>
-
-## ChatGPT-Specific Tips
-
-### Optimizing Token Usage
-- Use Smart Memory when available
-- Keep memories concise but informative
-- Regularly clean up outdated memories
-- Use buckets to load only relevant context
-
-### Enhancing Responses
-- Provide context in memories about your expertise level
-- Store preferences for response style and length
-- Include relevant project background
-- Save commonly referenced information
-
-### Privacy Considerations
-- ChatGPT conversations may be used for training (unless opted out)
-- MemoryPlugin data is separate and private
-- Consider what information to store as memories
-- Use appropriate buckets for sensitive information
-
-## Comparison with Native ChatGPT Memory
-
-| Feature | ChatGPT Native Memory | MemoryPlugin |
-|---------|---------------------|--------------|
-| **Cross-platform** | ❌ ChatGPT only | ✅ 13+ platforms |
-| **Organization** | ❌ Flat list | ✅ Buckets |
-| **Control** | Limited | Full control |
-| **Export** | ❌ No | ✅ Multiple formats |
-| **Sharing** | ❌ No | ✅ Coming soon |
-| **Search** | Basic | Advanced |
 
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Import Your Memories"
-    icon="download"
-    href="/features/chat-history-import"
+    title="Browser Extension Setup"
+    icon="browser"
+    href="/integrations/browser-extension"
   >
-    Transfer existing ChatGPT memories to MemoryPlugin
+    Quick setup guide
   </Card>
   <Card
-    title="Organize with Buckets"
-    icon="folder"
-    href="/features/memory-buckets"
+    title="Import ChatGPT Memories"
+    icon="download"
+    href="/features/chatgpt-memory-import"
   >
-    Structure your ChatGPT memories effectively
+    Transfer your memories
   </Card>
 </CardGroup>
