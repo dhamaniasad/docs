@@ -1,4 +1,7 @@
 export const ArticleInfo = ({ author, lastUpdated, avatar = null }) => {
+  // Default avatar for asad
+  const defaultAvatar = author === 'asad' ? '/images/author-asad.jpeg' : null;
+  const authorAvatar = avatar || defaultAvatar;
   const formatDate = (dateInput) => {
     if (!dateInput) return '';
     if (typeof dateInput === 'string' && !dateInput.match(/^\d{4}-\d{2}-\d{2}/)) {
@@ -36,18 +39,18 @@ export const ArticleInfo = ({ author, lastUpdated, avatar = null }) => {
       opacity: "0.8"
     }}>
       <div style={{
-        width: "32px", 
-        height: "32px", 
+        width: "40px", 
+        height: "40px", 
         borderRadius: "50%", 
-        background: avatar || "linear-gradient(45deg, #4F46E5, #7C3AED)", 
+        background: authorAvatar || "linear-gradient(45deg, #4F46E5, #7C3AED)", 
         display: "flex", 
         alignItems: "center", 
         justifyContent: "center", 
         color: "white", 
         fontWeight: "bold", 
-        fontSize: "14px"
+        fontSize: "18px"
       }}>
-        {avatar ? <img src={avatar} alt={author} style={{width: "100%", height: "100%", borderRadius: "50%"}} /> : author?.[0]?.toUpperCase()}
+        {authorAvatar ? <img src={authorAvatar} alt={author} style={{width: "100%", height: "100%", borderRadius: "50%"}} /> : author?.[0]?.toUpperCase()}
       </div>
       <div>
         <div style={{fontWeight: "400", fontSize: "14px"}}>Written by <span style={{fontWeight: "600"}}>{author}</span></div>
