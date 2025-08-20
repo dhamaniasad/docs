@@ -43,9 +43,18 @@ Before setting up the integration, understand these concepts:
 2. Navigate to the **Configure** tab
 3. Scroll down to find the **Actions** section
 
+![Custom GPT editor showing the Configure tab](/images/custom-gpt-integration/gpt-editor.png)
+
 ### Step 2: Create New Action
 
+Within the **Configure** tab, you will see an Actions section if you scroll down:
+
+![Actions section in the Custom GPT editor](/images/custom-gpt-integration/actions-section.png)
+
 1. Click **Create new action**
+
+![Create new action button](/images/custom-gpt-integration/create-action.png)
+
 2. Click **Import from URL**
 3. Enter this URL:
    ```
@@ -58,7 +67,12 @@ Before setting up the integration, understand these concepts:
 2. Select **API key**
 3. Choose **Bearer** from the options
 4. Get your Auth Token from the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard)
-5. Enter your token (keep it confidential!)
+
+![MemoryPlugin Dashboard showing the Auth Token](/images/custom-gpt-integration/dashboard-token.png)
+
+5. Enter your token in the authentication setup
+
+![Authentication setup with Bearer token](/images/custom-gpt-integration/auth-setup.png)
 
 <Warning>
 Your Auth Token is like a password to your account. Keep it confidential and regenerate it if accidentally exposed.
@@ -66,7 +80,11 @@ Your Auth Token is like a password to your account. Keep it confidential and reg
 
 ### Step 4: Add Instructions
 
-In the **Instructions** section of the Configure tab, add the MemoryPlugin instructions after your existing custom instructions:
+Back in the **Configure** tab, you have an Instructions section. You need to instruct your GPT how it should use MemoryPlugin:
+
+![Instructions section in the Custom GPT editor](/images/custom-gpt-integration/instructions.png)
+
+Add the MemoryPlugin instructions after your existing custom instructions:
 
 ```text
 VERY IMPORTANT: ALWAYS fetch all memories at the start of each chat before responding (unless explicitly instructed otherwise), so you have context about me and can help me better. Use the `GetMemoriesAndBuckets` operation to do this.
