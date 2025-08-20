@@ -1,6 +1,6 @@
 ---
 title: "Bulk Operations"
-description: "Efficiently manage multiple memories at once with bulk operations"
+description: "Manage multiple memories at once with bulk selection and operations"
 icon: "list"
 author: "asad"
 lastUpdated: "2025-08-20"
@@ -10,226 +10,65 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 
 <ArticleInfo author="asad" lastUpdated="2025-08-20" />
 
-Bulk operations allow you to efficiently manage multiple memories at once, saving time and effort when organizing your memory collection.
+Bulk operations let you select multiple memories and perform actions on all of them at once, making it easy to organize large memory collections.
 
-<Note>
-Bulk operations documentation was limited in the source material. This page provides expected functionality based on common patterns for memory management systems.
-</Note>
+## How Bulk Operations Work
 
-## Overview
+### Entering Selection Mode
 
-Bulk operations enable you to:
-- Select multiple memories simultaneously
-- Perform actions on all selected memories at once
-- Save time when organizing large memory collections
-- Maintain consistency across related memories
+1. **Go to your Dashboard** - Navigate to the Memories tab
+2. **Click "Select Multiple"** - Click this button to enter selection mode
+3. **Select memories** - Checkboxes now appear - click them to select memories
+4. **Choose action** - Use the bulk actions toolbar that appears
 
-## Available Bulk Actions
-
-### Selection Methods
-
-<CardGroup cols={2}>
-  <Card title="Individual Selection" icon="check-square">
-    Click checkboxes next to each memory you want to select
-  </Card>
-  <Card title="Select All" icon="check-double">
-    Use "Select All" to choose all memories on the current page
-  </Card>
-  <Card title="Filter & Select" icon="filter">
-    Apply filters first, then select all filtered results
-  </Card>
-  <Card title="Range Selection" icon="arrows-left-right">
-    Hold Shift to select a range of memories
-  </Card>
-</CardGroup>
-
-### Bulk Actions
+### Available Operations
 
 Once you've selected memories, you can:
 
-#### Move to Bucket
-Transfer multiple memories to a different bucket:
-1. Select the memories you want to move
-2. Click "Move to Bucket" from the bulk actions menu
-3. Choose the destination bucket
-4. Confirm the move
+<CardGroup cols={2}>
+  <Card title="Move to Bucket" icon="folder">
+    Transfer selected memories to a different bucket
+  </Card>
+  <Card title="Delete Multiple" icon="trash">
+    Permanently delete all selected memories
+  </Card>
+</CardGroup>
 
-#### Delete Multiple
-Remove several memories at once:
-1. Select memories to delete
-2. Click "Delete Selected"
-3. Confirm deletion (this cannot be undone)
+## Managing Selection
 
-#### Export Selected
-Export chosen memories for backup or analysis:
-1. Select memories to export
-2. Choose export format (JSON, CSV, Markdown)
-3. Download the exported file
-
-#### Tag Operations
-Add or remove tags from multiple memories:
-1. Select target memories
-2. Choose "Add Tags" or "Remove Tags"
-3. Specify the tags to add/remove
-4. Apply changes
+- **Select memories**: Click checkboxes after entering selection mode
+- **Add/remove**: Click checkboxes to toggle selection
+- **Cancel**: Click "Cancel Selection" to exit selection mode
 
 ## Using Bulk Operations
 
-### From the Dashboard
+### Moving Memories
 
-<Steps>
-  <Step title="Navigate to Memories">
-    Go to the Memories section of your Dashboard
-  </Step>
-  <Step title="Enable Selection Mode">
-    Click the checkbox icon or first memory's checkbox
-  </Step>
-  <Step title="Select Memories">
-    Choose individual memories or use selection helpers
-  </Step>
-  <Step title="Choose Action">
-    Select your desired bulk action from the toolbar
-  </Step>
-  <Step title="Confirm">
-    Review and confirm the bulk operation
-  </Step>
-</Steps>
+1. Click "Select Multiple" → select memories → click "Move to..." → choose bucket
+2. Memories move immediately to the selected bucket
 
-### Filtering Before Bulk Operations
+### Deleting Memories
 
-For more precise bulk operations:
+1. Click "Select Multiple" → select memories → click "Delete" 
+2. Confirm in the dialog - **deletion is permanent**
 
-1. **Apply Filters First**:
-   - Filter by bucket
-   - Search for specific terms
-   - Filter by date range
-   - Filter by tags or categories
+<Warning>
+Bulk deletion is permanent and cannot be undone. Double-check your selection before confirming.
+</Warning>
 
-2. **Review Filtered Results**:
-   - Ensure you have the right memories
-   - Check the count of filtered items
+## Tips
 
-3. **Select All Filtered**:
-   - Use "Select all X memories matching filter"
-   - Perform your bulk operation
+- **Search first** to narrow results before selecting
+- **Work in batches** rather than selecting hundreds at once
+- **Switch buckets** to avoid selecting from wrong bucket
+- **Double-check** before deleting - it's permanent
 
-## Use Cases
+## Current Limitations
 
-### Organizing After Import
-
-After importing memories from ChatGPT:
-- Select all imported memories
-- Move them to a specific "ChatGPT Import" bucket
-- Or distribute them across relevant project buckets
-
-### Cleaning Up Old Memories
-
-Periodically maintain your memory collection:
-- Filter memories by date (e.g., older than 6 months)
-- Review and select outdated memories
-- Bulk delete irrelevant ones
-
-### Project Reorganization
-
-When restructuring your projects:
-- Select all memories from an old project
-- Move them to a new bucket structure
-- Apply new tags or categories
-
-### Preparing for Export
-
-Before sharing or backing up:
-- Select relevant memories for a project
-- Export them in the required format
-- Share with team members or archive
-
-## Best Practices
-
-<AccordionGroup>
-  <Accordion title="Preview Before Action">
-    Always review your selection before executing bulk operations, especially deletions.
-  </Accordion>
-  <Accordion title="Use Filters Wisely">
-    Combine filters to narrow down to exactly the memories you want to modify.
-  </Accordion>
-  <Accordion title="Start Small">
-    When learning bulk operations, start with small batches to understand the effects.
-  </Accordion>
-  <Accordion title="Regular Maintenance">
-    Schedule regular memory maintenance sessions using bulk operations to keep your collection organized.
-  </Accordion>
-</AccordionGroup>
-
-## Safety Features
-
-### Confirmation Dialogs
-All destructive bulk operations require confirmation:
-- Shows number of affected memories
-- Describes the action to be taken
-- Requires explicit confirmation
-
-### Undo Capabilities
-Some bulk operations support undo:
-- Move operations can be reversed
-- Tag changes can be undone
-- Deletions are permanent (no undo)
-
-### Operation Limits
-To prevent accidents:
-- Maximum number of memories per operation
-- Timeout protection for large operations
-- Progressive processing for huge batches
-
-## Keyboard Shortcuts
-
-Speed up bulk operations with keyboard shortcuts:
-
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl/Cmd + A` | Select all visible |
-| `Ctrl/Cmd + Click` | Toggle individual selection |
-| `Shift + Click` | Range selection |
-| `Esc` | Clear selection |
-| `Delete` | Delete selected (with confirmation) |
-
-## Performance Tips
-
-### For Large Collections
-
-When working with many memories:
-
-1. **Use Pagination**: Work with one page at a time
-2. **Filter First**: Reduce the dataset before selecting
-3. **Batch Processing**: Break large operations into smaller chunks
-4. **Off-Peak Hours**: Perform large operations during low-usage times
-
-### Optimization Strategies
-
-- **Regular Cleanup**: Don't let memories accumulate unnecessarily
-- **Consistent Organization**: Maintain a clear bucket structure
-- **Periodic Reviews**: Schedule regular maintenance sessions
-- **Archive Old Data**: Export and remove very old memories
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title="Selection not working">
-    - Refresh the Dashboard page
-    - Check if selection mode is enabled
-    - Clear browser cache if persistent issues
-  </Accordion>
-  <Accordion title="Bulk action fails">
-    - Check your internet connection
-    - Verify you have permission for the action
-    - Try with fewer memories selected
-    - Contact support for persistent failures
-  </Accordion>
-  <Accordion title="Operations timing out">
-    - Reduce the number of selected memories
-    - Try the operation in smaller batches
-    - Check system status for any ongoing issues
-  </Accordion>
-</AccordionGroup>
+Bulk operations do **not** support:
+- Range selection (Shift+click)
+- Select all functionality
+- Bulk editing of memory text
 
 ## Next Steps
 
@@ -242,7 +81,7 @@ When working with many memories:
     Learn about organizing with buckets
   </Card>
   <Card
-    title="Dashboard Guide"
+    title="Dashboard Guide" 
     icon="gauge"
     href="/features/dashboard"
   >
