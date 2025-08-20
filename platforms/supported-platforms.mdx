@@ -14,22 +14,26 @@ MemoryPlugin supports a growing list of AI platforms, allowing you to maintain c
 
 ## Platform Compatibility
 
-MemoryPlugin works through multiple integration methods, with support varying by platform:
-
-| Platform | Browser Extension | MCP Server | Custom Integration |
-|----------|------------------|------------|-------------------|
-| **ChatGPT** | ✅ Full Support | ✅ Via API | ✅ Custom GPT |
-| **Claude** | ✅ Full Support | ✅ Native MCP | ✅ Via API |
-| **Gemini** | ✅ Full Support | ✅ Via API | ✅ Via API |
-| **Perplexity** | ✅ Full Support | ❌ | ✅ Via API |
-| **Grok** | ✅ Full Support | ❌ | ✅ Via API |
-| **Deepseek** | ✅ Full Support | ✅ Via API | ✅ Via API |
-| **AI Studio** | ✅ Full Support | ❌ | ✅ Via API |
-| **Mistral** | ✅ Full Support | ✅ Via API | ✅ Via API |
-| **Poe** | ✅ Full Support | ❌ | ❌ |
-| **TypingMind** | ✅ Full Support | ❌ | ✅ Plugin |
-| **LibreChat** | ✅ Full Support | ✅ Via API | ✅ OpenAPI |
-| **QwenLM** | ✅ Full Support | ❌ | ✅ Via API |
+| Platform | Recommended Method | Alternative Options |
+|----------|------------------|-------------------|
+| **ChatGPT** | Browser Extension | Custom GPT |
+| **Claude** | Browser Extension | MCP Server |
+| **Gemini** | Browser Extension | - |
+| **Perplexity** | Browser Extension | - |
+| **Grok** | Browser Extension | - |
+| **Deepseek** | Browser Extension | - |
+| **AI Studio** | Browser Extension | - |
+| **Mistral** | Browser Extension | - |
+| **Poe** | Browser Extension | - |
+| **TypingMind** | Browser Extension | Plugin, MCP Server |
+| **LibreChat** | Browser Extension | - |
+| **QwenLM** | Browser Extension | - |
+| **Cursor** | MCP Server | - |
+| **Windsurf** | MCP Server | - |
+| **Claude Code** | MCP Server | - |
+| **Sage** | MCP Server | - |
+| **Other MCP clients** | MCP Server | - |
+| **Any other platform** | OpenAPI spec provided | - |
 
 ## Primary Platforms
 
@@ -37,16 +41,16 @@ MemoryPlugin works through multiple integration methods, with support varying by
 <Card title="ChatGPT Integration" icon="robot" href="/platforms/chatgpt">
   OpenAI's flagship conversational AI
   - **URLs**: chat.openai.com, chatgpt.com
-  - **Best Integration**: Custom GPT or Browser Extension
-  - **Special Features**: Memory import, Canvas support
+  - **Best Integration**: Browser Extension
+  - **Special Features**: Memory import from ChatGPT
 </Card>
 
 ### Claude
 <Card title="Claude Integration" icon="robot" href="/platforms/claude">
   Anthropic's advanced AI assistant
   - **URL**: claude.ai
-  - **Best Integration**: MCP Server (native support)
-  - **Special Features**: Native MCP protocol support
+  - **Best Integration**: Browser Extension
+  - **Alternative**: MCP Server for Claude Desktop
 </Card>
 
 ### Gemini
@@ -54,7 +58,6 @@ MemoryPlugin works through multiple integration methods, with support varying by
   Google's multimodal AI model
   - **URL**: gemini.google.com
   - **Best Integration**: Browser Extension
-  - **Special Features**: Multimodal memory support
 </Card>
 
 ## Additional Platforms
@@ -63,159 +66,73 @@ MemoryPlugin works through multiple integration methods, with support varying by
 AI-powered search and research assistant
 - **URL**: perplexity.ai
 - **Integration**: Browser Extension
-- **Use Case**: Research with persistent context
 
 ### Grok
-xAI's conversational AI with real-time information
-- **URLs**: grok.com, www.grok.com
+xAI's conversational AI
+- **URL**: grok.com
 - **Integration**: Browser Extension
-- **Latest**: Recently added support
 
 ### Deepseek
-Advanced AI model with coding capabilities
+Deepseek's AI chat interface
 - **URL**: chat.deepseek.com
-- **Integration**: Browser Extension, API
-- **Use Case**: Technical discussions with memory
+- **Integration**: Browser Extension
 
 ### Google AI Studio
 Google's AI development platform
 - **URL**: aistudio.google.com
 - **Integration**: Browser Extension
-- **Latest**: Enhanced compatibility in v2.0.3
 
 ### Mistral
-European AI company's chat interface
+Mistral AI's chat interface
 - **URL**: chat.mistral.ai
-- **Integration**: Browser Extension, API
-- **Use Case**: Multilingual conversations
+- **Integration**: Browser Extension
 
 ### Poe
 Quora's multi-model AI platform
-- **URL**: poe.com (and subdomains)
-- **Integration**: Browser Extension only
-- **Use Case**: Comparing models with same memory
+- **URL**: poe.com
+- **Integration**: Browser Extension
 
 ### TypingMind
 Enhanced UI for various AI models
-- **URL**: www.typingmind.com
-- **Integration**: Browser Extension, Plugin
-- **Special Features**: Team collaboration (coming)
+- **URL**: typingmind.com
+- **Integration**: Browser Extension, Plugin, MCP Server
 
 ### LibreChat
 Open-source AI chat interface
-- **Detection**: By interface elements
-- **Integration**: Browser Extension, OpenAPI
-- **Use Case**: Self-hosted AI with memory
+- **Integration**: Browser Extension
 
 ### QwenLM
 Alibaba's Qwen language model interface
-- **URLs**: chat.qwenlm.ai, chat.qwen.ai
+- **URL**: chat.qwen.ai
 - **Integration**: Browser Extension
-- **Use Case**: Chinese language support
 
-## Platform Detection
-
-The browser extension automatically detects supported platforms by:
-
-1. **URL Matching**: Identifying platform by domain
-2. **DOM Detection**: Recognizing platform-specific UI elements
-3. **Dynamic Loading**: Adapting to platform interface changes
-
-## Platform-Specific Features
-
-Different platforms support varying MemoryPlugin features:
-
-### Full Feature Support
-Platforms with complete MemoryPlugin integration:
-- Memory creation and retrieval
-- Bucket switching
-- Smart Memory support
-- Import/export capabilities
-
-### Basic Support
-Platforms with core functionality:
-- Memory injection
-- Basic memory creation
-- Default bucket usage
-
-### Custom Implementations
-Platforms with specialized integrations:
-- **ChatGPT**: Custom GPT with function calling
-- **Claude**: Native MCP server support
-- **TypingMind**: Dedicated plugin system
-
-## Coming Soon
-
-We're constantly adding support for new platforms:
-
-- **Anthropic Console**: For Claude development
-- **Cohere Playground**: For enterprise AI
-- **Hugging Face Spaces**: For open-source models
-- **Local LLMs**: For privacy-focused users
 
 <Info>
 Request support for your favorite platform by contacting us through the Dashboard.
 </Info>
 
-## Integration Methods by Platform
+## Integration Methods
 
-### Browser Extension Platforms
-Best for web-based AI interfaces:
-- Quick setup
-- Visual feedback
-- Cross-browser support
-- No technical knowledge required
+- **Browser Extension**: Works on any web-based AI platform listed above
+- **MCP Server**: For MCP-compatible clients (Claude Desktop, Cursor, etc.)
+- **Custom GPT**: ChatGPT action integration
+- **Plugin**: TypingMind plugin system
+- **API/OpenAPI**: Direct integration for developers
 
-### MCP Server Platforms
-Best for desktop applications:
-- Native integration
-- Better performance
-- Automatic memory loading
-- Developer-friendly
 
-### API Integration Platforms
-Best for custom implementations:
-- Full control
-- Programmatic access
-- Automation possibilities
-- Custom workflows
-
-## Platform Updates
-
-Stay informed about platform support:
-
-<CardGroup cols={2}>
-  <Card title="Latest Updates" icon="sparkles">
-    - AI Studio support (latest)
-    - ChatGPT Canvas compatibility
-    - Grok platform added
-    - Text processing improvements
-  </Card>
-  <Card title="Known Issues" icon="triangle-exclamation">
-    - Some platforms may require page refresh
-    - Canvas mode has limited support
-    - Mobile browsers have restrictions
-  </Card>
-</CardGroup>
-
-## Troubleshooting Platform Issues
+## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Platform not detected">
+  <Accordion title="Extension not working">
     - Refresh the page
-    - Check extension is enabled
-    - Verify you're on a supported URL
+    - Check extension is enabled for this site
     - Update to latest extension version
+    - Contact support if issue persists
   </Accordion>
   <Accordion title="Memory injection fails">
-    - Check platform didn't update interface
-    - Try different injection method (button vs. quick inject)
-    - Report issue with platform details
-  </Accordion>
-  <Accordion title="Platform-specific features missing">
-    - Some features are platform-dependent
-    - Check integration method compatibility
-    - Consider alternative integration method
+    - Check that the platform hasn't updated their interface
+    - Try refreshing the page
+    - Contact support with platform details
   </Accordion>
 </AccordionGroup>
 
