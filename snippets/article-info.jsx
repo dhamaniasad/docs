@@ -1,7 +1,6 @@
-export const ArticleInfo = ({ author, lastUpdated, avatar = null }) => {
+export const ArticleInfo = ({ author, lastUpdated }) => {
   // Default avatar for asad
-  const defaultAvatar = author === 'asad' ? '/images/author-asad.jpeg' : null;
-  const authorAvatar = avatar || defaultAvatar;
+  const authorAvatar = author === 'asad' ? '/images/author-asad.jpeg' : null;
   const formatDate = (dateInput) => {
     if (!dateInput) return '';
     if (typeof dateInput === 'string' && !dateInput.match(/^\d{4}-\d{2}-\d{2}/)) {
