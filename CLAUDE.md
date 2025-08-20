@@ -1,0 +1,1 @@
+- always update the lastUpdated timestamp when updating a doc
