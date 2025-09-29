@@ -44,6 +44,7 @@
             "pages": [
               "integrations/overview",
               "integrations/mcp-server",
+              "integrations/remote-mcp-server",
               "integrations/browser-extension",
               "integrations/custom-gpt",
               "integrations/custom-gpt-integration",
