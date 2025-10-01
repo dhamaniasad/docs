@@ -2,131 +2,185 @@
 title: "Changelog"
 description: "Product updates and announcements for MemoryPlugin"
 rss: true
+author: "asad"
+lastUpdated: "2025-10-01"
 ---
 
-<Update label="October 2025" description="Latest Updates" tags={["Features", "Integrations"]}>
-  ### Background Sync Improvements
-  View your sync schedule directly in Settings! See when your last sync ran, when the next one is scheduled, and how often syncs occur - all with helpful tooltips showing exact timestamps.
+import { ArticleInfo } from '/snippets/article-info.jsx';
 
-  ### Remote MCP Server
-  Access MemoryPlugin through the Model Context Protocol without installing anything locally. Perfect for remote development and cloud-based workflows.
+<ArticleInfo author="asad" lastUpdated="2025-10-01" />
 
-  ### New Platform Support
-  - **ChatLLM**: Full support for ChatLLM platform with memory injection and smart search
-  - **OpenRouter**: Browse and use any AI model on OpenRouter with MemoryPlugin's memory capabilities
+<Update label="October 2025" description="Background Sync & Tuning" tags={["Features"]}>
+  ### Background sync improvements
+  - See sync frequency and the next scheduled run in Settings
+  - More reliable provider switching with clearer controls
+  - Safer limits when adding chat history context
+
+  Related docs: [Browser extension](/integrations/browser-extension)
+  
+  ### Chat history relevance
+  Smarter selection of what to include from past conversations, leading to more on‑topic answers.
 </Update>
 
-<Update label="September 2025" description="Major Feature Release" tags={["Features", "Platform Support", "Integrations"]}>
-  ### Chat History Feature Launch
-  Import and search your conversation history from ChatGPT, Claude, and TypingMind. Your AI can now reference past conversations to provide more contextual responses.
+<Update label="September 2025" description="Chat History (private beta), Remote MCP, Platforms" tags={["Features", "Platform Support", "Integrations"]}>
+  ### Chat history (private beta)
+  - Import conversations from ChatGPT, Claude, and TypingMind and search them in one place
+  - Extension support to add chat‑history context to your messages
+  - Available via Remote MCP as a chat‑history inject tool
+  - New Chat History section in the extension settings
+  - You can cancel adding chat‑history context while a message is sending
+  
+  <Note>Private beta — request access via Support.</Note>
 
-  ### New AI Platforms
-  - **Kimi (kimi.com)**: Chinese language AI platform support with full memory features
-  - **Z.ai (GLM)**: Smart AI assistant with memory injection and search capabilities
+  ### Chat with chat history (private beta)
+  Ask questions about your imported conversations. Answers stream and include source excerpts for transparency.
+  
+  <Note>Private beta — request access via Support.</Note>
 
-  ### Enhanced Search Experience
-  - Minimize search overlay for less intrusive experience
-  - Skip reranking option for faster search results
-  - Improved relevance assessment for more accurate results
+  ### New AI platforms
+  - **Kimi (kimi.com)** support
+  - **Z.ai (GLM)** support (reasoning blocks stripped for clean parsing)
+  - **OpenRouter** support (streaming + message selectors)
+  - **ChatLLM** platform support
+  
+  Learn more: [Browser extension platforms](/integrations/browser-extension)
 
-  ### Background Sync
-  Automatically sync your ChatGPT and Claude conversations in the background. No manual uploads needed - your chat history stays up to date automatically.
+  ### Enhanced search (Smart Memory + Query Mode, extension)
+  - Less intrusive search overlay while browsing chats
+  - Option to skip reranking for faster results
+  - Better relevance for retrieved context
+
+  ### Settings and sync (extension)
+  - Redesigned Chat Sync tab with clearer status and controls
+  - Settings menu overhaul for easier discovery (late September)
+  
+  Learn more: [Browser extension](/integrations/browser-extension)
+
+  
+
+  ### Remote MCP server (hosted)
+  Connect from any MCP‑compatible tool over the internet — no local setup. Supports Smart Memory, basic memory tools, and a chat‑history inject tool.
+  
+  Learn more: [Remote MCP server](/integrations/remote-mcp-server)
 </Update>
 
-<Update label="August 2025" description="Chat History Beta" tags={["Features"]}>
-  ### Chat History Import (Beta)
-  Upload your ChatGPT and Claude conversation exports to search and reference past conversations. Your AI assistant can now access context from all your previous chats.
+<Update label="August 2025" description="Memory suggestions & onboarding" tags={["Features"]}>
+  ### Memory suggestions
+  Keep your memories tidy with AI-powered cleanup:
+  - Remove duplicates, merge similar notes, and flag outdated info
+  - Review suggestions and apply changes with one click
 
-  ### TypingMind Support
-  Import conversation exports from TypingMind to make all your cross-platform chats searchable in one place.
-
-  ### Smart Search Improvements
-  Enhanced search algorithms with better relevance scoring and context understanding for more accurate memory retrieval.
+  ### Getting started improvements
+  Helpful notifications and prompts to discover features and finish setup.
 </Update>
 
-<Update label="July 2025" description="Performance & UX" tags={["Features"]}>
-  ### Performance Optimizations
+<Update label="July 2025" description="Performance, UI, Onboarding" tags={["Features"]}>
+  ### Performance optimizations
   - Faster memory list loading with optimized queries
   - Improved dashboard performance with server-side rendering
   - Reduced mobile load times
 
-  ### Pricing Updates
+  ### Pricing updates
   Introduced flexible monthly and annual billing options for the Pro plan with early-bird pricing for annual subscribers.
 
-  ### Platform Updates
+  ### Platform updates
   - **DeepSeek**: Updated selectors for better compatibility
   - **Claude**: More resilient message interception on single-page navigation
+  
+  Related docs: [DeepSeek](/platforms/deepseek), [Claude](/platforms/claude)
+
+  ### Memory Chat improvements
+  Better dark‑mode styling and readability in Memory Chat.
+
+  ### Settings page
+  Better structure and mobile experience for Settings.
+
+  ### Getting started groundwork
+  Early work on a more guided onboarding flow.
 </Update>
 
-<Update label="June 2025" description="Platform Expansion" tags={["Platform Support"]}>
-  ### Query Mode Launch
-  Ask your AI about information from past conversations and MemoryPlugin will automatically search and inject relevant context. Works across all supported platforms.
+<Update label="June 2025" description="Smart Memory" tags={["Features"]}>
+  ### Smart Memory categories
+  Automatically organize larger buckets into clear categories with summaries. Load only what’s relevant to your current chat to save tokens and reduce noise.
 
-  ### Platform Analytics
-  Better tracking of which AI platforms you use most, helping us prioritize improvements where they matter.
-
-  ### Universal Platform Support
-  Query Mode now works seamlessly across ChatGPT, Claude, TypingMind, Gemini, DeepSeek, LibreChat, Mistral, Qwen, Grok, Poe, and Google AI Studio.
+  Related docs: [Smart Memory](/features/smart-memory)
 </Update>
 
 <Update label="April 2025" description="Compatibility Updates" tags={["Platform Support", "Features"]}>
-  ### AI Studio Support
-  Google AI Studio is now fully supported! Use MemoryPlugin with Google's experimental AI platform for enhanced conversations with memory context.
-
-  ### ChatGPT Canvas Compatibility
+  ### ChatGPT Canvas compatibility
   Improved compatibility with ChatGPT Canvas for a better experience when working with code and longer content in the Canvas interface.
+  
+  Learn more: [Browser extension](/integrations/browser-extension)
 </Update>
 
-<Update label="March 2025" description="Text Processing & New Platforms" tags={["Features", "Platform Support"]}>
-  ### Major Text Processing Improvements
-  Version 2.0.3 of the browser extension introduces major improvements to text handling:
-  - Fixed text corruption issues when inserting memories into fields with existing text
-  - Better preservation of text formatting
-  - Improved caret position handling to keep your cursor in the right place
+<Update label="March 2025" description="Text handling & new platform" tags={["Features", "Platform Support"]}>
+  ### Text handling improvements
+  Smoother memory insertion and formatting in chats, with better cursor behavior.
 
-  ### Grok Support
+  ### Grok support
   MemoryPlugin now works with Grok (x.ai) through the Chrome extension, bringing memory capabilities to X's AI assistant.
+  
+  Learn more: [Grok](/platforms/grok), [Browser extension](/integrations/browser-extension)
 </Update>
 
 <Update label="February 2025" description="Platform Expansion" tags={["Platform Support"]}>
-  ### Qwen Support
+  ### Qwen support
   Added support for Qwen, expanding MemoryPlugin's reach to more AI platforms and giving you consistent memory access wherever you chat.
+  
+  Learn more: [Qwen](/platforms/qwen)
 </Update>
 
 <Update label="January 2025" description="Platform & Feature Additions" tags={["Platform Support", "Features"]}>
-  ### Mistral Support
+  ### Mistral support
   MemoryPlugin now supports Mistral AI! Access your memories while chatting with Mistral's powerful language models.
 
-  ### DeepSeek Support
+  ### DeepSeek support
   Get long-term memory with DeepSeek via the browser extension! Your memories work across all platforms - no lock-in, no starting from scratch with each new tool.
+  
+  Learn more: [DeepSeek](/platforms/deepseek)
 
-  ### Team Functionality
+  ### Team functionality
   New team collaboration features to help teams share and manage memories together.
+  
+  Related docs: [Teams (TypingMind custom)](/teams/typingmind-custom)
+
+  ### Onboarding (initial)
+  Added an onboarding card and stored onboarding chat history to guide new users.
 </Update>
 
-<Update label="December 2024" description="Productivity Features" tags={["Features"]}>
-  ### Bulk Operations
+<Update label="December 2024" description="Productivity & Platform Support" tags={["Features", "Platform Support"]}>
+  ### Bulk operations
   Perform operations on multiple memories at once! You can now:
   - Delete multiple memories in one action
   - Move memories across buckets in bulk
   - No more one operation at a time
 
-  ### Enhanced Efficiency
+  ### Enhanced efficiency
   Streamlined memory management for faster workflows and better organization.
+  
+  Learn more: [Bulk operations](/features/bulk-operations)
+  
+  ### ChatGPT saved memories import (early support)
+  Early support to import your ChatGPT “saved memories” via the browser extension.
+
+  ### Google AI Studio (early support)
+  Early compatibility updates alongside Canvas UI improvements.
 </Update>
 
 <Update label="October 2024" description="iOS Support Launch" tags={["Platform Support", "Integrations"]}>
-  ### iOS Safari Support
+  ### iOS Safari support
   MemoryPlugin now works on iOS! Use the browser extension with Safari on your iPhone and iPad.
 
   Enjoy the same seamless experience across all your favorite AI tools from your iOS devices. The extension works exactly the same way as it does on Chrome on desktop.
 
-  ### TestFlight Access
+  ### TestFlight access
   Early access available through TestFlight - sign in to your dashboard to get the link and start testing on iOS.
+  
+  Learn more: [Browser extension](/integrations/browser-extension)
 </Update>
 
 <Update label="September 2024" description="Memory Buckets Launch" tags={["Features"]}>
-  ### Memory Buckets
+  ### Memory buckets
   Organize your memories like never before! Group related memories together with custom buckets:
   - Create "Personal" vs "Work" buckets
   - Separate "Project 1" from "Project 2"
@@ -134,35 +188,65 @@ rss: true
   - Have more control over which memories appear in each chat
 
   All memories default to a "General" bucket, and the feature is fully backwards compatible - everything continues to work seamlessly without buckets if you prefer.
+  
+  Learn more: [Memory buckets](/features/memory-buckets)
 </Update>
 
 <Update label="August 2024" description="Major Platform Expansion" tags={["Platform Support", "Integrations"]}>
-  ### ChatGPT Support
+  ### ChatGPT support
   Full browser extension support for ChatGPT! Access your memories while chatting with GPT-4, GPT-3.5, and other OpenAI models.
+  
+  Learn more: [ChatGPT](/platforms/chatgpt)
 
-  ### Custom GPT Integration
+  ### Custom GPT integration
   Create your own Custom GPTs with MemoryPlugin capabilities. Build specialized AI assistants that remember user preferences and context.
+  
+  Learn more: [Custom GPT](/integrations/custom-gpt)
 
-  ### Gemini Support
+  ### Gemini support
   Google Gemini now supported! Use MemoryPlugin with Google's powerful AI models for enhanced conversations.
+  
+  Learn more: [Gemini](/platforms/gemini)
 
-  ### LibreChat Support
+  ### LibreChat support
   Self-hosted AI enthusiasts rejoice! MemoryPlugin now works with LibreChat for complete control over your AI conversations with memory.
 
-  ### Claude Enhancement
+  ### Claude enhancements
   Improved Claude integration with better message handling and user experience.
+  
+  Learn more: [Claude](/platforms/claude)
+</Update>
+
+<Update label="July 2024" description="Stability improvements" tags={["Improvements"]}>
+  ### Reliability improvements
+  Clearer error messages during sign‑in and setup, plus better handling if an access token is pasted incorrectly.
+</Update>
+
+<Update label="June 2024" description="Dashboard & API foundations" tags={["Features", "Improvements"]}>
+  ### Dashboard basics
+  Early memory list and create/delete actions landed on the dashboard.
+
+  ### Faster loading
+  Faster memory list loading.
+
+  ### Checkout reliability
+  Improved checkout flow reliability.
 </Update>
 
 <Update label="May 2024" description="MemoryPlugin Launch" tags={["Features", "Integrations"]}>
-  ### MemoryPlugin Launches! 🎉
-  Introducing MemoryPlugin - give your AI conversations long-term memory! Never repeat yourself again across chat sessions.
+  ### MemoryPlugin launches
+  Give your AI conversations long‑term memory and stop repeating yourself.
 
-  ### TypingMind Integration
+  ### TypingMind integration
   MemoryPlugin debuts with full support for TypingMind, bringing persistent memory to your AI conversations.
+  
+  Learn more: [TypingMind](/integrations/typingmind-plugin)
 
-  ### Core Features
+  ### Core features
   - Store and retrieve memories across conversations
   - Vector-based semantic search for relevant context
   - Secure memory storage with authentication
   - Real-time memory injection into AI chats
+  
+  Explore integrations: [MCP server](/integrations/mcp-server), [Browser extension](/integrations/browser-extension)
 </Update>
