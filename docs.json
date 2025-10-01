@@ -36,7 +36,8 @@
             "pages": [
               "getting-started/introduction",
               "getting-started/how-it-works",
-              "feedback"
+              "feedback",
+              "changelog"
             ]
           },
           {
@@ -128,11 +129,6 @@
           "anchor": "Roadmap",
           "href": "https://feedback.memoryplugin.com/roadmap",
           "icon": "map"
-        },
-        {
-          "anchor": "Changelog",
-          "href": "https://feedback.memoryplugin.com/changelog",
-          "icon": "list"
         },
         {
           "anchor": "Support",
