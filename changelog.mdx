@@ -295,27 +295,42 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 
 <Update label="August 2024" description="Major Platform Expansion" tags={["Platform Support", "Integrations"]}>
   ### ChatGPT support
-  Full browser extension support for ChatGPT! Access your memories while chatting with GPT-4, GPT-3.5, and other OpenAI models.
+  Full browser extension support for ChatGPT — access and inject your memories directly while you chat.
   
   Learn more: [ChatGPT](/platforms/chatgpt)
 
-  ### Custom GPT integration
-  Create your own Custom GPTs with MemoryPlugin capabilities. Build specialized AI assistants that remember user preferences and context.
+  ### MemoryPlugin Custom GPT
+  Use MemoryPlugin inside ChatGPT with our Custom GPT. It can fetch and use your memories during a conversation — including an option to load your entire set when you ask.
   
   Learn more: [Custom GPT](/integrations/custom-gpt)
 
   ### Gemini support
-  Google Gemini now supported! Use MemoryPlugin with Google's powerful AI models for enhanced conversations.
+  Google Gemini is now supported via the browser extension.
   
   Learn more: [Gemini](/platforms/gemini)
 
   ### LibreChat support
-  Self-hosted AI enthusiasts rejoice! MemoryPlugin now works with LibreChat for complete control over your AI conversations with memory.
+  MemoryPlugin now works with LibreChat so you can use memories on your self‑hosted setup.
 
-  ### Claude enhancements
-  Improved Claude integration with better message handling and user experience.
+  ### Claude improvements
+  More reliable detection of new replies so save prompts appear at the right time, and memory insertion is more consistent.
   
-  Learn more: [Claude](/platforms/claude)
+  ### Dashboard
+  - One‑click export: copy all memories to your clipboard to paste into any tool or keep a portable backup
+  - See your total memory count at a glance
+
+  ### Browser extension
+  - Save commands are case‑insensitive — “to=MemoryPlugin” works just like “to=memoryplugin”
+  - Gemini: no more cursor jumps when inserting context; text lands where it should
+  - Load more context: up to 150 recent memories can be pulled in when you need extra detail
+
+  ### Custom GPT
+  - Added a “Load all memories” option so your Custom GPT can fetch your full set on demand
+
+  ### Sign‑in and reliability
+  - Fewer re‑logins thanks to automatic session refresh
+  - Clearer OAuth consent screen
+  - Newest memories appear first in the dashboard and extension
 </Update>
 
 <Update label="July 2024" description="Stability improvements" tags={["Improvements"]}>
