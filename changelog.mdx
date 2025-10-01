@@ -333,9 +333,14 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   - Newest memories appear first in the dashboard and extension
 </Update>
 
-<Update label="July 2024" description="Stability improvements" tags={["Improvements"]}>
+<Update label="July 2024" description="TypingMind setup improvements" tags={["Improvements"]}>
+  ### Clearer setup when your token is missing or invalid in TypingMind
+  - Where you see it: MemoryPlugin now shows a plain‑English message right in TypingMind when your token isn't set or is incorrect
+  - What to do: the message tells you to copy your token from https://www.memoryplugin.com/dashboard and paste it into the TypingMind plugin settings
+  - Consistent across actions: the same guidance appears when reading or saving memories so TypingMind can surface it directly
+
   ### Reliability improvements
-  Clearer error messages during sign‑in and setup, plus better handling if an access token is pasted incorrectly.
+  - Fixed error when viewing memories for the first time
 </Update>
 
 <Update label="June 2024" description="Dashboard & API foundations" tags={["Features", "Improvements"]}>
