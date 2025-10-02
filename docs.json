@@ -60,7 +60,8 @@
               "features/smart-memory",
               "features/dashboard",
               "features/chatgpt-memory-import",
-              "features/bulk-operations"
+              "features/bulk-operations",
+              "features/chat-history"
             ]
           },
           {
