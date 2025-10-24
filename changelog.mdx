@@ -3,23 +3,48 @@ title: "Changelog"
 description: "Product updates and announcements for MemoryPlugin"
 rss: true
 author: "asad"
-lastUpdated: "2025-10-01"
+lastUpdated: "2025-10-24"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-10-01" />
+<ArticleInfo author="asad" lastUpdated="2025-10-24" />
 
-<Update label="October 2025" description="Background Sync & Tuning" tags={["Features"]}>
+<Update label="October 2025" description="Chat History Evolution & Performance" tags={["Features", "Platform Support"]}>
   ### Background sync improvements
   - See sync frequency and the next scheduled run in Settings
   - More reliable provider switching with clearer controls
   - Safer limits when adding chat history context
 
   Related docs: [Browser extension](/integrations/browser-extension)
-  
+
   ### Chat history relevance
   Smarter selection of what to include from past conversations, leading to more on‑topic answers.
+
+  ### Chat history enhancements
+  - **Pin important conversations** — keep your most valuable chats at the top for quick access
+  - **Improved branch handling** — active conversation path is now correctly isolated, preventing messages from different branches from getting mixed together
+  - **Modern table redesign** — cleaner, more refined interface for browsing your chat history
+  - **Parallel queries** — Remote MCP inject tool runs queries in parallel so 10 queries take only as long as the slowest one, not 10x the time
+
+  ### Expanding Core plan access
+  Laying the groundwork to bring chat history features to more users:
+  - Import limits and quota management for Core tier users
+  - Clear usage visibility to help you track your chat history imports
+
+  ### Performance improvements
+  - Faster memory browsing with virtualized lists — smooth scrolling even with thousands of memories
+  - In‑app search with Cmd/Ctrl+F — find memories instantly, with native browser search as fallback
+  - Improved landing page with optimized hero video and better mobile experience
+
+  ### Vision page
+  New page sharing our long‑term vision and roadmap for AI memory.
+
+  ### Reliability improvements and bug fixes
+  - Fixed duplicate memory deletion handling
+  - Better database error handling for chat history processing
+  - Improved notification persistence — dismissed messages stay dismissed
+  - Better mobile text sizing to prevent overflow on smaller screens
 </Update>
 
 <Update label="September 2025" description="Chat History (private beta), Remote MCP, Platforms" tags={["Features", "Platform Support", "Integrations"]}>
