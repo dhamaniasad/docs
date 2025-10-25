@@ -61,7 +61,14 @@
               "features/dashboard",
               "features/chatgpt-memory-import",
               "features/bulk-operations",
-              "features/chat-history"
+              {
+                "group": "Chat History Memory",
+                "pages": [
+                  "features/chat-history/overview",
+                  "features/chat-history/dashboard",
+                  "features/chat-history/integration"
+                ]
+              }
             ]
           },
           {

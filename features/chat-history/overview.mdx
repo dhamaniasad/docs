@@ -1,0 +1,280 @@
+---
+title: "Chat History Memory"
+description: "Give your AI perfect recall of every conversation you've ever had"
+icon: "rectangle-history"
+author: "asad"
+lastUpdated: "2025-10-25"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="asad" lastUpdated="2025-10-25" />
+
+<Note>
+Chat History Memory is currently in Beta. We're actively improving the feature based on user feedback.
+</Note>
+
+## What is Chat History Memory?
+
+Chat History Memory gives MemoryPlugin the ability to remember **every conversation** you've ever had with your AI tools—not just snippets, but complete discussions spanning months or years.
+
+### How It's Different from Regular Memory
+
+<CardGroup cols={2}>
+  <Card title="Regular Memory" icon="note-sticky">
+    Small snippets of key information
+    - Your name and preferences
+    - Project details
+    - Important facts
+
+    Like a rulebook the AI always refers to
+  </Card>
+  <Card title="Chat History Memory" icon="rectangle-history">
+    Complete conversation history
+    - Every question and answer
+    - Full discussion context
+    - Decisions and reasoning
+
+    Like the AI having perfect recall of everything you've discussed
+  </Card>
+</CardGroup>
+
+Both types of memory work together—Regular Memory for instant access to key facts, Chat History Memory for deep conversational context.
+
+## Why It Matters
+
+Your chat history contains invaluable context:
+
+- **Months or years** of conversations
+- **Shared information** and background context
+- **Project evolution** and discussion history
+- **Decisions made** and their rationale
+- **Progress tracked** over time
+- **Learning and insights** gained
+
+This wealth of information helps AI tools become:
+- **More personalized** - Understanding your communication style
+- **More relevant** - Drawing on past context automatically
+- **More helpful** - Building on previous discussions instead of starting from scratch
+
+<Info>
+The difference is like talking to a doctor with just a few notes about you versus a close friend who remembers years of conversations.
+</Info>
+
+## Privacy and Security
+
+Your chat history may contain sensitive information. We take our responsibility seriously.
+
+### Our Commitments
+
+<AccordionGroup>
+  <Accordion title="Explicit Opt-In Only" icon="hand">
+    Chats are **never** uploaded without your explicit permission. This feature is completely opt-in. You can use MemoryPlugin without ever enabling Chat History Memory.
+  </Accordion>
+
+  <Accordion title="Industry-Standard Encryption" icon="lock">
+    Your data is encrypted in transit and at rest using industry-standard encryption protocols.
+  </Accordion>
+
+  <Accordion title="No Third-Party Sales" icon="shield">
+    We will never sell your data to third parties. Your conversations remain private.
+  </Accordion>
+
+  <Accordion title="Your Data, Your Control" icon="user-shield">
+    - Delete your data at any time with immediate processing
+    - Exclude specific chats from being searchable
+    - Data in backups is deleted after 30 days
+    - Your data is kept private and separate from other users
+  </Accordion>
+</AccordionGroup>
+
+Read more in our [Privacy Policy](https://www.memoryplugin.com/privacy-policy).
+
+## How It Works
+
+Chat History Memory operates in three simple stages:
+
+<Steps>
+  <Step title="Upload">
+    Export your chat history from supported platforms (ChatGPT, Claude, TypingMind) and upload the JSON file to MemoryPlugin.
+  </Step>
+
+  <Step title="Process">
+    MemoryPlugin processes your chats automatically in the background. No configuration needed—just wait for processing to complete.
+  </Step>
+
+  <Step title="Use">
+    Your chat history becomes searchable and available to inject into new conversations via our Browser Extension or MCP Server.
+  </Step>
+</Steps>
+
+## Supported Platforms
+
+### Where You Can Upload From
+
+Currently, you can export and upload chat history from:
+
+<CardGroup cols={3}>
+  <Card title="ChatGPT" icon="message">
+    Settings → Data controls → Export data
+  </Card>
+  <Card title="Claude" icon="message">
+    Settings → Export data
+  </Card>
+  <Card title="TypingMind" icon="message">
+    Built-in export feature
+  </Card>
+</CardGroup>
+
+Request support for your favorite platform via our [feedback form](https://feedback.memoryplugin.com).
+
+### Where You Can Use It
+
+All platforms supported by our Browser Extension and MCP Servers can access your chat history:
+
+ChatGPT • Claude • Gemini • Google AI Studio • Grok • Poe • DeepSeek • Qwen • And more...
+
+## Getting Started
+
+<Steps>
+  <Step title="Export Your Chat History">
+    <AccordionGroup>
+      <Accordion title="Export from ChatGPT" icon="message">
+        1. Go to [ChatGPT](https://chatgpt.com) and log in
+        2. Click your profile icon
+        3. Go to **Settings** → **Data controls**
+        4. Click **"Export data"**
+        5. You'll receive a ZIP file via email (usually within 24 hours)
+        6. Extract the ZIP and upload the **`conversations.json`** file
+
+        [See ChatGPT export guide](https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data)
+      </Accordion>
+
+      <Accordion title="Export from Claude" icon="message">
+        1. Go to [Claude.ai](https://claude.ai) and log in
+        2. Click your profile icon in the bottom left
+        3. Select **"Settings"**
+        4. Click **"Export data"**
+        5. Download the export and upload the **`conversations.json`** file
+
+        [See Claude export guide](https://support.claude.com/en/articles/9450526-how-can-i-export-my-claude-data)
+      </Accordion>
+
+      <Accordion title="Export from TypingMind" icon="message">
+        1. Open TypingMind
+        2. Go to **Settings** → **Import/Export**
+        3. Click **"Export Data"**
+        4. Upload the files from the **`chunks/`** folder: `chats_part_1.json`, `chats_part_2.json`, etc.
+
+        <Note>
+        TypingMind splits exports into multiple chunk files. Upload each chunk file separately.
+        </Note>
+
+        [See TypingMind export guide](https://docs.typingmind.com/cloud-sync-and-backup/export-import-data)
+      </Accordion>
+    </AccordionGroup>
+  </Step>
+
+  <Step title="Upload to MemoryPlugin">
+    1. Go to your [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard/chat-history)
+    2. Navigate to **Chat History** → **Uploads** tab
+    3. Select your platform (ChatGPT, Claude, or TypingMind)
+    4. Choose how many chats to import (optional - see below)
+    5. Drag and drop your JSON file or click to browse
+    6. Processing starts automatically in the background
+  </Step>
+
+  <Step title="Monitor Progress">
+    - View processing progress in the Uploads tab
+    - You can close the tab—processing continues in the background
+    - Large files may take several minutes to hours
+    - You'll see status updates as processing completes
+  </Step>
+
+  <Step title="Start Using">
+    Once processing completes:
+    - Browse your chats in the **Chats** tab
+    - Search across all history in the **Search** tab
+    - Ask questions in the **Ask** tab
+    - Context auto-injects via Browser Extension
+  </Step>
+</Steps>
+
+## Managing Your Import Quota
+
+<Info>
+**Import limits help you manage your quota:**
+- **Core plan**: Up to 500 searchable chats
+- **Pro plan**: Unlimited chats
+</Info>
+
+When uploading, you can choose how many chats to import from your export file:
+
+- **Import all chats** - Process everything in the file (Pro users)
+- **Import recent chats** - Choose a limit like 100, 200, 500, or 1,000 chats
+- **Custom limit** - Specify exactly how many to import
+
+### Why Choose a Limit?
+
+<AccordionGroup>
+  <Accordion title="Stay within your plan quota" icon="gauge">
+    Core users have a 500-chat limit. Importing only recent conversations keeps you within quota. Pro users get unlimited chats.
+  </Accordion>
+
+  <Accordion title="Exclude older chats you don't need" icon="filter">
+    If you only want recent context, there's no need to process years of old conversations. Import what matters to you.
+  </Accordion>
+
+  <Accordion title="Test before importing everything" icon="flask">
+    Start with 100 chats to see how the feature works, then import more later if needed.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+If you reach your import limit, you can [exclude existing chats](/features/chat-history/dashboard#excluding-chats) to free up space, or [upgrade to Pro](https://memoryplugin.com/dashboard) for unlimited chats.
+</Warning>
+
+## File Size Limits
+
+- **Maximum file size**: 500 MB
+- **Recommended**: Under 100 MB for best performance
+- **Format**: JSON only
+
+Files over 100 MB will show a performance warning but can still be uploaded.
+
+<Info>
+Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we can help you with larger imports.
+</Info>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Dashboard Features"
+    icon="table-columns"
+    href="/features/chat-history/dashboard"
+  >
+    Learn about the Uploads, Chats, Search, and Ask tabs
+  </Card>
+  <Card
+    title="Browser Extension Integration"
+    icon="puzzle-piece"
+    href="/features/chat-history/integration"
+  >
+    Auto-inject chat history context into new conversations
+  </Card>
+  <Card
+    title="Privacy Policy"
+    icon="shield"
+    href="https://www.memoryplugin.com/privacy-policy"
+  >
+    Read our full privacy policy and data handling practices
+  </Card>
+  <Card
+    title="Give Feedback"
+    icon="comment"
+    href="https://feedback.memoryplugin.com"
+  >
+    Request features or report issues
+  </Card>
+</CardGroup>
