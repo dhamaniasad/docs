@@ -6,7 +6,7 @@ author: "asad"
 lastUpdated: "2025-10-25"
 ---
 
-import { ArticleInfo } from '/snippets/article-info.jsx';
+import { ArticleInfo } from "/snippets/article-info.jsx";
 
 <ArticleInfo author="asad" lastUpdated="2025-10-25" />
 
@@ -21,6 +21,7 @@ Monitor and manage your chat history imports.
 ### Viewing Imports
 
 Each upload shows:
+
 - **Filename** and platform (ChatGPT, Claude, TypingMind)
 - **Status**: Queued, Processing, Completed, or Failed
 - **Progress**: Percentage complete and message count
@@ -30,7 +31,8 @@ Each upload shows:
 
 ### Processing Status
 
-Processing happens automatically in the background. You can:
+Processing happens automatically in the background with periodic progress updates. You can:
+
 - See progress percentage
 - View number of messages processed
 - Close the tab—processing continues in the background
@@ -39,7 +41,8 @@ Processing happens automatically in the background. You can:
 ### Deleting Imports
 
 <Warning>
-Deleting an import removes all conversations from that upload, including from search and your Chats list. This action cannot be undone.
+  Deleting an import removes all conversations from that upload, including from
+  search and your Chats list. This action cannot be undone.
 </Warning>
 
 ## Chats Tab
@@ -49,8 +52,10 @@ Browse, organize, and manage your uploaded conversations.
 ### Viewing Your Chats
 
 All your uploaded conversations appear here in a searchable list showing:
+
 - **Conversation title**
-- **Date** of the conversation
+- **Date of last message** in the conversation
+- **Import time**
 - **Platform** (ChatGPT, Claude, or TypingMind)
 - **Message count**
 - **Pin status** (if pinned)
@@ -65,7 +70,7 @@ Find specific chats using filters:
 
 - **By platform** - Show only ChatGPT, Claude, TypingMind, or all
 - **By date range** - Filter to specific time periods
-- **By title search** - Search for keywords in conversation titles
+- **By title** - Keyword search in conversation titles
 - **Show only pinned** - See just your pinned favorites
 
 You can also select multiple chats for bulk actions:
@@ -80,42 +85,48 @@ Each conversation has several actions available:
 
 <AccordionGroup>
   <Accordion title="Pin / Unpin" icon="thumbtack">
-    **Pin important conversations** to keep them at the top of your list for quick access.
+    **Pin important conversations** to keep them at the top of your list and prevent accidental deletion.
 
-    Great for:
-    - Frequently referenced discussions
-    - Important project conversations
-    - Key decision-making chats
+    Pinned chats:
+    - Appear first in your list with a pin icon
+    - Are protected from accidental bulk deletion
+    - **For Core Plan users**: Help ensure important conversations aren't removed when managing your 500-chat quota
+    - **Coming soon**: Will receive higher priority in search results
 
-    Pinned chats appear first in your list with a pin icon.
+    Great for frequently referenced discussions and critical project conversations.
+
   </Accordion>
 
   <Accordion title="Open in Original Platform" icon="arrow-up-right-from-square">
     **Click to view the conversation** in its original platform (ChatGPT.com or Claude.ai).
 
-    Note: This only works if the conversation still exists on that platform and you're logged in.
+    Works with all supported platforms. Requirements:
+    - You're logged in to the correct account on that platform
+    - The conversation hasn't been deleted from the platform
+
   </Accordion>
 
   <Accordion title="Exclude from Indexing" icon="eye-slash" id="excluding-chats">
-    **Exclude specific conversations** to remove their data while preventing them from being re-imported in the future.
+    **Exclude specific conversations** to delete their data while preventing them from being automatically re-processed in future imports.
 
     When you exclude a chat:
-    - ✅ A placeholder remains in your Chats list (marked as excluded)
-    - ❌ All conversation data is deleted from the database
+    - ✅ A placeholder entry remains in your Chats list (marked as excluded, with title only)
+    - ❌ All conversation data is permanently deleted from the database
     - ❌ It won't appear in search results
     - ❌ It won't be injected as context
     - ✅ It doesn't count toward your quota
-    - ✅ It won't be re-processed if you import the same file again
+    - ✅ If you enable online sync or re-import the same JSON file, this chat will be automatically skipped
 
     **Why exclude chats?**
-    - Free up quota space on Core plan without fully deleting (keeps placeholder)
-    - Remove unwanted conversations from future imports
+    - Free up quota space on Core plan (each exclusion frees one slot)
+    - Permanently remove sensitive conversations you don't want processed
+    - Prevent specific chats from being auto-synced via Browser Extension
     - Delete data you don't want searchable or used as context
-    - Prevent automatic re-processing of specific chats
 
     <Info>
-    Exclusion is perfect for managing your 500-chat quota on the Core plan. Exclude old chats to make room for new ones. The placeholder prevents them from being re-imported automatically.
+    Exclusion is perfect for managing your 500-chat quota on the Core plan. Exclude old or unwanted chats to make room for new ones. The placeholder ensures they won't be re-imported automatically.
     </Info>
+
   </Accordion>
 
   <Accordion title="Delete Permanently" icon="trash">
@@ -125,35 +136,41 @@ Each conversation has several actions available:
     - It's removed from all systems immediately
     - It's deleted from backups after 30 days
     - This action cannot be undone
+    - **Important**: Deleted chats can come back in future imports (online sync or JSON re-imports)
 
     **Delete vs Exclude:**
-    - **Exclude** if you might want it later or just want to free quota
-    - **Delete** if you never want to see it again
+    - **Exclude** if you want to prevent the chat from being processed in future imports
+    - **Delete** if you just want to remove it now but don't mind if it comes back later
+
   </Accordion>
 </AccordionGroup>
 
 ## Search Tab
 
-Perform powerful semantic searches across your entire chat history.
+Perform powerful searches across your entire chat history to find specific conversations.
+
+![Search Results](/images/chat-history/chat-history-search-results.png)
+
+### How It Works
+
+Search uses **hybrid search** combining semantic understanding with keyword matching to find the most relevant conversations across thousands of chats. Each result includes a summary explaining why the chat matched your query and what it discusses.
 
 ### How to Search
 
 1. Go to the **Search tab** in your [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history)
 2. Enter your query in natural language (e.g., "discussions about authentication")
 3. Apply optional filters (platform, date range)
-4. Adjust settings (context window size, reranking)
-5. View results with matched content and surrounding context
-
-![Search Results](/images/chat-history/chat-history-search-results.png)
+4. View results with summaries, matched content, and conversation details
+5. Click any result to open the full conversation
 
 ### Search Features
 
-- **Natural language** - No boolean operators needed, just ask naturally
-- **Semantic understanding** - Finds conceptually related content, not just keywords
+- **Hybrid search** - Combines semantic understanding with keyword matching for best results
+- **Natural language queries** - No boolean operators needed, just ask naturally
 - **Temporal queries** - Understands time references like "last year", "last month", "in 2024" and automatically filters to the correct time periods
-- **Context windows** - See messages before and after matched content
+- **Result summaries** - Each result shows why it matched and what the conversation discusses
 - **Relevance ranking** - Best matches appear first
-- **Platform filtering** - Search across all or filter by ChatGPT, Claude, TypingMind
+- **Platform filtering** - Search across all platforms or filter by ChatGPT, Claude, TypingMind
 - **View full conversation** - Click any result to open the complete chat
 
 ### Search Tips
@@ -167,6 +184,7 @@ Perform powerful semantic searches across your entire chat history.
     ❌ Avoid: "auth AND jwt OR security"
 
     Use natural language—the system understands context better than boolean operators. You can include time references directly in your query.
+
   </Accordion>
 
   <Accordion title="Use temporal queries" icon="clock">
@@ -176,17 +194,13 @@ Perform powerful semantic searches across your entire chat history.
     - "discussions from last year"
 
     The search automatically interprets these time references and finds chats from the correct time periods.
+
   </Accordion>
 
-  <Accordion title="Adjust context window" icon="window">
-    - **Small (1-5 chunks)**: Precise matches only
-    - **Medium (6-15 chunks)**: Balanced context
-    - **Large (16-30 chunks)**: Maximum surrounding conversation
-  </Accordion>
-
-  <Accordion title="Try rephrasing if needed" icon="rotate">
-    If you don't find what you're looking for, try asking the same thing in different words.
-  </Accordion>
+<Accordion title="Try rephrasing if needed" icon="rotate">
+  If you don't find what you're looking for, try asking the same thing in
+  different words.
+</Accordion>
 
   <Accordion title="Filter by platform" icon="filter">
     If you remember which AI you were chatting with, filter to just that platform for faster results.
@@ -196,33 +210,45 @@ Perform powerful semantic searches across your entire chat history.
 ### Understanding Results
 
 Each search result shows:
-- Matched content highlighted in context
-- Conversation title and date
-- Platform it came from
-- Message count in that conversation
-- Relevance score (higher = better match)
+
+- **Summary** explaining why the chat matched and what it discusses
+- **Conversation title**
+- **Platform** (ChatGPT, Claude, or TypingMind)
 
 Click any result to view the full conversation with all messages.
 
-<Note>
-Search has a 30-second timeout. If your query times out, try being more specific or using date filters to narrow the scope.
-</Note>
-
 ## Ask Tab
 
-Ask natural language questions and get AI-powered answers synthesized from your entire chat history.
+Get AI-powered answers synthesized from your entire chat history. **Much more powerful than Search** for finding information.
 
 **Search vs Ask:**
-- **Search tab** = Find specific chats
-- **Ask tab** = Get answers from years of conversations
+
+- **Search tab** → Find specific conversations
+- **Ask tab** → Get answers from your chat history
 
 ![Ask Feature](/images/chat-history/chat-history-ask.png)
+
+### How It Works
+
+Ask uses **agentic multi-step retrieval** to answer your questions:
+
+1. **Initial search** - Searches your chat history for relevant conversations
+2. **Intelligent exploration** - AI decides whether to search again with different queries, dig deeper into specific chats, or fetch additional context
+3. **Multi-round searches** - Can perform up to 5 searches, refining based on what it learns
+4. **Comprehensive synthesis** - Combines information from multiple conversations into a detailed answer (typically 500+ words)
+
+The AI automatically determines what information to retrieve and from where, searching across different time periods, topics, and contexts as needed.
+
+<Note>
+  The Ask feature is actively being improved. We're continuously enhancing its
+  ability to find and synthesize information from your chat history.
+</Note>
 
 ### How to Use
 
 1. Go to the **Ask tab** in your [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history)
 2. Ask a question in natural language about your chat history
-3. The AI performs agentic lookups across your conversations
+3. Wait while the AI searches and analyzes (can take 30-120 seconds)
 4. Get a comprehensive answer with citations to source conversations
 5. Follow up with related questions
 
@@ -234,34 +260,18 @@ Ask natural language questions and get AI-powered answers synthesized from your 
 - "Summarize my discussions about API design patterns"
 - "What feedback did I receive on my pricing page redesign?"
 
-### How It Works
-
-The Ask feature uses agentic multi-stage retrieval to generate detailed answers from years of chat history:
-
-- **Multi-step reasoning** - Performs multiple searches to find complete answers
-- **Agentic lookups** - Automatically determines what information to retrieve and from where
-- **Multi-stage retrieval** - Searches across different time periods, topics, and contexts as needed
-- **Context-aware synthesis** - Understands your question and combines information from multiple conversations
-- **Comprehensive answers** - Generates detailed responses (typically 500+ words) drawing from years of history
-
 ### Understanding Answers
 
 Each answer includes:
 
-<CardGroup cols={3}>
-  <Card title="Synthesized Response" icon="message">
-    Comprehensive answer drawing from multiple conversations
-  </Card>
-  <Card title="Source Citations" icon="quote-left">
-    References to specific conversations where information was found
-  </Card>
-  <Card title="Context Snippets" icon="align-left">
-    Relevant excerpts from the cited conversations
-  </Card>
-</CardGroup>
+- **Comprehensive synthesis** - Detailed response (3-6 paragraphs) directly answering your question
+- **Citations** - References to specific conversations in the format: "In 'Chat Title' on YYYY-MM-DD, ..."
+- **Supporting quotes** - Key excerpts from the cited conversations (3-8 short items)
+- **Code snippets** - Preserved when relevant to the answer
 
 <Warning>
-The Ask feature can take 30-120 seconds for complex queries as it searches and analyzes your history. Be patient while it works.
+  Complex queries can take 30-120 seconds as the AI performs multiple searches
+  and analyzes your history. Be patient while it works.
 </Warning>
 
 ## Troubleshooting
@@ -271,11 +281,12 @@ The Ask feature can take 30-120 seconds for complex queries as it searches and a
     **Symptoms**: Upload doesn't start, shows error, or stays at 0%
 
     **Solutions**:
+    - Try reuploading the file
+    - If the issue persists after a few hours, contact support with a screenshot
     - Check file size (must be under 500 MB)
     - Verify file is valid JSON
     - Ensure file is from supported platform (ChatGPT, Claude, TypingMind)
-    - Refresh the page and try again
-    - Check your internet connection
+
   </Accordion>
 
   <Accordion title="Processing Takes Too Long" icon="clock">
@@ -285,37 +296,30 @@ The Ask feature can take 30-120 seconds for complex queries as it searches and a
     - Large files can take several minutes to hours
     - Check the Uploads tab for current status
     - Processing continues in the background—you can close the tab
-    - If stuck for over 24 hours, contact support with your upload ID
+    - If stuck for over 24 hours, contact support with a screenshot
+
   </Accordion>
 
   <Accordion title="Search Returns No Results" icon="magnifying-glass-minus">
     **Symptoms**: Search doesn't find expected conversations
 
     **Solutions**:
+    - Wait for your first import to be completely processed
     - Try different phrasings of your query
     - Remove date filters and search again
     - Check if the chat was excluded from indexing
-    - Verify the conversation was successfully processed
     - Try broader search terms
-  </Accordion>
 
-  <Accordion title="Can't Delete Conversations" icon="trash">
-    **Symptoms**: Delete action doesn't work
-
-    **Solutions**:
-    - Refresh the page and try again
-    - Check your internet connection
-    - Try deleting from the Uploads tab instead (deletes entire import)
   </Accordion>
 
   <Accordion title="Excluded Chats Still Appearing" icon="eye">
-    **Symptoms**: Excluded conversations show up in your Chats list
+    **Symptoms**: Excluded conversations show up in your Chats list or search results
 
     **Solutions**:
-    - Exclusion takes a few minutes to take effect
-    - Refresh the page
-    - Clear your browser cache
-    - Verify the exclusion was saved (check the Chats tab)
+    - Exclusion might take a while to take effect—wait a few minutes and refresh
+    - It's possible another chat has similar content and is appearing in results
+    - Verify the exclusion was saved (excluded chats show as "excluded" in the Chats tab)
+
   </Accordion>
 
   <Accordion title="Reached Import Limit" icon="gauge-high">
@@ -327,15 +331,14 @@ The Ask feature can take 30-120 seconds for complex queries as it searches and a
     - **Upgrade to Pro** for unlimited chats
 
     Each excluded chat frees up one slot in your 500-chat quota.
+
   </Accordion>
 </AccordionGroup>
 
 <Warning>
-If issues persist, [contact support](https://memoryplugin.com) with:
-- Your user ID
-- Upload ID (if applicable)
-- Description of the issue
-- Steps you've already tried
+  If issues persist, [contact support](https://memoryplugin.com) with: - A
+  screenshot of the issue - Description of what's happening - Steps you've
+  already tried
 </Warning>
 
 ## Next Steps
