@@ -16,6 +16,66 @@ The Chat History dashboard has four main tabs for managing and using your conver
 
 Manage your chat history imports and monitor processing status.
 
+### Getting Your Chat History
+
+You can add chat history to MemoryPlugin in two ways:
+
+**Option 1: Upload Chat Exports** (ChatGPT, Claude, TypingMind) — **Recommended for initial import**
+Export your chat history as JSON files and upload them. This is the fastest way to import your entire history.
+
+**Option 2: Online Import** (ChatGPT, Claude - Beta)
+Import conversations directly from your account without downloading files. Best for keeping new and updated conversations in sync after your initial import. Can be much slower for importing your entire history, but works as a fallback if you're unable to export JSON files.
+
+### How to Export Your Chats
+
+<AccordionGroup>
+  <Accordion title="Export from ChatGPT" icon="message">
+    1. Go to [ChatGPT](https://chatgpt.com) and log in
+    2. Click your profile icon
+    3. Go to **Settings** → **Data controls**
+    4. Click **"Export data"**
+    5. You'll receive a ZIP file via email (usually within 24 hours)
+    6. Extract the ZIP and upload the **`conversations.json`** file
+
+    [See ChatGPT export guide](https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data)
+  </Accordion>
+
+  <Accordion title="Export from Claude" icon="message">
+    1. Go to [Claude.ai](https://claude.ai) and log in
+    2. Click your profile icon in the bottom left
+    3. Select **"Settings"**
+    4. Click **"Export data"**
+    5. Download the export and upload the **`conversations.json`** file
+
+    [See Claude export guide](https://support.claude.com/en/articles/9450526-how-can-i-export-my-claude-data)
+  </Accordion>
+
+  <Accordion title="Export from TypingMind" icon="message">
+    1. Open TypingMind
+    2. Go to **Settings** → **Import/Export**
+    3. Click **"Export Data"**
+    4. Upload the files from the **`chunks/`** folder: `chats_part_1.json`, `chats_part_2.json`, etc.
+
+    <Note>
+    TypingMind splits exports into multiple chunk files. Upload each chunk file separately.
+    </Note>
+
+    [See TypingMind export guide](https://docs.typingmind.com/cloud-sync-and-backup/export-import-data)
+  </Accordion>
+</AccordionGroup>
+
+### File Size Limits
+
+- **Maximum file size**: 500 MB
+- **Recommended**: Under 100 MB for best performance
+- **Format**: JSON only
+
+Files over 100 MB will show a performance warning but can still be uploaded.
+
+<Info>
+Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we can help you with larger imports.
+</Info>
+
 ### Uploading a File
 
 <Steps>
