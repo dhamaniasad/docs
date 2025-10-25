@@ -66,6 +66,7 @@
                 "pages": [
                   "features/chat-history/introduction",
                   "features/chat-history/importing",
+                  "features/chat-history/dashboard",
                   "features/chat-history/using"
                 ]
               }

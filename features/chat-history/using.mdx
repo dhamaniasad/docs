@@ -1,6 +1,6 @@
 ---
 title: "Using Chat History"
-description: "Search, ask questions, and auto-inject chat history context into conversations"
+description: "Auto-inject chat history context into your AI conversations"
 icon: "sparkles"
 author: "asad"
 lastUpdated: "2025-10-25"
@@ -10,11 +10,27 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 
 <ArticleInfo author="asad" lastUpdated="2025-10-25" />
 
-Once you've imported your chat history, you can use it in three powerful ways: auto-injection into new conversations, searching across all your history, and asking questions with AI-powered analysis.
+Once you've imported your chat history, you can use it to add relevant context to your new AI conversations.
+
+## See It In Action
+
+Here's what Chat History Memory does for your conversations:
+
+**Without MemoryPlugin:**
+
+![Without MemoryPlugin](/images/chat-history/mcp-without-memoryplugin.png)
+
+The AI has no context about your past conversations and gives generic responses.
+
+**With MemoryPlugin:**
+
+![With MemoryPlugin](/images/chat-history/mcp-with-memoryplugin.png)
+
+The AI sees relevant context from your chat history and provides personalized, informed responses based on your previous discussions.
 
 ## Auto-Injection via Browser Extension & MCP
 
-Chat history automatically injects relevant context into your new AI conversations.
+Chat history can automatically surface relevant context from past conversations in your new chats.
 
 ### How It Works
 
@@ -31,7 +47,7 @@ Chat history automatically injects relevant context into your new AI conversatio
     Your question is analyzed to find relevant past conversations automatically
   </Step>
 
-  <Step title="Context is injected">
+  <Step title="Context is added">
     Relevant chat history is intelligently inserted before your prompt
   </Step>
 
@@ -60,11 +76,11 @@ Need to install? See [Browser Extension Setup](/integrations/browser-extension) 
 
 ### Token Limits
 
-Control how much chat history context gets injected:
+Control how much chat history context gets added to your conversations:
 
 <AccordionGroup>
   <Accordion title="Default: 600 tokens" icon="gauge">
-    By default, MemoryPlugin injects up to **600 tokens** (≈450 words) of chat history context.
+    By default, MemoryPlugin adds up to **600 tokens** (≈450 words) of chat history context.
 
     This is enough for meaningful context without overwhelming the AI.
   </Accordion>
@@ -76,7 +92,7 @@ Control how much chat history context gets injected:
   </Accordion>
 
   <Accordion title="Why limit tokens?" icon="question">
-    **AI context windows are limited** - Injecting too much chat history leaves less room for your actual conversation.
+    **AI context windows are limited** - Adding too much chat history leaves less room for your actual conversation.
 
     **More tokens = slower responses** - Can increase API costs and response time.
 
@@ -86,7 +102,7 @@ Control how much chat history context gets injected:
   </Accordion>
 </AccordionGroup>
 
-### What Gets Injected
+### What Gets Added
 
 When relevant chat history is found:
 - Most relevant messages are selected from past conversations
@@ -106,130 +122,31 @@ When relevant chat history is found:
 **MCP Server:**
 Configure token limits in your MCP client's config file. See [MCP Server docs](/integrations/mcp-server) for details.
 
-### Controlling What Gets Injected
+### Controlling What Gets Added
 
-Use [exclusions](/features/chat-history/importing#excluding-chats) to prevent specific chats from being injected:
+Use [exclusions](/features/chat-history/dashboard#excluding-chats) to remove specific chats from being used as context:
 - Sensitive conversations you want to keep private
 - Off-topic chats that aren't useful for context
 - Outdated discussions no longer relevant
 
-Excluded chats remain stored but won't appear in search or auto-injection.
+When you exclude a chat, its data is deleted and it won't be re-imported in future uploads. A placeholder remains to prevent automatic re-processing.
 
-## Search Your History
+## Searching and Analyzing Your History
 
-Perform powerful semantic searches across your entire chat history.
-
-### How to Search
-
-1. Go to the **Search tab** in your [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history)
-2. Enter your query in natural language (e.g., "discussions about authentication")
-3. Apply optional filters (platform, date range)
-4. Adjust settings (context window size, reranking)
-5. View results with matched content and surrounding context
-
-### Search Features
-
-- **Natural language** - No boolean operators needed, just ask naturally
-- **Semantic understanding** - Finds conceptually related content, not just keywords
-- **Context windows** - See messages before and after matched content
-- **Relevance ranking** - Best matches appear first
-- **Platform filtering** - Search across all or filter by ChatGPT, Claude, TypingMind
-- **View full conversation** - Click any result to open the complete chat
-
-### Search Tips
-
-<AccordionGroup>
-  <Accordion title="Be specific but natural" icon="message-question">
-    ✅ Good: "discussions about implementing JWT authentication"
-
-    ❌ Avoid: "auth AND jwt OR security"
-
-    Use natural language—the system understands context better than boolean operators.
-  </Accordion>
-
-  <Accordion title="Use date filters for recent topics" icon="calendar">
-    If you remember roughly when a conversation happened, narrow down results with the date range filter.
-  </Accordion>
-
-  <Accordion title="Adjust context window" icon="window">
-    - **Small (1-5 chunks)**: Precise matches only
-    - **Medium (6-15 chunks)**: Balanced context
-    - **Large (16-30 chunks)**: Maximum surrounding conversation
-  </Accordion>
-
-  <Accordion title="Try rephrasing if needed" icon="rotate">
-    If you don't find what you're looking for, try asking the same thing in different words.
-  </Accordion>
-
-  <Accordion title="Filter by platform" icon="filter">
-    If you remember which AI you were chatting with, filter to just that platform for faster results.
-  </Accordion>
-</AccordionGroup>
-
-### Understanding Results
-
-Each search result shows:
-- Matched content highlighted in context
-- Conversation title and date
-- Platform it came from
-- Message count in that conversation
-- Relevance score (higher = better match)
-
-Click any result to view the full conversation with all messages.
-
-<Note>
-Search has a 30-second timeout. If your query times out, try being more specific or using date filters to narrow the scope.
-</Note>
-
-## Ask Questions (AI-Powered Analysis)
-
-Ask natural language questions and get AI-powered answers synthesized from your entire chat history.
-
-### How to Use
-
-1. Go to the **Ask tab** in your [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history)
-2. Ask a question in natural language about your chat history
-3. The AI searches for relevant conversations automatically
-4. Get a comprehensive answer with citations to source conversations
-5. Follow up with related questions
-
-### Example Questions
-
-- "What have I discussed about authentication strategies?"
-- "Show me all conversations about the UserProfile component"
-- "What decisions did I make about database architecture?"
-- "Summarize my discussions about API design patterns"
-- "What feedback did I receive on my pricing page redesign?"
-
-### How It Works
-
-- **Multi-step reasoning** - The AI searches multiple times to find complete answers
-- **Automatic tool use** - Searches by keywords, topics, and timeframes as needed
-- **Context-aware** - Understands your question and retrieves the most relevant information
-- **Comprehensive synthesis** - Combines information from multiple sources into one answer (typically 500+ words)
-
-### Understanding Answers
-
-Each answer includes:
+Beyond auto-injection, you can actively search and analyze your chat history:
 
 <CardGroup cols={2}>
-  <Card title="Synthesized Response" icon="message">
-    Comprehensive answer drawing from multiple conversations
+  <Card title="Search Your History" icon="magnifying-glass">
+    Perform powerful semantic searches across all your conversations. Find specific discussions by topic, keyword, or timeframe.
+
+    [Go to Dashboard → Search](/features/chat-history/dashboard#search-tab)
   </Card>
-  <Card title="Source Citations" icon="quote-left">
-    References to specific conversations where information was found
-  </Card>
-  <Card title="Context Snippets" icon="align-left">
-    Relevant excerpts from the cited conversations
-  </Card>
-  <Card title="Confidence Indicators" icon="gauge">
-    How certain the AI is about the answer
+  <Card title="Ask Questions" icon="message-question">
+    Get AI-powered answers synthesized from your entire chat history. Ask natural language questions and receive comprehensive responses with citations.
+
+    [Go to Dashboard → Ask](/features/chat-history/dashboard#ask-tab)
   </Card>
 </CardGroup>
-
-<Warning>
-The Ask feature can take 30-120 seconds for complex queries as it searches and analyzes your history. Be patient while it works.
-</Warning>
 
 ## Best Practices
 
@@ -243,7 +160,7 @@ The Ask feature can take 30-120 seconds for complex queries as it searches and a
   </Accordion>
 
   <Accordion title="Use exclusions for privacy" icon="eye-slash">
-    If you have sensitive chats you don't want injected, [exclude them](/features/chat-history/importing#excluding-chats) from the Chats tab.
+    If you have sensitive chats you don't want injected, [exclude them](/features/chat-history/dashboard#excluding-chats) from the Chats tab.
   </Accordion>
 
   <Accordion title="Disable for creative tasks" icon="lightbulb">
@@ -259,7 +176,7 @@ The Ask feature can take 30-120 seconds for complex queries as it searches and a
 
 <AccordionGroup>
   <Accordion title="Context Not Appearing" icon="message-slash">
-    **Symptoms**: Chat history context isn't being injected into conversations
+    **Symptoms**: Chat history context isn't being added to conversations
 
     **Solutions**:
     - Ensure Browser Extension or MCP Server is installed and signed in
@@ -270,7 +187,7 @@ The Ask feature can take 30-120 seconds for complex queries as it searches and a
   </Accordion>
 
   <Accordion title="Too Much / Too Little Context" icon="arrows-left-right">
-    **Symptoms**: Context injection is too verbose or too minimal
+    **Symptoms**: Context is too verbose or too minimal
 
     **Solutions**:
     - Adjust max tokens in extension settings
@@ -280,24 +197,13 @@ The Ask feature can take 30-120 seconds for complex queries as it searches and a
   </Accordion>
 
   <Accordion title="Irrelevant Context Appearing" icon="filter">
-    **Symptoms**: Injected chat history isn't relevant to your question
+    **Symptoms**: Added chat history isn't relevant to your question
 
     **Solutions**:
     - Exclude irrelevant chats from the Chats tab
     - Be more specific in your prompts
     - Reduce token limit to focus on most relevant matches
     - Delete old imports you no longer need
-  </Accordion>
-
-  <Accordion title="Search Returns No Results" icon="magnifying-glass-minus">
-    **Symptoms**: Search doesn't find expected conversations
-
-    **Solutions**:
-    - Try different phrasings of your query
-    - Remove date filters and search again
-    - Check if the chat was excluded from indexing
-    - Verify the conversation was successfully processed
-    - Try broader search terms
   </Accordion>
 
   <Accordion title="AI Seems Confused" icon="circle-question">
@@ -323,11 +229,11 @@ If issues persist, [contact support](https://memoryplugin.com) with:
 
 <CardGroup cols={2}>
   <Card
-    title="Importing Your Chats"
-    icon="cloud-arrow-up"
-    href="/features/chat-history/importing"
+    title="View Dashboard"
+    icon="table-columns"
+    href="/features/chat-history/dashboard"
   >
-    Learn how to import more chat history or manage your existing imports
+    Search your history, ask questions, and manage your conversations
   </Card>
   <Card
     title="Browser Extension Setup"
