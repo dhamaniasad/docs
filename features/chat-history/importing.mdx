@@ -1,6 +1,6 @@
 ---
 title: "Importing Your Chats"
-description: "Export and upload your chat history from ChatGPT, Claude, and TypingMind"
+description: "Export and upload your chat history from supported platforms"
 icon: "cloud-arrow-up"
 author: "asad"
 lastUpdated: "2025-10-25"
@@ -20,7 +20,7 @@ Export your chat history as JSON files and upload them. This is the fastest way 
 
 **Option 2: Online Import** (ChatGPT, Claude - Beta)
 
-Import conversations directly from your account without downloading files. Best for keeping new and updated conversations in sync after your initial import. Can be much slower for importing your entire history, but works as a fallback if you're unable to export JSON files.
+Import conversations directly from your account without downloading files. Designed for keeping new and updated conversations in sync automatically after your initial import. This handles small incremental updates in the background, so you never have to manually export again. Can take longer for large initial imports (several days vs. a few hours), but works as a fallback if you're unable to export JSON files.
 
 ## How to Export Your Chats
 
@@ -51,10 +51,7 @@ Import conversations directly from your account without downloading files. Best 
 ## File Size Limits
 
 - **Maximum file size**: 500 MB
-- **Recommended**: Under 100 MB for best performance
 - **Format**: JSON only
-
-Files over 100 MB will show a performance warning but can still be uploaded.
 
 <Info>
 Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we can help you with larger imports.
@@ -88,8 +85,6 @@ Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we ca
   <Step title="Upload File">
     Drag and drop your JSON file or click **"Browse files"** to select it
 
-    - Maximum file size: 500 MB
-    - Files over 100 MB will show a warning but still work
     - Only JSON files are accepted
   </Step>
 
@@ -101,6 +96,10 @@ Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we ca
     - Large files can take several minutes to hours
   </Step>
 </Steps>
+
+<Info>
+**Don't worry about duplicates**: We automatically deduplicate chats during uploads. If you upload the same file again or import the same conversations through online import, they won't be duplicated in your chat history.
+</Info>
 
 ## Managing Import Quota
 
@@ -114,14 +113,18 @@ Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we ca
 
 <AccordionGroup>
   <Accordion title="Stay within your plan quota" icon="gauge">
-    Core users have a limit of 500 searchable chats. Importing only recent conversations keeps you within quota. You can always import more later or upgrade to Pro for unlimited.
+    Core users have a limit of 500 searchable chats. Importing only recent conversations keeps you within quota.
+
+    **For heavy AI users**: If you've had 5,000+ conversations over 3+ years (which many heavy AI users have), we strongly recommend the Pro plan for unlimited chats and the best value. Processing large chat histories is computationally expensive, which is why Pro plan pricing reflects that cost.
+
+    You can always import more later or upgrade to Pro for unlimited.
   </Accordion>
 
   <Accordion title="Focus on recent conversations" icon="clock">
     If you only care about recent context, there's no need to process years of old chats. Import what matters most.
   </Accordion>
 
-  <Accordion title="Test the feature first" icon="flask">
+  <Accordion title="Get started quickly" icon="rocket">
     Start with 100 chats to see how Chat History Memory works, then import more once you're comfortable.
   </Accordion>
 </AccordionGroup>
