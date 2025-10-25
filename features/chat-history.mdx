@@ -3,64 +3,596 @@ title: "Chat History Memory (Beta)"
 description: "Long term memory that remembers everything you've ever discussed with your AI tools"
 icon: "rectangle-history"
 author: "asad"
-lastUpdated: "2025-10-02"
+lastUpdated: "2025-10-25"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-10-02" />
+<ArticleInfo author="asad" lastUpdated="2025-10-25" />
 
-## What it is
+<Note>
+Chat History Memory is currently in Beta. We're actively improving the feature based on user feedback.
+</Note>
 
-Chat History Memory is a new feature that can remember everything you have ever discussed with your AI tools, across multiple supported AI platforms.
+## What is Chat History Memory?
 
-Before Chat History Memory, Regular Memory would store small snippets of information like your name, your preferences, information about your projects, etc., but it would not remember what you've discussed in the past.
+Chat History Memory is a powerful feature that enables MemoryPlugin to remember **everything** you've ever discussed with your AI tools, across multiple supported platforms.
 
-Regular Memory has its place and will continue to be supported and improved.
+Unlike Regular Memory, which stores small snippets of information like your name, preferences, and project details, Chat History Memory preserves your complete conversation history—every question asked, every answer received, every decision made.
 
-## Why it's important
+### The Difference
 
-Regular Memory, where small snippets of text are saved, is useful for storing information that needs to always be available. It's like a rulebook your AI can always refer to.
+Think of it this way:
+- **Regular Memory** is like a rulebook your AI always refers to
+- **Chat History Memory** is like your AI having perfect recall of every conversation you've ever had
 
-Your Chat History might go back months or years, with countless conversations, with information shared, projects discussed, decisions made, progress tracked, etc.
+Regular Memory continues to be important for information that should always be available. Chat History Memory complements it by providing deep historical context.
 
-This information is way too much for Regular Memory, but it provides invaluable insight to your AI tools to be more personalised, more relevant, and more helpful.
+<Info>
+Regular Memory and Chat History Memory work together to give your AI both instant access to key facts and long-term conversational memory.
+</Info>
 
-The difference is like talking to a doctor who remembers you based on a small set of notes they made about you, vs a friend who remembers the countless conversations you've had with them over the years.
+## Why It Matters
 
-## How it works
+Your chat history might span months or years, containing:
+- Countless conversations and discussions
+- Shared information and context
+- Projects discussed and evolved
+- Decisions made and rationale
+- Progress tracked over time
+- Learning and insights gained
 
-Chat History Memory works by uploading your chat history to MemoryPlugin, and then making it accessible to your AI tools via our Browser Extension and MCP Servers. 
+This wealth of information is too vast for Regular Memory, but it provides invaluable context that helps AI tools become more:
+- **Personalized**: Understanding your communication style and preferences
+- **Relevant**: Drawing on past conversations for better context
+- **Helpful**: Building on previous discussions instead of starting from scratch
 
-Note: Your chats are never uploaded without your explicit permission. This feature is opt-in only, and you can continue to use MemoryPlugin without it.
+The difference is like talking to a doctor who only has a few notes about you versus a close friend who remembers years of conversations.
+
+## How It Works
+
+Chat History Memory operates in three stages:
+
+### 1. Upload
+Export your chat history from supported platforms (ChatGPT, Claude, TypingMind) and upload the JSON file to MemoryPlugin.
+
+### 2. Process
+MemoryPlugin processes your chats, creating semantic embeddings that enable intelligent search and retrieval. You can configure:
+- Chunking strategies (single-turn or cross-message)
+- Processing order (file order, latest first, oldest first)
+- Processing limits
+
+### 3. Retrieve
+When you chat with AI platforms using our Browser Extension or MCP Server, MemoryPlugin:
+- Analyzes your current conversation
+- Finds relevant past discussions
+- Injects appropriate context automatically
+- Enables powerful search and Q&A over your history
+
+<Note>
+Your chats are **never** uploaded without your explicit permission. This feature is completely opt-in.
+</Note>
 
 ## Privacy and Security
 
-Your chats can contain sensitive information, and we take our responsibility to protect your privacy seriously. 
+Your chat history can contain sensitive information. We take our responsibility to protect your privacy seriously.
 
-Here's what we do to protect your privacy:
+### Our Commitments
 
-- Your chats are never uploaded without your explicit permission. This feature requires explicit opt-in.
-- We use industry-standard encryption to protect your data in transit and at rest.
-- We will never sell your data to third parties.
-- Your data remains yours, and you can delete it at any time. Deletions are processed immediately. (Information stored in backups is deleted after 30 days)
-- You can choose to exclude specific chats from being uploaded to MemoryPlugin.
+<CardGroup cols={2}>
+  <Card title="Explicit Opt-In" icon="hand">
+    Chats are never uploaded without your explicit permission
+  </Card>
+  <Card title="Industry-Standard Encryption" icon="lock">
+    Your data is encrypted in transit and at rest
+  </Card>
+  <Card title="No Third-Party Sales" icon="shield">
+    We will never sell your data to third parties
+  </Card>
+  <Card title="Your Data, Your Control" icon="user-shield">
+    Delete your data at any time with immediate processing
+  </Card>
+</CardGroup>
 
-You can read more about our commitment to privacy and security in our [Privacy Policy](https://www.memoryplugin.com/privacy-policy).
+### Data Retention
+
+- **Immediate deletion**: When you delete chat history, it's removed immediately from active systems
+- **Backup cleanup**: Data in backups is deleted after 30 days
+- **Selective exclusion**: Exclude specific chats from indexing without deleting them
+- **Per-user isolation**: Your data is completely isolated from other users
+
+Read more in our [Privacy Policy](https://www.memoryplugin.com/privacy-policy).
 
 ## Supported Platforms
 
-We can break down the Chat History feature support into two categories:
+### Upload Support
+Currently, you can upload chat history from:
+- **ChatGPT** - Export via Settings → Data controls → Export data
+- **Claude** - Export via Settings → Export data
+- **TypingMind** - Export via the built-in export feature
 
-- Support for reading chat history
-- Support for uploading chat history
+We're actively working on adding support for more platforms. Request support for your favorite platform via our [feedback form](https://feedback.memoryplugin.com).
 
-All platforms supported by our Browser Extension and MCP Servers support reading chat history. 
+### Reading Support
+All platforms supported by our Browser Extension and MCP Servers can access and use your uploaded chat history:
+- ChatGPT
+- Claude (web and desktop)
+- Gemini
+- Google AI Studio
+- Grok
+- Poe
+- DeepSeek
+- Qwen
+- And more...
 
-Support for uploading chat history is currently only available for ChatGPT, Claude, and Gemini.
-We will continue to add support for more platforms in the future. If you would like to see support for a specific platform, please let us know in the [feedback form](https://feedback.memoryplugin.com).
+## Getting Started
 
-## How to Use
+<Steps>
+  <Step title="Export Your Chat History">
+    Choose your platform and follow the export instructions:
 
-To use 
+    <AccordionGroup>
+      <Accordion title="Export from ChatGPT" icon="message">
+        1. Go to [ChatGPT](https://chatgpt.com) and log in
+        2. Click your profile icon
+        3. Go to **Settings** → **Data controls**
+        4. Click **"Export data"**
+        5. You'll receive a ZIP file via email (usually within 24 hours)
+        6. Extract the ZIP and find the `conversations.json` file
+      </Accordion>
 
+      <Accordion title="Export from Claude" icon="message">
+        1. Go to [Claude.ai](https://claude.ai) and log in
+        2. Click your profile icon in the bottom left
+        3. Select **"Settings"**
+        4. Click **"Export data"**
+        5. Download the JSON file
+      </Accordion>
+
+      <Accordion title="Export from TypingMind" icon="message">
+        1. Open TypingMind and go to your chats
+        2. Use the export feature to download your chats as JSON
+        3. The file should be a top-level array or contain a `data.chats` field
+      </Accordion>
+    </AccordionGroup>
+  </Step>
+
+  <Step title="Upload to MemoryPlugin">
+    1. Go to your [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard)
+    2. Navigate to **Chat History** → **Uploads** tab
+    3. Click **"Browse files"** or drag and drop your JSON file
+    4. Configure your upload settings (or use defaults)
+    5. Click **"Upload"** to start processing
+  </Step>
+
+  <Step title="Monitor Processing">
+    Processing happens in the background. You can:
+    - View progress in the Uploads tab
+    - See estimated completion time
+    - Continue using MemoryPlugin while processing
+  </Step>
+
+  <Step title="Browse Your Chats">
+    Once processing completes:
+    1. Navigate to the **Chats** tab
+    2. Browse, search, and filter your conversations
+    3. Pin important chats for quick access
+  </Step>
+</Steps>
+
+<Info>
+**File size limits**: Maximum 500 MB per file. Files over 100 MB will show a performance warning.
+</Info>
+
+## Feature Overview
+
+### Uploads Tab
+
+The Uploads tab manages your chat history imports.
+
+**What You Can Do:**
+- Upload JSON exports from ChatGPT, Claude, or TypingMind
+- Configure processing options:
+  - **Chunking strategy**: Single-turn (per-message) or cross-message (multi-message context)
+  - **Processing order**: File order (default), latest first, or oldest first
+  - **Processing limit**: Cap the number of conversations to process
+- Monitor upload and processing status
+- Delete entire imports with cascade deletion
+
+**File Requirements:**
+- Format: JSON only
+- Size: Up to 500 MB (100 MB recommended for best performance)
+- Source: ChatGPT, Claude, or TypingMind exports
+
+**Processing Options Explained:**
+
+<AccordionGroup>
+  <Accordion title="Chunking Strategy" icon="scissors">
+    **Single-turn (per-message)**: Creates one chunk per message
+    - Pros: Precise attribution, better for finding specific messages
+    - Cons: May lose some conversation flow context
+
+    **Cross-message**: Chunks can span multiple messages
+    - Pros: Preserves conversation context and flow
+    - Cons: Slightly less precise attribution
+  </Accordion>
+
+  <Accordion title="Processing Order" icon="arrow-down">
+    **File order (default)**: Process conversations as they appear in the export
+
+    **Latest first**: Process most recent conversations first
+    - Use when you want recent context available quickly
+
+    **Oldest first**: Process oldest conversations first
+    - Use when building chronological context
+  </Accordion>
+
+  <Accordion title="Processing Limit" icon="hashtag">
+    Set a maximum number of conversations to process from the file
+    - Useful for testing with a subset
+    - Helps manage quota usage
+    - Can always process more later
+  </Accordion>
+</AccordionGroup>
+
+### Chats Tab
+
+Browse, manage, and organize your uploaded conversations.
+
+**Features:**
+- **Filter conversations** by:
+  - Provider (ChatGPT, Claude, TypingMind, or All)
+  - Date range
+  - Title search
+  - Pinned status
+- **Pagination**: 25 chats per page by default
+- **Quick actions** per chat:
+  - 📌 **Pin/unpin** for quick access
+  - 🔗 **Open in original platform** (ChatGPT.com, Claude.ai)
+  - 🚫 **Exclude from indexing** (hides from search/injection)
+  - 🗑️ **Delete permanently**
+- **View full conversations** with all messages and metadata
+
+**Managing Your Chats:**
+
+<CardGroup cols={2}>
+  <Card title="Pin Important Chats" icon="thumbtack">
+    Pin frequently referenced conversations to keep them at the top of your list
+  </Card>
+  <Card title="Exclude Sensitive Chats" icon="eye-slash">
+    Exclude specific conversations from search and context injection while keeping them stored
+  </Card>
+  <Card title="Open in Source" icon="arrow-up-right-from-square">
+    Click to view the conversation in its original platform (if still available)
+  </Card>
+  <Card title="Delete Unwanted Chats" icon="trash">
+    Permanently delete conversations you don't want to keep
+  </Card>
+</CardGroup>
+
+### Search Tab
+
+Perform powerful semantic search across all your chat history.
+
+**How to Search:**
+1. Enter a natural language query (e.g., "discussions about authentication")
+2. Apply optional filters:
+   - Provider (ChatGPT, Claude, TypingMind, or All)
+   - Date range
+3. Configure context window size (1-30 chunks)
+4. Enable/disable reranking for relevance optimization
+5. View results with surrounding context
+
+**Search Features:**
+- **Natural language queries**: No boolean operators needed—just ask naturally
+- **Semantic understanding**: Finds conceptually related content, not just keyword matches
+- **Context windows**: See messages before and after the matched content
+- **Relevance ranking**: Results sorted by relevance to your query
+- **Provider filtering**: Search across all platforms or filter by specific source
+- **Conversation metadata**: See title, date, and message count for each result
+
+**Search Tips:**
+
+<AccordionGroup>
+  <Accordion title="Be Specific but Natural" icon="message-question">
+    ✅ "discussions about implementing JWT authentication"
+
+    ❌ "auth AND jwt OR security"
+
+    Use natural language—the system understands context better than boolean operators.
+  </Accordion>
+
+  <Accordion title="Use Time Filters" icon="calendar">
+    Narrow down results by date range if you remember roughly when a conversation happened.
+  </Accordion>
+
+  <Accordion title="Adjust Context Window" icon="window">
+    - Small window (1-5): Precise matches
+    - Medium window (6-15): Balanced context
+    - Large window (16-30): Maximum surrounding context
+  </Accordion>
+
+  <Accordion title="Try Different Phrasings" icon="rotate">
+    If you don't find what you're looking for, try rephrasing your query. Semantic search understands multiple ways of asking the same thing.
+  </Accordion>
+</AccordionGroup>
+
+### Ask Tab
+
+Ask natural language questions and get AI-powered answers synthesized from your entire chat history.
+
+**How It Works:**
+1. Enter a question about your chat history
+2. The AI searches and analyzes relevant conversations
+3. Receive a comprehensive answer with citations
+4. Follow up with related questions
+
+**Capabilities:**
+- **Multi-step reasoning**: The AI can perform up to 10 reasoning steps, searching multiple times if needed
+- **Comprehensive synthesis**: Answers typically 500+ words with detailed analysis
+- **Source citations**: Every answer includes references to specific conversations
+- **Tool-assisted search**: The AI can search by keywords, topics, timeframes, and more
+- **Context-aware**: Understands your question and retrieves the most relevant information
+
+**Example Questions:**
+- "What have I discussed about authentication strategies?"
+- "Show me all conversations about the UserProfile component"
+- "What decisions did I make about database architecture?"
+- "Summarize my discussions about API design patterns"
+- "What feedback did I receive on my pricing page redesign?"
+
+**Understanding Results:**
+
+Each answer includes:
+- **Synthesized response**: Comprehensive answer drawing from multiple sources
+- **Citations**: References to specific conversations where information was found
+- **Context snippets**: Relevant excerpts from cited conversations
+- **Confidence indicators**: How certain the AI is about the answer
+
+<Warning>
+The Ask feature uses OpenAI's GPT model and can take 30-120 seconds for complex queries. Be patient while it searches and analyzes your history.
+</Warning>
+
+## Browser Extension Integration
+
+The Browser Extension automatically injects relevant chat history context into your new conversations.
+
+### How Auto-Injection Works
+
+1. **Detection**: The extension detects when you're starting a new chat
+2. **Analysis**: Your current prompt is analyzed for context
+3. **Retrieval**: Relevant past conversations are found
+4. **Injection**: Context is intelligently inserted before your prompt
+5. **Seamless**: You see your prompt with enhanced context
+
+### Configuring Injection
+
+**Token Limits:**
+- Default: 600 tokens
+- Maximum: 2,000 tokens
+- Configurable in extension settings
+
+**Platform Support:**
+- ✅ ChatGPT
+- ✅ Claude (web and desktop via MCP)
+- ✅ Gemini
+- More platforms coming soon
+
+**Injection Modes:**
+- **Single-turn**: Injects per-message chunks
+- **Cross-turn**: Injects multi-message conversation context
+
+### When Context Is Injected
+
+Context injection happens when:
+- ✅ You start a new conversation
+- ✅ Your prompt matches relevant past discussions
+- ✅ Injection is enabled in settings
+- ❌ You explicitly disable it for a conversation
+
+<Info>
+The extension shows a **Quick Inject** button or **MemoryPlugin button** near the chat input. Click once per chat to enable memory and chat history features.
+</Info>
+
+## Best Practices
+
+### Organizing Chat History
+
+<AccordionGroup>
+  <Accordion title="Pin Your Most Important Conversations" icon="star">
+    Use pinning to keep frequently referenced conversations easily accessible. Great for:
+    - Project reference conversations
+    - Key decision-making discussions
+    - Comprehensive tutorials or learning sessions
+  </Accordion>
+
+  <Accordion title="Exclude Sensitive or Irrelevant Chats" icon="filter">
+    Use exclusion (not deletion) for:
+    - Personal conversations you want to keep but not search
+    - Experimental chats that aren't useful for context
+    - Sensitive topics that shouldn't appear in injection
+
+    Exclusion keeps the chat stored but removes it from search and injection.
+  </Accordion>
+
+  <Accordion title="Regular Cleanup" icon="broom">
+    Periodically review your chat history:
+    - Delete test conversations
+    - Exclude outdated discussions
+    - Re-organize pinned conversations
+  </Accordion>
+
+  <Accordion title="Use Descriptive Search Queries" icon="magnifying-glass">
+    When searching, be specific:
+    - ✅ "authentication implementation with JWT"
+    - ❌ "auth stuff"
+
+    The more descriptive your query, the better the results.
+  </Accordion>
+</AccordionGroup>
+
+### Optimizing Performance
+
+**Token Budget Management:**
+- Start with default 600 tokens for injection
+- Increase to 1,000-2,000 only if needed
+- Remember: More tokens = more cost and slower responses
+
+**File Upload Tips:**
+- Keep files under 100 MB when possible
+- Use processing limits for testing
+- Process older conversations in batches
+
+**Search Optimization:**
+- Use date filters to narrow results
+- Start with smaller context windows
+- Enable reranking for better relevance (at cost of speed)
+
+## Limitations and Considerations
+
+### File Sizes
+- **Maximum**: 500 MB per file
+- **Recommended**: Under 100 MB for best performance
+- **Warning threshold**: Files over 100 MB show performance warnings
+
+### Processing Limits
+- Large files may take several minutes to hours to process
+- Processing happens in the background
+- Quota limits may apply based on your plan
+
+### Token Budgets
+- **Injection default**: 600 tokens
+- **Injection maximum**: 2,000 tokens (hard cap)
+- Messages may be truncated to fit within budget (marked with "[message truncated]")
+
+### Platform Support
+- **Upload**: ChatGPT, Claude, TypingMind
+- **Reading**: All Browser Extension and MCP platforms
+- More platforms coming—request yours on our [feedback form](https://feedback.memoryplugin.com)
+
+### Search Capabilities
+- Natural language only (no boolean operators)
+- Requires vector embeddings (semantic search)
+- 30-second timeout for search queries
+- Results limited to most relevant matches
+
+### Feature Availability
+- Feature access may depend on your subscription plan
+- Some features are in beta and may change
+- Check your dashboard for current feature access
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Upload Failed or Stuck" icon="circle-exclamation">
+    **Symptoms**: Upload doesn't start, shows error, or stays at 0%
+
+    **Solutions**:
+    - Check file size (must be under 500 MB)
+    - Verify file is valid JSON
+    - Ensure file is from supported platform (ChatGPT, Claude, TypingMind)
+    - Try refreshing the page and uploading again
+    - Check your internet connection
+  </Accordion>
+
+  <Accordion title="Processing Takes Too Long" icon="clock">
+    **Symptoms**: Processing status doesn't update, seems stuck
+
+    **Solutions**:
+    - Large files can take several minutes to hours
+    - Check the Uploads tab for current status
+    - Processing happens in the background—you can close the tab
+    - If stuck for over 24 hours, contact support with your upload ID
+  </Accordion>
+
+  <Accordion title="Context Not Appearing in Chats" icon="message-slash">
+    **Symptoms**: Chat history context isn't being injected
+
+    **Solutions**:
+    - Ensure Browser Extension is installed and signed in
+    - Click the MemoryPlugin button/Quick Inject button to activate
+    - Check that chat history feature is enabled in settings
+    - Verify you have uploaded and processed chat history
+    - Try increasing max tokens in extension settings
+  </Accordion>
+
+  <Accordion title="Search Returns No Results" icon="magnifying-glass-minus">
+    **Symptoms**: Search doesn't find expected conversations
+
+    **Solutions**:
+    - Try different phrasings of your query
+    - Remove date filters and try again
+    - Check if the chat was excluded from indexing
+    - Verify the conversation was successfully processed
+    - Try broader search terms
+  </Accordion>
+
+  <Accordion title="Can't Delete Conversations" icon="trash">
+    **Symptoms**: Delete action doesn't work
+
+    **Solutions**:
+    - Refresh the page and try again
+    - Check your internet connection
+    - Verify you have permission to delete
+    - Try deleting from the Uploads tab instead (deletes entire import)
+  </Accordion>
+
+  <Accordion title="Excluded Chats Still Appearing" icon="eye">
+    **Symptoms**: Excluded conversations show up in search or injection
+
+    **Solutions**:
+    - Exclusion takes a few minutes to propagate
+    - Refresh the page
+    - Clear your browser cache
+    - Verify the exclusion was saved (check the Chats tab)
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+If you continue experiencing issues after trying these solutions, please contact support at [support@memoryplugin.com](mailto:support@memoryplugin.com) with:
+- Your user ID
+- Upload ID (if applicable)
+- Description of the issue
+- Steps you've already tried
+</Warning>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Browser Extension Setup"
+    icon="puzzle-piece"
+    href="/integrations/browser-extension"
+  >
+    Install the Browser Extension to start using Chat History Memory across all platforms
+  </Card>
+  <Card
+    title="MCP Server Integration"
+    icon="server"
+    href="/integrations/mcp-server"
+  >
+    Set up the MCP Server for Claude Desktop and other MCP-compatible clients
+  </Card>
+  <Card
+    title="Memory Buckets"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Organize your regular memories with buckets for better context management
+  </Card>
+  <Card
+    title="Privacy Policy"
+    icon="shield"
+    href="https://www.memoryplugin.com/privacy-policy"
+  >
+    Read our full privacy policy and data handling practices
+  </Card>
+</CardGroup>
+
+## Have Feedback?
+
+Chat History Memory is in Beta and we're actively improving it based on user feedback.
+
+- **Report bugs**: [support@memoryplugin.com](mailto:support@memoryplugin.com)
+- **Request features**: [feedback.memoryplugin.com](https://feedback.memoryplugin.com)
+- **View roadmap**: [feedback.memoryplugin.com/roadmap](https://feedback.memoryplugin.com/roadmap)
