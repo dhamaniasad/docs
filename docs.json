@@ -64,9 +64,9 @@
               {
                 "group": "Chat History Memory",
                 "pages": [
-                  "features/chat-history/overview",
-                  "features/chat-history/dashboard",
-                  "features/chat-history/integration"
+                  "features/chat-history/introduction",
+                  "features/chat-history/importing",
+                  "features/chat-history/using"
                 ]
               }
             ]

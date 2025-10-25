@@ -1,7 +1,7 @@
 ---
-title: "Dashboard Features"
-description: "Upload, browse, search, and analyze your chat history"
-icon: "table-columns"
+title: "Importing Your Chats"
+description: "Upload and manage your chat history from ChatGPT, Claude, and TypingMind"
+icon: "cloud-arrow-up"
 author: "asad"
 lastUpdated: "2025-10-25"
 ---
@@ -10,23 +10,19 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 
 <ArticleInfo author="asad" lastUpdated="2025-10-25" />
 
-The Chat History dashboard has four main tabs for managing and using your conversation history.
-
-## Uploads Tab
-
-Manage your chat history imports and monitor processing status.
-
-### Getting Your Chat History
+## Getting Your Chat History
 
 You can add chat history to MemoryPlugin in two ways:
 
 **Option 1: Upload Chat Exports** (ChatGPT, Claude, TypingMind) — **Recommended for initial import**
+
 Export your chat history as JSON files and upload them. This is the fastest way to import your entire history.
 
 **Option 2: Online Import** (ChatGPT, Claude - Beta)
+
 Import conversations directly from your account without downloading files. Best for keeping new and updated conversations in sync after your initial import. Can be much slower for importing your entire history, but works as a fallback if you're unable to export JSON files.
 
-### How to Export Your Chats
+## How to Export Your Chats
 
 <AccordionGroup>
   <Accordion title="Export from ChatGPT" icon="message">
@@ -64,7 +60,7 @@ Import conversations directly from your account without downloading files. Best 
   </Accordion>
 </AccordionGroup>
 
-### File Size Limits
+## File Size Limits
 
 - **Maximum file size**: 500 MB
 - **Recommended**: Under 100 MB for best performance
@@ -76,7 +72,7 @@ Files over 100 MB will show a performance warning but can still be uploaded.
 Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we can help you with larger imports.
 </Info>
 
-### Uploading a File
+## Uploading a File
 
 <Steps>
   <Step title="Select Platform">
@@ -113,6 +109,14 @@ Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we ca
   </Step>
 </Steps>
 
+## Managing Import Quota
+
+<Info>
+**Core plan**: Up to 500 searchable chats total
+
+**Pro plan**: Unlimited chats
+</Info>
+
 ### Why Use Import Limits?
 
 <AccordionGroup>
@@ -129,13 +133,19 @@ Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we ca
   </Accordion>
 </AccordionGroup>
 
-### Managing Imports
+## Uploads Tab
+
+Monitor and manage your chat history imports.
+
+### Viewing Imports
 
 Each upload shows:
 - **Filename** and platform (ChatGPT, Claude, TypingMind)
 - **Status**: Queued, Processing, Completed, or Failed
 - **Progress**: Percentage complete and message count
 - **Actions**: Delete button to remove the entire import
+
+### Deleting Imports
 
 <Warning>
 Deleting an import removes all conversations from that upload, including from search and your Chats list. This action cannot be undone.
@@ -223,125 +233,6 @@ Each conversation has several actions available:
   </Accordion>
 </AccordionGroup>
 
-## Search Tab
-
-Perform powerful searches across your entire chat history.
-
-### How to Search
-
-1. **Enter your query** in natural language (e.g., "discussions about authentication")
-2. **Apply filters** (optional):
-   - Platform (ChatGPT, Claude, TypingMind, or all)
-   - Date range
-3. **Adjust settings** (optional):
-   - Context window size (1-30 chunks)
-   - Enable/disable reranking
-4. **View results** with matched content and surrounding context
-
-### Search Features
-
-- **Natural language** - No boolean operators needed, just ask naturally
-- **Finds related concepts** - Not just keyword matching, understands meaning
-- **Shows context** - See messages before and after the matched content
-- **Relevance ranked** - Best matches appear first
-- **View full conversation** - Click any result to open the complete chat
-
-### Search Tips
-
-<AccordionGroup>
-  <Accordion title="Be specific but natural" icon="message-question">
-    ✅ Good: "discussions about implementing JWT authentication"
-
-    ❌ Avoid: "auth AND jwt OR security"
-
-    Use natural language—the system understands context better than boolean operators.
-  </Accordion>
-
-  <Accordion title="Use date filters for recent topics" icon="calendar">
-    If you remember roughly when a conversation happened, narrow down results with the date range filter.
-  </Accordion>
-
-  <Accordion title="Adjust context window for more/less surrounding text" icon="window">
-    - **Small (1-5 chunks)**: Precise matches only
-    - **Medium (6-15 chunks)**: Balanced context
-    - **Large (16-30 chunks)**: Maximum surrounding conversation
-  </Accordion>
-
-  <Accordion title="Try rephrasing if needed" icon="rotate">
-    If you don't find what you're looking for, try asking the same thing in different words. The search understands multiple ways of expressing the same concept.
-  </Accordion>
-
-  <Accordion title="Filter by platform" icon="filter">
-    If you remember which AI you were chatting with, filter to just that platform for faster results.
-  </Accordion>
-</AccordionGroup>
-
-### Understanding Results
-
-Each search result shows:
-- **Matched content** highlighted in context
-- **Conversation title** and date
-- **Platform** it came from
-- **Message count** in that conversation
-- **Relevance score** (higher = better match)
-
-Click any result to view the full conversation with all messages.
-
-<Note>
-Search has a 30-second timeout. If your query times out, try being more specific or using date filters to narrow the scope.
-</Note>
-
-## Ask Tab
-
-Ask questions and get AI-powered answers synthesized from your entire chat history.
-
-### How It Works
-
-1. **Ask a question** in natural language about your chat history
-2. **AI searches** for relevant conversations automatically
-3. **Get a comprehensive answer** with citations to source conversations
-4. **Follow up** with related questions
-
-### What You Can Ask
-
-The AI can answer questions like:
-
-- "What have I discussed about authentication strategies?"
-- "Show me all conversations about the UserProfile component"
-- "What decisions did I make about database architecture?"
-- "Summarize my discussions about API design patterns"
-- "What feedback did I receive on my pricing page redesign?"
-
-### Understanding Answers
-
-Each answer includes:
-
-<CardGroup cols={2}>
-  <Card title="Synthesized Response" icon="message">
-    A comprehensive answer (typically 500+ words) drawing from multiple conversations
-  </Card>
-  <Card title="Source Citations" icon="quote-left">
-    References to specific conversations where information was found
-  </Card>
-  <Card title="Context Snippets" icon="align-left">
-    Relevant excerpts from the cited conversations
-  </Card>
-  <Card title="Confidence Indicators" icon="gauge">
-    How certain the AI is about the answer
-  </Card>
-</CardGroup>
-
-### Features
-
-- **Multi-step reasoning** - The AI can search multiple times to find complete answers
-- **Automatic tool use** - Searches by keywords, topics, and timeframes as needed
-- **Context-aware** - Understands your question and retrieves the most relevant information
-- **Comprehensive synthesis** - Combines information from multiple sources into one answer
-
-<Warning>
-The Ask feature can take 30-120 seconds for complex queries as it searches and analyzes your history. Be patient while it works.
-</Warning>
-
 ## Troubleshooting
 
 <AccordionGroup>
@@ -366,17 +257,6 @@ The Ask feature can take 30-120 seconds for complex queries as it searches and a
     - If stuck for over 24 hours, contact support with your upload ID
   </Accordion>
 
-  <Accordion title="Search Returns No Results" icon="magnifying-glass-minus">
-    **Symptoms**: Search doesn't find expected conversations
-
-    **Solutions**:
-    - Try different phrasings of your query
-    - Remove date filters and search again
-    - Check if the chat was excluded from indexing
-    - Verify the conversation was successfully processed
-    - Try broader search terms
-  </Accordion>
-
   <Accordion title="Can't Delete Conversations" icon="trash">
     **Symptoms**: Delete action doesn't work
 
@@ -387,7 +267,7 @@ The Ask feature can take 30-120 seconds for complex queries as it searches and a
   </Accordion>
 
   <Accordion title="Excluded Chats Still Appearing" icon="eye">
-    **Symptoms**: Excluded conversations show up in search or injection
+    **Symptoms**: Excluded conversations show up in your Chats list
 
     **Solutions**:
     - Exclusion takes a few minutes to take effect
@@ -418,19 +298,10 @@ If issues persist, [contact support](https://memoryplugin.com) with:
 
 ## Next Steps
 
-<CardGroup cols={2}>
-  <Card
-    title="Browser Extension Integration"
-    icon="puzzle-piece"
-    href="/features/chat-history/integration"
-  >
-    Learn how chat history auto-injects into new conversations
-  </Card>
-  <Card
-    title="Back to Overview"
-    icon="arrow-left"
-    href="/features/chat-history/overview"
-  >
-    Review how Chat History Memory works
-  </Card>
-</CardGroup>
+<Card
+  title="Using Chat History"
+  icon="sparkles"
+  href="/features/chat-history/using"
+>
+  Learn how to search, ask questions, and use auto-injection with your chat history
+</Card>
