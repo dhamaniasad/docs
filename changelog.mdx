@@ -3,12 +3,39 @@ title: "Changelog"
 description: "Product updates and announcements for MemoryPlugin"
 rss: true
 author: "asad"
-lastUpdated: "2025-10-24"
+lastUpdated: "2025-11-06"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-10-24" />
+<ArticleInfo author="asad" lastUpdated="2025-11-06" />
+
+<Update label="November 2025" description="Smart Categories & Safari Fixes" tags={["Features", "Platform Support"]}>
+  ### Smart Memory enhancements
+  - **Create custom categories** — define your own smart categories instead of relying only on auto-generated ones
+  - **Remove categorization** — uncategorize buckets when you want to reorganize or start fresh
+
+  ### Safari extension fixes
+  - **Fixed chat history sync** — ChatGPT, Claude, and Gemini conversations now sync properly on Safari
+  - **See which account is active** — user email now displayed in the extension panel
+  - **Improved reliability** — better authentication and error handling for Safari users
+
+  Related docs: [Browser extension](/integrations/browser-extension)
+
+  ### Chat history improvements
+  - **Protected pins** — pinned conversations can't be accidentally deleted
+  - **Better search highlighting** — easier to see which parts of conversations matched your search
+  - **Faster MCP queries** — Remote MCP server now runs multiple queries in parallel for quicker results
+
+  Related docs: [Remote MCP server](/integrations/remote-mcp-server)
+
+  ### Dashboard
+  - **Quick help access** — contextual help links throughout the dashboard
+  - **AskLibrary Plus bundle** — now included in Believer tier
+
+  ### Extension compatibility
+  - Updated for latest ChatGPT interface changes
+</Update>
 
 <Update label="October 2025" description="Chat History Evolution & Performance" tags={["Features", "Platform Support"]}>
   ### Background sync improvements
