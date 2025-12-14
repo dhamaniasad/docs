@@ -1,114 +1,92 @@
 ---
 title: "MemoryPlugin Documentation"
-description: "Cure your AI of amnesia with long-term memory across all your favorite AI platforms"
+description: "Persistent memory, chat history, and document search across all your AI platforms"
 author: "asad"
-lastUpdated: "2025-08-20"
+lastUpdated: "2025-12-14"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-20" />
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
 
-MemoryPlugin solves AI "amnesia" by providing persistent, contextual memory across multiple AI platforms and conversations.
+MemoryPlugin gives your AI persistent memory, searchable chat history, and document access—across every platform you use.
 
-## Why MemoryPlugin?
+## What MemoryPlugin Does
 
-Whether you're using ChatGPT, Claude, Gemini, or another AI tool, you're interacting with Large Language Models (LLMs) that are fundamentally "stateless" - they can't learn or remember information between sessions. MemoryPlugin bridges this gap by creating a persistent memory layer that works across platforms.
+AI tools like ChatGPT and Claude forget everything between conversations. MemoryPlugin fixes that by storing what matters and making it available whenever you need it.
 
-## Key Features
+<CardGroup cols={3}>
+  <Card title="Memories" icon="brain" href="/features/memory-buckets">
+    Save facts, preferences, and context that your AI can recall in any conversation
+  </Card>
+  <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
+    Search and query your past AI conversations from ChatGPT, Claude, and TypingMind
+  </Card>
+  <Card title="Files" icon="folder-open" href="/features/file-buckets">
+    Upload documents and query them alongside your memories
+  </Card>
+</CardGroup>
+
+## Core Features
 
 <CardGroup cols={2}>
-  <Card
-    title="Memory Buckets"
-    icon="folder"
-    href="/features/memory-buckets"
-  >
-    Organize memories into separate contexts for different projects or use cases
+  <Card title="Ask" icon="messages" href="/features/ask">
+    Query your memories, chat history, and files from one unified interface
   </Card>
-  <Card
-    title="Smart Memory"
-    icon="brain"
-    href="/features/smart-memory"
-  >
-    AI-powered optimization that filters memories and saves up to 90% on tokens
+  <Card title="Smart Memory" icon="sparkles" href="/features/smart-memory">
+    AI-powered organization that categorizes memories and saves tokens
   </Card>
-  <Card
-    title="Cross-Platform"
-    icon="globe"
-    href="/platforms/supported-platforms"
-  >
-    Works with 13+ AI platforms including ChatGPT, Claude, Gemini, and more
+  <Card title="Cross-Platform" icon="globe" href="/platforms/supported-platforms">
+    Works with 15+ AI platforms including ChatGPT, Claude, Gemini, and more
   </Card>
-  <Card
-    title="Multiple Integrations"
-    icon="puzzle-piece"
-    href="/integrations/mcp-server"
-  >
-    Browser extension, MCP server, Custom GPT, and API integrations
+  <Card title="Multiple Integrations" icon="puzzle-piece" href="/integrations/overview">
+    Browser extension, MCP server, TypingMind plugin, Custom GPT, and API
   </Card>
 </CardGroup>
 
 ## Quick Start
 
-<CardGroup cols={3}>
-  <Card
-    title="Get Started"
-    icon="rocket"
-    href="/getting-started/introduction"
-  >
-    Learn the basics and set up MemoryPlugin
-  </Card>
-  <Card
-    title="Choose Integration"
-    icon="plug"
-    href="/integrations/overview"
-  >
-    Pick the integration that works best for you
-  </Card>
-  <Card
-    title="Import Memories"
-    icon="download"
-    href="/features/chat-history-import"
-  >
-    Import existing memories from ChatGPT
-  </Card>
-</CardGroup>
-
-## How Does It Work?
-
-MemoryPlugin acts as a persistent memory layer between you and your AI assistants. Here's the simple magic:
-
 <Steps>
-  <Step title="Save Important Information">
-    When you share something worth remembering, MemoryPlugin automatically stores it. You can also explicitly ask your AI to remember specific details.
+  <Step title="Create Your Account">
+    Sign up at [memoryplugin.com](https://memoryplugin.com) to get your dashboard and API access.
   </Step>
-  <Step title="Memory Access">
-    Your memories are injected into new conversations, giving your AI the full context it needs to provide personalized responses.
+  <Step title="Choose Your Integration">
+    Pick how you want to connect MemoryPlugin to your AI tools:
+    - **[Browser Extension](/integrations/browser-extension)** — Works with ChatGPT, Claude, Gemini, and more
+    - **[MCP Server](/integrations/mcp-server)** — For Claude Desktop, Cursor, Windsurf, and other MCP clients
+    - **[TypingMind Plugin](/integrations/typingmind-plugin)** — Native integration for TypingMind users
   </Step>
-  <Step title="Cross-Platform Sync">
-    Information saved while using ChatGPT is instantly available when you switch to Claude, Gemini, or any other supported platform.
+  <Step title="Start Building Memory">
+    Your AI will automatically save important information, or you can explicitly ask it to remember things. Import your existing ChatGPT memories or sync your chat history for instant context.
   </Step>
 </Steps>
 
-The result? Your AI remembers you, your preferences, your projects, and important context - creating a truly personalized experience that gets better over time.
+## How It Works
 
-## Ready to Get Started?
+MemoryPlugin acts as a persistent layer between you and your AI assistants:
 
-Transform your AI experience with persistent memory across all your favorite platforms.
+1. **Save** — Important information is stored as you chat, either automatically or when you ask
+2. **Organize** — Memories go into buckets you control, with optional AI categorization
+3. **Recall** — In any new conversation, relevant context is retrieved and provided to your AI
+4. **Search** — Query your memories, past conversations, and documents anytime
+
+The result: Your AI knows your preferences, remembers your projects, and has the context it needs—every time.
+
+## What's New
+
+MemoryPlugin 2.0 brings a redesigned dashboard, the unified Ask tool, file buckets, keyboard shortcuts, and much more.
+
+<Card title="See What's New" icon="sparkles" href="/changelog">
+  Check the changelog for the latest features and improvements
+</Card>
+
+## Get Started
 
 <CardGroup cols={2}>
-  <Card
-    title="Quick Setup Guide"
-    icon="rocket"
-    href="/getting-started/introduction"
-  >
-    Get up and running in under 3 minutes
+  <Card title="Quick Setup Guide" icon="rocket" href="/getting-started/introduction">
+    Get up and running in minutes
   </Card>
-  <Card
-    title="Browse Integrations"
-    icon="puzzle-piece"
-    href="/integrations/overview"
-  >
-    Find the perfect integration for your workflow
+  <Card title="Browse Integrations" icon="puzzle-piece" href="/integrations/overview">
+    Find the right integration for your workflow
   </Card>
 </CardGroup>

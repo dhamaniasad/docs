@@ -2,50 +2,64 @@
 title: "Quick Setup"
 description: "Set up MemoryPlugin in 3 simple steps and give your AI perfect memory"
 author: "asad"
-lastUpdated: "2025-08-23"
+lastUpdated: "2025-12-14"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-23" />
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
 
-Give your AI perfect memory in just 3 simple steps. This guide will walk you through everything you need to know.
+Give your AI persistent memory, searchable chat history, and document access in just a few steps.
 
 ## Setup Steps
 
 <Steps>
   <Step title="Create Your Account">
     Sign up at [memoryplugin.com](https://memoryplugin.com)
-    
+
     You'll get:
     - Access to all integration methods
     - Your personal API key
-    - Full memory management dashboard
+    - Full dashboard for managing memories, chat history, and files
 
     <EmailIndependence />
   </Step>
-  
+
   <Step title="Choose Your Integration">
     Pick how you want to use MemoryPlugin.
-    
+
     **[View all integration options →](/integrations/overview)**
-    
+
     Most popular choices:
-    - Browser Extension - Works everywhere with rich UI
-    - MCP Server - For MCP-compatible clients
-    - Custom GPT - Instant setup for ChatGPT
+    - **Browser Extension** — Works with ChatGPT, Claude, Gemini, and 15+ platforms
+    - **MCP Server** — For Claude Desktop, Cursor, Windsurf, and other MCP clients
+    - **TypingMind Plugin** — Native integration with full feature support
   </Step>
-  
+
   <Step title="Start Using Memory">
     Once installed:
-    - **Browser Extension**: Click the "Quick Inject" button in each chat to activate memory
-    - **MCP Server**: Add custom instructions to your MCP client to enable memory
-    - **Custom GPT**: Ready to use immediately - just start chatting!
-    
-    After activation, MemoryPlugin will save important information and retrieve relevant memories across all your conversations.
+    - **Browser Extension**: Click the MemoryPlugin button to activate memory in each chat
+    - **MCP Server**: Your AI will automatically use MemoryPlugin tools
+    - **TypingMind Plugin**: Ready to use immediately—just start chatting
+
+    Your AI will save important information automatically and retrieve relevant context in future conversations.
   </Step>
 </Steps>
+
+## What You Can Do
+
+<CardGroup cols={3}>
+  <Card title="Save Memories" icon="brain" href="/features/memory-buckets">
+    Store facts, preferences, and context your AI can recall anytime
+  </Card>
+  <Card title="Search Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
+    Import and query your past AI conversations from ChatGPT, Claude, and TypingMind
+  </Card>
+  <Card title="Query Documents" icon="folder-open" href="/features/file-buckets">
+    Upload PDFs and docs to search alongside your memories
+  </Card>
+</CardGroup>
 
 ## Understanding AI Memory
 
@@ -59,7 +73,7 @@ Without MemoryPlugin, you need to re-explain your context, preferences, and impo
 
 ### The Solution: Persistent Memory
 
-MemoryPlugin creates a memory layer that works across all AI platforms. Information you share once is remembered forever (or until you delete it).
+MemoryPlugin creates a memory layer that works across all AI platforms. Information you share once is remembered forever (or until you delete it). Plus, you can search your past conversations and uploaded documents.
 
 ## How It Works
 
@@ -70,58 +84,78 @@ MemoryPlugin creates a memory layer that works across all AI platforms. Informat
     You: "I'm working on a React project using TypeScript and Tailwind CSS"
     AI: "I'll remember that for future conversations..."
     ```
-    
+
     **Manual Memory Creation**
     ```
     You: "Remember that my dog's name is Max and he's a golden retriever"
     AI: "I've saved that to your memory..."
     ```
   </Tab>
-  
+
   <Tab title="Using Memories">
     In a new conversation:
     ```
     You: "What kind of dog do I have?"
     AI: "You have a golden retriever named Max."
     ```
-    
+
     The AI automatically retrieves relevant memories based on context.
+  </Tab>
+
+  <Tab title="Chat History">
+    Search your past AI conversations:
+    ```
+    You: "What did I decide about the database migration last week?"
+    AI: "Based on your chat history, you decided to use PostgreSQL and..."
+    ```
+
+    Works with conversations imported from ChatGPT, Claude, and TypingMind.
   </Tab>
 </Tabs>
 
 ## Key Features
 
 <AccordionGroup>
-  <Accordion title="Complete Context" icon="brain">
-    MemoryPlugin provides your AI with all the context it needs, ensuring it knows your preferences and history from the start.
+  <Accordion title="Memories" icon="brain">
+    Save facts, preferences, project details, and anything you want your AI to remember. Organize into buckets for different contexts.
   </Accordion>
-  
+
+  <Accordion title="Chat History" icon="clock-rotate-left">
+    Import your past AI conversations and search them. Ask questions about what you discussed, decisions you made, or patterns across conversations.
+  </Accordion>
+
+  <Accordion title="File Search" icon="file">
+    Upload PDFs, Word docs, and text files. Query them through the Ask tool or directly from your AI via MCP or TypingMind plugin.
+  </Accordion>
+
   <Accordion title="Cross-Platform Sync" icon="arrows-rotate">
-    Memories created in ChatGPT are instantly available in Claude, Gemini, and all other supported platforms.
+    Memories, chat history, and files are available across all supported platforms. Save something in ChatGPT, use it in Claude.
   </Accordion>
-  
-  <Accordion title="Memory Buckets" icon="folder">
-    Organize memories into categories like Work, Personal, Projects for better context management.
+
+  <Accordion title="Ask Tool" icon="messages">
+    Query all your data from one place in the dashboard. Switch between Memories, Chat History, and Files modes.
   </Accordion>
-  
+
   <Accordion title="Privacy First" icon="lock">
-    Your memories are private and only accessible by you. You have full control to view, edit, or delete them anytime.
+    Your data is private and only accessible by you. Full control to view, edit, or delete anytime.
   </Accordion>
 </AccordionGroup>
 
 ## Common Questions
 
 **How much can I store?**
-Store as much as you need - there are no artificial limits on memory storage.
+Store as much as you need—there are no artificial limits on memory storage.
 
 **Is my data private?**
-Yes, your memories are private and only accessible by you.
+Yes, your memories, chat history, and files are private and only accessible by you.
 
 **Can I delete memories?**
 Yes, you have full control through the dashboard.
 
 **Does it work on mobile?**
-Yes! Custom GPT works on ChatGPT mobile app, the browser extension works on iOS Safari and Kiwi Browser (Android), TypingMind plugin works on mobile, and some MCP clients support mobile too.
+Yes! The browser extension works on iOS Safari and Kiwi Browser (Android), TypingMind plugin works on mobile, and the dashboard is mobile-friendly.
+
+## Next Steps
 
 <CardGroup cols={2}>
   <Card
@@ -134,7 +168,7 @@ Yes! Custom GPT works on ChatGPT mobile app, the browser extension works on iOS 
   <Card
     title="Choose Integration"
     icon="plug"
-    href="/integrations/mcp-server"
+    href="/integrations/overview"
   >
     Pick the integration method that works best for your setup
   </Card>
