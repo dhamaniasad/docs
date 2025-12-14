@@ -1,17 +1,17 @@
 ---
 title: "TypingMind Plugin"
-description: "Use MemoryPlugin with TypingMind for enhanced AI conversations"
+description: "Use MemoryPlugin with TypingMind for enhanced AI conversations with memory, chat history, and file search"
 icon: "keyboard"
 author: "asad"
-lastUpdated: "2025-08-23"
+lastUpdated: "2025-12-14"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-23" />
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
 
-MemoryPlugin offers native integration with TypingMind through our dedicated plugin. The plugin provides full memory functionality including storing, searching, and organizing memories across different AI models within TypingMind.
+MemoryPlugin offers native integration with TypingMind through our dedicated plugin. The plugin provides full functionality including memories, chat history search, and file queries across different AI models within TypingMind.
 
 <EmailIndependence />
 
@@ -52,60 +52,91 @@ The plugin installation link in your MemoryPlugin Dashboard ensures you always g
 Keep your Auth Token confidential - it provides access to your MemoryPlugin account.
 </Warning>
 
-## Plugin Modes
+## Available Functions
 
-The MemoryPlugin for TypingMind supports four main operation modes:
+The TypingMind plugin provides several functions that AI can use during conversations:
 
-<Tabs>
-  <Tab title="Store Mode">
-    **Purpose**: Add new memories  
-    **Usage**: AI automatically stores important information or when user uses `\m`  
-    **Parameters**: 
-    - `memory` (required): Text to remember
-    - `bucket` (optional): Specific bucket to store in
-  </Tab>
-  <Tab title="Search Mode">
-    **Purpose**: Find specific memories  
-    **Usage**: Look up specific information when memories haven't been loaded  
-    **Parameters**:
-    - `query` (required): Search term to find memories
-  </Tab>
-  <Tab title="Load All Mode">
-    **Purpose**: Load all memories  
-    **Usage**: Only when explicitly requested by user  
-    **Parameters**: None required
-  </Tab>
-  <Tab title="Load Bucket Mode">
-    **Purpose**: Load memories from specific bucket  
-    **Usage**: When user specifies a particular context/bucket  
-    **Parameters**:
-    - `bucket` (required): Name of bucket to load from
-  </Tab>
-</Tabs>
+### Memory Functions
+
+| Function | Description |
+|----------|-------------|
+| `store_memory` | Save information for future recall. AI proactively stores important details. |
+| `search_memories` | Search your saved memories using semantic search. |
+| `load_all_memories` | Load all memories (use sparingly for token efficiency). |
+| `load_bucket_memories` | Load memories from a specific bucket. |
+
+### Chat History Functions
+
+Search and recall your imported AI conversations:
+
+| Function | Description |
+|----------|-------------|
+| `recall_chat_history` | Search past conversations and get synthesized context with source references. |
+| `get_conversation_summary` | Get details of a specific conversation from search results. |
+| `get_full_conversation` | Retrieve the complete transcript of a past conversation. |
+
+### File Functions
+
+Query your uploaded documents:
+
+| Function | Description |
+|----------|-------------|
+| `search_uploaded_files` | Search documents in your MemoryPlugin file buckets. Returns relevant passages with file and page info. |
 
 ## Features
 
 When integrated with TypingMind, MemoryPlugin provides:
 
-- **Automatic Memory Storage**: AI proactively stores important information
-- **Cross-Model Memory**: Share memories between different AI models in TypingMind
-- **Memory Buckets**: Organize memories for different projects or contexts  
-- **Search Functionality**: Find specific memories using natural language queries
-- **Date Stamping**: Automatically adds dates to stored memories
+<CardGroup cols={2}>
+  <Card title="Persistent Memory" icon="brain">
+    AI stores and recalls information across all your conversations
+  </Card>
+  <Card title="Chat History Search" icon="clock-rotate-left">
+    Find context from past AI conversations across ChatGPT, Claude, and more
+  </Card>
+  <Card title="Document Queries" icon="file-search">
+    Ask questions about your uploaded PDFs and documents
+  </Card>
+  <Card title="Cross-Model Memory" icon="arrows-cross">
+    Share memories between different AI models in TypingMind
+  </Card>
+</CardGroup>
 
 ## How to Use
 
-### Basic Usage
+### Basic Memory Usage
 
 1. **Start a conversation** in TypingMind with MemoryPlugin enabled
 2. **The AI will automatically store** important information as you chat
 3. **Use `\m` at the end** of a message to explicitly request memory storage
 4. **Specify buckets** when you want to organize memories by context
 
+### Using Chat History
+
+Ask the AI about your past conversations:
+
+```text
+"What did I discuss about the API project last week?"
+"Search my chat history for decisions about the database migration"
+"Find conversations where I talked about budget planning"
+```
+
+The AI will search your imported conversations and provide synthesized answers with source references.
+
+### Using File Search
+
+Query your uploaded documents:
+
+```text
+"Search my documents for information about the API rate limits"
+"What do my uploaded files say about the onboarding process?"
+"Find the section about authentication in my docs"
+```
+
 ### Working with Buckets
 
 ```text
-"Load my work bucket" - AI uses load_bucket mode
+"Load my work bucket" - AI loads memories from specific bucket
 "Remember this in my personal bucket: I prefer morning meetings" - AI stores in specific bucket
 "Search my project memories for deadlines" - AI searches within context
 ```
@@ -163,24 +194,34 @@ When integrated with TypingMind, MemoryPlugin provides:
   <Accordion title="Authentication failed">
     Regenerate your Auth Token from the MemoryPlugin dashboard
   </Accordion>
+  <Accordion title="Chat history not finding results">
+    Make sure you've imported conversations via the browser extension first
+  </Accordion>
 </AccordionGroup>
 
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Memory Buckets Guide"
+    title="Memory Buckets"
     icon="folder"
     href="/features/memory-buckets"
   >
     Learn how to organize your memories effectively
   </Card>
   <Card
-    title="MemoryPlugin Dashboard"
-    icon="chart-line"
-    href="https://memoryplugin.com/dashboard"
+    title="File Buckets"
+    icon="folder-open"
+    href="/features/file-buckets"
   >
-    Manage your memories and get your Auth Token
+    Upload documents to query in TypingMind
+  </Card>
+  <Card
+    title="Chat History"
+    icon="clock-rotate-left"
+    href="/features/chat-history/introduction"
+  >
+    Set up chat history importing
   </Card>
   <Card
     title="Browser Extension"
@@ -188,12 +229,5 @@ When integrated with TypingMind, MemoryPlugin provides:
     href="/integrations/browser-extension"
   >
     Use MemoryPlugin with other AI platforms
-  </Card>
-  <Card
-    title="API Documentation"
-    icon="code"
-    href="/integrations/api-integration"
-  >
-    Build custom integrations with our API
   </Card>
 </CardGroup>

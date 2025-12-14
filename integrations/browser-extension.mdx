@@ -3,13 +3,13 @@ title: "Browser Extension"
 description: "Use MemoryPlugin with any Chromium-based browser or Safari on iOS and macOS"
 icon: "browser"
 author: "asad"
-lastUpdated: "2025-11-19"
+lastUpdated: "2025-12-14"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2025-09-29" />
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
 
 The Browser Extension for MemoryPlugin provides seamless integration with AI chat platforms through your web browser.
 
@@ -65,9 +65,17 @@ After installation, sign up or log in to your [MemoryPlugin Dashboard](https://m
 
 ## How to Use the Browser Extension
 
-Once you install the browser extension, when you open supported AI tool websites, you will see a round MemoryPlugin button at the bottom right of the page. If you click on this button, you will be able to see all your memories and switch between active buckets.
+Once you install the browser extension, when you open supported AI tool websites, you will see a round MemoryPlugin button on the page. If you click on this button, you will be able to see all your memories and switch between active buckets.
 
 ![MemoryPlugin panel showing memories and bucket selector](/images/browser-extension/memory-panel.png)
+
+### Draggable Button
+
+The MemoryPlugin button can be dragged to any position on the page. The extension remembers your preferred position for each site, so the button stays where you put it.
+
+<Tip>
+Drag the button to a spot that doesn't interfere with the AI platform's interface. Your position is saved per-site.
+</Tip>
 
 ### Extension Interface
 
@@ -77,6 +85,7 @@ The MemoryPlugin panel provides:
 - **Bucket Selector**: Switch between different memory buckets (contexts)
 - **Memory Count**: See how many memories are in each bucket
 - **Smart Mode Toggle**: Enable Smart Mode when available (gradual rollout)
+- **Settings**: Access extension settings including TypingMind auto-sync
 
 ### Button Variations
 
@@ -169,6 +178,20 @@ To enable Smart Mode:
 - **Better Focus**: AI isn't distracted by unrelated information
 - **Contextual Awareness**: AI knows high-level information about all categories
 - **Automatic Management**: New memories are categorized automatically
+
+## TypingMind Integration
+
+The extension has special features for TypingMind users:
+
+### Auto-Sync Toggle
+Enable or disable automatic chat history syncing for TypingMind in the extension settings. When enabled, your TypingMind conversations are periodically synced to MemoryPlugin's chat history.
+
+### Sync Performance
+The extension uses batch loading to handle large TypingMind chat libraries efficiently. Even with thousands of conversations, syncing stays fast and responsive with progress indicators showing the sync status.
+
+<Info>
+For the full TypingMind experience, also install the [TypingMind Plugin](/integrations/typingmind-plugin) which gives AI direct access to your memories, chat history, and files.
+</Info>
 
 ## Supported Platforms
 

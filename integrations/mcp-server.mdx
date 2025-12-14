@@ -3,13 +3,13 @@ title: "MCP Server"
 description: "Use MemoryPlugin across dozens of AI tools through the Model Context Protocol"
 icon: "server"
 author: "asad"
-lastUpdated: "2025-08-23"
+lastUpdated: "2025-12-14"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-23" />
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
 
 MemoryPlugin can be used across dozens of AI tools through our MCP Server implementation.
 
@@ -19,7 +19,7 @@ MemoryPlugin can be used across dozens of AI tools through our MCP Server implem
 
 ## What is MCP?
 
-Model Context Protocol is a new system developed by Anthropic to standardize how AI systems communicate with and use external data sources and tools.
+Model Context Protocol is a system developed by Anthropic to standardize how AI systems communicate with external data sources and tools.
 
 MCP works with two components:
 
@@ -48,15 +48,15 @@ MCP servers are not "installed" like traditional software. Instead, you configur
 
 <Steps>
   <Step title="Get Your Auth Token">
-    Sign in to the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard) and copy your authentication token
+    Sign in to the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard) and copy your authentication token from Settings
   </Step>
-  
+
   <Step title="Configure Your MCP Client">
     Add the MemoryPlugin server configuration to your MCP client's settings file (see example below)
   </Step>
-  
-  <Step title="Add Custom Instructions">
-    Tell your AI to use MemoryPlugin for memory operations
+
+  <Step title="Start Using">
+    The AI will automatically use MemoryPlugin tools when appropriate
   </Step>
 </Steps>
 
@@ -117,15 +117,66 @@ Each MCP client has its own configuration format, but they all work similarly. H
 This configuration tells your MCP client to run `npx @memoryplugin/mcp-server` when needed, which downloads and executes the MemoryPlugin server automatically. No installation required!
 </Info>
 
+## Available Tools
+
+The MCP server provides tools organized by feature area. Tool descriptions are designed to help AI understand when and how to use each tool effectively.
+
+### Memory Tools
+
+| Tool | Description |
+|------|-------------|
+| `store_memory` | Save information for future recall. AI is encouraged to proactively save preferences, decisions, and important context. |
+| `get_memories_and_buckets` | Retrieve saved memories, optionally filtered by bucket. Also returns available buckets. |
+| `search_memories` | Semantic search across memories. Returns results ranked by relevance. |
+| `list_buckets` | List available memory buckets. |
+| `create_bucket` | Create a new bucket to organize memories. |
+
+### Smart Memory Tools
+
+For buckets with Smart Memory enabled:
+
+| Tool | Description |
+|------|-------------|
+| `list_bucket_categories` | Get AI-generated categories for a bucket, including summaries and topic information. |
+| `list_category_memories` | Load all memories within a specific category. |
+
+### Chat History Tools
+
+Search and retrieve from imported AI conversations:
+
+| Tool | Description |
+|------|-------------|
+| `recall_chat_history` | Search past conversations and get synthesized context. Supports parallel queries for complex topics. |
+| `get_conversation_summary` | Get details of a specific conversation—full transcript for short ones, AI summary for long ones. |
+| `get_full_conversation` | Retrieve the complete transcript of a past conversation. |
+
+### File Tools
+
+Query uploaded documents:
+
+| Tool | Description |
+|------|-------------|
+| `search_uploaded_files` | Search documents in your MemoryPlugin file buckets. Returns relevant passages with file and page info. |
+
+## Tool Descriptions
+
+The MCP server includes detailed tool descriptions that help AI understand:
+- **When to use** each tool (proactive guidance)
+- **How to use** parameters effectively
+- **Which tool to choose** for different situations
+
+For example, `store_memory` encourages AI to proactively save useful information, while `recall_chat_history` explains how to use parallel queries for complex topics.
+
 ## Features Available via MCP
 
 When using MemoryPlugin through MCP, you get:
 
-- **Load Memories**: Access your stored memories in any conversation
-- **Create Memories**: Save important information for future reference
-- **Manage Buckets**: Organize memories into different contexts
-- **Search Memories**: Find specific information quickly
-- **Cross-Platform Sync**: Access the same memories across all your tools
+- **Memories** — Store and retrieve information across conversations
+- **Buckets** — Organize memories into different contexts
+- **Smart Memory** — Access AI-organized categories and summaries
+- **Chat History** — Search your imported AI conversations
+- **File Search** — Query uploaded documents
+- **Cross-Platform Sync** — Same data across all your tools
 
 ## Troubleshooting
 
@@ -141,8 +192,8 @@ When using MemoryPlugin through MCP, you get:
     2. Ensure the configuration is in the correct location for your client
     3. Try running `npx @memoryplugin/mcp-server` directly in terminal to test if it works
   </Accordion>
-  <Accordion title="Memories not loading">
-    Make sure you've added custom instructions telling your AI to use MemoryPlugin for memory operations.
+  <Accordion title="Tools not appearing">
+    Restart your MCP client after adding the configuration. Some clients need a full restart to detect new servers.
   </Accordion>
 </AccordionGroup>
 
@@ -150,17 +201,31 @@ When using MemoryPlugin through MCP, you get:
 
 <CardGroup cols={2}>
   <Card
-    title="Learn About Memory Buckets"
+    title="Memory Buckets"
     icon="folder"
     href="/features/memory-buckets"
   >
     Organize your memories into separate contexts
   </Card>
   <Card
-    title="Try Browser Extension"
-    icon="globe"
-    href="/integrations/browser-extension"
+    title="Smart Memory"
+    icon="brain"
+    href="/features/smart-memory"
   >
-    Alternative integration for web-based AI tools
+    Enable AI-powered memory organization
+  </Card>
+  <Card
+    title="File Buckets"
+    icon="folder-open"
+    href="/features/file-buckets"
+  >
+    Upload documents to query via MCP
+  </Card>
+  <Card
+    title="Remote MCP Server"
+    icon="cloud"
+    href="/integrations/remote-mcp-server"
+  >
+    Use MCP without local setup
   </Card>
 </CardGroup>

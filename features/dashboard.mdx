@@ -1,80 +1,167 @@
 ---
 title: "Dashboard"
-description: "Manage your memories, buckets, and settings from the MemoryPlugin web dashboard"
+description: "Manage your memories, files, and settings from the MemoryPlugin web dashboard"
 icon: "gauge"
 author: "asad"
-lastUpdated: "2025-08-20"
+lastUpdated: "2025-12-14"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-20" />
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
 
-The MemoryPlugin Dashboard is your central hub for managing memories and buckets. Access it at [memoryplugin.com/dashboard](https://memoryplugin.com/dashboard).
+The MemoryPlugin Dashboard is your central hub for managing memories, files, and settings. Access it at [memoryplugin.com/dashboard](https://memoryplugin.com/dashboard).
 
+## Dashboard Layout
 
-## Dashboard Overview
+The dashboard uses a sidebar layout that keeps your buckets visible and accessible at all times.
 
-The dashboard has a tabbed interface with four main sections:
+### Sidebar
+The left sidebar shows:
+- **Memory buckets** — your organized memory collections
+- **File buckets** — uploaded documents
+- **Quick actions** — add memory, search, settings
+- **Navigation** — Ask, Chat History, Suggestions, and more
+
+### Main Area
+The main content area shows the selected bucket's contents or the current feature you're using.
+
+## Keyboard Shortcuts
+
+Navigate quickly without leaving your keyboard:
+
+| Shortcut | Action |
+|----------|--------|
+| **⌘K / Ctrl+K** | Quick search chat history |
+| **⌘J / Ctrl+J** | Add a new memory |
+| **⌘Shift+O / Ctrl+Shift+O** | Open Ask tool |
+
+<Tip>
+Hold the modifier key (⌘ or Ctrl) to see shortcut hints appear in the sidebar.
+</Tip>
+
+## Core Features
 
 <CardGroup cols={2}>
-  <Card title="Memories" icon="brain">
-    View, search, and manage all your memories. Switch between buckets and organize with Smart Memory categories.
+  <Card title="Memories" icon="brain" href="/features/memory-buckets">
+    View, search, add, and organize your memories across buckets
   </Card>
-  <Card title="Memory Chat" icon="chat">
-    Chat directly with your memories to ask questions and get AI-powered responses.
+  <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
+    Import and search your AI conversations from ChatGPT, Claude, and TypingMind
+  </Card>
+  <Card title="Ask" icon="messages" href="/features/ask">
+    Query your memories, chat history, and files with AI
+  </Card>
+  <Card title="File Buckets" icon="folder-open" href="/features/file-buckets">
+    Upload and query PDFs, Word docs, and text files
   </Card>
   <Card title="Suggestions" icon="lightbulb">
-    AI-powered suggestions to optimize your memories by deleting duplicates, combining similar ones, or updating outdated information.
-  </Card>
-  <Card title="Experiments" icon="flask">
-    Smart Memory Builder - have a conversation with AI to quickly populate your memory system instead of adding memories manually.
+    AI-powered suggestions to clean up duplicates and improve memories
   </Card>
 </CardGroup>
 
-## Core Functionality
+## Managing Memories
 
-### Managing Your Memories
-- **Browse memories**: View all memories in a searchable list
-- **Search**: Find specific memories using the search bar
-- **Edit memories**: Click to modify memory text
-- **Delete memories**: Remove individual or multiple memories
-- **Bulk operations**: Select multiple memories for batch actions
+### Viewing and Searching
+- **Browse** all memories in your selected bucket
+- **Search** using the search bar or ⌘K
+- **Filter** by Smart Memory categories when available
 
-### Organizing with Buckets
-- **Create buckets**: Click "New Bucket" to create different contexts
-- **Switch buckets**: Use the bucket selector to change contexts
-- **Move memories**: Transfer memories between buckets
-- **Smart Categories**: When you have 30+ memories, create AI-organized categories
+### Adding Memories
+- **Quick add** — press ⌘J or click the add button
+- **Bulk add** — paste multiple memories separated by line breaks
+- **Import** — upload CSV or JSON files
 
-### Getting Your Auth Token
-Your Auth Token is needed for integrations like MCP Server and Custom GPT.
+Related docs: [Import & Export](/features/import-export)
+
+### Editing and Organizing
+- **Edit** any memory by clicking on it
+- **Move** memories between buckets
+- **Delete** individual memories or use bulk selection
+
+### Bulk Operations
+Select multiple memories using checkboxes:
+- **Shift-click** to select a range
+- **Move** selected memories to another bucket
+- **Delete** selected memories
+- **Export** selected memories
+
+Related docs: [Bulk Operations](/features/bulk-operations)
+
+## Organizing with Buckets
+
+### Memory Buckets
+Create buckets to organize memories by context:
+- Click **New Bucket** in the sidebar
+- Give it a descriptive name
+- Switch between buckets with one click
+
+Related docs: [Memory Buckets](/features/memory-buckets)
+
+### File Buckets
+Upload documents for semantic search:
+- Create a **File Bucket** from the sidebar
+- Drag and drop files to upload
+- Query through the Ask tool
+
+Related docs: [File Buckets](/features/file-buckets)
+
+### Smart Memory Categories
+For buckets with 30+ memories, enable Smart Memory to auto-organize:
+- Click **Create Smart Categories** in the bucket
+- Browse by category or filter results
+- Categories update as you add memories
+
+Related docs: [Smart Memory](/features/smart-memory)
+
+## Settings
+
+Access settings from the sidebar or by clicking your profile. Settings open in a modal so you don't lose your place.
+
+### Profile
+- Set display name and avatar
+- View account email
+
+### Integration & Access
+Your Auth Token is needed for integrations like MCP Server and TypingMind.
 
 <Warning>
 Keep your Auth Token confidential. Regenerate it if accidentally exposed.
 </Warning>
 
-1. Sign in to your dashboard
-2. Click "Settings" in the navigation or "Go to Settings" button
-3. Go to the "Integration & Access" section  
-4. Copy your Auth Token
+1. Open Settings from the sidebar
+2. Find the **Auth Token** section
+3. Copy your token or regenerate if needed
 
+## Additional Features
+
+### Memory Suggestions
+AI analyzes your memories and suggests improvements:
+- Remove duplicates
+- Combine similar memories
+- Update outdated information
+
+### Get to Know You
+A guided conversation to quickly build your memory profile. The AI asks questions and creates memories based on your answers.
+
+### Roadmap & Feedback
+See what's coming and share your ideas directly from the dashboard.
 
 ## Next Steps
 
 <CardGroup cols={2}>
   <Card
-    title="Create Your First Bucket"
+    title="Ask Tool"
+    icon="messages"
+    href="/features/ask"
+  >
+    Query your memories, history, and files
+  </Card>
+  <Card
+    title="Memory Buckets"
     icon="folder"
     href="/features/memory-buckets"
   >
-    Learn how to organize memories with buckets
-  </Card>
-  <Card
-    title="Import from ChatGPT"
-    icon="download"
-    href="/features/chat-history-import"
-  >
-    Import your existing ChatGPT memories
+    Organize memories into contexts
   </Card>
 </CardGroup>
