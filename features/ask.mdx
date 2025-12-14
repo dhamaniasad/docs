@@ -1,0 +1,169 @@
+---
+title: "Ask"
+description: "Talk to your memories, chat history, and files from one unified interface"
+icon: "messages"
+author: "asad"
+lastUpdated: "2025-12-14"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+
+Ask is a unified tool for querying all your stored information in MemoryPlugin. Talk to your memories, search your chat history, or query your uploaded files—all from one place.
+
+## What is Ask?
+
+Ask lets you have conversations with your stored data. Instead of manually searching through memories or scrolling through chat history, you can ask natural language questions and get synthesized answers with source references.
+
+<CardGroup cols={3}>
+  <Card title="Chat History" icon="clock-rotate-left">
+    Get insights from your imported AI conversations across ChatGPT, Claude, and TypingMind
+  </Card>
+  <Card title="Memories" icon="brain">
+    Ask questions about information you've saved to your memory buckets
+  </Card>
+  <Card title="Files" icon="file">
+    Query your uploaded PDFs, Word docs, markdown, and text files
+  </Card>
+</CardGroup>
+
+## Key Features
+
+### Conversation History
+Your Ask conversations are saved automatically. Pick up where you left off instead of starting fresh each time.
+
+### Referenced Sources
+Every answer shows which sources informed it. Click through to see the original chat, memory, or file that contributed to the response.
+
+### Three Modes
+Switch between modes depending on what you want to search:
+
+| Mode | Data Source | Best For |
+|------|-------------|----------|
+| **Chat History** | Imported AI conversations | Finding past decisions, patterns, project context |
+| **Memories** | Saved memories in your buckets | Recalling stored preferences, facts, notes |
+| **Files** | Uploaded documents | Querying reference materials, documentation |
+
+### Copy Responses
+One-click copy on any assistant response to use the information elsewhere.
+
+## Using Ask
+
+### Getting Started
+
+1. **Open the Ask tool** from the dashboard sidebar or press **⌘Shift+O / Ctrl+Shift+O**
+2. **Select a mode** — Chat History, Memories, or Files
+3. **Ask a question** in natural language
+4. **Review the answer** and click sources to see original content
+
+### Choosing the Right Mode
+
+**Use Chat History when:**
+- You want to recall past conversations
+- Looking for decisions or context from previous AI chats
+- Searching for patterns in how you've discussed topics
+
+**Use Memories when:**
+- Querying facts you've explicitly saved
+- Looking up preferences or personal information
+- Searching your organized knowledge base
+
+**Use Files when:**
+- Querying uploaded documents
+- Searching reference materials
+- Finding information in PDFs or docs you've added
+
+<Info>
+Once you start a conversation, the mode is locked for that conversation. Start a new conversation to switch modes.
+</Info>
+
+### Bucket Selection
+
+For Memories and Files modes, you can optionally filter to a specific bucket:
+
+- **All memories/files**: Searches across all buckets of that type
+- **Specific bucket**: Limits search to just that bucket's contents
+
+This is useful when you have well-organized buckets and want focused results.
+
+## How It Works
+
+Ask uses AI to understand your question, search relevant sources, and synthesize an answer.
+
+### For Chat History Mode
+1. Your question is analyzed to understand intent
+2. Relevant conversation segments are retrieved using semantic search
+3. The AI synthesizes an answer from matching conversations
+4. Source references link back to original chats
+
+### For Memories Mode
+The AI loads context based on your bucket setup:
+- **Smart Memory buckets**: Category summaries are loaded, with specific categories fetched as needed
+- **Regular buckets**: Recent memories are loaded, with search for additional lookups
+
+### For Files Mode
+1. Your question is used to search uploaded document chunks
+2. Relevant passages are retrieved with page/section info
+3. The AI synthesizes an answer from matching content
+4. Source references link back to original files
+
+## Integration with Other Tools
+
+Ask is also available through:
+
+### MCP Server
+Use `recall_chat_history` and `search_uploaded_files` tools to query your data from any MCP-compatible client.
+
+Related docs: [MCP server](/integrations/mcp-server), [Remote MCP server](/integrations/remote-mcp-server)
+
+### TypingMind Plugin
+The TypingMind plugin includes `recall_chat_history` and `search_uploaded_files` functions for querying your data while chatting.
+
+Related docs: [TypingMind plugin](/integrations/typingmind-plugin)
+
+## Tips for Better Results
+
+<AccordionGroup>
+  <Accordion title="Be specific with questions">
+    Instead of "What do I know about work?", try "What decisions did I make about the API migration project?"
+  </Accordion>
+  <Accordion title="Use the right mode">
+    Chat History is for past conversations. Memories is for saved facts. Files is for uploaded documents. Choose based on where the information lives.
+  </Accordion>
+  <Accordion title="Check the sources">
+    Click through to sources to verify context and get the full picture. The AI synthesizes, but the original content has all the details.
+  </Accordion>
+  <Accordion title="Start new conversations for new topics">
+    Each conversation maintains context. For unrelated questions, start fresh to avoid confusion.
+  </Accordion>
+</AccordionGroup>
+
+## Requirements
+
+- **Chat History mode**: Requires imported conversations from the browser extension
+- **Files mode**: Requires uploaded documents in file buckets
+- **Memories mode**: Works with any saved memories
+
+<Note>
+Chat History and Files modes are Premium features. Memories mode is available on all plans.
+</Note>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="File Buckets"
+    icon="folder-open"
+    href="/features/file-buckets"
+  >
+    Learn how to upload and organize documents
+  </Card>
+  <Card
+    title="Chat History"
+    icon="clock-rotate-left"
+    href="/features/chat-history/introduction"
+  >
+    Set up chat history importing from your AI platforms
+  </Card>
+</CardGroup>

@@ -1,0 +1,171 @@
+---
+title: "Import & Export"
+description: "Bring memories in from files or export them for backup and portability"
+icon: "arrow-right-arrow-left"
+author: "asad"
+lastUpdated: "2025-12-14"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+
+MemoryPlugin lets you import memories from CSV or JSON files and export your memories for backup or use elsewhere. Your data is portable—you're never locked in.
+
+## Import Memories
+
+### Supported Formats
+
+<CardGroup cols={2}>
+  <Card title="CSV" icon="file-csv">
+    Simple spreadsheet format with one memory per row
+  </Card>
+  <Card title="JSON" icon="brackets-curly">
+    Structured format for more complex imports
+  </Card>
+</CardGroup>
+
+### CSV Format
+
+Your CSV file should have a header row with at least a `text` column:
+
+```csv
+text
+"My preferred programming language is Python"
+"I work at Acme Corp as a software engineer"
+"I prefer dark mode in all applications"
+```
+
+Optional columns:
+- `bucket`: Bucket name to import into (creates if doesn't exist)
+- `created_at`: Timestamp for the memory
+
+### JSON Format
+
+JSON imports expect an array of memory objects:
+
+```json
+[
+  {
+    "text": "My preferred programming language is Python"
+  },
+  {
+    "text": "I work at Acme Corp as a software engineer",
+    "bucket": "Work"
+  }
+]
+```
+
+### How to Import
+
+1. **Open the dashboard** and select the target bucket (or use "General")
+2. **Click the import button** in the memory section
+3. **Select your file** (CSV or JSON)
+4. **Review the preview** showing memories to be imported
+5. **Click Import** to add the memories
+
+<Info>
+**Duplicate handling**: Memories that already exist in your account are automatically skipped during import. You won't get duplicates.
+</Info>
+
+### Bulk Add (Quick Import)
+
+For quick imports without a file, use the **bulk add** feature:
+
+1. **Open the Add Memory dialog** (or press **⌘J / Ctrl+J**)
+2. **Paste multiple memories** separated by line breaks
+3. **Click Add** — each line becomes a separate memory
+
+This is useful for quickly adding several related memories without creating a file.
+
+## Export Memories
+
+### Export Formats
+
+| Format | Best For |
+|--------|----------|
+| **CSV** | Opening in spreadsheets, simple backups |
+| **JSON** | Programmatic use, re-importing later |
+
+### How to Export
+
+1. **Open the dashboard** and select a bucket (or all buckets)
+2. **Click the export button** in the memory section
+3. **Choose your format** (CSV or JSON)
+4. **Download the file**
+
+### What's Included
+
+Exports include:
+- Memory text content
+- Creation timestamp
+- Bucket name
+- Memory ID
+
+### Exporting Specific Memories
+
+To export only certain memories:
+1. **Use bulk selection** to select the memories you want
+2. **Click Export** from the bulk actions bar
+3. **Choose your format** and download
+
+## Use Cases
+
+### Backup
+Regularly export your memories as a personal backup. Store the file somewhere safe.
+
+### Migration
+Moving to a new account? Export from the old account and import to the new one.
+
+### Sharing
+Export memories to share with team members or collaborators (manually, for now).
+
+### Analysis
+Export to CSV and analyze your memories in a spreadsheet or data tool.
+
+### Cross-Tool Use
+Export memories to use in other applications or AI tools that accept text imports.
+
+## Tips
+
+<AccordionGroup>
+  <Accordion title="Clean your data before importing">
+    Remove duplicates and fix formatting in your file before importing. It's easier to clean a spreadsheet than to fix memories one by one.
+  </Accordion>
+  <Accordion title="Use buckets for organization">
+    Include a `bucket` column in your CSV/JSON to automatically organize memories during import.
+  </Accordion>
+  <Accordion title="Regular backups">
+    Export your memories periodically. It's your data—keep a copy.
+  </Accordion>
+  <Accordion title="Test with small imports first">
+    If importing a large file, try a small sample first to make sure the format is correct.
+  </Accordion>
+</AccordionGroup>
+
+## Limits
+
+| Aspect | Limit |
+|--------|-------|
+| **Import file size** | 5 MB |
+| **Memories per import** | 1,000 |
+| **Duplicate handling** | Automatic skip |
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Memory Buckets"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Organize your imported memories into buckets
+  </Card>
+  <Card
+    title="Bulk Operations"
+    icon="list"
+    href="/features/bulk-operations"
+  >
+    Select and manage multiple memories at once
+  </Card>
+</CardGroup>

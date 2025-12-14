@@ -3,12 +3,86 @@ title: "Changelog"
 description: "Product updates and announcements for MemoryPlugin"
 rss: true
 author: "asad"
-lastUpdated: "2025-11-19"
+lastUpdated: "2025-12-14"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-11-06" />
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+
+<Update label="December 2025" description="MemoryPlugin 2.0" tags={["Major Release", "Features", "Integrations"]}>
+  ### MemoryPlugin 2.0
+
+  A major update focused on simplicity and usability. The interface has been redesigned to reduce clutter, keep things closer, and help you stay in context.
+
+  ### New sidebar layout
+  Your buckets now live in a sidebar, always visible and one click away. No more hunting through menus.
+
+  ### Unified Ask tool
+  Talk to your memories, chat history, and files from one place. Rebuilt from scratch with:
+  - **Conversation history** — pick up where you left off
+  - **Referenced sources** — see which chats and files informed the answer
+  - **Three modes** — Chat History, Memories, Files
+  - **Copy responses** with one click
+
+  Related docs: [Ask](/features/ask)
+
+  ### File buckets
+  Upload PDFs, Word docs, markdown, and text files. Query them through the Ask tool, MCP, or TypingMind plugin.
+
+  Related docs: [File buckets](/features/file-buckets)
+
+  ### Keyboard shortcuts
+  - **⌘K / Ctrl+K** — Quick search chat history
+  - **⌘J / Ctrl+J** — Add memory without leaving your page
+  - **⌘Shift+O / Ctrl+Shift+O** — Jump to Ask tool
+
+  ### Memory management
+  - **Bulk add** — paste multiple memories at once, separated by line breaks
+  - **Import/Export** — bring memories in from CSV or JSON, or export them out
+
+  Related docs: [Import & Export](/features/import-export)
+
+  ### UI improvements
+  - **Clutter removal** — simplified, less busy interface throughout
+  - **Dialogs and panels** — settings, add memory, and other actions open without losing context
+  - **Inline suggestions** — review memory improvements without leaving your list
+  - **Smart Categories easier to use** — redesigned panel with clearer controls
+  - **Redesigned imports page** — clearer status at a glance
+  - **Better copy** — clearer labels and explanations throughout
+
+  ### Other additions
+  - **Interactive setup guide** — floating checklist for new users
+  - **Redesigned Get to Know You** — full-page chat experience
+  - **Custom profile** — set a display name and avatar
+  - **Roadmap & feedback** — accessible directly from the app
+
+  ---
+
+  ### Browser extension v3.0.0
+  - **Draggable floating button** — position it where you want, remembers per site
+  - **TypingMind auto-sync toggle** — enable or disable in extension settings
+  - **TypingMind sync performance** — batch loading handles thousands of chats much faster
+
+  Related docs: [Browser extension](/integrations/browser-extension)
+
+  ---
+
+  ### TypingMind plugin
+  - **Chat history support** — recall past conversations with `recall_chat_history`
+  - **File search** — query uploaded documents with `search_uploaded_files`
+
+  Related docs: [TypingMind plugin](/integrations/typingmind-plugin)
+
+  ---
+
+  ### MCP server improvements
+  - **Better tool descriptions** — AI tools now understand when and how to use each tool more effectively
+  - **New tools** — `get_full_conversation` (complete transcripts), `search_uploaded_files` (query documents)
+  - **Renamed tools** for clarity: `search_memories`, `recall_chat_history`, `list_bucket_categories`, `list_category_memories`
+
+  Related docs: [MCP server](/integrations/mcp-server), [Remote MCP server](/integrations/remote-mcp-server)
+</Update>
 
 <Update label="November 2025" description="Smart Categories & Safari Fixes" tags={["Features", "Platform Support"]}>
   ### Smart Memory enhancements

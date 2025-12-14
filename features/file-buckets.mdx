@@ -1,0 +1,174 @@
+---
+title: "File Buckets"
+description: "Upload and query documents that persist across all your AI conversations"
+icon: "folder-open"
+author: "asad"
+lastUpdated: "2025-12-14"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+
+File Buckets let you upload documents to MemoryPlugin and query them from any AI tool. Your files are processed, chunked, and made searchable—available through the Ask tool, MCP server, and TypingMind plugin.
+
+## What are File Buckets?
+
+File Buckets are a special type of bucket designed for documents. Unlike memory buckets that store text snippets, file buckets store complete files that are automatically processed for semantic search.
+
+<CardGroup cols={2}>
+  <Card title="Persistent Storage" icon="hard-drive">
+    Files stay available across all conversations and AI tools
+  </Card>
+  <Card title="Semantic Search" icon="magnifying-glass">
+    Find relevant passages based on meaning, not just keywords
+  </Card>
+  <Card title="Source Attribution" icon="quote-left">
+    Answers reference specific files and page numbers
+  </Card>
+  <Card title="Cross-Platform" icon="arrows-cross">
+    Query from Ask tool, MCP server, or TypingMind plugin
+  </Card>
+</CardGroup>
+
+## Supported File Types
+
+| Format | Extensions | Notes |
+|--------|------------|-------|
+| **PDF** | `.pdf` | Text extracted from all pages |
+| **Word** | `.docx` | Microsoft Word documents |
+| **Markdown** | `.md` | Plain markdown files |
+| **Text** | `.txt` | Plain text files |
+
+<Note>
+Scanned PDFs (image-only) are not currently supported. The PDF must contain extractable text.
+</Note>
+
+## How It Works
+
+### Upload Process
+1. **Upload**: Drag and drop or select files to upload
+2. **Processing**: Files are parsed and split into searchable chunks
+3. **Indexing**: Chunks are embedded for semantic search
+4. **Ready**: Files appear in your bucket and are queryable
+
+### Querying Files
+When you search your files (through Ask, MCP, or TypingMind):
+1. Your query is matched against file chunks using semantic search
+2. Relevant passages are retrieved with source metadata
+3. Results include file name, page numbers, and relevance scores
+
+## Using File Buckets
+
+### Creating a File Bucket
+
+1. **Open the dashboard** and look for the sidebar
+2. **Click "New Bucket"** and select "File Bucket" as the type
+3. **Name your bucket** (e.g., "Reference Docs", "Project Files")
+4. **Click Create**
+
+### Uploading Files
+
+1. **Select your file bucket** in the sidebar
+2. **Drag and drop files** into the upload area, or click to browse
+3. **Wait for processing** — status shows when files are ready
+4. **View your files** in the bucket list
+
+### Querying Files
+
+**Through Ask tool:**
+1. Open Ask and select **Files** mode
+2. Optionally select a specific file bucket
+3. Ask questions about your documents
+
+**Through MCP:**
+Use the `search_uploaded_files` tool with your query.
+
+**Through TypingMind:**
+The plugin's `search_uploaded_files` function queries your documents.
+
+## Use Cases
+
+### Reference Documentation
+Upload technical docs, API references, or style guides. Query them while working without leaving your AI conversation.
+
+### Research Materials
+Store papers, articles, or reports. Ask questions that synthesize across multiple sources.
+
+### Project Context
+Upload project specs, meeting notes, or requirements docs. Keep context available for all related conversations.
+
+### Personal Knowledge Base
+Store manuals, guides, or reference materials you frequently need to look up.
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Organize by purpose">
+    Create separate file buckets for different projects or topics. This lets you filter searches to relevant documents.
+  </Accordion>
+  <Accordion title="Use descriptive file names">
+    File names appear in search results. Clear names help you identify sources quickly.
+  </Accordion>
+  <Accordion title="Keep files focused">
+    Smaller, focused documents often give better search results than massive files with mixed content.
+  </Accordion>
+  <Accordion title="Check processing status">
+    Wait for files to finish processing before querying. The status indicator shows when files are ready.
+  </Accordion>
+</AccordionGroup>
+
+## Limits
+
+| Aspect | Limit |
+|--------|-------|
+| **File size** | 10 MB per file |
+| **Storage** | Varies by plan |
+| **Processing** | Files are queued and processed in order |
+
+<Note>
+File Buckets are a Premium feature. Check your plan for storage limits.
+</Note>
+
+## Integration
+
+### Ask Tool
+Select **Files** mode in Ask to query your uploaded documents. Answers include source references with file names and page numbers.
+
+Related docs: [Ask](/features/ask)
+
+### MCP Server
+Use the `search_uploaded_files` tool:
+```
+Tool: search_uploaded_files
+Parameters:
+  - query: "your search query"
+  - bucketId: (optional) specific file bucket
+  - topK: (optional) number of results
+```
+
+Related docs: [MCP server](/integrations/mcp-server)
+
+### TypingMind Plugin
+The plugin includes `search_uploaded_files` for querying documents directly in TypingMind conversations.
+
+Related docs: [TypingMind plugin](/integrations/typingmind-plugin)
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Ask"
+    icon="messages"
+    href="/features/ask"
+  >
+    Learn how to query your files with the Ask tool
+  </Card>
+  <Card
+    title="Memory Buckets"
+    icon="folder"
+    href="/features/memory-buckets"
+  >
+    Organize text memories alongside your file buckets
+  </Card>
+</CardGroup>

@@ -57,7 +57,10 @@
             "group": "Features",
             "pages": [
               "features/memory-buckets",
+              "features/ask",
+              "features/file-buckets",
               "features/smart-memory",
+              "features/import-export",
               "features/dashboard",
               "features/chatgpt-memory-import",
               "features/bulk-operations",
