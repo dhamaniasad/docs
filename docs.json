@@ -36,17 +36,16 @@
             "pages": [
               "getting-started/introduction",
               "getting-started/how-it-works",
-              "feedback",
-              "changelog"
+              "platforms/supported-platforms"
             ]
           },
           {
             "group": "Integrations",
             "pages": [
               "integrations/overview",
+              "integrations/browser-extension",
               "integrations/mcp-server",
               "integrations/remote-mcp-server",
-              "integrations/browser-extension",
               "integrations/custom-gpt",
               "integrations/custom-gpt-integration",
               "integrations/typingmind-plugin",
@@ -56,16 +55,16 @@
           {
             "group": "Features",
             "pages": [
+              "features/dashboard",
               "features/memory-buckets",
+              "features/smart-memory",
               "features/ask",
               "features/file-buckets",
-              "features/smart-memory",
               "features/import-export",
-              "features/dashboard",
-              "features/chatgpt-memory-import",
               "features/bulk-operations",
+              "features/chatgpt-memory-import",
               {
-                "group": "Chat History Memory",
+                "group": "Chat History",
                 "pages": [
                   "features/chat-history/introduction",
                   "features/chat-history/importing",
@@ -78,25 +77,29 @@
           {
             "group": "Platforms",
             "pages": [
-              "platforms/supported-platforms",
               "platforms/chatgpt",
               "platforms/claude",
               "platforms/gemini",
-              "platforms/google-ai-studio",
-              "platforms/typingmind",
               "platforms/grok",
-              "platforms/poe",
               "platforms/deepseek",
+              "platforms/typingmind",
+              "platforms/google-ai-studio",
+              "platforms/poe",
               "platforms/qwen"
             ]
           },
           {
-            "group": "Teams",
+            "group": "Resources",
             "pages": [
-              "teams/typingmind-custom"
+              "feedback"
             ]
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "newspaper",
+        "pages": ["changelog"]
       },
       {
         "tab": "API Reference",
