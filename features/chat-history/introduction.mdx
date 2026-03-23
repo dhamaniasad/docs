@@ -3,17 +3,12 @@ title: "Introduction"
 description: "Give your AI perfect recall of every conversation you've ever had"
 icon: "rectangle-history"
 author: "asad"
-lastUpdated: "2025-10-25"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from "/snippets/article-info.jsx";
 
-<ArticleInfo author="asad" lastUpdated="2025-10-25" />
-
-<Note>
-  Chat History Memory is currently in Beta. We're actively improving the feature
-  based on user feedback.
-</Note>
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
 ## What is Chat History Memory?
 
@@ -113,11 +108,11 @@ Chat History Memory can be added in two ways:
 
 ### Upload Chat Exports (Recommended for Initial Import)
 
-Export your chat history as JSON files from ChatGPT, Claude, or TypingMind and upload them to MemoryPlugin. This is the fastest way to import your entire history. Processing happens automatically in the background.
+Export your chat history as JSON files from ChatGPT, Claude, TypingMind, or Grok and upload them to MemoryPlugin. This is the fastest way to import your entire history. Processing happens automatically in the background.
 
-### Online Sync (Beta)
+### Online Sync
 
-For ChatGPT and Claude, we can sync your conversations directly from your account without needing to download files. Designed for keeping new and updated conversations in sync automatically after your initial import. This handles small incremental updates in the background, so you never have to manually export again. Can take longer for large initial imports (several days vs. a few hours), but works as a fallback if you're unable to export JSON files.
+For ChatGPT, Claude, Gemini, Grok, and DeepSeek, we can sync your conversations directly from your account without needing to download files. Designed for keeping new and updated conversations in sync automatically after your initial import. This handles small incremental updates in the background, so you never have to manually export again. Can take longer for large initial imports (several days vs. a few hours), but works as a fallback if you're unable to export JSON files.
 
 <Note>
   Online sync is **opt-in only**. Chats are never uploaded or synced without
@@ -138,14 +133,16 @@ MemoryPlugin can surface relevant past conversations as context in your new chat
 
 ### Importing Chat History (Write)
 
-Currently, you can import chat history from these platforms:
+You can import chat history from these platforms:
 
 - **ChatGPT** (JSON export or online sync)
 - **Claude** (JSON export or online sync)
+- **Grok** (JSON export or online sync)
+- **Gemini** (online sync)
+- **DeepSeek** (online sync)
 - **TypingMind** (JSON export)
 
 <Info>
-  Platform support is limited but growing. We're working on expanding import
-  support to more platforms and file formats (Markdown, PDF, etc.) based on user
+  We're continuing to expand import support to more platforms based on user
   requests. [Request your platform](https://feedback.memoryplugin.com)
 </Info>

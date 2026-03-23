@@ -2,12 +2,12 @@
 title: "How MemoryPlugin Works"
 description: "Understanding how MemoryPlugin adds long-term memory capabilities to AI tools"
 author: "asad"
-lastUpdated: "2025-08-20"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-20" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
 This page covers common questions about how MemoryPlugin works across various AI tools.
 
@@ -32,9 +32,9 @@ MemoryPlugin works by:
 
 Think of it as creating a digital notepad of important information that gets automatically shared with your AI at the start of relevant conversations.
 
-## Two Core Functions
+## Three Core Capabilities
 
-MemoryPlugin performs two key functions:
+MemoryPlugin does three things:
 
 ### 1. Storing Memories
 
@@ -75,22 +75,29 @@ When you start a new conversation, MemoryPlugin makes your stored memories avail
 
 In all cases, the system is taking your stored memory text and strategically placing it in the AI's context window, allowing the AI to "remember" important information from past interactions.
 
+### 3. Chat History & Files
+
+Beyond individual memories, MemoryPlugin can store and search:
+
+- **Chat History** — Import your full conversation history from ChatGPT, Claude, Gemini, Grok, DeepSeek, and TypingMind. MemoryPlugin searches across thousands of past conversations and surfaces relevant context automatically.
+- **Files** — Upload PDFs, Word docs, and text files. Query them through the Ask tool, MCP server, or TypingMind plugin.
+
+Related docs: [Chat History](/features/chat-history/introduction), [File Buckets](/features/file-buckets)
+
 ## Cross-Platform Power
 
-What makes MemoryPlugin truly powerful is its ability to work across dozens of different AI platforms. Instead of being limited to the memory system of a single AI tool, your memories travel with you across:
+What makes MemoryPlugin truly powerful is its ability to work across dozens of different AI platforms. Instead of being limited to the memory system of a single AI tool, your memories, chat history, and files travel with you across:
 
-- ChatGPT
-- Claude
-- Gemini
-- TypingMind
-- LibreChat
-- And many others
+- ChatGPT, Claude, Gemini, Grok, DeepSeek
+- Perplexity, Mistral, Poe, Qwen
+- Google AI Studio, TypingMind, LibreChat
+- Cursor, Windsurf, Claude Code, and 100+ other MCP clients
 
-This creates a seamless memory experience regardless of which AI assistant you're using at any given moment.
+This creates a seamless experience regardless of which AI assistant you're using at any given moment.
 
 ## In Summary
 
-MemoryPlugin enhances AI tools by creating a persistent memory layer that works across platforms. By strategically storing relevant information and intelligently injecting it back into conversations when needed, MemoryPlugin makes AI interactions more personalized, efficient, and valuable.
+MemoryPlugin enhances AI tools by creating a persistent memory, chat history, and file layer that works across platforms. By strategically storing relevant information and intelligently injecting it back into conversations when needed, MemoryPlugin makes AI interactions more personalized, efficient, and valuable.
 
 ## Ready to Get Started?
 
@@ -98,7 +105,7 @@ MemoryPlugin enhances AI tools by creating a persistent memory layer that works 
   <Card
     title="Choose Your Integration"
     icon="puzzle-piece"
-    href="/integrations/mcp-server"
+    href="/integrations/overview"
   >
     Select the integration method that works best for your workflow
   </Card>

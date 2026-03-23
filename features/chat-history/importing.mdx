@@ -3,24 +3,24 @@ title: "Importing Your Chats"
 description: "Export and upload your chat history from supported platforms"
 icon: "cloud-arrow-up"
 author: "asad"
-lastUpdated: "2025-10-25"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-10-25" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
 ## Getting Your Chat History
 
 You can add chat history to MemoryPlugin in two ways:
 
-**Option 1: Upload Chat Exports** (ChatGPT, Claude, TypingMind) — **Recommended for initial import**
+**Option 1: Upload Chat Exports** (ChatGPT, Claude, TypingMind, Grok) — **Recommended for initial import**
 
 Export your chat history as JSON files and upload them. This is the fastest way to import your entire history.
 
-**Option 2: Online Import** (ChatGPT, Claude - Beta)
+**Option 2: Online Sync** (ChatGPT, Claude, Gemini, Grok, DeepSeek)
 
-Import conversations directly from your account without downloading files. Designed for keeping new and updated conversations in sync automatically after your initial import. This handles small incremental updates in the background, so you never have to manually export again. Can take longer for large initial imports (several days vs. a few hours), but works as a fallback if you're unable to export JSON files.
+Sync conversations directly from your account without downloading files. Designed for keeping new and updated conversations in sync automatically after your initial import. This handles small incremental updates in the background, so you never have to manually export again. Can take longer for large initial imports (several days vs. a few hours), but works as a fallback if you're unable to export JSON files.
 
 ## How to Export Your Chats
 
@@ -46,15 +46,28 @@ Import conversations directly from your account without downloading files. Desig
     TypingMind splits exports into multiple chunk files. Upload each chunk file separately.
     </Note>
   </Accordion>
+
+  <Accordion title="Export from Grok" icon="message">
+    Export your data from your <a href="https://x.ai/account" target="_blank" rel="noopener noreferrer">xAI account settings</a>.
+
+    Once you have the export, upload the conversations JSON file to MemoryPlugin. Branching conversation threads are fully supported.
+  </Accordion>
+
+  <Accordion title="Sync from Gemini or DeepSeek" icon="rotate">
+    Gemini and DeepSeek conversations are imported via **online sync** through the browser extension — no file export needed.
+
+    Open the browser extension on Gemini or DeepSeek, go to the Sync panel, and start syncing your conversations.
+  </Accordion>
 </AccordionGroup>
 
 ## File Size Limits
 
-- **Maximum file size**: 500 MB
+- **Maximum file size**: 1 GB
 - **Format**: JSON only
+- You can upload multiple files at once for ChatGPT exports
 
 <Info>
-Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we can help you with larger imports.
+Have a very large export? You can split it into multiple files and upload them separately. MemoryPlugin automatically deduplicates conversations across uploads.
 </Info>
 
 ## Uploading Your File
@@ -65,7 +78,7 @@ Have a file larger than 500 MB? [Contact us](https://memoryplugin.com) and we ca
   </Step>
 
   <Step title="Select Platform">
-    Choose which platform you're importing from: ChatGPT, Claude, or TypingMind
+    Choose which platform you're importing from: ChatGPT, Claude, TypingMind, or Grok
   </Step>
 
   <Step title="Choose Import Limit (Optional)">

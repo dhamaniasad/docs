@@ -3,12 +3,12 @@ title: 'Integration Options'
 description: 'Choose the best way to integrate MemoryPlugin with your AI tools'
 icon: 'puzzle-piece'
 author: "asad"
-lastUpdated: "2025-08-23"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-23" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
 MemoryPlugin offers multiple integration methods to fit your workflow. Each option has its own strengths - choose based on your needs and technical comfort level.
 
@@ -17,8 +17,9 @@ MemoryPlugin offers multiple integration methods to fit your workflow. Each opti
 | Integration | Best For | Setup Time | Platforms |
 |------------|----------|------------|-----------|
 | **Custom GPT** | ChatGPT users who want instant setup | 30 seconds | ChatGPT (web, desktop & mobile apps) |
-| **Browser Extension** | Best overall experience | 2 minutes | 10+ platforms (desktop & mobile) |
+| **Browser Extension** | Best overall experience | 2 minutes | 16+ platforms (desktop & mobile) |
 | **MCP Server** | MCP ecosystem users | 5 minutes | 100+ MCP clients (including some mobile) |
+| **Remote MCP Server** | MCP users without Node.js | 2 minutes | 100+ MCP clients |
 | **TypingMind Plugin** | TypingMind users | 1 minute | TypingMind |
 | **API** | Developers building custom integrations | Varies | Any platform |
 
@@ -65,12 +66,25 @@ MemoryPlugin offers multiple integration methods to fit your workflow. Each opti
   </Card>
   
   <Card
+    title="Remote MCP Server"
+    icon="cloud"
+    href="/integrations/remote-mcp-server"
+  >
+    **Hosted MCP** - No local setup needed
+
+    Perfect if you:
+    - Want MCP without installing Node.js
+    - Use Claude Web, Claude Mobile, or other hosted clients
+    - Want the simplest MCP setup
+  </Card>
+
+  <Card
     title="TypingMind Plugin"
     icon="plug"
     href="/integrations/typingmind-plugin"
   >
     **TypingMind Native** - Built for TypingMind
-    
+
     Perfect if you:
     - Use TypingMind as your AI interface
     - Want native plugin integration
@@ -103,9 +117,10 @@ MemoryPlugin offers multiple integration methods to fit your workflow. Each opti
 <Tabs>
   <Tab title="Pros">
     - Rich visual interface with bucket switching
-    - Works with 10+ AI platforms
+    - Works with 16+ AI platforms
     - Best user experience with full UI
     - Works on desktop and mobile (iOS Safari, Kiwi Browser)
+    - Chat history sync for ChatGPT, Claude, Gemini, Grok, and DeepSeek
     - Quick inject button for easy activation
   </Tab>
   <Tab title="Cons">

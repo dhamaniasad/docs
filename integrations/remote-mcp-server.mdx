@@ -3,13 +3,13 @@ title: "Remote MCP server (hosted)"
 description: "Connect any MCP client to MemoryPlugin’s hosted MCP server over HTTP/SSE with OAuth and Dynamic Client Registration"
 icon: "cloud"
 author: "asad"
-lastUpdated: "2025-09-29"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2025-09-29" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
 Use MemoryPlugin without installing a local server. Our hosted Remote MCP server lets any compatible MCP client connect over HTTPS with built‑in OAuth 2.0 (PKCE) and Dynamic Client Registration (DCR).
 
@@ -144,14 +144,15 @@ This runs a local proxy that connects to the remote server, making it appear as 
 
 ## Capabilities
 
-Once connected, MemoryPlugin exposes the same capabilities as the local server:
+Once connected, MemoryPlugin exposes the same capabilities as the [local MCP server](/integrations/mcp-server), plus some extras:
 
-- Load memories into context
-- Create and update memories
-- Search memories by natural language
-- Work with memory buckets (create, list, target by bucket)
+- **Memories** — store, retrieve, and search memories across buckets
+- **Smart Memory** — access AI-organized categories and summaries
+- **Chat History** — search and synthesize context from your imported conversations
+- **File Search** — query your uploaded documents
+- **Chat History Overview** — AI-generated summary based on your chat history, automatically shared with the AI for richer context
 
-Refer to the in‑client tool list to see the exact set of MCP tools and prompts.
+Refer to the [MCP Server](/integrations/mcp-server#available-tools) page for the full tool list.
 
 ## Troubleshooting
 

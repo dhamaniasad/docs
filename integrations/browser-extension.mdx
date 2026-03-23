@@ -3,13 +3,13 @@ title: "Browser Extension"
 description: "Use MemoryPlugin with any Chromium-based browser or Safari on iOS and macOS"
 icon: "browser"
 author: "asad"
-lastUpdated: "2025-12-14"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
 The Browser Extension for MemoryPlugin provides seamless integration with AI chat platforms through your web browser.
 
@@ -84,8 +84,9 @@ The MemoryPlugin panel provides:
 - **Memory List**: View all memories in your selected bucket
 - **Bucket Selector**: Switch between different memory buckets (contexts)
 - **Memory Count**: See how many memories are in each bucket
-- **Smart Mode Toggle**: Enable Smart Mode when available (gradual rollout)
-- **Settings**: Access extension settings including TypingMind auto-sync
+- **Smart Mode Toggle**: Enable Smart Mode for token-efficient memory loading
+- **Edit & Delete**: Manage memories directly from the panel
+- **Settings**: Access extension settings including chat sync and onboarding
 
 ### Button Variations
 
@@ -153,10 +154,6 @@ When a new memory is added, you will see the round MemoryPlugin button briefly s
 
 ## Smart Mode
 
-<Info>
-Smart Mode is currently undergoing a gradual rollout. If you'd like faster access, please contact support.
-</Info>
-
 Smart Mode optimizes token consumption and keeps the AI focused by intelligently organizing and presenting your memories.
 
 ### How It Works
@@ -179,19 +176,24 @@ To enable Smart Mode:
 - **Contextual Awareness**: AI knows high-level information about all categories
 - **Automatic Management**: New memories are categorized automatically
 
-## TypingMind Integration
+## Chat History Sync
 
-The extension has special features for TypingMind users:
+The extension can sync your conversations directly from supported platforms — no file exports needed.
 
-### Auto-Sync Toggle
-Enable or disable automatic chat history syncing for TypingMind in the extension settings. When enabled, your TypingMind conversations are periodically synced to MemoryPlugin's chat history.
+### Supported Sync Platforms
+- **ChatGPT**
+- **Claude**
+- **Gemini**
+- **Grok**
+- **DeepSeek**
 
-### Sync Performance
-The extension uses batch loading to handle large TypingMind chat libraries efficiently. Even with thousands of conversations, syncing stays fast and responsive with progress indicators showing the sync status.
+### How It Works
+Open the extension panel and go to the Sync tab. Select your platform using the icon-based provider selector, then start syncing. The extension shows real-time progress ("X/Y conversations synced") during batch operations.
 
-<Info>
-For the full TypingMind experience, also install the [TypingMind Plugin](/integrations/typingmind-plugin) which gives AI direct access to your memories, chat history, and files.
-</Info>
+You can configure sync limits, cancel in-progress syncs, and the extension defaults to the platform you're currently using.
+
+### TypingMind Integration
+TypingMind users can also enable auto-sync from the extension settings. For the full experience, also install the [TypingMind Plugin](/integrations/typingmind-plugin) which gives AI direct access to your memories, chat history, and files.
 
 ## Supported Platforms
 
@@ -276,6 +278,10 @@ The browser extension allows you to import your existing ChatGPT memories into M
 <Info>
 The sync process is idempotent - duplicate memories won't be created if you run it multiple times.
 </Info>
+
+## Onboarding
+
+New users are greeted with an interactive walkthrough that covers the essentials — what MemoryPlugin is, how to activate it, how to save memories, and how chat history sync works. The onboarding opens automatically on first install and can be revisited from the Settings menu ("How MemoryPlugin Works").
 
 ## Privacy & Security
 

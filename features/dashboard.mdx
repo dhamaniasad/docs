@@ -3,12 +3,12 @@ title: "Dashboard"
 description: "Manage your memories, files, and settings from the MemoryPlugin web dashboard"
 icon: "gauge"
 author: "asad"
-lastUpdated: "2025-12-14"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
 The MemoryPlugin Dashboard is your central hub for managing memories, files, and settings. Access it at [memoryplugin.com/dashboard](https://memoryplugin.com/dashboard).
 
@@ -47,7 +47,7 @@ Hold the modifier key (⌘ or Ctrl) to see shortcut hints appear in the sidebar.
     View, search, add, and organize your memories across buckets
   </Card>
   <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
-    Import and search your AI conversations from ChatGPT, Claude, and TypingMind
+    Import and search your AI conversations from ChatGPT, Claude, Gemini, Grok, DeepSeek, and TypingMind
   </Card>
   <Card title="Ask" icon="messages" href="/features/ask">
     Query your memories, chat history, and files with AI
@@ -57,6 +57,9 @@ Hold the modifier key (⌘ or Ctrl) to see shortcut hints appear in the sidebar.
   </Card>
   <Card title="Suggestions" icon="lightbulb">
     AI-powered suggestions to clean up duplicates and improve memories
+  </Card>
+  <Card title="Activity" icon="chart-mixed" href="/features/chat-history/dashboard#activity-page-beta">
+    Analytics and insights about your chat history usage
   </Card>
 </CardGroup>
 
@@ -114,6 +117,10 @@ For buckets with 30+ memories, enable Smart Memory to auto-organize:
 
 Related docs: [Smart Memory](/features/smart-memory)
 
+## Bucket Sorting
+
+Drag-and-drop reordering for your bucket list. Your preferred order is consistent across the dashboard and browser extension.
+
 ## Settings
 
 Access settings from the sidebar or by clicking your profile. Settings open in a modal so you don't lose your place.
@@ -121,6 +128,9 @@ Access settings from the sidebar or by clicking your profile. Settings open in a
 ### Profile
 - Set display name and avatar
 - View account email
+
+### Connected Apps
+View and manage your OAuth connections — see which apps have access, when they were last used, and revoke access with one click.
 
 ### Integration & Access
 Your Auth Token is needed for integrations like MCP Server and TypingMind.
@@ -140,6 +150,9 @@ AI analyzes your memories and suggests improvements:
 - Remove duplicates
 - Combine similar memories
 - Update outdated information
+
+### Life Context
+AI-generated monthly insights from your chat history. MemoryPlugin reviews your conversations and surfaces recurring themes, projects, and interests in a brief summary. Available for Pro users.
 
 ### Get to Know You
 A guided conversation to quickly build your memory profile. The AI asks questions and creates memories based on your answers.

@@ -3,30 +3,35 @@ title: "Dashboard"
 description: "Manage, search, and analyze your chat history"
 icon: "table-columns"
 author: "asad"
-lastUpdated: "2025-10-25"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from "/snippets/article-info.jsx";
 
-<ArticleInfo author="asad" lastUpdated="2025-10-25" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
-The Chat History dashboard has four main tabs for managing and using your conversation history.
+The Chat History dashboard has five main sections for managing and using your conversation history.
 
 ## Uploads Tab
 
 Monitor and manage your chat history imports.
 
+{/* TODO: Replace screenshot — imports page was redesigned with platform-colored cards, status badges, and filters */}
 ![Uploads Tab Overview](/images/chat-history/uploads-page-overview.png)
 
 ### Viewing Imports
 
-Each upload shows:
+Each import shows:
 
-- **Filename** and platform (ChatGPT, Claude, TypingMind)
-- **Status**: Queued, Processing, Completed, or Failed
+- **Platform-colored card** identifying the source (ChatGPT, Claude, TypingMind, Grok, Gemini, DeepSeek)
+- **Status badge**: Queued, Processing, Completed, or Failed
 - **Progress**: Percentage complete and message count
-- **Actions**: Delete button to remove the entire import
+- **Relative timestamps** (e.g., "2 days ago")
+- **Actions**: Delete or retry failed imports
 
+At the top of the page, summary stats show your total files, conversations, and messages across all imports. You can filter by platform, status, or date range.
+
+{/* TODO: Replace screenshot — imports page was redesigned */}
 ![Upload List](/images/chat-history/uploads-page-list.png)
 
 ### Processing Status
@@ -35,6 +40,7 @@ Processing happens automatically in the background with periodic progress update
 
 - See progress percentage
 - View number of messages processed
+- **Retry** failed imports directly from the imports page
 - Close the tab—processing continues in the background
 - Large files can take several minutes to hours
 
@@ -56,7 +62,7 @@ All your uploaded conversations appear here in a searchable list showing:
 - **Conversation title**
 - **Date of last message** in the conversation
 - **Import time**
-- **Platform** (ChatGPT, Claude, or TypingMind)
+- **Platform** (ChatGPT, Claude, TypingMind, Grok, Gemini, DeepSeek)
 - **Message count**
 - **Pin status** (if pinned)
 
@@ -68,7 +74,7 @@ Click any conversation to view the full chat history with all messages.
 
 Find specific chats using filters:
 
-- **By platform** - Show only ChatGPT, Claude, TypingMind, or all
+- **By platform** - Show only a specific platform or all
 - **By date range** - Filter to specific time periods
 - **By title** - Keyword search in conversation titles
 - **Show only pinned** - See just your pinned favorites
@@ -175,7 +181,7 @@ Search uses **hybrid search** combining semantic understanding with keyword matc
 - **Temporal queries** - Understands time references like "last year", "last month", "in 2024" and automatically filters to the correct time periods
 - **Result summaries** - Each result shows why it matched and what the conversation discusses
 - **Relevance ranking** - Best matches appear first
-- **Platform filtering** - Search across all platforms or filter by ChatGPT, Claude, TypingMind
+- **Platform filtering** - Search across all platforms or filter by a specific one
 - **View full conversation** - Click any result to open the complete chat
 
 ### Search Tips
@@ -218,7 +224,7 @@ Each search result shows:
 
 - **Summary** explaining why the chat matched and what it discusses
 - **Conversation title**
-- **Platform** (ChatGPT, Claude, or TypingMind)
+- **Platform** (ChatGPT, Claude, TypingMind, Grok, Gemini, DeepSeek)
 
 Click any result to view the full conversation with all messages.
 
@@ -278,6 +284,21 @@ Each answer includes:
   Complex queries can take 30-120 seconds as the AI performs multiple searches
   and analyzes your history. Be patient while it works.
 </Warning>
+
+## Activity Page (Beta)
+
+The Activity page gives you analytics and insights about your chat history.
+
+### At a Glance
+- **KPI cards** — total conversations, messages, and active days
+- **Conversations over time** — bar chart showing your activity trends
+- **Messages over time** — area chart tracking message volume
+- **Platform breakdown** — see how your usage splits across platforms
+- **Activity heatmap** — GitHub-style grid showing when you chat most
+- **Time range selector** — filter by week, month, or all time
+
+### Monthly Insights
+AI-generated reflections appear on the Activity page, summarizing recurring themes, projects, and interests from your conversations each month.
 
 ## Troubleshooting
 
