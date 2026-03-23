@@ -3,12 +3,113 @@ title: "Changelog"
 description: "Product updates and announcements for MemoryPlugin"
 rss: true
 author: "asad"
-lastUpdated: "2025-12-14"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+
+<Update label="March 2026" description="Activity Analytics, New Platform Imports, Search Overhaul" tags={["Features", "Platform Support", "Improvements"]}>
+  ### Activity page (beta)
+  New analytics dashboard for your chat history:
+  - **At-a-glance metrics** — total conversations, messages, and active days
+  - **Conversations over time** — see how your activity trends across weeks and months
+  - **Platform breakdown** — visualize your usage across ChatGPT, Claude, and more
+  - **Activity heatmap** — GitHub-style grid showing when you chat most
+  - **Time range selector** — filter by week, month, or all time
+
+  ### Monthly Insights
+  AI-generated reflections on your Activity page. Each month, MemoryPlugin reviews your conversations and surfaces recurring themes, projects, and interests — only topics that come up across multiple conversations are included, keeping the signal high.
+
+  ### Grok chat history import
+  Import your Grok conversations with full support for branching threads. Available as both file upload and online sync from the browser extension.
+
+  ### Gemini chat history import & auto-sync
+  Import and auto-sync your Google Gemini conversations. Sync runs in the background with configurable limits and cancellation support.
+
+  ### DeepSeek online sync
+  Sync your DeepSeek conversations directly from the browser extension — no export files needed.
+
+  ### Search improvements
+  - **Better relevance** — upgraded to a larger, more reliable model for ranking results
+  - **Smarter query understanding** — improved detection of what you're looking for
+  - **Keyword matching** — results that match more of your search terms rank higher
+  - **Fewer missed results** — relaxed filtering keeps contextually relevant results that were previously excluded
+
+  ### Imports page redesign
+  - Platform-colored cards so each import is identifiable at a glance
+  - Clear status badges for processing, completed, and failed imports
+  - Summary stats showing total files, conversations, and messages
+  - Filters to narrow by platform, status, or date range
+
+  ### Multi-file ChatGPT imports
+  Upload multiple ChatGPT export files at once, with guidance for splitting large exports.
+
+  ### Browser extension v3.1.1 & v3.1.2
+  - Renamed "Sync" to "Sync All" for clarity
+  - Fixed login flow not updating the UI after signing in on Chrome
+</Update>
+
+<Update label="February 2026" description="Extension Onboarding, ChatGPT to Markdown Tool" tags={["Features", "Integrations"]}>
+  ### Extension onboarding
+  Interactive walkthrough for new users:
+  - **Essentials** — four chapters covering core features with realistic mock UIs
+  - **Progress tracking** — pick up where you left off
+  - Opens automatically on first install; also accessible from Settings
+
+  ### Sync panel redesign
+  Compact icon-based provider selector with platform logos — in color when active, grayscale when inactive. Scales better as we add more platforms.
+
+  ### ChatGPT to Markdown converter
+  Free tool for converting ChatGPT export files to clean, readable Markdown. Runs entirely in your browser — nothing is uploaded. Handles even very large export files without freezing.
+
+  Try it at [memoryplugin.com/tools/chatgpt-to-markdown](https://memoryplugin.com/tools/chatgpt-to-markdown)
+
+  ### Chat import reliability
+  - Better handling of very large conversations
+  - Retry failed imports directly from the imports page
+  - Real-time progress tracking during sync
+  - Improved error recovery and cancellation
+
+  ### Browser extension v3.0.8 → v3.1.0
+  - Grok voice mode support
+  - LibreChat compatibility fix
+  - Bucket ordering now matches your dashboard preferences
+  - General stability improvements
+</Update>
+
+<Update label="January 2026" description="Life Context, Connected Apps, Extension Polish" tags={["Features", "Improvements"]}>
+  ### Life Context
+  AI-generated monthly insights from your chat history. MemoryPlugin reviews your conversations and surfaces recurring themes, projects, and interests in a brief, readable summary. Available for Pro users.
+
+  Shows up on your dashboard and is shared with MCP-connected AI tools for richer, more personalized context.
+
+  ### Connected Apps
+  New section in Settings to manage your connected applications:
+  - See which apps have access to your MemoryPlugin account
+  - Check when each connection was last used
+  - Revoke access with one click
+
+  ### Extension improvements
+  - **Smooth animations** — polished transitions when opening and closing the panel
+  - **Sync progress** — see exactly how many conversations have been synced during a batch
+  - **Edit & delete memories** directly from the extension panel (v3.0.5)
+  - **Memory load limit** — control how many memories are loaded at once (v3.0.6)
+  - **Better mobile support** — improved touch interactions
+
+  ### Bucket sorting
+  Drag-and-drop reordering for your bucket list. Your preferred order is consistent across the dashboard and browser extension.
+
+  ### Other improvements
+  - Chat history upload limit raised from 500 MB to **1 GB**
+  - Upload a single conversation file directly (ChatGPT or Claude export)
+  - Improved memory injection — fewer cases where AI assistants refuse to use your context
+  - Memories that failed to sync to search are now automatically repaired
+  - Updated compatibility for Google AI Studio, Claude, ChatGPT, and Gemini
+  - Multi-turn conversations in Ask — your full conversation history is preserved across messages
+  - Browser extension versions 3.0.3 through 3.0.7
+</Update>
 
 <Update label="December 2025" description="MemoryPlugin 2.0" tags={["Major Release", "Features", "Integrations"]}>
   ### MemoryPlugin 2.0
