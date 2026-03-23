@@ -3,12 +3,12 @@ title: "Memory Buckets"
 description: "Organize your memories into separate contexts with MemoryPlugin's bucket system"
 icon: "folder"
 author: "asad"
-lastUpdated: "2025-08-20"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-20" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
 Memory Buckets are an organizational system that lets you group related memories together into separate, isolated collections. Think of them as folders for your memories.
 
@@ -38,7 +38,9 @@ Creating buckets is straightforward:
 ![Creating a new memory bucket in the dashboard](/images/memory-buckets/create-bucket.png)
 
 <Note>
-**Naming requirements**: Bucket names cannot be numbers alone (like "123"). You can include numbers in your bucket name, but it needs other characters too (like "Project 123" or "Q1 Goals").
+**Naming requirements**:
+- Bucket names must be unique (case-insensitive — "Work" and "work" are considered the same name)
+- Bucket names cannot be numbers alone (like "123"). You can include numbers in your bucket name, but it needs other characters too (like "Project 123" or "Q1 Goals").
 </Note>
 
 ## Using Buckets
@@ -67,8 +69,8 @@ You can ask the MemoryPlugin Custom GPT to work with specific buckets:
   <Card title="Focused Loading" icon="bullseye">
     Load only relevant memories for better AI performance
   </Card>
-  <Card title="Team Collaboration" icon="users">
-    Share specific buckets with team members (coming soon)
+  <Card title="Custom Ordering" icon="arrows-up-down">
+    Drag and drop buckets to reorder them to your preference
   </Card>
 </CardGroup>
 
@@ -89,8 +91,8 @@ Some advanced features have requirements or limits based on your bucket's size:
 
 **Context Window Limits:**
 The dashboard shows how your bucket size compares to different AI model limits:
-- ChatGPT Plus: 32,000 tokens
-- ChatGPT Pro: 128,000 tokens  
+- ChatGPT (GPT-4o): 32,000 tokens
+- ChatGPT (thinking models): ~200,000 tokens
 - Claude: 200,000 tokens
 - Gemini: 1,000,000 tokens
 
@@ -103,6 +105,7 @@ All your buckets are visible in the MemoryPlugin Dashboard where you can:
 - See bucket names and memory counts
 - Access memories within each bucket
 - Switch between buckets easily
+- Drag and drop buckets to reorder them
 
 ### Moving Memories
 You can move memories between buckets using:
@@ -127,9 +130,6 @@ You can delete buckets you no longer need, with these restrictions:
   </Accordion>
   <Accordion title="Regular Review">
     Periodically review your buckets and memories to ensure they're still organized in a way that serves your needs.
-  </Accordion>
-  <Accordion title="Team Coordination">
-    If you're planning to use team features, coordinate bucket naming and organization with your team members.
   </Accordion>
 </AccordionGroup>
 

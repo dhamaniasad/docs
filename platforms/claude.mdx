@@ -3,12 +3,12 @@ title: "Claude"
 description: "Using MemoryPlugin with Claude AI"
 icon: "robot"
 author: "asad"
-lastUpdated: "2025-08-23"
+lastUpdated: "2026-03-23"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-23" />
+<ArticleInfo author="asad" lastUpdated="2026-03-23" />
 
 Use MemoryPlugin with Claude AI assistant at [claude.ai](https://claude.ai).
 
@@ -20,11 +20,18 @@ Use MemoryPlugin with Claude AI assistant at [claude.ai](https://claude.ai).
 3. Click the MemoryPlugin button to inject memories
 4. Start chatting with memory context
 
-### MCP Server (Alternative)
-For Claude Desktop users:
-1. Install [Claude Desktop](https://claude.ai/download) 
-2. Configure the [MCP Server](/integrations/mcp-server)
+### MCP Server
+For Claude Desktop and other MCP clients:
+1. Install [Claude Desktop](https://claude.ai/download)
+2. Configure the [MCP Server](/integrations/mcp-server) (local) or the [Remote MCP Server](/integrations/remote-mcp-server) (hosted, no install needed)
 3. Memories load automatically in new chats
+
+### Chat History Import
+Import your Claude conversation history into MemoryPlugin:
+- **File upload**: Export your Claude data and upload the conversations file
+- **Online sync**: Sync conversations directly from the browser extension
+
+Once imported, your past Claude conversations become searchable and available as context across all your AI tools. See the [Chat History](/features/chat-history/introduction) docs for more details.
 
 ## Next Steps
 
@@ -41,6 +48,20 @@ For Claude Desktop users:
     icon="server"
     href="/integrations/mcp-server"
   >
-    For Claude Desktop
+    For Claude Desktop and MCP clients
+  </Card>
+  <Card
+    title="Remote MCP Server"
+    icon="cloud"
+    href="/integrations/remote-mcp-server"
+  >
+    Hosted — no install needed
+  </Card>
+  <Card
+    title="Chat History"
+    icon="clock-rotate-left"
+    href="/features/chat-history/introduction"
+  >
+    Import and search your conversations
   </Card>
 </CardGroup>
