@@ -3,27 +3,33 @@ title: "Claude"
 description: "Using MemoryPlugin with Claude AI"
 icon: "robot"
 author: "asad"
-lastUpdated: "2026-03-23"
+lastUpdated: "2026-03-24"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="asad" lastUpdated="2026-03-24" />
 
 Use MemoryPlugin with Claude AI assistant at [claude.ai](https://claude.ai).
 
 ## How to Use
 
-### Browser Extension (Recommended)
+### Remote MCP Server (Recommended)
+The best way to use MemoryPlugin with Claude — works on desktop, mobile, and web with no install required:
+1. Go to Claude Settings → Integrations → Add MCP Server
+2. Add the [Remote MCP Server](/integrations/remote-mcp-server) URL
+3. Memories load automatically in new chats — including on the Claude mobile app
+
+### Browser Extension (Recommended add-on)
+Add the browser extension alongside Remote MCP for **live chat history sync**:
 1. Install the [MemoryPlugin Browser Extension](/integrations/browser-extension)
 2. Go to [claude.ai](https://claude.ai)
-3. Click the MemoryPlugin button to inject memories
-4. Start chatting with memory context
+3. Your Claude conversations are automatically synced to MemoryPlugin
 
-### MCP Server
-For Claude Desktop and other MCP clients:
+### Local MCP Server
+For Claude Desktop and other MCP clients that prefer a local process:
 1. Install [Claude Desktop](https://claude.ai/download)
-2. Configure the [MCP Server](/integrations/mcp-server) (local) or the [Remote MCP Server](/integrations/remote-mcp-server) (hosted, no install needed)
+2. Configure the [MCP Server](/integrations/mcp-server) (local)
 3. Memories load automatically in new chats
 
 ### Chat History Import
