@@ -124,6 +124,12 @@
               "api-reference/endpoint/get-buckets",
               "api-reference/endpoint/create-bucket"
             ]
+          },
+          {
+            "group": "Chat History Endpoints",
+            "pages": [
+              "api-reference/endpoint/upload-chat-history"
+            ]
           }
         ]
       }

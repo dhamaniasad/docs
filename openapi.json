@@ -477,6 +477,70 @@
           }
         ]
       }
+    },
+    "/api/chat-history/ingest/custom-online": {
+      "post": {
+        "summary": "Upload chat history",
+        "operationId": "UploadChatHistory",
+        "description": "Upload a single conversation from any platform. Supports upsert semantics — re-sending a conversation with the same ID will update it with new messages. The conversation is processed asynchronously (chunked, embedded, and indexed for search).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomChatHistoryInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Conversation queued for processing",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatHistoryIngestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -563,6 +627,136 @@
           }
         },
         "required": ["id", "name", "memoryCount"]
+      },
+      "CustomChatHistoryInput": {
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "description": "Platform identifier for your integration (e.g., 'my-slack-bot', 'internal-tool'). Alphanumeric, hyphens, underscores, dots. Max 100 chars. Defaults to 'custom' if omitted.",
+            "pattern": "^[a-zA-Z0-9\\-_.]{1,100}$",
+            "example": "my-custom-app"
+          },
+          "platformDisplayName": {
+            "type": "string",
+            "description": "Human-readable display name for the platform shown in the UI. Max 200 chars. Overwrites previous value if supplied again for the same platform.",
+            "maxLength": 200,
+            "example": "My Custom App"
+          },
+          "conversation": {
+            "type": "object",
+            "description": "The conversation to upload.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Your unique identifier for this conversation. Used for upsert deduplication — sending the same ID again updates the existing conversation.",
+                "maxLength": 500,
+                "example": "conv-abc-123"
+              },
+              "title": {
+                "type": "string",
+                "description": "Display title of the conversation.",
+                "example": "Discussion about API design"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "When the conversation was created (ISO 8601).",
+                "example": "2026-04-27T10:00:00Z"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "When the conversation was last updated (ISO 8601). Defaults to createdAt if omitted.",
+                "example": "2026-04-27T11:30:00Z"
+              },
+              "messages": {
+                "type": "array",
+                "description": "The messages in the conversation. Must contain at least one message.",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Your unique identifier for this message. Used for deduplication on re-upload.",
+                      "example": "msg-001"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": ["human", "assistant"],
+                      "description": "Who sent this message."
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "The message text content.",
+                      "example": "How should we structure the API?"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "When this message was sent (ISO 8601). Optional but recommended for correct ordering.",
+                      "example": "2026-04-27T10:00:00Z"
+                    }
+                  },
+                  "required": ["id", "role", "content"]
+                }
+              }
+            },
+            "required": ["id", "title", "createdAt", "messages"]
+          }
+        },
+        "required": ["conversation"]
+      },
+      "ChatHistoryIngestResponse": {
+        "type": "object",
+        "properties": {
+          "queued": {
+            "type": "boolean",
+            "description": "Whether the conversation was accepted for processing."
+          },
+          "importId": {
+            "type": "string",
+            "description": "The import record ID for this platform."
+          },
+          "conversationId": {
+            "type": "string",
+            "description": "The internal conversation ID assigned by MemoryPlugin."
+          },
+          "platform": {
+            "type": "string",
+            "description": "The resolved platform identifier."
+          },
+          "conversation": {
+            "type": "object",
+            "description": "Conversation details after upsert.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Internal conversation ID."
+              },
+              "platformConversationId": {
+                "type": "string",
+                "description": "Your supplied conversation ID."
+              },
+              "title": {
+                "type": "string"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "messageCount": {
+                "type": "integer"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["queued"],
+                "description": "Processing status. 'queued' means the conversation is stored and background processing (chunking, embedding) is in progress."
+              }
+            }
+          }
+        }
       }
     },
     "securitySchemes": {

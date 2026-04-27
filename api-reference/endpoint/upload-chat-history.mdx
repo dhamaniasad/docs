@@ -1,0 +1,58 @@
+---
+title: 'Upload Chat History'
+openapi: 'POST /api/chat-history/ingest/custom-online'
+author: "asad"
+lastUpdated: "2026-04-27"
+---
+
+## Overview
+
+Upload chat history from any platform to MemoryPlugin. This endpoint accepts a single conversation per request with your own unique identifiers for conversations and messages.
+
+### Key features
+
+- **Upsert semantics**: Re-sending a conversation with the same `conversation.id` updates it with any new messages rather than duplicating it.
+- **Dynamic platform naming**: Supply a `platform` identifier to group conversations by source. Each platform is scoped to your user account.
+- **Full processing pipeline**: Conversations are chunked, embedded, and indexed for semantic search — just like conversations imported via the browser extension.
+
+### Limits
+
+- Conversations exceeding **100,000 tokens** are rejected during background processing.
+- Maximum payload size: **50 MB**.
+- Platform identifier: alphanumeric, hyphens, underscores, dots. Max 100 characters.
+
+### Processing
+
+Conversations are processed **asynchronously**. The endpoint returns immediately with `status: "queued"`. Background processing (chunking, embedding, vector indexing) typically completes within a few seconds for normal-sized conversations.
+
+### Example
+
+```bash
+curl -X POST https://www.memoryplugin.com/api/chat-history/ingest/custom-online \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "platform": "my-slack-bot",
+    "platformDisplayName": "My Slack Bot",
+    "conversation": {
+      "id": "conv-abc-123",
+      "title": "Discussion about architecture",
+      "createdAt": "2026-04-27T10:00:00Z",
+      "updatedAt": "2026-04-27T11:30:00Z",
+      "messages": [
+        {
+          "id": "msg-1",
+          "role": "human",
+          "content": "How should we structure the API?",
+          "createdAt": "2026-04-27T10:00:00Z"
+        },
+        {
+          "id": "msg-2",
+          "role": "assistant",
+          "content": "I would recommend a RESTful approach with versioned endpoints...",
+          "createdAt": "2026-04-27T10:01:00Z"
+        }
+      ]
+    }
+  }'
+```
