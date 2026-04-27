@@ -541,6 +541,429 @@
           }
         ]
       }
+    },
+    "/api/chat-history/search": {
+      "post": {
+        "summary": "Search chat history",
+        "operationId": "SearchChatHistory",
+        "description": "Perform semantic search across all imported chat conversations. Uses hybrid vector + keyword search with AI reranking for high relevance.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatHistorySearchInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatHistorySearchResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/chat-history/chats": {
+      "get": {
+        "summary": "List conversations",
+        "operationId": "ListConversations",
+        "description": "List imported chat conversations with pagination and filtering.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": { "type": "integer", "default": 1 },
+            "description": "Page number (1-indexed)."
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": { "type": "integer", "default": 25, "maximum": 100 },
+            "description": "Results per page."
+          },
+          {
+            "name": "provider",
+            "in": "query",
+            "schema": { "type": "string", "default": "all" },
+            "description": "Filter by platform. Use 'all' for all platforms, or a specific platform ID (e.g., 'chatgpt', 'claude', 'custom')."
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Filter by conversation title (partial match)."
+          },
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "schema": { "type": "string", "format": "date" },
+            "description": "Filter conversations created on or after this date (ISO 8601)."
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "schema": { "type": "string", "format": "date" },
+            "description": "Filter conversations created on or before this date (ISO 8601)."
+          },
+          {
+            "name": "pinnedOnly",
+            "in": "query",
+            "schema": { "type": "boolean", "default": false },
+            "description": "Only return pinned conversations."
+          },
+          {
+            "name": "importId",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Filter by import ID."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated conversation list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationListResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete conversations",
+        "operationId": "DeleteConversations",
+        "description": "Delete one or more conversations and their associated data (messages, chunks, vectors).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "description": "Array of conversation IDs to delete."
+                  }
+                },
+                "required": ["ids"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Conversations deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deleted": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "description": "IDs of successfully deleted conversations."
+                    },
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of conversations deleted."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/chat-history/conversation": {
+      "get": {
+        "summary": "Get conversation",
+        "operationId": "GetConversation",
+        "description": "Retrieve a specific conversation with all its messages.",
+        "parameters": [
+          {
+            "name": "conversationId",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The internal conversation ID (returned from list or search endpoints)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Conversation with messages",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversationDetailResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Conversation not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/chat-history/count": {
+      "get": {
+        "summary": "Get conversation count",
+        "operationId": "GetConversationCount",
+        "description": "Returns the total count of imported conversations (excluding excluded and quota-blocked ones).",
+        "responses": {
+          "200": {
+            "description": "Conversation count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Total number of active imported conversations."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/memories/{memoryId}": {
+      "delete": {
+        "summary": "Delete a memory",
+        "operationId": "DeleteMemory",
+        "description": "Delete a single memory by its ID. Removes the memory from the database and vector store.",
+        "parameters": [
+          {
+            "name": "memoryId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The memory ID to delete."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Memory deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "enum": ["Memory deleted"]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Memory ID is required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/memories/bulk-delete": {
+      "post": {
+        "summary": "Bulk delete memories",
+        "operationId": "BulkDeleteMemories",
+        "description": "Delete multiple memories in a single request.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "memoryIds": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "description": "Array of memory IDs to delete."
+                  }
+                },
+                "required": ["memoryIds"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Memories deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deleted": {
+                      "type": "integer",
+                      "description": "Number of memories successfully deleted."
+                    },
+                    "failed": {
+                      "type": "integer",
+                      "description": "Number of memories that failed to delete."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -755,6 +1178,221 @@
                 "description": "Processing status. 'queued' means the conversation is stored and background processing (chunking, embedding) is in progress."
               }
             }
+          }
+        }
+      },
+      "ChatHistorySearchInput": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query. Semantic search is performed across all imported conversations.",
+            "example": "how to set up authentication"
+          },
+          "limit": {
+            "type": "integer",
+            "default": 20,
+            "minimum": 1,
+            "maximum": 100,
+            "description": "Maximum number of results to return."
+          },
+          "provider": {
+            "type": "string",
+            "default": "all",
+            "description": "Filter results by platform. 'all' searches everything, or specify a platform ID (e.g., 'chatgpt', 'claude', 'custom')."
+          },
+          "contextChunks": {
+            "type": "integer",
+            "default": 4,
+            "description": "Number of surrounding message chunks to include for context around each result."
+          },
+          "skipRerank": {
+            "type": "boolean",
+            "default": false,
+            "description": "Skip the AI reranking step. Faster but potentially less relevant ordering."
+          }
+        },
+        "required": ["query"]
+      },
+      "ChatHistorySearchResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "conversationId": {
+                  "type": "string",
+                  "description": "Internal conversation ID."
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Conversation title."
+                },
+                "text": {
+                  "type": "string",
+                  "description": "The matched text chunk."
+                },
+                "score": {
+                  "type": "number",
+                  "description": "Relevance score."
+                },
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "When the matched message was sent."
+                },
+                "sender": {
+                  "type": "string",
+                  "enum": ["human", "assistant"],
+                  "description": "Who sent the matched message."
+                },
+                "context": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "text": { "type": "string" },
+                      "sender": { "type": "string" },
+                      "timestamp": { "type": "string" }
+                    }
+                  },
+                  "description": "Surrounding messages for context."
+                }
+              }
+            }
+          },
+          "totalResults": {
+            "type": "integer",
+            "description": "Total number of results found."
+          },
+          "query": {
+            "type": "string",
+            "description": "The original query."
+          },
+          "provider": {
+            "type": "string",
+            "description": "Platform filter applied."
+          },
+          "processingTime": {
+            "type": "integer",
+            "description": "Time taken in milliseconds."
+          }
+        }
+      },
+      "ConversationListResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Internal conversation ID."
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Conversation title."
+                },
+                "platform": {
+                  "type": "string",
+                  "description": "Source platform (e.g., 'chatgpt', 'claude', 'custom')."
+                },
+                "messageCount": {
+                  "type": "integer",
+                  "description": "Number of messages in the conversation."
+                },
+                "tokenCount": {
+                  "type": "integer",
+                  "description": "Total tokens in the conversation."
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "pinned": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "page": {
+            "type": "integer",
+            "description": "Current page number."
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "Results per page."
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of conversations matching the filter."
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "Total number of pages."
+          }
+        }
+      },
+      "ConversationDetailResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Internal conversation ID."
+          },
+          "title": {
+            "type": "string",
+            "description": "Conversation title."
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message_index": {
+                  "type": "integer",
+                  "description": "Position in the conversation (0-indexed)."
+                },
+                "sender": {
+                  "type": "string",
+                  "enum": ["human", "assistant"],
+                  "description": "Who sent the message."
+                },
+                "text": {
+                  "type": "string",
+                  "description": "Message content."
+                },
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "When the message was sent."
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of messages."
+          },
+          "platformConversationId": {
+            "type": "string",
+            "description": "The original platform conversation ID."
+          },
+          "sourceId": {
+            "type": "string",
+            "description": "Platform identifier."
+          },
+          "tokenCount": {
+            "type": "integer",
+            "description": "Total tokens in the conversation."
           }
         }
       }

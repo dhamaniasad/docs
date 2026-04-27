@@ -1,0 +1,17 @@
+---
+title: 'Get Conversation'
+openapi: 'GET /api/chat-history/conversation'
+author: "asad"
+lastUpdated: "2026-04-27"
+---
+
+## Overview
+
+Retrieve a specific conversation with all its messages. Use the `conversationId` from the list or search endpoints.
+
+### Example
+
+```bash
+curl "https://www.memoryplugin.com/api/chat-history/conversation?conversationId=abc-123" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```

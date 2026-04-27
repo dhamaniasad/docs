@@ -1,0 +1,21 @@
+---
+title: 'Bulk Delete Memories'
+openapi: 'POST /api/memories/bulk-delete'
+author: "asad"
+lastUpdated: "2026-04-27"
+---
+
+## Overview
+
+Delete multiple memories in a single request. More efficient than calling the single-delete endpoint repeatedly.
+
+### Example
+
+```bash
+curl -X POST https://www.memoryplugin.com/api/memories/bulk-delete \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "memoryIds": ["mem-id-1", "mem-id-2", "mem-id-3"]
+  }'
+```

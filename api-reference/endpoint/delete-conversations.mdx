@@ -1,0 +1,21 @@
+---
+title: 'Delete Conversations'
+openapi: 'DELETE /api/chat-history/chats'
+author: "asad"
+lastUpdated: "2026-04-27"
+---
+
+## Overview
+
+Delete one or more conversations and all associated data (messages, chunks, and vector embeddings). This action is irreversible.
+
+### Example
+
+```bash
+curl -X DELETE https://www.memoryplugin.com/api/chat-history/chats \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ids": ["conv-id-1", "conv-id-2"]
+  }'
+```

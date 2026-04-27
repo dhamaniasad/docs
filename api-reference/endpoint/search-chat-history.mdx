@@ -1,0 +1,29 @@
+---
+title: 'Search Chat History'
+openapi: 'POST /api/chat-history/search'
+author: "asad"
+lastUpdated: "2026-04-27"
+---
+
+## Overview
+
+Perform semantic search across all imported chat conversations. This endpoint uses hybrid vector + keyword search with AI reranking for high relevance results.
+
+### How it works
+
+1. Your query is embedded and compared against all conversation chunks using vector similarity
+2. Results are enriched with surrounding context messages
+3. An AI reranker scores and orders results by relevance (can be skipped for faster responses)
+
+### Example
+
+```bash
+curl -X POST https://www.memoryplugin.com/api/chat-history/search \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "how to set up authentication",
+    "limit": 10,
+    "provider": "all"
+  }'
+```

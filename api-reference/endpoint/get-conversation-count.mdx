@@ -1,0 +1,17 @@
+---
+title: 'Get Conversation Count'
+openapi: 'GET /api/chat-history/count'
+author: "asad"
+lastUpdated: "2026-04-27"
+---
+
+## Overview
+
+Returns the total count of imported conversations for the authenticated user. Excludes conversations that have been excluded or blocked by quota limits.
+
+### Example
+
+```bash
+curl "https://www.memoryplugin.com/api/chat-history/count" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```

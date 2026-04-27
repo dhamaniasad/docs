@@ -115,7 +115,9 @@
             "pages": [
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
-              "api-reference/endpoint/search-memories"
+              "api-reference/endpoint/search-memories",
+              "api-reference/endpoint/delete-memory",
+              "api-reference/endpoint/bulk-delete-memories"
             ]
           },
           {
@@ -128,7 +130,12 @@
           {
             "group": "Chat History Endpoints",
             "pages": [
-              "api-reference/endpoint/upload-chat-history"
+              "api-reference/endpoint/upload-chat-history",
+              "api-reference/endpoint/search-chat-history",
+              "api-reference/endpoint/list-conversations",
+              "api-reference/endpoint/get-conversation",
+              "api-reference/endpoint/get-conversation-count",
+              "api-reference/endpoint/delete-conversations"
             ]
           }
         ]

@@ -1,0 +1,17 @@
+---
+title: 'Delete Memory'
+openapi: 'DELETE /api/memories/{memoryId}'
+author: "asad"
+lastUpdated: "2026-04-27"
+---
+
+## Overview
+
+Delete a single memory by its ID. The memory is removed from both the database and the vector store.
+
+### Example
+
+```bash
+curl -X DELETE https://www.memoryplugin.com/api/memories/mem-abc-123 \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```

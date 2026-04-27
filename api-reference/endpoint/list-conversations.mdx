@@ -1,0 +1,17 @@
+---
+title: 'List Conversations'
+openapi: 'GET /api/chat-history/chats'
+author: "asad"
+lastUpdated: "2026-04-27"
+---
+
+## Overview
+
+List imported chat conversations with pagination and filtering. Use this to browse conversations, filter by platform, or search by title.
+
+### Example
+
+```bash
+curl "https://www.memoryplugin.com/api/chat-history/chats?page=1&pageSize=10&provider=chatgpt" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
