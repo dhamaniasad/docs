@@ -130,6 +130,7 @@
           {
             "group": "Chat History Endpoints",
             "pages": [
+              "api-reference/endpoint/recall-chat-history",
               "api-reference/endpoint/upload-chat-history",
               "api-reference/endpoint/search-chat-history",
               "api-reference/endpoint/list-conversations",

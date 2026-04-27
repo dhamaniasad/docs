@@ -542,11 +542,65 @@
         ]
       }
     },
+    "/api/chat-history/inject": {
+      "post": {
+        "summary": "Recall chat history",
+        "operationId": "RecallChatHistory",
+        "description": "Search and synthesize context from the user's past AI conversations. This is the primary recall endpoint — it performs semantic search, then uses AI to synthesize matching results into a coherent summary with source citations. This is the same function powering the `recall_chat_history` tool in the MCP server.\n\nSupports parallel queries for complex topics that benefit from multiple search angles (e.g., timeline, decisions, people).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatHistoryInjectInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Synthesized context from chat history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatHistoryInjectResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/chat-history/search": {
       "post": {
-        "summary": "Search chat history",
+        "summary": "Search chat history (raw)",
         "operationId": "SearchChatHistory",
-        "description": "Perform semantic search across all imported chat conversations. Uses hybrid vector + keyword search with AI reranking for high relevance.",
+        "description": "Perform raw semantic search across all imported chat conversations. Returns matched chunks with scores and surrounding context. For most use cases, use the Recall endpoint (`POST /api/chat-history/inject`) instead — it performs search and AI synthesis in one step.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1178,6 +1232,113 @@
                 "description": "Processing status. 'queued' means the conversation is stored and background processing (chunking, embedding) is in progress."
               }
             }
+          }
+        }
+      },
+      "ChatHistoryInjectInput": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Natural-language description of what you're looking for in the user's chat history.",
+            "example": "What decisions did I make about the database schema?"
+          },
+          "maxTokens": {
+            "type": "integer",
+            "default": 600,
+            "maximum": 2000,
+            "description": "Maximum tokens to allocate for the synthesized context. More tokens = richer detail but larger response."
+          },
+          "platform": {
+            "type": "string",
+            "enum": ["claude", "chatgpt", "typingmind"],
+            "description": "Optional hint about the downstream chat platform to influence formatting."
+          },
+          "conversationContext": {
+            "type": "string",
+            "description": "Short plaintext summary of the current conversation to ground retrieval."
+          },
+          "conversationHistory": {
+            "type": "array",
+            "description": "Recent dialogue turns to help ground the search.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "role": {
+                  "type": "string",
+                  "enum": ["user", "assistant"]
+                },
+                "content": {
+                  "type": "string"
+                }
+              },
+              "required": ["role", "content"]
+            }
+          },
+          "queries": {
+            "type": "array",
+            "description": "Array of parallel queries for complex topics (max 15). Each query is searched and synthesized independently. Use when a topic benefits from multiple search angles.",
+            "maxItems": 15,
+            "items": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "string",
+                  "description": "The search query for this parallel request."
+                },
+                "maxTokens": {
+                  "type": "integer",
+                  "description": "Maximum tokens for this query (defaults to 600)."
+                }
+              },
+              "required": ["query"]
+            }
+          }
+        }
+      },
+      "ChatHistoryInjectResponse": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "AI-synthesized summary of relevant chat history. Ready to inject into a conversation as context."
+          },
+          "sources": {
+            "type": "array",
+            "description": "Source conversations that contributed to the synthesized content.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "conversationId": {
+                  "type": "string",
+                  "description": "Internal conversation ID. Use with the Get Conversation or Get Conversation Summary endpoints to dive deeper."
+                },
+                "conversationTitle": {
+                  "type": "string"
+                },
+                "messageId": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string"
+                },
+                "relevanceScore": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "tokenCount": {
+            "type": "integer",
+            "description": "Actual token count of the synthesized content."
+          },
+          "processingTime": {
+            "type": "string",
+            "description": "Total processing time (e.g., '342ms')."
+          },
+          "model": {
+            "type": "string",
+            "description": "AI model used for synthesis."
           }
         }
       },

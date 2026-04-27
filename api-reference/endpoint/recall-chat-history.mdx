@@ -1,0 +1,54 @@
+---
+title: 'Recall Chat History'
+openapi: 'POST /api/chat-history/inject'
+author: "asad"
+lastUpdated: "2026-04-27"
+---
+
+## Overview
+
+This is the primary endpoint for retrieving context from a user's past AI conversations. It searches across all imported chat history, then uses AI to synthesize the results into a coherent summary with source citations.
+
+This is the same function that powers the `recall_chat_history` tool in the [MCP server](/integrations/mcp-server).
+
+### How it works
+
+1. Your query is embedded and searched against all conversation chunks (vector + keyword hybrid search)
+2. Results are filtered and ranked by relevance
+3. An AI model synthesizes the top results into a coherent narrative
+4. Source citations are attached so you can trace back to specific conversations
+
+### When to use this vs. Search
+
+| Endpoint | Returns | Best for |
+|----------|---------|----------|
+| **Recall** (`/inject`) | AI-synthesized summary + sources | Building context for AI conversations, getting a coherent answer |
+| **Search** (`/search`) | Raw matched chunks with scores | Building custom UIs, debugging, fine-grained control |
+
+### Parallel queries
+
+For complex topics, use the `queries` array to search from multiple angles simultaneously. Each query is searched and synthesized independently.
+
+```bash
+curl -X POST https://www.memoryplugin.com/api/chat-history/inject \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "queries": [
+      { "query": "what database schema decisions were made", "maxTokens": 500 },
+      { "query": "authentication architecture discussions", "maxTokens": 500 }
+    ]
+  }'
+```
+
+### Single query
+
+```bash
+curl -X POST https://www.memoryplugin.com/api/chat-history/inject \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "what did I decide about the API rate limiting approach?",
+    "maxTokens": 800
+  }'
+```
