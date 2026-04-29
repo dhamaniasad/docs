@@ -400,6 +400,15 @@
               "minimum": 0
             },
             "description": "Number of memories to skip for pagination. Zero-indexed: skip=0 starts from first memory, skip=10 skips first 10 memories and starts from 11th. Used primarily with token limiting to load additional memories beyond the initial response."
+          },
+          {
+            "name": "includeIds",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "When true, text memories are returned as objects with `id` and `text` fields instead of plain strings. Useful for clients that need to reference specific memories for edit or delete operations."
           }
         ],
         "responses": {
