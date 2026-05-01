@@ -2,6 +2,62 @@
 title: 'Search Memories V2'
 openapi: 'GET /api/v2/memory'
 author: "asad"
-lastUpdated: "2025-08-20"
+lastUpdated: "2026-05-01"
 ---
 
+## Image Memories
+
+Search results may include image memories alongside text memories. Image memories are returned as objects with additional fields:
+
+- `content_type: "image"` — identifies this as an image memory
+- `image_url` — a signed URL to view the image (expires after 4 hours)
+- `image_description` — AI-generated description of the image content
+
+Image memories are ranked by relevance alongside text memories using multimodal embeddings that enable cross-modal search (e.g., a text query can find visually relevant images).
+
+### Filtering by Content Type
+
+Use the `contentType` query parameter to filter results:
+
+```bash
+# Only text memories
+curl "https://www.memoryplugin.com/api/v2/memory?query=architecture&contentType=text" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+
+# Only image memories
+curl "https://www.memoryplugin.com/api/v2/memory?query=diagram&contentType=image" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+
+# All memories (default)
+curl "https://www.memoryplugin.com/api/v2/memory?query=architecture" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+### Example Response with Image Memories
+
+```json
+{
+  "memories": [
+    "User prefers dark mode in all applications",
+    {
+      "content_type": "image",
+      "image_url": "https://memoryplugin.com/storage/v1/object/sign/memory-images/...",
+      "image_description": "A whiteboard diagram showing the auth flow with three microservices connected via Redis pub/sub.",
+      "metadata": {
+        "createdAt": "2026-04-06T10:30:00Z",
+        "bucketId": 65,
+        "bucketName": "Work"
+      }
+    },
+    "Meeting notes: decided to use PostgreSQL for the new service"
+  ],
+  "buckets": [
+    { "id": 65, "name": "Work" },
+    { "id": 66, "name": "Personal" }
+  ]
+}
+```
+
+<Note>
+Image URLs are temporary signed URLs that expire after 4 hours. If you need to access an image after the URL has expired, make another API request to get a fresh URL.
+</Note>

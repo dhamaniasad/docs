@@ -409,6 +409,15 @@
               "default": false
             },
             "description": "When true, text memories are returned as objects with `id` and `text` fields instead of plain strings. Useful for clients that need to reference specific memories for edit or delete operations."
+          },
+          {
+            "name": "contentType",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["text", "image"]
+            },
+            "description": "Filter memories by content type. Use `text` for text-only memories, `image` for image-only memories. Omit to return all memories."
           }
         ],
         "responses": {
@@ -421,31 +430,60 @@
                   "properties": {
                     "memories": {
                       "type": "array",
+                      "description": "Array of memories. Text memories are returned as plain strings (or `{id, text}` objects when `includeIds=true`). Image memories are always returned as objects with `content_type`, `image_url`, and `image_description` fields.",
                       "items": {
-                        "type": "object",
-                        "properties": {
-                          "text": {
-                            "type": "string"
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "description": "Text memory (plain string format)"
                           },
-                          "metadata": {
+                          {
                             "type": "object",
+                            "description": "Text memory with ID (when includeIds=true) or image memory",
                             "properties": {
-                              "text": {
-                                "type": "string"
-                              },
-                              "createdAt": {
+                              "id": {
                                 "type": "string",
-                                "format": "date-time"
+                                "description": "Memory ID (present when includeIds=true or for image memories)"
                               },
-                              "bucketId": {
-                                "type": "integer"
+                              "text": {
+                                "type": "string",
+                                "description": "Memory text content. For image memories, this contains the AI-generated description."
                               },
-                              "bucketName": {
-                                "type": "string"
+                              "content_type": {
+                                "type": "string",
+                                "enum": ["text", "image"],
+                                "description": "Memory type. Omitted for text memories in plain string format."
+                              },
+                              "image_url": {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "Signed URL to view the image. Only present for image memories. Expires after 4 hours."
+                              },
+                              "image_description": {
+                                "type": "string",
+                                "description": "AI-generated description of the image. Only present for image memories."
+                              },
+                              "metadata": {
+                                "type": "object",
+                                "properties": {
+                                  "text": {
+                                    "type": "string"
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                  },
+                                  "bucketId": {
+                                    "type": "integer"
+                                  },
+                                  "bucketName": {
+                                    "type": "string"
+                                  }
+                                }
                               }
                             }
                           }
-                        }
+                        ]
                       }
                     },
                     "buckets": {
