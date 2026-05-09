@@ -337,6 +337,68 @@
         ]
       }
     },
+    "/api/v2/memory/update": {
+      "post": {
+        "summary": "Edit a memory's text or move memories between buckets",
+        "operationId": "UpdateOrMoveMemories",
+        "x-openai-isConsequential": true,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/SingleMemoryUpdate" },
+                  { "$ref": "#/components/schemas/BulkMemoryMove" }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Memory updated or moved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/SingleUpdateResponse" },
+                    { "$ref": "#/components/schemas/BulkMoveResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+              }
+            }
+          },
+          "404": {
+            "description": "Memory or bucket not found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+              }
+            }
+          }
+        },
+        "security": [
+          { "bearerAuth": [] }
+        ]
+      }
+    },
     "/api/v2/memory": {
       "get": {
         "summary": "Get memories and buckets in a single request",
@@ -1127,7 +1189,78 @@
           "done": {
             "type": "string",
             "enum": ["ok"]
+          },
+          "memoryId": {
+            "type": "string",
+            "description": "Encoded identifier for the created memory"
           }
+        }
+      },
+      "SingleMemoryUpdate": {
+        "type": "object",
+        "properties": {
+          "memoryId": {
+            "type": "string",
+            "description": "Encoded memory ID to update"
+          },
+          "text": {
+            "type": "string",
+            "description": "New text content for the memory"
+          },
+          "bucketId": {
+            "type": "integer",
+            "description": "Target bucket ID to move the memory to"
+          },
+          "bucketName": {
+            "type": "string",
+            "description": "Target bucket name (auto-creates if it does not exist)"
+          }
+        },
+        "required": ["memoryId"]
+      },
+      "BulkMemoryMove": {
+        "type": "object",
+        "properties": {
+          "memoryIds": {
+            "type": "array",
+            "items": { "type": "string" },
+            "maxItems": 100,
+            "description": "Array of encoded memory IDs to move (max 100)"
+          },
+          "bucketId": {
+            "type": "integer",
+            "description": "Target bucket ID"
+          },
+          "bucketName": {
+            "type": "string",
+            "description": "Target bucket name (auto-creates if it does not exist)"
+          }
+        },
+        "required": ["memoryIds"]
+      },
+      "SingleUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean" },
+          "memory": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "description": "Encoded memory ID" },
+              "text": { "type": "string" },
+              "bucketId": { "type": "integer" },
+              "version": { "type": "integer" },
+              "updatedAt": { "type": "string", "format": "date-time" },
+              "createdAt": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      },
+      "BulkMoveResponse": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean" },
+          "updated": { "type": "integer", "description": "Number of memories moved" },
+          "bucketId": { "type": "integer", "description": "Target bucket ID" }
         }
       },
       "Bucket": {
