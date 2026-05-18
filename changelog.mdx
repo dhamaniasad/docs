@@ -25,6 +25,14 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   ### Multi-summary chat history
   Generate multiple summaries per conversation with **custom prompts** — get a meeting-notes view, an action-items view, and a key-decisions view of the same chat, each tailored to how you want to read it. Switch between summaries from the chat panel.
 
+  ### Word document uploads in file buckets
+  File buckets now accept `.docx` and `.doc` files alongside PDF, Markdown, and plain text. Word docs are processed with the same page-aware chunking as PDFs, so citations point to the right place.
+
+  ### Smarter chat history recall
+  The chat history recall tool now supports:
+  - **Time filters** — ask the AI to recall only what you said in the last week, last month, or any custom date range
+  - **Speed vs. quality mode** — choose faster responses for quick lookups, or higher-quality reasoning for complex questions where accuracy matters more than latency
+
   ### AI-driven chat history recall (Extension v3.3.0)
   Recall is now smarter and quieter. Instead of searching your chat history every time you send a message, the AI decides when context from past conversations would help and asks for it. A preview panel shows what's being searched and lets you preview or cancel the injection before it's sent.
 
