@@ -20,24 +20,24 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   Every memory now keeps a full history of its edits. Open a memory to see when it changed, what was added or removed (highlighted inline), and who or what made the change — you, an AI tool, or an automated improvement. **⌘+Enter / Ctrl+Enter** saves quickly without leaving the keyboard.
 
   ### Selection-to-memory pill (Extension v3.5.0)
-  Highlight any text inside a chat message on ChatGPT, Claude, Gemini, Grok, DeepSeek, Kimi, MiniMax, or TypingMind and a glassmorphic **Extract memory** pill appears next to your selection. One click runs an AI extraction pass, produces a clean atomic memory, and saves it to your current bucket. Works with double-click word, triple-click paragraph, and arbitrary drag selections.
+  Highlight any text inside a chat message on ChatGPT, Claude, Gemini, Grok, DeepSeek, Kimi, MiniMax, or TypingMind and an **Extract memory** pill appears next to your selection. One click turns the highlighted text into a clean memory and saves it to your current bucket.
 
   ### Multi-summary chat history
   Generate multiple summaries per conversation with **custom prompts** — get a meeting-notes view, an action-items view, and a key-decisions view of the same chat, each tailored to how you want to read it. Switch between summaries from the chat panel.
 
   ### AI-driven chat history recall (Extension v3.3.0)
-  Recall is now smarter and quieter. Instead of querying your chat history on every message you send, the AI decides when context from past conversations would help and crafts targeted queries. Up to 15 queries can run in parallel for complex topics. A frosted-glass preview panel shows what's being searched and lets you preview or cancel the injection before it's sent.
+  Recall is now smarter and quieter. Instead of searching your chat history every time you send a message, the AI decides when context from past conversations would help and asks for it. A preview panel shows what's being searched and lets you preview or cancel the injection before it's sent.
 
   The old auto/ask mode selector has been retired — recall now fires only when the AI requests it.
 
-  ### Extension v3.4.0 — Direct Supabase integration & panel redesign
+  ### Extension v3.4.0 — Panel redesign & real-time updates
   - **Real-time updates** — the panel refreshes automatically when memories are added, edited, or deleted on another device. No more manual refresh.
   - **Instant login/logout detection** — auth state syncs across tabs immediately.
   - **Account tab on all browsers** — previously Safari-only. Shows your avatar, plan, and quick links to manage your subscription.
-  - **Avatar pill in panel header** — your profile picture appears at the top of the panel and opens your account view.
+  - **Avatar in panel header** — your profile picture appears at the top of the panel and opens your account view.
   - **Contextual upgrade prompts** — free → paid, Core → Pro, Pro → Lifetime, all shown in-extension.
   - **Cleaner header** — Refresh, Copy, and Load-limit controls moved into a tidy overflow menu on the memories toolbar.
-  - **Lighter bundle** — content script size dropped by nearly 50% on every page load.
+  - **Faster page loads** — the extension is significantly lighter on every page it runs on.
 
   ### Plan badges in the extension
   The extension header now shows your plan — **Core**, **Pro**, or **Pro LT** (Lifetime) — right next to the MemoryPlugin title.
@@ -49,7 +49,7 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   Copy and Export collapse into a `⋯` menu on narrow viewports so the panel header doesn't crowd on mobile.
 
   ### Live dashboard
-  Memory list updates on the dashboard are now powered by Supabase Realtime. Edit a memory from the extension, MCP, or the API and the dashboard reflects the change instantly — no more polling delay.
+  Edit a memory from the extension, MCP, or the API and the dashboard reflects the change instantly — no more polling delay.
 
   ### Add memory modal: bulk paste & image uploads
   The dashboard's Add Memory dialog now accepts multiple memories at once (one per line) and supports drag-and-drop image uploads in the same flow.
@@ -58,45 +58,38 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   The dashboard sidebar's bucket list has been unified into a single section with inline sort controls — pick recency or custom order without diving into settings.
 
   ### Image search controls
-  - **`contentType` filter** on the memory search API — narrow results to images or text only
-  - **Image-only and text-only search modes** — skip the unrelated pipeline entirely for faster, more focused results
-  - **Dense-only image search** with score-based merging for better relevance
+  - **Filter search to images or text only** — both from the dashboard and via the memory search API
+  - **More relevant image search results** with an improved ranking approach
 
   ### Landing page refresh
   New hero, FAQ section, testimonials, and a dedicated chat history section on [memoryplugin.com](https://memoryplugin.com).
 
   ### Fixes
   - **DeepSeek chat sync on Safari** restored (Extension v3.4.1)
-  - **TypingMind chat history ingestion** no longer 500s on large imports
-  - **Image memory deletion** now fully removes the image from storage and clears it from search
-  - **Custom-provider chat history** now displays with its own platform identity instead of falling back to Claude branding
-  - **Subscription webhook** no longer accidentally downgrades plan type during plan changes
+  - **TypingMind chat history imports** no longer fail on large uploads
+  - **Image memory deletion** now fully removes the image, including from search
+  - **Custom-provider chat history** now displays with its own platform identity instead of being mislabelled
+  - **Subscription changes** no longer accidentally downgrade your plan
   - **Lifetime plan detection** is now reliable across the web app and extension
 </Update>
 
 <Update label="April 2026" description="Image Memories, Custom Platform Support, Pro → Lifetime Upgrade" tags={["Features", "Platform Support", "Improvements"]}>
   ### Image memories
   Memories can now be images. Upload a photo, screenshot, or diagram and MemoryPlugin will:
-  - **Describe it with Gemini Flash** so it's searchable by what's in the image
-  - **Embed it with a multimodal model** so semantic image search works alongside your text memories
-  - **Render thumbnails inline** in your memory list with an image badge
-  - **Open in a lightbox** for full-size viewing with caption
+  - **Understand what's in it** so you can find it later by describing what you remember
+  - **Search alongside your text memories** in a single unified result list
+  - **Show thumbnails inline** in your memory list, with a full-size lightbox view on click
 
-  Image memories work everywhere your text memories do — search, MCP results (with signed URLs), bucket organization, and deletion. You can upload images directly from the dashboard's Add Memory dialog or from the browser extension panel.
+  Image memories work everywhere your text memories do — search, MCP, bucket organization, and deletion. Upload from the dashboard's Add Memory dialog or the browser extension.
 
   ### Custom platform chat history
-  A new generic chat history upload endpoint lets third-party integrations and self-hosted platforms send conversations into MemoryPlugin in a standard format. Custom-platform conversations now appear with their own identity throughout the dashboard — the browse page, conversation list, and provider displays — instead of being lumped under an existing provider.
+  Third-party integrations and self-hosted platforms can now send conversations into MemoryPlugin through a new generic upload endpoint. Conversations from custom platforms appear throughout the dashboard with their own platform identity, not lumped under an existing provider.
 
   ### Pro → Lifetime upgrade in settings
-  Pro subscribers can now upgrade to a Lifetime plan directly from Settings. The page shows the correct upgrade price based on your existing subscription credit.
+  Pro subscribers can now upgrade to a Lifetime plan directly from Settings, with the price adjusted for what you've already paid on your existing subscription.
 
-  ### Image lightbox polish
-  - Wider caption area (up to `max-w-3xl`) with scrollable overflow
-  - Cleaner close button cursor and caption handling
-  - Image memories use a base64 multimodal embedding path for higher-quality results
-
-  ### Extension v3.1.5 — Safari storage quota fix
-  Safari was hitting its 5 MB default storage limit for users with heavy sync activity, causing thousands of background errors. The extension now requests `unlimitedStorage` permission so this no longer happens. Also fixed: the memory preload cache wasn't actually being read, so panels showed "Loading…" instead of cached memories instantly — now fixed.
+  ### Extension v3.1.5 — Safari sync reliability
+  Heavy sync users on Safari were running into storage errors that interrupted background sync. The extension now stores its cache without that limit, so syncing stays reliable on Safari. Also fixed: the panel showing "Loading…" instead of memories that were already cached — they now appear instantly.
 
   ### Extension v3.1.4 — Cross-tab auth & empty states
   - **Logout propagates instantly across all tabs** — no more browser reload needed to clear auth state
@@ -105,10 +98,10 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   - **Inline Add button** in the memories header for quick saves without leaving the panel
 
   ### Reliability
-  - **Self-healing chat imports** — a daily background job repairs conversations that imported without their messages
-  - **Chat message ingestion failures** now surface as hard errors rather than silently completing
-  - **Memory delete API** accepts both the internal DB ID and the public `pcId` UUID, so any client that has either identifier can delete a memory
-  - **Vectorization race condition fixed** — deleted memories can no longer leave orphan entries in vector search
+  - **Self-healing chat imports** — conversations that imported without their messages are now automatically repaired in the background
+  - **Failed imports no longer go quiet** — they're now correctly flagged as failed so you can retry them
+  - **Memory delete API** accepts either the internal ID or the public `pcId`, so any client can delete a memory with whatever identifier it has
+  - **Deleted memories no longer leave orphan entries** in search
 </Update>
 
 <Update label="March 2026" description="Activity Analytics, New Platform Imports, Search Overhaul" tags={["Features", "Platform Support", "Improvements"]}>
@@ -152,16 +145,16 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   - Fixed login flow not updating the UI after signing in on Chrome
 
   ### Per-bucket Knowledge Graph
-  Each bucket now has its own knowledge graph view. MemoryPlugin extracts the key concepts across the memories in a bucket and visualizes how they connect — useful for seeing the shape of what you've collected on a topic. The renderer was rebuilt on Sigma.js for smoother interaction with larger graphs.
+  Each bucket now has its own knowledge graph view. MemoryPlugin extracts the key concepts across the memories in a bucket and visualizes how they connect — useful for seeing the shape of what you've collected on a topic. The graph was rebuilt for smoother interaction with larger buckets.
 
   ### AI-powered docs help on the dashboard
-  A floating help button on the dashboard opens an in-app chat that answers questions about MemoryPlugin using the full documentation as context. Includes streaming responses, source citations as chips, follow-up question suggestions, and proper rendering of code blocks, tables, and headings — all without leaving the app.
+  A floating help button on the dashboard opens an in-app chat that answers questions about MemoryPlugin using the documentation as context. Responses include source links and suggested follow-up questions, so you can get answers without leaving the app.
 
   ### More reliable Monthly Insights
-  Monthly Insights / Life Context generation moved to a dedicated background job runner with explicit status tracking, so the monthly summaries arrive more reliably and you can see when they're being prepared.
+  Monthly Insights / Life Context generation now runs as a dedicated background job with status tracking, so monthly summaries arrive more reliably and you can see when they're being prepared.
 
   ### OpenAI Apps Directory support
-  Our MCP server now ships the tool annotations required for the OpenAI Apps Directory, so MemoryPlugin can show up as an app inside ChatGPT.
+  MemoryPlugin can now show up as an app inside ChatGPT — our MCP server has been updated to meet the requirements of the OpenAI Apps Directory.
 </Update>
 
 <Update label="February 2026" description="Extension Onboarding, ChatGPT to Markdown Tool" tags={["Features", "Integrations"]}>
