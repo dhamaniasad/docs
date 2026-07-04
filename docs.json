@@ -11,17 +11,12 @@
   "openapi": "/openapi.json",
   "metadata": {
     "og:title": "MemoryPlugin Documentation",
-    "og:description": "Cure your AI of amnesia with long-term memory across all your favorite AI platforms",
+    "og:description": "One memory. Every AI. Give ChatGPT, Claude, Gemini, and 21+ AI tools one shared, permanent memory.",
     "og:image": "/images/opengraph-image.png",
     "twitter:title": "MemoryPlugin Documentation",
-    "twitter:description": "Cure your AI of amnesia with long-term memory across all your favorite AI platforms",
+    "twitter:description": "One memory. Every AI. Give ChatGPT, Claude, Gemini, and 21+ AI tools one shared, permanent memory.",
     "twitter:image": "/images/twitter-image.png",
     "twitter:card": "summary_large_image"
-  },
-  "analytics": {
-    "gtm": {
-      "tagId": "GTM-XXXXXXX"
-    }
   },
   "search": {
     "prompt": "Search MemoryPlugin docs..."
@@ -32,20 +27,20 @@
         "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Start Here",
             "pages": [
               "getting-started/introduction",
               "getting-started/how-it-works",
-              "platforms/supported-platforms"
+              "features/dashboard"
             ]
           },
           {
-            "group": "Integrations",
+            "group": "Connect Your AI",
             "pages": [
               "integrations/overview",
               "integrations/browser-extension",
-              "integrations/mcp-server",
               "integrations/remote-mcp-server",
+              "integrations/mcp-server",
               "integrations/custom-gpt",
               "integrations/custom-gpt-integration",
               "integrations/typingmind-plugin",
@@ -53,39 +48,33 @@
             ]
           },
           {
-            "group": "Features",
+            "group": "Memories",
             "pages": [
-              "features/dashboard",
               "features/memory-buckets",
               "features/smart-memory",
-              "features/ask",
-              "features/file-buckets",
-              "features/import-export",
+              "features/shared-buckets",
+              "features/image-memories",
+              "features/memory-suggestions",
               "features/bulk-operations",
-              "features/chatgpt-memory-import",
-              {
-                "group": "Chat History",
-                "pages": [
-                  "features/chat-history/introduction",
-                  "features/chat-history/importing",
-                  "features/chat-history/dashboard",
-                  "features/chat-history/using"
-                ]
-              }
+              "features/import-export",
+              "features/chatgpt-memory-import"
             ]
           },
           {
-            "group": "Platforms",
+            "group": "Chat History",
             "pages": [
-              "platforms/chatgpt",
-              "platforms/claude",
-              "platforms/gemini",
-              "platforms/grok",
-              "platforms/deepseek",
-              "platforms/typingmind",
-              "platforms/google-ai-studio",
-              "platforms/poe",
-              "platforms/qwen"
+              "features/chat-history/introduction",
+              "features/chat-history/importing",
+              "features/chat-history/dashboard",
+              "features/chat-history/using"
+            ]
+          },
+          {
+            "group": "Files & Ask",
+            "pages": [
+              "features/ask",
+              "features/file-buckets",
+              "features/knowledge-graph"
             ]
           },
           {
@@ -97,9 +86,55 @@
         ]
       },
       {
+        "tab": "Platforms",
+        "icon": "grid-2",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "platforms/supported-platforms"
+            ]
+          },
+          {
+            "group": "AI Chat Platforms",
+            "pages": [
+              "platforms/chatgpt",
+              "platforms/claude",
+              "platforms/gemini",
+              "platforms/grok",
+              "platforms/deepseek",
+              "platforms/perplexity",
+              "platforms/mistral",
+              "platforms/typingmind",
+              "platforms/google-ai-studio",
+              "platforms/poe",
+              "platforms/qwen",
+              "platforms/kimi",
+              "platforms/minimax",
+              "platforms/zai",
+              "platforms/openrouter",
+              "platforms/librechat",
+              "platforms/chatllm",
+              "platforms/notebooklm",
+              "platforms/xiaomi-mimo"
+            ]
+          },
+          {
+            "group": "Developer Tools",
+            "pages": [
+              "platforms/cursor",
+              "platforms/claude-code",
+              "platforms/codex"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Changelog",
         "icon": "newspaper",
-        "pages": ["changelog"]
+        "pages": [
+          "changelog"
+        ]
       },
       {
         "tab": "API Reference",
@@ -116,6 +151,7 @@
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
               "api-reference/endpoint/search-memories",
+              "api-reference/endpoint/update-memory",
               "api-reference/endpoint/delete-memory",
               "api-reference/endpoint/bulk-delete-memories"
             ]
@@ -186,19 +222,18 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
-    "socials": {
-    }
+    "socials": {}
   },
   "redirects": [
     {

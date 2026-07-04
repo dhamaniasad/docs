@@ -1,0 +1,49 @@
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A knowledge graph. A central User node has typed edges: works at Stripe, lives in San Francisco, uses Python, and owns Poppy the dog.">
+  <style>
+    .card{fill:#27272a;stroke:#3f3f46;stroke-width:1;}
+    .card-accent{fill:rgba(129,140,248,0.16);stroke:#818cf8;stroke-width:1.5;}
+    .card-dash{fill:#27272a;stroke:#3f3f46;stroke-width:1;stroke-dasharray:5 4;}
+    .pill{fill:#27272a;stroke:#3f3f46;stroke-width:1;}
+    .pill-accent{fill:rgba(129,140,248,0.16);stroke:#818cf8;stroke-width:1.5;}
+    .t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#fafafa;font-size:15px;}
+    .t-strong{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#fafafa;font-size:15px;font-weight:600;}
+    .sub{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#a1a1aa;font-size:12.5px;}
+    .accent-t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#818cf8;font-size:12.5px;font-weight:600;}
+    .faint{fill:#a1a1aa;}
+    .edge{fill:none;stroke:#52525b;stroke-width:1.5;}
+    .edge-accent{fill:none;stroke:#818cf8;stroke-width:1.75;}
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#52525b"/>
+    </marker>
+    <marker id="aa" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#818cf8"/>
+    </marker>
+  </defs>
+
+  <!-- typed directed edges -->
+  <line class="edge" x1="322" y1="132" x2="196" y2="82"  marker-end="url(#a)"/>
+  <line class="edge" x1="398" y1="132" x2="516" y2="82"  marker-end="url(#a)"/>
+  <line class="edge" x1="322" y1="168" x2="196" y2="222" marker-end="url(#a)"/>
+  <line class="edge" x1="398" y1="168" x2="512" y2="220" marker-end="url(#a)"/>
+  <text x="242" y="100" class="sub" text-anchor="middle">works at</text>
+  <text x="470" y="100" class="sub" text-anchor="middle">lives in</text>
+  <text x="242" y="212" class="sub" text-anchor="middle">uses</text>
+  <text x="470" y="212" class="sub" text-anchor="middle">owns</text>
+
+  <!-- outer entity nodes -->
+  <rect class="card" x="114" y="60" width="108" height="44" rx="10"/>
+  <text x="168" y="88" class="t" text-anchor="middle">Stripe</text>
+  <rect class="card" x="500" y="60" width="148" height="44" rx="10"/>
+  <text x="574" y="88" class="t" text-anchor="middle">San Francisco</text>
+  <rect class="card" x="114" y="216" width="108" height="44" rx="10"/>
+  <text x="168" y="244" class="t" text-anchor="middle">Python</text>
+  <rect class="card" x="500" y="214" width="132" height="52" rx="10"/>
+  <text x="566" y="238" class="t" text-anchor="middle">Poppy</text>
+  <text x="566" y="256" class="sub" text-anchor="middle">dog</text>
+
+  <!-- central accent node -->
+  <rect class="card-accent" x="316" y="126" width="88" height="48" rx="10"/>
+  <text x="360" y="156" class="t-strong" text-anchor="middle">User</text>
+</svg>

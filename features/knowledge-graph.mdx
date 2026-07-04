@@ -1,0 +1,61 @@
+---
+title: "Knowledge Graph"
+description: "An early-beta concept map that shows how the ideas in a memory bucket connect"
+icon: "diagram-project"
+author: "Alara"
+lastUpdated: "2026-07-04"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+
+<Note>
+Knowledge Graph is in **early beta**. It works, but it's new and rough around the edges, and how it behaves may change. Treat it as something to try, not a finished feature to rely on.
+</Note>
+
+A bucket full of memories is a list. Knowledge Graph turns one bucket into a concept map instead: it reads the memories and shows how the ideas in them connect to each other. It's the pins-and-string view of what you've saved, rather than a scroll.
+
+Knowledge Graph is **Pro plan only**. The sidebar entry is hidden unless you're on Pro (or higher); when it's shown it carries a **Pro** badge.
+
+## Generating a graph
+
+<Steps>
+  <Step title="Select a memory bucket">
+    Open **Knowledge Graph** from the sidebar and pick a memory bucket. Without one selected, the page prompts you to choose a bucket.
+  </Step>
+  <Step title="Generate">
+    Click **Generate**. A confirmation dialog explains that this analyzes every memory in the bucket and can take up to 30 minutes for large buckets. Confirm to start.
+  </Step>
+  <Step title="Come back for it">
+    Generation runs in the background. You can close the page and return later; the graph shows a processing state while it builds.
+  </Step>
+</Steps>
+
+<Frame caption="An example of the kind of map it builds: entities connected by typed relationships.">
+  <img className="block dark:hidden" src="/images/diagrams/knowledge-graph-example-light.svg" alt="Example knowledge graph: a user node with typed edges like works at, lives in, uses, owns" />
+  <img className="hidden dark:block" src="/images/diagrams/knowledge-graph-example-dark.svg" alt="Example knowledge graph: a user node with typed edges like works at, lives in, uses, owns" />
+</Frame>
+
+<Frame caption="A generated knowledge graph: concepts as nodes, typed relationships as labelled edges. Click a node to see how it connects.">
+  <img src="/images/screenshots/tools/knowledge-graph-page.png" alt="Knowledge Graph page showing a concept map with nodes like You, Northwind, and Design System connected by typed edges such as works at, leads, and uses" />
+</Frame>
+
+To rebuild after adding memories, use **Regenerate**, which replaces the existing graph with a fresh one.
+
+## Good to know
+
+- **It's per bucket.** Each graph maps a single bucket, not your whole account.
+- **It can take a while.** Building a graph uses AI and can take up to 30 minutes for a large bucket. This isn't instant, and that's expected.
+- **Memory buckets only.** Point it at a bucket that has memories in it.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Memory Buckets" icon="folder" href="/features/memory-buckets">
+    Organize memories into the buckets a graph is built from
+  </Card>
+  <Card title="Smart Memory" icon="brain" href="/features/smart-memory">
+    Group a bucket into categories for token-efficient recall
+  </Card>
+</CardGroup>

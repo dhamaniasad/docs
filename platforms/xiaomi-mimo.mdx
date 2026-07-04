@@ -1,0 +1,52 @@
+---
+title: 'Xiaomi MiMo'
+description: 'Use MemoryPlugin with Xiaomi MiMo'
+icon: "/images/logos/xiaomi-mimo.svg"
+author: "Alara"
+lastUpdated: "2026-07-04"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+
+<img src="/images/logos/xiaomi-mimo.svg" alt="Xiaomi MiMo" width="56" height="56" noZoom style={{ background: "#fff", borderRadius: "14px", padding: "10px", boxShadow: "0 1px 2px rgba(0,0,0,0.12)", boxSizing: "border-box" }} />
+
+Xiaomi MiMo is Xiaomi's AI Studio at [aistudio.xiaomimimo.com](https://aistudio.xiaomimimo.com). MemoryPlugin adds long-term memory that carries across your other AI tools, through the browser extension.
+
+## Set up
+
+<Steps>
+  <Step title="Install the extension">
+    Install the [browser extension](/integrations/browser-extension) and sign in to your MemoryPlugin account.
+  </Step>
+  <Step title="Open Xiaomi MiMo">
+    Go to [aistudio.xiaomimimo.com](https://aistudio.xiaomimimo.com). A floating MemoryPlugin button appears on the page.
+  </Step>
+  <Step title="Activate for the chat">
+    Click the button to inject memories from your selected bucket into the composer, then send your message. This also tells MiMo how to save new memories as you talk.
+  </Step>
+</Steps>
+
+<Frame caption="The MemoryPlugin floating button on aistudio.xiaomimimo.com. Click it to inject memories or open the panel.">
+  <img src="/images/screenshots/platforms/xiaomi-mimo.png" alt="MemoryPlugin floating button on Xiaomi MiMo (aistudio.xiaomimimo.com)" />
+</Frame>
+## What works here
+
+- **Memory recall and save.** Injected memories give MiMo context; new memories are saved back as you talk.
+- **Extract memory pill.** Select text in a chat and click **Extract memory** to save that snippet.
+
+## Limitations
+
+- No chat history sync here. The extension captures new conversations only on ChatGPT, Claude, Gemini, Grok, DeepSeek, and TypingMind. You can still recall chat history imported from those tools while chatting in Xiaomi MiMo.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    Full setup and features
+  </Card>
+  <Card title="Support" icon="envelope" href="mailto:support@memoryplugin.com">
+    Questions about this integration
+  </Card>
+</CardGroup>

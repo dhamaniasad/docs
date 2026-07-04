@@ -1,72 +1,98 @@
 ---
-title: "MCP Server"
-description: "Use MemoryPlugin across dozens of AI tools through the Model Context Protocol"
+title: "MCP Server (local)"
+description: "Run MemoryPlugin as a local MCP process so any MCP client can read and write your memory"
 icon: "server"
-author: "asad"
-lastUpdated: "2025-12-14"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-MemoryPlugin can be used across dozens of AI tools through our MCP Server implementation.
+The Model Context Protocol (MCP) lets AI clients call external tools. MemoryPlugin ships an MCP server, so any MCP client can store and recall your memory and chat history through it. This page covers the **local** server, which runs on your machine via Node.js.
 
-<Info>
-[Claude Desktop](https://claude.ai/download) is one of the most popular MCP clients since Anthropic created the MCP protocol, but there are 100+ other tools that support MCP.
-</Info>
+<Note>
+Most people should use the [hosted Remote MCP server](/integrations/remote-mcp-server) instead. It needs no Node.js and no token in a config file: you connect by URL and approve access in your browser. Use this local server only when you specifically want a process on your own machine, for example to keep the connection fully under your control or when your client cannot do the browser sign-in flow. The tools and data are the same either way.
+</Note>
 
 ## What is MCP?
 
-Model Context Protocol is a system developed by Anthropic to standardize how AI systems communicate with external data sources and tools.
+MCP is a standard from Anthropic for how AI apps talk to external tools and data sources. There are two halves:
 
-MCP works with two components:
-
-- **MCP Clients**: The applications you use to interact with AI (like Claude Desktop, Cursor, Windsurf, etc.)
-- **MCP Servers**: Tools that provide capabilities to those clients (like MemoryPlugin for memory, file access tools, web search, etc.)
+- **MCP clients**: the app you chat in (Claude Desktop, Cursor, Windsurf, and others).
+- **MCP servers**: tools the client can call. MemoryPlugin is one, and it adds memory and chat-history recall.
 
 <Info>
-Think of it like this: The MCP Client is your AI chat app, and MCP Servers are plugins that give your AI new abilities. MemoryPlugin is one such server that adds memory capabilities.
+[Claude Desktop](https://claude.ai/download) is a common MCP client because Anthropic created the protocol, but 100+ other tools support MCP.
 </Info>
 
-## Setup Requirements
+## Requirements
+
+You need three things:
+
+1. **Node.js** to run the server. [Download it from nodejs.org](https://nodejs.org).
+2. **An MCP client** such as Claude Desktop, Cursor, or Windsurf.
+3. **A MemoryPlugin account** to get your auth token.
 
 <Warning>
-MCP setup is currently more technical and requires some developer knowledge. We're working on making this easier.
+Local MCP setup is more technical than the other integrations. You edit a JSON config file by hand and paste in a token. If that is not what you want, the [Remote MCP server](/integrations/remote-mcp-server) is the easier path.
 </Warning>
 
-### Prerequisites
+## Setup
 
-1. **Node.js** - Required to run the MCP server. [Download from nodejs.org](https://nodejs.org)
-2. **An MCP Client** - Such as Claude Desktop, Cursor, Windsurf, or another supported application
-3. **MemoryPlugin Account** - To get your authentication token
-
-### How to Set Up
-
-MCP servers are not "installed" like traditional software. Instead, you configure your MCP client to run the MemoryPlugin server when needed.
+You do not install the server like an app. You add a config entry to your MCP client that tells it to run the MemoryPlugin server on demand.
 
 <Steps>
-  <Step title="Get Your Auth Token">
-    Sign in to the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard) and copy your authentication token from Settings
+  <Step title="Copy your auth token">
+    In the [MemoryPlugin dashboard](https://memoryplugin.com/dashboard), open the account menu and go to **Settings → Integrations**. Under **Authentication Token**, click **Copy** to copy **Your Auth Token**.
+
+    <Frame caption="Settings → Integrations: copy Your Auth Token, or regenerate it if it ever leaks.">
+      <img src="/images/screenshots/tools/settings-integrations.png" alt="Settings modal with the Integrations tab active, showing the masked Authentication Token field with Copy and Regenerate buttons" />
+    </Frame>
+
+    <Warning>
+      This token is like a password to your account. Paste it into your config, but never share it. If it leaks, click **Regenerate** on the same screen to invalidate the old one.
+    </Warning>
   </Step>
 
-  <Step title="Configure Your MCP Client">
-    Add the MemoryPlugin server configuration to your MCP client's settings file (see example below)
+  <Step title="Add the server to your client config">
+    Add the MemoryPlugin entry to your client's MCP config file (see the example below) and paste your token in as `MEMORY_PLUGIN_TOKEN`.
   </Step>
 
-  <Step title="Start Using">
-    The AI will automatically use MemoryPlugin tools when appropriate
+  <Step title="Restart and use it">
+    Restart your client so it picks up the new server. The AI then calls the MemoryPlugin tools when they are relevant.
   </Step>
 </Steps>
 
 <EmailIndependence />
 
-For detailed setup instructions specific to your MCP client:
-- **Official MCP Documentation**: [modelcontextprotocol.io/quickstart/user](https://modelcontextprotocol.io/quickstart/user)
-- **MemoryPlugin NPM Page**: [@memoryplugin/mcp-server](https://www.npmjs.com/package/@memoryplugin/mcp-server)
+For client-specific steps, see the [official MCP quickstart](https://modelcontextprotocol.io/quickstart/user) and the [@memoryplugin/mcp-server npm page](https://www.npmjs.com/package/@memoryplugin/mcp-server).
 
-## Supported MCP Clients
+## Configuration example
+
+Every MCP client has its own config format, but they follow the same shape. Here is an example for Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "memoryplugin": {
+      "command": "npx",
+      "args": ["@memoryplugin/mcp-server"],
+      "env": {
+        "MEMORY_PLUGIN_TOKEN": "your-auth-token-here"
+      }
+    }
+  }
+}
+```
+
+<Info>
+This runs `npx @memoryplugin/mcp-server` when the client needs it, which downloads and starts the server automatically. There is nothing to install ahead of time.
+</Info>
+
+## Supported MCP clients
 
 <CardGroup cols={2}>
   <Card title="Claude Code" icon="code" href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview">
@@ -91,115 +117,94 @@ For detailed setup instructions specific to your MCP client:
     GitHub Copilot Chat in VS Code
   </Card>
   <Card title="And many more..." icon="ellipsis" href="#">
-    The list is growing every day
+    Any client that speaks MCP works
   </Card>
 </CardGroup>
 
-## Configuration Example
+## Available tools
 
-Each MCP client has its own configuration format, but they all work similarly. Here's an example for Claude Desktop:
+The server exposes 12 tools, grouped by feature. Each tool ships with a description that tells the AI when and how to use it, so most of the time the client calls the right one on its own.
 
-```json
-{
-  "mcpServers": {
-    "memoryplugin": {
-      "command": "npx",
-      "args": ["@memoryplugin/mcp-server"],
-      "env": {
-        "MEMORY_PLUGIN_TOKEN": "your-auth-token-here"
-      }
-    }
-  }
-}
-```
-
-<Info>
-This configuration tells your MCP client to run `npx @memoryplugin/mcp-server` when needed, which downloads and executes the MemoryPlugin server automatically. No installation required!
-</Info>
-
-## Available Tools
-
-The MCP server provides tools organized by feature area. Tool descriptions are designed to help AI understand when and how to use each tool effectively.
-
-### Memory Tools
+### Memory tools
 
 | Tool | Description |
 |------|-------------|
-| `store_memory` | Save information for future recall. AI is encouraged to proactively save preferences, decisions, and important context. |
-| `get_memories_and_buckets` | Retrieve saved memories, optionally filtered by bucket. Also returns available buckets. |
-| `search_memories` | Semantic search across memories. Returns results ranked by relevance. |
-| `list_buckets` | List available memory buckets. |
+| `store_memory` | Save information for future recall. The AI is prompted to proactively save preferences, decisions, and important context. |
+| `get_memories_and_buckets` | Retrieve saved memories, optionally filtered by bucket. Also returns the available buckets. |
+| `search_memories` | Semantic search across memories, ranked by relevance. |
+| `list_buckets` | List your memory buckets. |
 | `create_bucket` | Create a new bucket to organize memories. |
+| `update_or_move_memories` | Edit a memory's text, move it to another bucket, or bulk-move up to 100 memories at once. |
 
-### Smart Memory Tools
+### Smart Memory tools
 
 For buckets with Smart Memory enabled:
 
 | Tool | Description |
 |------|-------------|
-| `list_bucket_categories` | Get AI-generated categories for a bucket, including summaries and topic information. |
-| `list_category_memories` | Load all memories within a specific category. |
+| `list_bucket_categories` | Get the Smart Categories for a bucket, including summaries and topic information. |
+| `list_category_memories` | Load every memory in a specific category. |
 
-### Chat History Tools
+### Chat History tools
 
-Search and retrieve from imported AI conversations:
+Search and pull from your imported and synced conversations:
 
 | Tool | Description |
 |------|-------------|
-| `recall_chat_history` | Search past conversations and get synthesized context. Supports parallel queries for complex topics. |
-| `get_conversation_summary` | Get details of a specific conversation—full transcript for short ones, AI summary for long ones. |
+| `recall_chat_history` | Search past conversations and get synthesized context back. Supports parallel queries for complex topics. |
+| `get_conversation_summary` | Get one conversation's details: the full transcript for short chats, an AI summary for long ones. |
 | `get_full_conversation` | Retrieve the complete transcript of a past conversation. |
 
-### File Tools
+### File tools
 
-Query uploaded documents:
+Query your uploaded documents:
 
 | Tool | Description |
 |------|-------------|
-| `search_uploaded_files` | Search documents in your MemoryPlugin file buckets. Returns relevant passages with file and page info. |
+| `search_uploaded_files` | Search documents in your file buckets. Returns relevant passages with file and page info. |
 
-## Tool Descriptions
+<Note>
+Chat History recall returns about 600 tokens of context by default, up to a hard cap of 2,000. That keeps recall useful without flooding the conversation.
+</Note>
 
-The MCP server includes detailed tool descriptions that help AI understand:
-- **When to use** each tool (proactive guidance)
-- **How to use** parameters effectively
-- **Which tool to choose** for different situations
+## What you get through MCP
 
-For example, `store_memory` encourages AI to proactively save useful information, while `recall_chat_history` explains how to use parallel queries for complex topics.
-
-## Features Available via MCP
-
-When using MemoryPlugin through MCP, you get:
-
-- **Memories** — Store and retrieve information across conversations
-- **Buckets** — Organize memories into different contexts
-- **Smart Memory** — Access AI-organized categories and summaries
-- **Chat History** — Search your imported AI conversations
-- **File Search** — Query uploaded documents
-- **Cross-Platform Sync** — Same data across all your tools
+- **Memories** stored and recalled across conversations
+- **Buckets** to keep separate contexts apart
+- **Smart Memory** categories and summaries
+- **Chat History** search across your imported conversations
+- **File search** over your uploaded documents
+- The same data across every tool you connect, because it all reads one account
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="Node.js not found">
-    Make sure Node.js is installed and available in your PATH. Test by running `node --version` in your terminal. You should see a version number like `v20.10.0`.
+    Confirm Node.js is installed and on your PATH. Run `node --version` in a terminal; you should see a version like `v20.10.0`.
   </Accordion>
   <Accordion title="Auth token invalid">
-    Verify your auth token is correct and copied completely from the dashboard. The token should be a long string of characters.
+    Recopy the token from **Settings → Integrations** and make sure you pasted the whole string. If in doubt, click **Regenerate** and update your config with the new token.
   </Accordion>
   <Accordion title="MCP server not connecting">
-    1. Check your MCP client's configuration file for typos
-    2. Ensure the configuration is in the correct location for your client
-    3. Try running `npx @memoryplugin/mcp-server` directly in terminal to test if it works
+    1. Check the config file for typos.
+    2. Confirm the config is in the location your client expects.
+    3. Run `npx @memoryplugin/mcp-server` directly in a terminal to see if it starts.
   </Accordion>
   <Accordion title="Tools not appearing">
-    Restart your MCP client after adding the configuration. Some clients need a full restart to detect new servers.
+    Restart your client fully. Some clients only detect new servers on a clean restart.
   </Accordion>
 </AccordionGroup>
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
+  <Card
+    title="Remote MCP server"
+    icon="cloud"
+    href="/integrations/remote-mcp-server"
+  >
+    The easier, no-install path: connect by URL
+  </Card>
   <Card
     title="Memory Buckets"
     icon="folder"
@@ -212,7 +217,7 @@ When using MemoryPlugin through MCP, you get:
     icon="brain"
     href="/features/smart-memory"
   >
-    Enable AI-powered memory organization
+    AI-organized categories and summaries
   </Card>
   <Card
     title="File Buckets"
@@ -220,12 +225,5 @@ When using MemoryPlugin through MCP, you get:
     href="/features/file-buckets"
   >
     Upload documents to query via MCP
-  </Card>
-  <Card
-    title="Remote MCP Server"
-    icon="cloud"
-    href="/integrations/remote-mcp-server"
-  >
-    Use MCP without local setup
   </Card>
 </CardGroup>

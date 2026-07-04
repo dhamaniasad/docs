@@ -1,155 +1,121 @@
 ---
 title: "Ask"
-description: "Talk to your memories, chat history, and files from one unified interface"
+description: "Query your chat history, memories, and files from one interface"
 icon: "messages"
-author: "asad"
-lastUpdated: "2025-12-14"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Ask is a unified tool for querying all your stored information in MemoryPlugin. Talk to your memories, search your chat history, or query your uploaded files—all from one place.
+You know you worked out the deployment plan with an AI a few weeks back, but which chat was it in? And did that detail end up in a memory or a file? Ask is the one tool in the dashboard that answers natural-language questions about everything you have stored in MemoryPlugin. You type a question, it searches the source you point it at, and it writes back an answer with links to the originals so you can check its work.
 
-## What is Ask?
+<Note>
+Ask is a single interface with three modes. It is not the same as the **Ask** entry inside the Chat History section, which only ever searches your imported chats. This page covers the unified Ask tool, which can switch between chat history, memories, and files in one place. Open it from the sidebar or press **⇧⌘O / Shift+Ctrl+O**.
+</Note>
 
-Ask lets you have conversations with your stored data. Instead of manually searching through memories or scrolling through chat history, you can ask natural language questions and get synthesized answers with source references.
+<Frame caption="Ask in history mode: a question answered from your past conversations, with clickable source chips.">
+  <img className="block dark:hidden" src="/images/screenshots/tools/ask-interface.png" alt="The Ask interface with History, Files, and Memories mode pills, a question about the launch date, and a streamed answer citing three source conversations" />
+  <img className="hidden dark:block" src="/images/screenshots/tools/ask-interface-dark.png" alt="The Ask interface with History, Files, and Memories mode pills, a question about the launch date, and a streamed answer citing three source conversations" />
+</Frame>
 
-<CardGroup cols={3}>
-  <Card title="Chat History" icon="clock-rotate-left">
-    Get insights from your imported AI conversations across ChatGPT, Claude, and TypingMind
-  </Card>
-  <Card title="Memories" icon="brain">
-    Ask questions about information you've saved to your memory buckets
-  </Card>
-  <Card title="Files" icon="file">
-    Query your uploaded PDFs, Word docs, markdown, and text files
-  </Card>
-</CardGroup>
+## The three modes
 
-## Key Features
+A pill toggle at the bottom of the composer switches Ask between three sources:
 
-### Conversation History
-Your Ask conversations are saved automatically. Pick up where you left off instead of starting fresh each time.
+| Mode | Searches | Use it to |
+|------|----------|-----------|
+| **History** | Your imported and synced AI conversations | Find past decisions, project context, or how you discussed something before |
+| **Files** | Documents in your file buckets | Pull answers out of PDFs, Word docs, Markdown, and text files |
+| **Memories** | Memories in your memory buckets | Recall preferences, facts, and notes you have saved |
 
-### Referenced Sources
-Every answer shows which sources informed it. Click through to see the original chat, memory, or file that contributed to the response.
-
-### Three Modes
-Switch between modes depending on what you want to search:
-
-| Mode | Data Source | Best For |
-|------|-------------|----------|
-| **Chat History** | Imported AI conversations | Finding past decisions, patterns, project context |
-| **Memories** | Saved memories in your buckets | Recalling stored preferences, facts, notes |
-| **Files** | Uploaded documents | Querying reference materials, documentation |
-
-### Copy Responses
-One-click copy on any assistant response to use the information elsewhere.
+The pills read **History**, **Files**, and **Memories**. Once a conversation has messages, its mode locks. To search a different source, start a new conversation.
 
 ## Using Ask
 
-### Getting Started
+<Steps>
+  <Step title="Open Ask">
+    Click **Ask** in the sidebar, or press **⇧⌘O** (Mac) / **Shift+Ctrl+O** (Windows/Linux).
+  </Step>
+  <Step title="Pick a mode">
+    Choose **History**, **Files**, or **Memories** from the pill toggle.
+  </Step>
+  <Step title="Narrow to a bucket (Files and Memories only)">
+    In Files and Memories mode a dropdown lets you scope the search. Leave it on **All files** or **All memories** to search everything, or pick one bucket for focused results.
+  </Step>
+  <Step title="Ask a question">
+    Type a plain-language question, or click one of the example chips under **Try asking:**. Press Enter to send.
+  </Step>
+  <Step title="Read the answer and check the sources">
+    The answer streams in. Every answer cites the chats, memories, or files it drew from. Click a source to open the original.
+  </Step>
+</Steps>
 
-1. **Open the Ask tool** from the dashboard sidebar or press **⌘Shift+O / Ctrl+Shift+O**
-2. **Select a mode** — Chat History, Memories, or Files
-3. **Ask a question** in natural language
-4. **Review the answer** and click sources to see original content
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/ask-your-memory.mp4"></video>
 
-### Choosing the Right Mode
+The composer placeholder changes with the mode: **Ask about your chat history...**, **Ask about your files...**, or **Ask about your memories...**. A **Think** toggle turns on extended thinking for harder questions, at the cost of a slower answer.
 
-**Use Chat History when:**
-- You want to recall past conversations
-- Looking for decisions or context from previous AI chats
-- Searching for patterns in how you've discussed topics
+## Which mode to pick
 
-**Use Memories when:**
-- Querying facts you've explicitly saved
-- Looking up preferences or personal information
-- Searching your organized knowledge base
+- **History** when the answer lives in a past conversation: a decision you talked through, advice you got, a thread you half-remember.
+- **Files** when the answer is in a document you uploaded: a spec, a paper, a contract.
+- **Memories** when you saved the fact yourself: a preference, a goal, a note.
 
-**Use Files when:**
-- Querying uploaded documents
-- Searching reference materials
-- Finding information in PDFs or docs you've added
+Ask does not search across modes at once. If you are not sure where something lives, start with the source you last put it in.
 
-<Info>
-Once you start a conversation, the mode is locked for that conversation. Start a new conversation to switch modes.
-</Info>
+## Conversations are saved
 
-### Bucket Selection
+Ask keeps each conversation in a sidebar and auto-generates a title after your first exchange, so you can return to a line of questioning instead of starting over. If the bucket or file collection behind a saved conversation is later deleted, the conversation becomes read-only: you can still read it, but you cannot send new messages.
 
-For Memories and Files modes, you can optionally filter to a specific bucket:
+## How it works
 
-- **All memories/files**: Searches across all buckets of that type
-- **Specific bucket**: Limits search to just that bucket's contents
+Ask reads your question, retrieves the passages that match it, and writes an answer grounded in those passages.
 
-This is useful when you have well-organized buckets and want focused results.
+- **History mode** runs semantic search over your conversation archive and synthesizes an answer from the matching segments, with citations back to each chat.
+- **Files mode** searches the chunks your uploaded documents were split into and answers from the matching passages, including file name and page or section.
+- **Memories mode** loads context from the selected bucket. For buckets using [Smart Memory](/features/smart-memory), it loads category summaries and pulls specific categories as needed. For other buckets, it loads recent memories and searches for anything else the question needs.
 
-## How It Works
+Because every answer is grounded in retrieved sources and shows them, the sources are the ground truth. The synthesized answer is a summary; open the originals when the details matter.
 
-Ask uses AI to understand your question, search relevant sources, and synthesize an answer.
+## Also available outside the dashboard
 
-### For Chat History Mode
-1. Your question is analyzed to understand intent
-2. Relevant conversation segments are retrieved using semantic search
-3. The AI synthesizes an answer from matching conversations
-4. Source references link back to original chats
+The same underlying queries are exposed to your AI tools:
 
-### For Memories Mode
-The AI loads context based on your bucket setup:
-- **Smart Memory buckets**: Category summaries are loaded, with specific categories fetched as needed
-- **Regular buckets**: Recent memories are loaded, with search for additional lookups
+- **MCP:** the `recall_chat_history` and `search_uploaded_files` tools query your chat history and files from any MCP client. See [MCP server](/integrations/mcp-server) and [Remote MCP server](/integrations/remote-mcp-server).
+- **TypingMind:** the plugin's `recall_chat_history` and `search_uploaded_files` functions do the same inside TypingMind. See [TypingMind plugin](/integrations/typingmind-plugin).
 
-### For Files Mode
-1. Your question is used to search uploaded document chunks
-2. Relevant passages are retrieved with page/section info
-3. The AI synthesizes an answer from matching content
-4. Source references link back to original files
-
-## Integration with Other Tools
-
-Ask is also available through:
-
-### MCP Server
-Use `recall_chat_history` and `search_uploaded_files` tools to query your data from any MCP-compatible client.
-
-Related docs: [MCP server](/integrations/mcp-server), [Remote MCP server](/integrations/remote-mcp-server)
-
-### TypingMind Plugin
-The TypingMind plugin includes `recall_chat_history` and `search_uploaded_files` functions for querying your data while chatting.
-
-Related docs: [TypingMind plugin](/integrations/typingmind-plugin)
-
-## Tips for Better Results
+## Getting better answers
 
 <AccordionGroup>
-  <Accordion title="Be specific with questions">
-    Instead of "What do I know about work?", try "What decisions did I make about the API migration project?"
+  <Accordion title="Be specific">
+    "What did I decide about the API migration timeline?" beats "what do I know about work". A narrow question retrieves narrower, more relevant sources.
   </Accordion>
-  <Accordion title="Use the right mode">
-    Chat History is for past conversations. Memories is for saved facts. Files is for uploaded documents. Choose based on where the information lives.
+  <Accordion title="Match the mode to where the answer lives">
+    History for past conversations, Files for uploaded documents, Memories for facts you saved. The wrong mode searches the wrong place.
   </Accordion>
-  <Accordion title="Check the sources">
-    Click through to sources to verify context and get the full picture. The AI synthesizes, but the original content has all the details.
+  <Accordion title="Open the sources">
+    Ask synthesizes; the originals hold the full detail. Click through before you rely on an answer.
   </Accordion>
-  <Accordion title="Start new conversations for new topics">
-    Each conversation maintains context. For unrelated questions, start fresh to avoid confusion.
+  <Accordion title="Start a new conversation for a new topic">
+    Each conversation carries its own context. Unrelated questions in the same thread can pull in stale context.
   </Accordion>
 </AccordionGroup>
 
 ## Requirements
 
-- **Chat History mode**: Requires imported conversations from the browser extension
-- **Files mode**: Requires uploaded documents in file buckets
-- **Memories mode**: Works with any saved memories
+Ask needs a paid plan (Core or Pro, including the trial). Beyond that, each mode needs data to search:
+
+- **History** needs imported or synced conversations.
+- **Files** needs documents in a file bucket.
+- **Memories** works as soon as you have saved memories.
 
 <Note>
-Chat History and Files modes are Premium features. Memories mode is available on all plans.
+Chat History imports are plan-limited: **Core** covers up to 500 conversations from one platform (Claude or ChatGPT), and **Pro** is unlimited across all supported platforms. This limit shapes what History mode can search.
 </Note>
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
   <Card
@@ -157,13 +123,13 @@ Chat History and Files modes are Premium features. Memories mode is available on
     icon="folder-open"
     href="/features/file-buckets"
   >
-    Learn how to upload and organize documents
+    Upload documents so Files mode has something to search
   </Card>
   <Card
     title="Chat History"
     icon="clock-rotate-left"
     href="/features/chat-history/introduction"
   >
-    Set up chat history importing from your AI platforms
+    Import and sync conversations for History mode
   </Card>
 </CardGroup>

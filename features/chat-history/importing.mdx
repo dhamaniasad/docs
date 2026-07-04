@@ -2,151 +2,115 @@
 title: "Importing Your Chats"
 description: "Export and upload your chat history from supported platforms"
 icon: "cloud-arrow-up"
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-## Getting Your Chat History
+## Two ways to add chat history
 
-You can add chat history to MemoryPlugin in two ways:
+**Upload chat exports** (ChatGPT, Claude, TypingMind, Grok). Export your history as JSON files and upload them. This is the fastest way to bring in your entire back catalog in one pass.
 
-**Option 1: Upload Chat Exports** (ChatGPT, Claude, TypingMind, Grok) — **Recommended for initial import**
+**Online sync** (ChatGPT, Claude, Grok, DeepSeek, TypingMind, and Gemini). Sync conversations from your account through the browser extension, no file download needed. Sync keeps new and updated conversations current in the background, so you never export again by hand. For a large first-time import it is slower than a file upload (days rather than hours), so treat it as a fallback when you can't export JSON.
 
-Export your chat history as JSON files and upload them. This is the fastest way to import your entire history.
+One thing to be clear about: **ongoing sync always runs through the browser extension**, on every platform. File uploads are a one-time import; if you want new conversations to keep flowing in, install the [extension](/integrations/browser-extension) and leave sync on. MCP clients and the Custom GPT can recall your history, but they never capture it.
 
-**Option 2: Online Sync** (ChatGPT, Claude, Gemini, Grok, DeepSeek)
+<Note>
+Gemini online sync is experimental and can break when Gemini's web UI changes.
+</Note>
 
-Sync conversations directly from your account without downloading files. Designed for keeping new and updated conversations in sync automatically after your initial import. This handles small incremental updates in the background, so you never have to manually export again. Can take longer for large initial imports (several days vs. a few hours), but works as a fallback if you're unable to export JSON files.
+<Note>
+Both methods are opt-in. Chats are never uploaded or synced without your explicit permission.
+</Note>
 
-## How to Export Your Chats
+## How to export your chats
 
 <AccordionGroup>
   <Accordion title="Export from ChatGPT" icon="message">
-    Follow the <a href="https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data" target="_blank" rel="noopener noreferrer">ChatGPT export guide</a> to export your data.
-
-    Once you have the export, upload the **`conversations.json`** file to MemoryPlugin.
+    Follow the <a href="https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data" target="_blank" rel="noopener noreferrer">ChatGPT export guide</a>, then upload the **`conversations.json`** file. ChatGPT splits large exports into several files (`conversations-001.json`, `conversations-002.json`, and so on). Select all of them at once.
   </Accordion>
 
   <Accordion title="Export from Claude" icon="message">
-    Follow the <a href="https://support.claude.com/en/articles/9450526-how-can-i-export-my-claude-data" target="_blank" rel="noopener noreferrer">Claude export guide</a> to export your data.
-
-    Once you have the export, upload the **`conversations.json`** file to MemoryPlugin.
+    Follow the <a href="https://support.claude.com/en/articles/9450526-how-can-i-export-my-claude-data" target="_blank" rel="noopener noreferrer">Claude export guide</a>, then upload the **`conversations.json`** file.
   </Accordion>
 
   <Accordion title="Export from TypingMind" icon="message">
-    Follow the <a href="https://docs.typingmind.com/cloud-sync-and-backup/export-import-data" target="_blank" rel="noopener noreferrer">TypingMind export guide</a> to export your data.
-
-    Once you have the export, upload the files from the **`chunks/`** folder: `chats_part_1.json`, `chats_part_2.json`, etc.
-
-    <Note>
-    TypingMind splits exports into multiple chunk files. Upload each chunk file separately.
-    </Note>
+    Follow the <a href="https://docs.typingmind.com/cloud-sync-and-backup/export-import-data" target="_blank" rel="noopener noreferrer">TypingMind export guide</a>. Upload the files from the **`chunks/`** folder (`chats_part_1.json`, `chats_part_2.json`, and so on), each chunk file separately.
   </Accordion>
 
   <Accordion title="Export from Grok" icon="message">
-    Export your data from your <a href="https://x.ai/account" target="_blank" rel="noopener noreferrer">xAI account settings</a>.
-
-    Once you have the export, upload the conversations JSON file to MemoryPlugin. Branching conversation threads are fully supported.
+    Export from your <a href="https://x.ai/account" target="_blank" rel="noopener noreferrer">xAI account settings</a>, then upload the conversations JSON file. Branching conversation threads are supported.
   </Accordion>
 
   <Accordion title="Sync from Gemini or DeepSeek" icon="rotate">
-    Gemini and DeepSeek conversations are imported via **online sync** through the browser extension — no file export needed.
+    Gemini and DeepSeek come in through **online sync** in the browser extension, no file export needed.
 
-    Open the browser extension on Gemini or DeepSeek, go to the Sync panel, and start syncing your conversations.
+    Open the extension on Gemini or DeepSeek, go to the Sync panel, and start syncing.
   </Accordion>
 </AccordionGroup>
 
-## File Size Limits
+## File size limits
 
-- **Maximum file size**: 1 GB
+- **Maximum file size**: 1 GB per file
 - **Format**: JSON only
-- You can upload multiple files at once for ChatGPT exports
+- Upload multiple files at once (useful for ChatGPT's split exports, or for splitting a very large export yourself)
 
-<Info>
-Have a very large export? You can split it into multiple files and upload them separately. MemoryPlugin automatically deduplicates conversations across uploads.
-</Info>
-
-## Uploading Your File
+## Uploading your file
 
 <Steps>
-  <Step title="Go to Dashboard">
-    Navigate to your [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history) and open the **Uploads** tab
+  <Step title="Open the Imports tab">
+    Go to your [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history) and open the **Import** tab. Click **New Import**.
   </Step>
 
-  <Step title="Select Platform">
-    Choose which platform you're importing from: ChatGPT, Claude, TypingMind, or Grok
+  <Step title="Choose your export source">
+    Pick the platform you exported from: ChatGPT, Claude, TypingMind, or Grok.
   </Step>
 
-  <Step title="Choose Import Limit (Optional)">
-    Decide how many chats to import from the file:
+  <Step title="Choose an import limit (Core plan)">
+    On the Core plan you choose how many chats to import, so you can stay within quota:
 
-    - **100, 200, 500, or 1,000 chats** - Quick preset options
-    - **All chats** - Import everything (Pro users only)
-    - **Custom amount** - Enter a specific number
+    - **100, 200, 500, or 1,000 chats**, quick presets
+    - **All chats**
+    - **Custom amount** (up to 50,000)
 
-    <Info>
-    **Core plan**: You can import up to 500 searchable chats total. Choose a limit to stay within your quota.
-
-    **Pro plan**: Unlimited chats. Import as many as you want.
-    </Info>
+    On the Pro plan there is no limit to set. See [Import quota](#import-quota) below.
   </Step>
 
-  <Step title="Upload File">
-    Drag and drop your JSON file or click **"Browse files"** to select it
-
-    - Only JSON files are accepted
+  <Step title="Upload your file">
+    Drag and drop your JSON export, or click **Browse files** to select it. JSON files only.
   </Step>
 
-  <Step title="Monitor Progress">
-    Processing starts automatically. You can monitor progress in the [Uploads tab](/features/chat-history/dashboard#uploads-tab):
-    - See progress percentage
-    - View number of messages processed
-    - Close the tab—processing continues in the background
-    - Large files can take several minutes to hours
+  <Step title="Let it process">
+    Processing starts automatically and keeps running if you close the tab. Large exports can take hours. Track progress in the [Imports tab](/features/chat-history/dashboard#imports-tab): percentage complete, conversations and messages processed, and any skipped items.
   </Step>
 </Steps>
 
-<Info>
-**Don't worry about duplicates**: We automatically deduplicate chats during uploads. If you upload the same file again or import the same conversations through online import, they won't be duplicated in your chat history.
-</Info>
-
-## Managing Import Quota
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/import-chat-history.mp4"></video>
 
 <Info>
-**Core plan**: Up to 500 searchable chats total
-
-**Pro plan**: Unlimited chats
+**Duplicates are handled for you.** Re-uploading the same file, or syncing conversations you already imported, won't create duplicates in your chat history.
 </Info>
 
-### Why Use Import Limits?
+## Import quota
 
-<AccordionGroup>
-  <Accordion title="Stay within your plan quota" icon="gauge">
-    Core users have a limit of 500 searchable chats. Importing only recent conversations keeps you within quota.
+<Info>
+**Core plan**: up to 500 searchable chats, from a single account on one platform (ChatGPT or Claude).
 
-    **For heavy AI users**: If you've had 5,000+ conversations over 3+ years (which many heavy AI users have), we strongly recommend the Pro plan for unlimited chats and the best value. Processing large chat histories is computationally expensive, which is why Pro plan pricing reflects that cost.
+**Pro plan**: unlimited chats, across all your accounts and platforms.
+</Info>
 
-    You can always import more later or upgrade to Pro for unlimited.
-  </Accordion>
+Got years of history? Importing only your most recent conversations keeps you within the Core quota and gets you started faster. Import more later, or upgrade to Pro for everything.
 
-  <Accordion title="Focus on recent conversations" icon="clock">
-    If you only care about recent context, there's no need to process years of old chats. Import what matters most.
-  </Accordion>
-
-  <Accordion title="Get started quickly" icon="rocket">
-    Start with 100 chats to see how Chat History Memory works, then import more once you're comfortable.
-  </Accordion>
-</AccordionGroup>
+To free up Core quota, **exclude** old or unwanted chats from the Chats tab. Each excluded chat frees one slot. See [Managing your chats](/features/chat-history/dashboard#chats-tab).
 
 <Note>
-Once imported, you can manage your uploads and conversations in the [Dashboard](/features/chat-history/dashboard).
+Once imported, manage your uploads and conversations in the [Dashboard](/features/chat-history/dashboard).
 </Note>
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
   <Card
@@ -154,13 +118,13 @@ Once imported, you can manage your uploads and conversations in the [Dashboard](
     icon="table-columns"
     href="/features/chat-history/dashboard"
   >
-    Monitor your uploads, browse chats, search your history, and ask questions
+    Monitor imports, browse chats, search your history, and view activity
   </Card>
   <Card
     title="Using Chat History"
     icon="sparkles"
     href="/features/chat-history/using"
   >
-    Set up auto-injection via Browser Extension or MCP Server
+    Add chat history context to your AI conversations
   </Card>
 </CardGroup>

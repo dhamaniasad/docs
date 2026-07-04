@@ -2,194 +2,174 @@
 title: "Using Chat History"
 description: "Add chat history context to your AI conversations"
 icon: "sparkles"
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from "/snippets/article-info.jsx";
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Once you've imported your chat history, you can use it to add relevant context to your new AI conversations.
+Importing your chat history is step one. The payoff is what comes next: your AI reaching back into months of past conversations and pulling the relevant slice into the chat you're having right now.
 
-## See It In Action
-
-Here's what Chat History Memory does for your conversations:
+## See it in action
 
 **Without MemoryPlugin:**
 
 ![Without MemoryPlugin](/images/chat-history/mcp-without-memoryplugin.png)
 
-The AI has no context about your past conversations and gives generic responses.
+The AI has no context about your past conversations and gives generic answers.
 
 **With MemoryPlugin:**
 
 ![With MemoryPlugin](/images/chat-history/mcp-with-memoryplugin.png)
 
-The AI sees relevant context from your chat history and provides personalized, informed responses based on your previous discussions.
+The AI sees relevant context from your chat history and responds based on your previous discussions.
 
-## How It Works Behind the Scenes
+## How it works behind the scenes
 
-When chat history context is requested, MemoryPlugin performs intelligent retrieval and summarization:
+When chat history context is requested, MemoryPlugin doesn't dump raw chunks into your prompt. It retrieves and condenses:
 
-1. **Query Understanding** - Your query is analyzed by an AI to generate multiple search variations and extract temporal filters (like "last month")
-2. **Hybrid Search** - Runs semantic (meaning-based) and keyword searches in parallel across your chat history
-3. **Reranking** - Results are reranked by relevance to your specific query
-4. **Context Expansion** - For each match, surrounding messages are fetched for complete context
-5. **Intelligent Summarization** - Expanded context is summarized to fit your token budget (e.g., 50,000 tokens of raw conversation might be summarized into 2,000 tokens)
+1. **Query understanding.** Your query is analyzed to generate several search variations and extract any date filters (like "last month").
+2. **Hybrid search.** Semantic and keyword searches run in parallel across your history.
+3. **Reranking.** Results are reranked by relevance to your specific query.
+4. **Context expansion.** For each match, surrounding messages are pulled in for complete context.
+5. **Summarization.** The expanded context is summarized to fit your token budget. Tens of thousands of tokens of raw conversation might come back as a few hundred tokens of relevant summary.
 
-This isn't just dumping raw chunks—it's intelligently finding, expanding, and condensing the most relevant parts of your conversations.
-
-<Note>
-  Each inject call typically takes 3-4 seconds to complete all these steps.
-</Note>
+Because it searches, reranks, and summarizes on each call, a recall takes a few seconds rather than being instant. That buys you condensed, relevant context instead of a wall of raw transcript.
 
 ## Browser Extension
 
 The [Browser Extension](/integrations/browser-extension) works across all major AI platforms.
 
-**Supported Platforms:**
-ChatGPT • Claude • Gemini • Google AI Studio • Grok • Poe • DeepSeek • Qwen • And more...
+**Supported platforms:** ChatGPT, Claude, Gemini, Google AI Studio, Grok, Poe, DeepSeek, Qwen, and more.
 
 **How it works:**
 
-- Performs **one round of context retrieval** per message
-- Can be configured for automatic injection (adds context to every message) or manual (only when you click the MemoryPlugin button)
-- Uses default token limits configured in extension settings
+- Runs **one round of retrieval per message**
+- Injects automatically (context on every message) or manually (only when you click the MemoryPlugin button)
+- Uses the token limits configured in extension settings
+
+The extension isn't calling a tool. It inserts an instruction asking the AI to emit a recall marker line that the extension detects and fills with context before the message is sent. Turn it on with the **Chat History Recall** toggle in the extension's settings.
 
 <Note>
-  Chat History Memory is completely separate from Regular Memory in the browser
-  extension. They use different systems and buttons.
+  Chat History Memory is separate from Regular Memory in the browser extension.
+  They use different systems and different buttons.
 </Note>
 
-## Remote MCP Server (More Powerful)
+## Remote MCP Server (more control)
 
-The [Remote MCP Server](/integrations/remote-mcp-server) offers the most powerful and flexible way to use Chat History Memory.
+The [Remote MCP Server](/integrations/remote-mcp-server) is the most flexible way to use Chat History Memory. Instead of a marker, MCP clients call a real tool named **`recall_chat_history`**.
 
-**Supported Platforms:**
-Claude Desktop • Claude Web • Claude Mobile • Mistral AI • Cursor • Continue • Other MCP-compatible clients
+**Supported platforms:** Claude Desktop, Claude Web, Claude Mobile, Mistral AI, Cursor, Continue, and other MCP-compatible clients.
 
-**Why it's more powerful:**
+**What `recall_chat_history` can do:**
 
-- **Multiple rounds of retrieval** - Can fetch context multiple times in a single conversation
-- **Parallel queries** - Send an array of queries that all run simultaneously (e.g., 12 different searches about a topic)
-- **User control** - You tell the AI exactly when and how to fetch context through natural language
-- **Token control** - Specify how many tokens of context to fetch (e.g., "fetch 2000 tokens")
-- **Fetch large amounts** - Can retrieve 20,000-30,000 tokens of context when needed
+- **Multiple rounds of retrieval** in a single conversation, not just one per message
+- **Parallel queries.** Send up to **15** queries that all run at once, each hitting a topic from a different angle (timeline, people, decisions, outcomes)
+- **Per-query token budget.** `maxTokens` defaults to **600**, capped at **2000**; 300 to 1000 is the useful range. More tokens means richer detail but a bigger chunk of the conversation window
+- **Date bounds.** Constrain a query with `before` / `after` using ISO dates like `2025-01-15`. Bare dates are interpreted in UTC and inclusive on both ends
+- **Speed or quality mode.** Defaults to **speed**; ask for **quality** mode for slower but more thorough recall on hard or ambiguous queries
 
-**How to use it:**
+**How you drive it:**
 
-You control the MCP server through natural language instructions to the AI:
+You drive it with plain-language instructions to the AI:
 
 ```
-"At the start of every conversation, use the memoryplugin_inject tool
-to learn about my skills and learning style"
+"At the start of every conversation, use recall_chat_history to load
+context about my skills and learning style."
 
-"Use the memoryplugin inject tool to fetch context about my hobbies"
-
-"Make 5 parallel inject queries to fetch context about this project
-from different angles - one for technical details, one for design
-decisions, one for user feedback, one for implementation challenges,
-and one for future plans"
+"Run recall_chat_history with several parallel queries about this
+project from different angles: technical details, design decisions,
+user feedback, implementation challenges, and future plans."
 ```
 
-The AI will make the tool calls you request, MemoryPlugin returns the context, and the AI weaves it naturally into its response.
+The AI makes the calls you ask for, and weaves the condensed context back into its response.
 
 <Info>
-  **Best platforms:** Claude (Desktop, Web, or Mobile) and Mistral AI with the
-  Remote MCP Server provide the best experience. These models excel at agentic
-  tool use and naturally incorporating retrieved context into responses.
+  **Best experience:** Claude (Desktop, Web, or Mobile) and Mistral AI. These
+  models are good at agentic tool use and at folding retrieved context into an
+  answer naturally.
 </Info>
 
-### Controlling What Gets Added
+### Controlling what gets added
 
-Use [exclusions](/features/chat-history/dashboard#excluding-chats) to remove specific chats from being used as context:
+Use [exclusions](/features/chat-history/dashboard#excluding-chats) to keep specific chats out of context: sensitive conversations, off-topic chats, or outdated discussions.
 
-- Sensitive conversations you want to keep private
-- Off-topic chats that aren't useful for context
-- Outdated discussions no longer relevant
+When you exclude a chat, its content is deleted and it won't be re-imported on future uploads or syncs. A placeholder remains so it isn't re-processed.
 
-When you exclude a chat, its data is deleted and it won't be re-imported in future uploads. A placeholder remains to prevent automatic re-processing.
+## Searching and analyzing your history
 
-## Searching and Analyzing Your History
-
-Beyond adding context to conversations, you can actively search and analyze your chat history:
+You can also search and question your history in the dashboard:
 
 <CardGroup cols={2}>
-  <Card title="Search Your History" icon="magnifying-glass">
-    Perform powerful semantic searches across all your conversations. Find specific discussions by topic, keyword, or timeframe.
+  <Card title="Search your history" icon="magnifying-glass">
+    Find specific discussions by topic, keyword, or timeframe with hybrid search.
 
     [Go to Dashboard → Search](/features/chat-history/dashboard#search-tab)
-
   </Card>
-  <Card title="Ask Questions" icon="message-question">
-    Get AI-powered answers synthesized from your entire chat history. Ask natural language questions and receive comprehensive responses with citations.
+  <Card title="Ask questions" icon="message-question">
+    Get answers synthesized from your history, with citations, using the unified Ask tool.
 
-    [Go to Dashboard → Ask](/features/chat-history/dashboard#ask-tab)
-
+    [Go to Ask](/features/ask)
   </Card>
 </CardGroup>
 
-## Tips for Best Results
+## Tips for best results
 
 <AccordionGroup>
   <Accordion title="Be specific in your instructions" icon="message">
-    When using the MCP server, tell the AI exactly what context you want. Instead of just activating MemoryPlugin, say "fetch context about my React projects" or "get information about my cooking preferences from past conversations."
+    With the MCP server, tell the AI exactly what to recall. Instead of "use MemoryPlugin," say "recall context about my React projects" or "recall my cooking preferences."
   </Accordion>
 
-<Accordion title="Use parallel queries for complex topics" icon="arrows-split">
-  For comprehensive coverage, request multiple parallel queries: "Make 10 inject
-  queries to fetch context about this topic from different angles." The AI can
-  search for technical details, design decisions, user feedback, and more
-  simultaneously.
-</Accordion>
+  <Accordion title="Use parallel queries for broad topics" icon="arrows-split">
+    For thorough coverage, ask for several parallel queries at once (up to 15): "recall this from a few angles: technical details, design decisions, and user feedback."
+  </Accordion>
 
-<Accordion title="Adjust based on your needs" icon="sliders">
-  Sometimes you want extensive context (20+ queries, high token count).
-  Sometimes you want none. Useful for all kinds of tasks—even creative writing
-  or documentation where past context helps maintain consistency.
-</Accordion>
+  <Accordion title="Match the depth to the task" icon="sliders">
+    Sometimes you want a lot of context (many queries, higher token budgets), sometimes none. Both are fine, and depth helps even for creative writing or documentation where past context keeps things consistent.
+  </Accordion>
 
   <Accordion title="Control timing" icon="clock">
-    You can tell the AI when to fetch context: at the start of every conversation, only when you mention it, for specific types of questions, etc. It's entirely up to you.
+    Tell the AI when to recall: at the start of every conversation, only when you mention it, or just for certain kinds of questions.
   </Accordion>
 </AccordionGroup>
 
 ## Limitations
 
 <AccordionGroup>
-  <Accordion title="Doesn't track evolution of facts" icon="timeline">
-    Chat History currently doesn't understand how facts have changed over time. If you struggled with understanding photosynthesis in March but mastered it by June, the AI might not know which is current. This is something we're working to improve.
+  <Accordion title="Doesn't track how facts change over time" icon="timeline">
+    Chat History doesn't yet reason about how a fact evolved. If you struggled with a topic in March but understood it by June, the AI may not know which is current. We're working on this.
   </Accordion>
 
-  <Accordion title="Performance varies by model" icon="gauge">
-    Results depend on how well your AI model uses the retrieved context. Some models are better at incorporating external context than others.
+  <Accordion title="Results vary by model" icon="gauge">
+    How well the context lands depends on how good your AI model is at using retrieved context. Some models incorporate it better than others.
   </Accordion>
 </AccordionGroup>
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Context Not Appearing" icon="message-slash">
-    **Solutions**:
-    - Ensure Browser Extension or Remote MCP Server is installed and signed in
-    - For browser extension: Check that Chat History is enabled in settings
-    - For MCP: Make sure you're explicitly telling the AI to use the inject tool
-    - Verify you have uploaded and processed chat history
+  <Accordion title="Context not appearing" icon="message-slash">
+    **Try**:
+    - Confirm the Browser Extension or Remote MCP Server is installed and signed in
+    - For the browser extension, check that **Chat History Recall** is enabled in settings
+    - For MCP, explicitly ask the AI to use `recall_chat_history`
+    - Confirm you've uploaded and processed chat history
   </Accordion>
 
-  <Accordion title="Irrelevant Context" icon="filter">
-    **Solutions**:
-    - Be more specific in your prompts or instructions to the AI
+  <Accordion title="Irrelevant context" icon="filter">
+    **Try**:
+    - Be more specific in your prompt or instructions
     - Exclude irrelevant chats from the Chats tab
-    - For MCP: Tell the AI to use fewer tokens or be more specific in its queries
+    - For MCP, ask the AI to use fewer tokens or narrower queries
   </Accordion>
 </AccordionGroup>
 
 <Warning>
-  If issues persist, [contact support](https://memoryplugin.com) with: -
-  Platform you're using (ChatGPT, Claude, etc.) - Integration method (Browser
-  Extension or Remote MCP Server) - Description of the issue
+  If issues persist, [contact support](https://memoryplugin.com) with the
+  platform you're using, your integration method (Browser Extension or Remote
+  MCP Server), and a description of the issue.
 </Warning>
 
 ## Next Steps

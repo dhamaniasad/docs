@@ -1,0 +1,53 @@
+---
+title: 'Cursor'
+description: 'Use MemoryPlugin with Cursor'
+icon: "/images/logos/cursor.svg"
+author: "Alara"
+lastUpdated: "2026-07-04"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+
+<img src="/images/logos/cursor.svg" alt="Cursor" width="56" height="56" noZoom style={{ background: "#fff", borderRadius: "14px", padding: "10px", boxShadow: "0 1px 2px rgba(0,0,0,0.12)", boxSizing: "border-box" }} />
+
+Cursor is the AI-first code editor at [cursor.com](https://cursor.com). Because Cursor speaks MCP, MemoryPlugin connects over the Model Context Protocol and brings the facts, preferences, and chat history you've built up in every other AI tool right into your editor.
+
+## Set up
+
+Use the remote MCP server as your primary integration. There is no install and nothing to keep running.
+
+<Steps>
+  <Step title="Add the MCP server">
+    Add MemoryPlugin to Cursor using the [remote MCP server](/integrations/remote-mcp-server) URL in your MCP settings.
+  </Step>
+  <Step title="Approve access">
+    Sign in and approve when Cursor prompts you. Your memories and chat history are then available to the agent from your next conversation.
+  </Step>
+</Steps>
+
+### Local MCP server
+
+If you prefer a local process, configure the [local MCP server](/integrations/mcp-server) instead of the remote one.
+
+## What works here
+
+- **All 12 MemoryPlugin tools over MCP.** Cursor can recall and save memories, recall your chat history, and search your uploaded files. No manual injection step.
+- **Cross-tool context.** Whatever you told ChatGPT, Claude, or any other connected tool is available to Cursor, so you are not re-explaining your stack or preferences every session.
+
+## Limitations
+
+- No browser extension in Cursor. The connection is entirely over MCP.
+- Whether Cursor actually calls the tools each turn is up to the model. If it forgets, ask it to check MemoryPlugin before answering.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Remote MCP Server" icon="cloud" href="/integrations/remote-mcp-server">
+    Recommended, no install
+  </Card>
+  <Card title="Local MCP Server" icon="server" href="/integrations/mcp-server">
+    For a local process
+  </Card>
+</CardGroup>

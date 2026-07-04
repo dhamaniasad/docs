@@ -1,193 +1,114 @@
 ---
 title: "Smart Memory"
-description: "AI-powered memory organization with intelligent categories and context-aware retrieval"
+description: "AI-powered memory organization with categories and context-aware retrieval"
 icon: "brain"
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Smart Memory is an AI-powered organizational system that automatically categorizes your memories into meaningful groups for more efficient and relevant AI interactions.
+Once you've saved a few hundred memories, loading all of them into every chat starts to hurt: wasted tokens, a crowded context window, and answers that get worse because the model is wading through things it doesn't need. Smart Memory groups the memories in a bucket into categories, each with an AI-written summary, so your AI can load only the categories relevant to a conversation instead of the whole bucket.
 
-## The Problem Smart Memory Solves
+Smart Memory is available on all paid plans, including Core. In the dashboard the panel is called **Smart Categories**; the browser extension calls the in-chat toggle **Smart Mode**. They are the same feature.
 
-Until recently, MemoryPlugin operated as a simple list. You would add new memories to the list, and the entire list would be shared with the AI when required. While this is useful, it has significant limitations:
+## Why it exists
+
+Without categories, MemoryPlugin loads a bucket as one flat list. That works, but it has costs as the bucket grows:
 
 <CardGroup cols={3}>
-  <Card title="Irrelevant Information" icon="filter">
-    Dumping the entire memory list feeds tons of irrelevant information to the AI, potentially reducing performance by confusing the model
+  <Card title="Irrelevant context" icon="filter">
+    Dumping every memory feeds the model a lot it doesn't need, which can make its answers worse.
   </Card>
-  <Card title="Context Window Bloat" icon="window-maximize">
-    Not every conversation needs full details of every memory. As you add more memories, they take up more space, leaving less room for your actual work
+  <Card title="Context window pressure" icon="window-maximize">
+    Memories take up space that your actual conversation could use.
   </Card>
-  <Card title="Higher Costs" icon="dollar-sign">
-    All API-based tools charge by the token, so more information in the context window means higher costs and faster rate limiting
-  </Card>
-</CardGroup>
-
-## What is Smart Memory?
-
-Smart Memory automatically analyzes and organizes your memories into intelligent categories with AI-generated summaries.
-
-### How It Works
-
-Smart Memory operates at the [Memory Bucket](/features/memory-buckets) level:
-
-1. **Analysis**: AI analyzes all memories within a bucket to identify themes and patterns
-2. **Categorization**: Groups related memories into meaningful categories like "Work Projects", "Learning Goals", "Health & Wellness"
-3. **Summarization**: Creates concise summaries for each category 
-4. **Selective Loading**: AI can load specific categories relevant to the conversation context
-
-<Info>
-Instead of loading all memories, the AI can focus on just the categories relevant to your conversation, making interactions more efficient and contextual.
-</Info>
-
-## Benefits
-
-### Better Context Efficiency
-Smart Memory improves AI interactions by:
-- Loading only relevant memory categories instead of everything
-- Providing focused context that matches your conversation topic
-- Preserving context window space for actual conversation
-
-### Improved Organization
-- **Automatic categorization**: AI identifies themes and groups related memories
-- **Clear summaries**: Each category gets a concise overview of its contents
-- **Easy filtering**: Focus on specific categories in the dashboard
-
-### Enhanced Scalability  
-- **Handle more memories**: Categories keep large collections organized and accessible
-- **Maintain performance**: Selective loading prevents information overload
-- **Better relevance**: AI gets context that actually matters for the conversation
-
-## How Smart Memory Categories Work
-
-### Category Creation
-Smart Memory analyzes your memories to create categories:
-
-```
-Bucket: "Personal Development"
-├── Work Projects (12 memories)
-│   Summary: "Current job responsibilities, team meetings, project updates..."
-├── Health & Fitness (8 memories)  
-│   Summary: "Exercise routines, nutrition goals, health tracking..."
-└── Learning Goals (15 memories)
-    Summary: "Programming courses, book notes, skill development..."
-```
-
-### Requirements and Limits
-- **Minimum**: 30 memories required in a bucket for categorization
-- **Maximum**: Works with buckets up to 600,000 tokens or 2,000 memories
-- **Manual Process**: Categories must be created by clicking the dashboard button
-
-## Using Smart Memory
-
-### Getting Started
-Smart Memory requires manual activation in your dashboard:
-
-1. **Add 30+ memories** to any bucket
-2. **Click "Create Smart Categories"** button in the dashboard 
-3. **Wait for processing** (usually takes a few minutes)
-4. **View your organized categories** with summaries and additional context
-
-### In the Dashboard
-The Smart Categories panel was redesigned to be easier to use. Once categories are created, you can:
-- **Browse categories**: Each shows a summary and additional information
-- **Filter by category**: Focus on specific themes
-- **Refresh categories**: Click the refresh button to update organization
-- **View memory counts**: See how many memories are in each category
-- **Expand/collapse**: See more or less detail for each category
-
-### Category Information
-Each category provides multiple layers of information:
-
-- **Category Name**: AI-generated theme (e.g., "Work Projects", "Health Goals")
-- **Summary**: High-level overview of what memories in this category contain
-- **Additional Information**: Deeper context about the category's contents, including:
-  - Key topics and themes within the category
-  - Specific details that distinguish this category from others
-  - Context that helps AI assistants understand when this category is relevant
-  - More granular information about the types of memories included
-- **Memory Count**: Number of memories grouped in this category
-
-The **Additional Information** field is particularly useful for AI interactions - it provides context that helps determine when to load this category's memories during conversations, making the AI's responses more accurate and relevant.
-
-## Availability
-
-### With AI Integrations
-Once you have Smart Memory categories set up:
-
-- **Browser Extension**: Categories are available when using AI platforms like ChatGPT, Claude, etc.
-- **MCP Server**: Smart Memory categories are accessible through MCP-compatible clients via the `list_bucket_categories` and `list_category_memories` tools
-- **Custom GPT**: Smart Memory integration is planned for future development
-- **API**: Smart Memory endpoints are currently internal-only
-
-## Use Cases
-
-Smart Memory is particularly valuable for:
-
-### Power Users
-- Large memory collections (hundreds or thousands of memories)
-- Multiple complex projects with extensive documentation
-- Long-term AI assistance relationships with deep context
-
-### Professional Applications
-- Customer service with extensive customer history
-- Consulting work with detailed client information
-- Research projects with vast amounts of collected information
-
-### Cost-Conscious Users
-- High-volume API usage where token costs matter
-- Rate-limited environments where efficiency is crucial
-- Performance-sensitive applications
-
-## Example Categories
-
-Smart Memory might organize your memories into categories like:
-
-<CardGroup cols={2}>
-  <Card title="Work Projects" icon="briefcase">
-    Meeting notes, project updates, deadlines, team communications
-  </Card>
-  <Card title="Health & Wellness" icon="heart">
-    Exercise routines, nutrition goals, medical appointments, wellness tracking
-  </Card>
-  <Card title="Learning & Development" icon="book">
-    Course notes, tutorials, skill development, book summaries
-  </Card>
-  <Card title="Personal Goals" icon="target">
-    Life goals, habit tracking, personal reflections, milestone planning
+  <Card title="Token cost" icon="dollar-sign">
+    API tools bill per token, so loading everything every time costs more and hits rate limits sooner.
   </Card>
 </CardGroup>
 
-## Comparison: Traditional vs Smart Memory
+## How it works
 
-| Aspect | Traditional Memory | Smart Memory |
-|--------|-------------------|--------------|
-| **Organization** | Chronological list of all memories | Themed categories with summaries |
-| **Context Loading** | All memories loaded at once | Relevant categories loaded selectively |
-| **Scalability** | Gets unwieldy with many memories | Stays organized regardless of size |
-| **AI Relevance** | AI sees everything, relevant or not | AI gets focused, contextual information |
-| **Dashboard View** | Simple memory list | Organized by categories with filtering |
+Smart Memory works one bucket at a time:
 
-## Next Steps
+1. **Analysis**: the AI reads the memories in a bucket to find themes.
+2. **Categorization**: it groups related memories into categories such as "Work Projects" or "Health & Fitness".
+3. **Summarization**: it writes a short summary and additional context for each category.
+4. **Selective loading**: at recall time, your AI loads the category summaries first, then pulls the full memories only from the categories it needs.
+
+<Frame caption="Only category summaries stay in context; a full category loads when the topic comes up.">
+  <img className="block dark:hidden" src="/images/diagrams/hierarchical-load-on-demand-light.svg" alt="Diagram: category summaries and recent memories in context, one full category loaded on demand" />
+  <img className="hidden dark:block" src="/images/diagrams/hierarchical-load-on-demand-dark.svg" alt="Diagram: category summaries and recent memories in context, one full category loaded on demand" />
+</Frame>
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/smart-memory-organize.mp4"></video>
+
+That last step is where the token savings come from. Think of a filing cabinet with labeled drawers: your AI reads the labels first, then opens only the drawer the conversation needs instead of tipping the whole cabinet onto the desk. Marketing describes it as "90% less tokens." The mechanism is straightforward: loading a handful of category summaries costs far fewer tokens than loading every memory in the bucket, and the AI only expands a category when the conversation calls for it. The exact saving depends on how large your bucket is and how much of it a given conversation actually needs.
+
+## Requirements and limits
+
+- **Memory buckets only.** File buckets and buckets shared to you cannot be categorized.
+- **At least 30 memories** in the bucket before it can build categories.
+- **Won't process** a bucket over **600,000 tokens** or **2,000 memories**.
+
+## Building categories
+
+<Steps>
+  <Step title="Add memories">
+    Get the bucket to at least 30 memories. The Smart Categories panel shows how many you have and how many you still need.
+  </Step>
+  <Step title="(Optional) define your own categories">
+    Click the gear icon to open **Custom Categories (Optional)** and enter 2 to 10 category names. Leave it empty to let the AI decide. This option is only available before the first run.
+  </Step>
+  <Step title="Organize">
+    Click **Organize with AI**. You will see a queued toast and a progress percentage. It usually takes a few minutes.
+  </Step>
+  <Step title="Review">
+    Categories appear with per-category memory counts, a summary, and additional context. Re-run **Organize with AI** any time to recategorize.
+  </Step>
+</Steps>
+
+<Frame caption="The Smart Categories panel after organizing: each category carries a count, and expanding one reveals its summary.">
+  <img className="block dark:hidden" src="/images/screenshots/tools/smart-categories-panel.png" alt="Smart Categories panel showing five built categories with memory counts, one expanded to show its summary, additional info, and a filter action" />
+  <img className="hidden dark:block" src="/images/screenshots/tools/smart-categories-panel-dark.png" alt="Smart Categories panel showing five built categories with memory counts, one expanded to show its summary, additional info, and a filter action" />
+</Frame>
+
+### What each category gives you
+
+- **Name**: the theme the AI identified.
+- **Summary**: a high-level overview of the memories in the category.
+- **Additional Info**: deeper context about what the category covers. This is what helps your AI decide when to load the category, so it tends to matter more than the summary for recall quality.
+- **Memory count**: how many memories are grouped there.
+
+Each category also has a copyable category ID and a **Filter by this** option to narrow the memory list in the dashboard.
+
+## Resetting categories
+
+To clear categories and start over, click **Remove All Categories**. The **Reset categories for {bucket}** dialog asks you to type `reset my categories` to confirm, because it cannot be undone. Resetting removes every category, detaches category assignments from every memory in the bucket, and clears Smart Memory progress so you can recategorize from scratch.
+
+## Where categories are available
+
+Once a bucket has Smart Categories:
+
+- **Browser extension**: turn on **Smart Mode** and your AI can load specific categories in chat on ChatGPT, Claude, and other supported platforms.
+- **MCP server**: MCP clients can call `list_bucket_categories` and `list_category_memories` to browse categories and pull memories from one.
+- **TypingMind plugin**: exposes the same `list_bucket_categories` and `list_category_memories` functions.
+- **Custom GPT**: does not expose the category tools today. It works with buckets and memories, but not category-level loading.
+
+## When it helps most
+
+Smart Memory earns its keep on large buckets. If you have hundreds or thousands of memories, or several dense projects in one bucket, categories keep recall focused and cut token cost. A small bucket of a few dozen memories is usually fine to load whole, which is why the 30-memory minimum exists.
+
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Memory Buckets"
-    icon="folder"
-    href="/features/memory-buckets"
-  >
-    Learn how to organize memories into buckets for Smart Memory
+  <Card title="Memory Buckets" icon="folder" href="/features/memory-buckets">
+    Organize memories into buckets before categorizing them
   </Card>
-  <Card
-    title="Dashboard Guide"
-    icon="chart-bar"
-    href="/features/dashboard"
-  >
-    Get started with creating and managing your Smart Memory categories
+  <Card title="Dashboard" icon="gauge" href="/features/dashboard">
+    Find the Smart Categories panel and manage your buckets
   </Card>
 </CardGroup>

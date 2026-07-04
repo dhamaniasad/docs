@@ -1,175 +1,84 @@
 ---
 title: "Quick Setup"
-description: "Set up MemoryPlugin in 3 simple steps and give your AI perfect memory"
-author: "asad"
-lastUpdated: "2026-03-24"
+description: "Set up MemoryPlugin in three steps and give your AI persistent memory"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-24" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Give your AI persistent memory, searchable chat history, and document access in just a few steps.
+You told your AI you use TypeScript and Tailwind last week. Open a fresh chat today and it has no idea who you are. This page gets you set up so it does, in about three steps. If you want to understand what's happening under the hood first, read [How It Works](/getting-started/how-it-works).
 
-## Setup Steps
+## Set up in three steps
 
 <Steps>
-  <Step title="Create Your Account">
-    Sign up at [memoryplugin.com](https://memoryplugin.com)
-
-    You'll get:
-    - Access to all integration methods
-    - Your personal API key
-    - Full dashboard for managing memories, chat history, and files
+  <Step title="Create your account">
+    Sign up at [memoryplugin.com](https://memoryplugin.com). You get the dashboard for managing memories, chat history, and files, an authentication token, and access to every integration method.
 
     <EmailIndependence />
   </Step>
 
-  <Step title="Choose Your Integration">
-    Pick how you want to use MemoryPlugin.
+  <Step title="Choose an integration">
+    Pick how you want to connect MemoryPlugin to your AI. Most people start with one of these:
 
-    **[View all integration options →](/integrations/overview)**
+    - **[Browser Extension](/integrations/browser-extension)** for ChatGPT, Claude, Gemini, and 21+ web-based AI tools
+    - **[MCP Server](/integrations/mcp-server)** for Claude Desktop, Cursor, Windsurf, Claude Code, and other MCP clients
+    - **[TypingMind Plugin](/integrations/typingmind-plugin)** for TypingMind
 
-    Most popular choices:
-    - **Browser Extension** — Works with ChatGPT, Claude, Gemini, and 15+ platforms
-    - **MCP Server** — For Claude Desktop, Cursor, Windsurf, and other MCP clients
-    - **TypingMind Plugin** — Native integration with full feature support
+    [See all integration options →](/integrations/overview)
   </Step>
 
-  <Step title="Start Using Memory">
-    Once installed:
-    - **Browser Extension**: Click the MemoryPlugin button to activate memory in each chat
-    - **MCP Server**: Your AI will automatically use MemoryPlugin tools
-    - **TypingMind Plugin**: Ready to use immediately—just start chatting
+  <Step title="Start using memory">
+    How you activate memory depends on the integration:
 
-    Your AI will save important information automatically and retrieve relevant context in future conversations.
+    - **Browser Extension**: click the MemoryPlugin button in the chat to inject your memories. You can also turn on automatic injection in the extension settings.
+    - **MCP Server**: your AI calls the MemoryPlugin tools directly. Ask it to remember something, or to recall what it knows about you.
+    - **TypingMind Plugin**: works as soon as it's installed. Just start chatting.
+
+    From there, your AI can save context as you go and pull it back into future conversations.
   </Step>
 </Steps>
 
-## What You Can Do
+## What you can do
 
 <CardGroup cols={3}>
   <Card title="Save Memories" icon="brain" href="/features/memory-buckets">
     Store facts, preferences, and context your AI can recall anytime
   </Card>
   <Card title="Search Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
-    Import and query your past AI conversations from ChatGPT, Claude, and TypingMind
+    Import your past conversations from ChatGPT, Claude, and more, then search or ask across them
   </Card>
   <Card title="Query Documents" icon="folder-open" href="/features/file-buckets">
     Upload PDFs and docs to search alongside your memories
   </Card>
 </CardGroup>
 
-## Understanding AI Memory
+<Frame caption="Your memories in the dashboard, with the bucket selector in the sidebar.">
+  <img className="block dark:hidden" src="/images/screenshots/dashboard/dashboard-home-memories.png" alt="Dashboard home showing several memories and the bucket selector" />
+  <img className="hidden dark:block" src="/images/screenshots/dashboard/dashboard-home-memories-dark.png" alt="Dashboard home showing several memories and the bucket selector" />
+</Frame>
 
-### The Problem: AI Amnesia
-
-Every time you start a new chat with ChatGPT, Claude, or any AI, it has no memory of your previous conversations. You're starting from scratch every single time.
-
-<Warning>
-Without MemoryPlugin, you need to re-explain your context, preferences, and important details in every new conversation.
-</Warning>
-
-### The Solution: Persistent Memory
-
-MemoryPlugin creates a memory layer that works across all AI platforms. Information you share once is remembered forever (or until you delete it). Plus, you can search your past conversations and uploaded documents.
-
-## How It Works
-
-<Tabs>
-  <Tab title="Storing Memories">
-    **Automatic Memory Creation**
-    ```
-    You: "I'm working on a React project using TypeScript and Tailwind CSS"
-    AI: "I'll remember that for future conversations..."
-    ```
-
-    **Manual Memory Creation**
-    ```
-    You: "Remember that my dog's name is Max and he's a golden retriever"
-    AI: "I've saved that to your memory..."
-    ```
-  </Tab>
-
-  <Tab title="Using Memories">
-    In a new conversation:
-    ```
-    You: "What kind of dog do I have?"
-    AI: "You have a golden retriever named Max."
-    ```
-
-    The AI automatically retrieves relevant memories based on context.
-  </Tab>
-
-  <Tab title="Chat History">
-    Search your past AI conversations:
-    ```
-    You: "What did I decide about the database migration last week?"
-    AI: "Based on your chat history, you decided to use PostgreSQL and..."
-    ```
-
-    Works with conversations imported from ChatGPT, Claude, and TypingMind.
-  </Tab>
-</Tabs>
-
-## Key Features
-
-<AccordionGroup>
-  <Accordion title="Memories" icon="brain">
-    Save facts, preferences, project details, and anything you want your AI to remember. Organize into buckets for different contexts.
-  </Accordion>
-
-  <Accordion title="Chat History" icon="clock-rotate-left">
-    Import your past AI conversations and search them. Ask questions about what you discussed, decisions you made, or patterns across conversations.
-  </Accordion>
-
-  <Accordion title="File Search" icon="file">
-    Upload PDFs, Word docs, and text files. Query them through the Ask tool or directly from your AI via MCP or TypingMind plugin.
-  </Accordion>
-
-  <Accordion title="Cross-Platform Sync" icon="arrows-rotate">
-    Memories, chat history, and files are available across all supported platforms. Save something in ChatGPT, use it in Claude.
-  </Accordion>
-
-  <Accordion title="Ask Tool" icon="messages">
-    Query all your data from one place in the dashboard. Switch between Memories, Chat History, and Files modes.
-  </Accordion>
-
-  <Accordion title="Privacy First" icon="lock">
-    Your data is private and only accessible by you. Full control to view, edit, or delete anytime.
-  </Accordion>
-</AccordionGroup>
-
-## Common Questions
+## Common questions
 
 **How much can I store?**
-Store as much as you need—there are no artificial limits on memory storage.
+There's no limit on how many memories you can save.
 
 **Is my data private?**
-Yes, your memories, chat history, and files are private and only accessible by you.
-
-**Can I delete memories?**
-Yes, you have full control through the dashboard.
+Your memories, chat history, and files are only accessible by you. You can view, edit, or delete anything from the dashboard at any time.
 
 **Does it work on mobile?**
-Yes! The browser extension works on iOS Safari and [Quetta Browser](https://play.google.com/store/apps/details?id=net.quetta.browser) (Android), TypingMind plugin works on mobile, and the dashboard is mobile-friendly.
+Yes. The browser extension runs on iOS Safari and [Quetta Browser](https://play.google.com/store/apps/details?id=net.quetta.browser) on Android, the TypingMind plugin works on mobile, and the dashboard is mobile-friendly.
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Understand How It Works"
-    icon="gear"
-    href="/getting-started/how-it-works"
-  >
-    Learn the technical details of how MemoryPlugin operates
+  <Card title="How It Works" icon="gear" href="/getting-started/how-it-works">
+    The memory model, injection and recall, and how tokens are spent
   </Card>
-  <Card
-    title="Choose Integration"
-    icon="plug"
-    href="/integrations/overview"
-  >
-    Pick the integration method that works best for your setup
+  <Card title="Choose an Integration" icon="plug" href="/integrations/overview">
+    Pick the method that fits your setup
   </Card>
 </CardGroup>

@@ -1,8 +1,8 @@
 ---
 title: 'Upload Chat History'
 openapi: 'POST /api/chat-history/ingest/custom-online'
-author: "asad"
-lastUpdated: "2026-04-27"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 ## Overview
@@ -13,7 +13,7 @@ Upload chat history from any platform to MemoryPlugin. This endpoint accepts a s
 
 - **Upsert semantics**: Re-sending a conversation with the same `conversation.id` updates it with any new messages rather than duplicating it.
 - **Dynamic platform naming**: Supply a `platform` identifier to group conversations by source. Each platform is scoped to your user account.
-- **Full processing pipeline**: Conversations are chunked, embedded, and indexed for semantic search — just like conversations imported via the browser extension.
+- **Full processing pipeline**: Conversations are chunked, embedded, and indexed for semantic search, just like conversations imported via the browser extension.
 
 ### Limits
 

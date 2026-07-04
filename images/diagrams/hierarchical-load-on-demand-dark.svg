@@ -1,0 +1,52 @@
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Only category summaries and recent memories stay in the context window. One full category, Billing, loads on demand from the memory store.">
+  <style>
+    .card{fill:#27272a;stroke:#3f3f46;stroke-width:1;}
+    .card-accent{fill:rgba(129,140,248,0.16);stroke:#818cf8;stroke-width:1.5;}
+    .card-dash{fill:#27272a;stroke:#3f3f46;stroke-width:1;stroke-dasharray:5 4;}
+    .pill{fill:#27272a;stroke:#3f3f46;stroke-width:1;}
+    .pill-accent{fill:rgba(129,140,248,0.16);stroke:#818cf8;stroke-width:1.5;}
+    .t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#fafafa;font-size:15px;}
+    .t-strong{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#fafafa;font-size:15px;font-weight:600;}
+    .sub{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#a1a1aa;font-size:12.5px;}
+    .accent-t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#818cf8;font-size:12.5px;font-weight:600;}
+    .faint{fill:#a1a1aa;}
+    .edge{fill:none;stroke:#52525b;stroke-width:1.5;}
+    .edge-accent{fill:none;stroke:#818cf8;stroke-width:1.75;}
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#52525b"/>
+    </marker>
+    <marker id="aa" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#818cf8"/>
+    </marker>
+  </defs>
+
+  <!-- LEFT: in context -->
+  <text x="40" y="34" class="sub">In the context window</text>
+  <rect class="card" x="40" y="46" width="250" height="208" rx="12"/>
+  <rect class="pill" x="62" y="72" width="206" height="44" rx="9"/>
+  <text x="165" y="99" class="t" text-anchor="middle">Category summaries</text>
+  <rect class="pill" x="62" y="128" width="206" height="44" rx="9"/>
+  <text x="165" y="155" class="t" text-anchor="middle">Recent memories</text>
+  <rect class="pill-accent" x="62" y="184" width="206" height="48" rx="9"/>
+  <text x="165" y="204" class="t" text-anchor="middle">Billing</text>
+  <text x="165" y="222" class="accent-t" text-anchor="middle">Loaded in full</text>
+
+  <!-- load-on-demand arrow (elbow routed through the gap, clear of the label) -->
+  <path class="edge-accent" d="M 452 92 H 400 V 208 H 292" marker-end="url(#aa)"/>
+  <text x="350" y="150" class="accent-t" text-anchor="middle">Loads on demand</text>
+
+  <!-- RIGHT: full store -->
+  <text x="430" y="34" class="sub">Memory store</text>
+  <rect class="card" x="430" y="46" width="250" height="208" rx="12"/>
+  <rect class="pill-accent" x="452" y="72" width="112" height="40" rx="9"/>
+  <text x="508" y="97" class="t" text-anchor="middle">Billing</text>
+  <rect class="pill" x="578" y="72" width="112" height="40" rx="9"/>
+  <text x="634" y="97" class="t" text-anchor="middle">Travel</text>
+  <rect class="pill" x="452" y="128" width="112" height="40" rx="9"/>
+  <text x="508" y="153" class="t" text-anchor="middle">Health</text>
+  <rect class="pill" x="578" y="128" width="112" height="40" rx="9"/>
+  <text x="634" y="153" class="t" text-anchor="middle">Projects</text>
+  <text x="556" y="205" class="sub" text-anchor="middle">and more</text>
+</svg>

@@ -1,33 +1,41 @@
 ---
 title: "Import & Export"
-description: "Bring memories in from files or export them for backup and portability"
+description: "Bring memories in from a file, or take them out for backup and portability"
 icon: "arrow-right-arrow-left"
-author: "asad"
-lastUpdated: "2025-12-14"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-MemoryPlugin lets you import memories from CSV or JSON files and export your memories for backup or use elsewhere. Your data is portable—you're never locked in.
+You can load memories into MemoryPlugin from a CSV or JSON file, and take them back out as CSV, JSON, or plain text. Your data is yours: import it, export it, move it, keep your own copy.
 
-## Import Memories
+## Import memories
 
-### Supported Formats
+Import loads memories from a file into **one bucket at a time**: the bucket you have selected. The import dialog confirms the target ("Importing to ...") so you always know where the memories are going.
+
+<Frame caption="The Import Memories dialog after parsing a file. It confirms the target bucket and how many memories it found, then imports them on click.">
+  <img src="/images/screenshots/dashboard/import-modal.png" alt="Import Memories dialog showing a parsed CSV file with 142 memories found and an Import 142 Memories button" />
+</Frame>
+
+### Supported formats
 
 <CardGroup cols={2}>
   <Card title="CSV" icon="file-csv">
-    Simple spreadsheet format with one memory per row
+    One memory per row, with a header
   </Card>
   <Card title="JSON" icon="brackets-curly">
-    Structured format for more complex imports
+    An array of memory objects
   </Card>
 </CardGroup>
 
-### CSV Format
+The dropzone accepts `.csv` and `.json`. The format is auto-detected from the file.
 
-Your CSV file should have a header row with at least a `text` column:
+### CSV format
+
+Your CSV needs a header row with a `text` column. That column is the only requirement; a file without it is rejected with "CSV must have a 'text' column".
 
 ```csv
 text
@@ -36,122 +44,121 @@ text
 "I prefer dark mode in all applications"
 ```
 
-Optional columns:
-- `bucket`: Bucket name to import into (creates if doesn't exist)
-- `created_at`: Timestamp for the memory
+You can also include a `createdAt` (or `created_at`) column to set each memory's timestamp. Any other columns are ignored.
 
-### JSON Format
+### JSON format
 
-JSON imports expect an array of memory objects:
+JSON imports expect an array of objects, each with a `text` field:
 
 ```json
 [
-  {
-    "text": "My preferred programming language is Python"
-  },
-  {
-    "text": "I work at Acme Corp as a software engineer",
-    "bucket": "Work"
-  }
+  { "text": "My preferred programming language is Python" },
+  { "text": "I work at Acme Corp as a software engineer" }
 ]
 ```
 
-### How to Import
+An optional `createdAt` field sets the timestamp. Other fields are ignored.
 
-1. **Open the dashboard** and select the target bucket (or use "General")
-2. **Click the import button** in the memory section
-3. **Select your file** (CSV or JSON)
-4. **Review the preview** showing memories to be imported
-5. **Click Import** to add the memories
+### How to import
+
+<Steps>
+  <Step title="Select the target bucket">
+    In the dashboard, select the bucket you want the memories in (or use **General**). Import always writes to the selected bucket.
+  </Step>
+  <Step title="Open the import dialog">
+    Click **Import** in the memory list header. The **Import Memories** dialog opens.
+  </Step>
+  <Step title="Choose your file">
+    Click to select a `.csv` or `.json` file. MemoryPlugin parses it and shows how many memories it found.
+  </Step>
+  <Step title="Import">
+    Click **Import {n} Memories**. When it finishes, an **Import Complete** summary shows how many were imported, how many duplicates were skipped, and how many entries were invalid.
+  </Step>
+</Steps>
 
 <Info>
-**Duplicate handling**: Memories that already exist in your account are automatically skipped during import. You won't get duplicates.
+**Duplicates are skipped automatically.** Memories that already exist are not imported again, so re-running the same file will not create duplicates. If the bucket uses [Smart Memory](/features/smart-memory), categories are assigned to the new memories automatically.
 </Info>
 
-### Bulk Add (Quick Import)
+### Bulk add (no file needed)
 
-For quick imports without a file, use the **bulk add** feature:
+For a handful of memories you do not want to put in a file, use bulk add instead:
 
-1. **Open the Add Memory dialog** (or press **⌘J / Ctrl+J**)
-2. **Paste multiple memories** separated by line breaks
-3. **Click Add** — each line becomes a separate memory
+<Steps>
+  <Step title="Open the Add Memory dialog">
+    Press **⌘J / Ctrl+J**, or click **New Memory** in the sidebar.
+  </Step>
+  <Step title="Turn on bulk mode">
+    Check **Bulk mode (one per line)**.
+  </Step>
+  <Step title="Paste your memories">
+    Put one memory per line, then save. Each line becomes its own memory.
+  </Step>
+</Steps>
 
-This is useful for quickly adding several related memories without creating a file.
+## Export memories
 
-## Export Memories
+Export is opened from the memory list header. **Export** covers the current bucket; if you have selected specific memories first, the button becomes **Export Selected ({n})** and only those are exported.
 
-### Export Formats
+<Frame caption="The Export Memories dialog. Copy to Clipboard is the primary action; you can also download as CSV, JSON, or Text.">
+  <img src="/images/screenshots/dashboard/export-modal.png" alt="Export Memories dialog with a Copy to Clipboard button and CSV, JSON, and Text download options" />
+</Frame>
 
-| Format | Best For |
+### Copy to clipboard
+
+The primary export action is **Copy to Clipboard**. It copies your memories along with AI instructions, ready to paste straight into a chat with any AI tool. Use this when you want another AI to read your memories directly, not when you want a file.
+
+### Download as a file
+
+To save a file instead, pick a format under "Or download as:":
+
+| Format | Best for |
 |--------|----------|
-| **CSV** | Opening in spreadsheets, simple backups |
-| **JSON** | Programmatic use, re-importing later |
+| **CSV** | Spreadsheets and simple backups |
+| **JSON** | Programmatic use and re-importing later |
+| **Text** | Reading, or pasting into anything that takes plain text |
 
-### How to Export
+A CSV export has the columns `text`, `createdAt`, `bucketName`, and `categoryName`, so it carries each memory's text, timestamp, bucket, and Smart Memory category.
 
-1. **Open the dashboard** and select a bucket (or all buckets)
-2. **Click the export button** in the memory section
-3. **Choose your format** (CSV or JSON)
-4. **Download the file**
+### Export specific memories
 
-### What's Included
+<Steps>
+  <Step title="Select memories">
+    Use **Select Multiple** in the memory list header, then check the memories you want.
+  </Step>
+  <Step title="Export the selection">
+    Click **Export Selected ({n})**.
+  </Step>
+  <Step title="Copy or download">
+    Copy to clipboard with AI instructions, or download as CSV, JSON, or Text.
+  </Step>
+</Steps>
 
-Exports include:
-- Memory text content
-- Creation timestamp
-- Bucket name
-- Memory ID
+## Use cases
 
-### Exporting Specific Memories
-
-To export only certain memories:
-1. **Use bulk selection** to select the memories you want
-2. **Click Export** from the bulk actions bar
-3. **Choose your format** and download
-
-## Use Cases
-
-### Backup
-Regularly export your memories as a personal backup. Store the file somewhere safe.
-
-### Migration
-Moving to a new account? Export from the old account and import to the new one.
-
-### Sharing
-Export memories to share with team members or collaborators (manually, for now).
-
-### Analysis
-Export to CSV and analyze your memories in a spreadsheet or data tool.
-
-### Cross-Tool Use
-Export memories to use in other applications or AI tools that accept text imports.
+- **Backup.** Export a bucket now and then and keep the file somewhere safe.
+- **Migration.** Export from one account, import into another.
+- **Sharing.** Hand a colleague an export, or use **Copy to Clipboard** to paste your memories into their AI chat. (For live shared access, see [bucket sharing](/features/memory-buckets).)
+- **Analysis.** Export to CSV and dig through your memories in a spreadsheet.
 
 ## Tips
 
 <AccordionGroup>
-  <Accordion title="Clean your data before importing">
-    Remove duplicates and fix formatting in your file before importing. It's easier to clean a spreadsheet than to fix memories one by one.
+  <Accordion title="Clean the file before importing">
+    Fix formatting and drop obvious junk in the spreadsheet first. It is easier than editing memories one at a time afterward.
   </Accordion>
-  <Accordion title="Use buckets for organization">
-    Include a `bucket` column in your CSV/JSON to automatically organize memories during import.
+  <Accordion title="Import goes to the selected bucket">
+    There is no per-row bucket column. If you want memories split across buckets, import each set with the right bucket selected, or move them afterward.
   </Accordion>
-  <Accordion title="Regular backups">
-    Export your memories periodically. It's your data—keep a copy.
+  <Accordion title="Back up periodically">
+    A quick export is cheap insurance. It is your data; keep a copy.
   </Accordion>
-  <Accordion title="Test with small imports first">
-    If importing a large file, try a small sample first to make sure the format is correct.
+  <Accordion title="Test a large import small">
+    Try a few rows first to confirm the format parses before importing thousands.
   </Accordion>
 </AccordionGroup>
 
-## Limits
-
-| Aspect | Limit |
-|--------|-------|
-| **Import file size** | 5 MB |
-| **Memories per import** | 1,000 |
-| **Duplicate handling** | Automatic skip |
-
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
   <Card
@@ -166,6 +173,6 @@ Export memories to use in other applications or AI tools that accept text import
     icon="list"
     href="/features/bulk-operations"
   >
-    Select and manage multiple memories at once
+    Select, move, and delete many memories at once
   </Card>
 </CardGroup>

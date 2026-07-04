@@ -2,22 +2,22 @@
 title: "TypingMind Plugin"
 description: "Use MemoryPlugin with TypingMind for enhanced AI conversations with memory, chat history, and file search"
 icon: "keyboard"
-author: "asad"
-lastUpdated: "2025-12-14"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-MemoryPlugin offers native integration with TypingMind through our dedicated plugin. The plugin provides full functionality including memories, chat history search, and file queries across different AI models within TypingMind.
+MemoryPlugin has a native TypingMind plugin. It gives the AI direct access to your memories, chat history, and uploaded files, and it works across every AI model you run in TypingMind.
 
 <EmailIndependence />
 
 ## What is TypingMind?
 
-TypingMind is a powerful alternative interface for AI models that offers:
+TypingMind is an alternative interface for AI models that offers:
 
 - Support for multiple AI providers (OpenAI, Claude, Gemini, etc.)
 - Enhanced conversation management
@@ -26,6 +26,10 @@ TypingMind is a powerful alternative interface for AI models that offers:
 - Team collaboration features
 
 ## Installation
+
+<Frame caption="The MemoryPlugin plugin in TypingMind's plugin settings. Paste your Auth Token, keep the plugin enabled, and the AI can call its functions in any chat.">
+  <img src="/images/screenshots/integrations/typingmind-plugin.png" alt="MemoryPlugin plugin settings inside TypingMind, showing the Auth Token field and available functions" />
+</Frame>
 
 Installing MemoryPlugin for TypingMind is a simple one-click process:
 
@@ -62,8 +66,11 @@ The TypingMind plugin provides several functions that AI can use during conversa
 |----------|-------------|
 | `store_memory` | Save information for future recall. AI proactively stores important details. |
 | `search_memories` | Search your saved memories using semantic search. |
-| `load_all_memories` | Load all memories (use sparingly for token efficiency). |
-| `load_bucket_memories` | Load memories from a specific bucket. |
+| `get_memories_and_buckets` | Load memories (all, or from a specific bucket) along with your bucket list. |
+| `list_buckets` | List your memory buckets. |
+| `create_bucket` | Create a new memory bucket. |
+| `list_bucket_categories` | List the Smart Memory categories in a bucket. |
+| `list_category_memories` | Load the memories within a Smart Memory category. |
 
 ### Chat History Functions
 
@@ -107,9 +114,9 @@ When integrated with TypingMind, MemoryPlugin provides:
 ### Basic Memory Usage
 
 1. **Start a conversation** in TypingMind with MemoryPlugin enabled
-2. **The AI will automatically store** important information as you chat
-3. **Use `\m` at the end** of a message to explicitly request memory storage
-4. **Specify buckets** when you want to organize memories by context
+2. **The AI stores** important information as you chat, using the plugin functions
+3. **Ask it to remember** something explicitly when you want to be sure it saves
+4. **Name a bucket** when you want to organize memories by context
 
 ### Using Chat History
 
@@ -136,31 +143,25 @@ Query your uploaded documents:
 ### Working with Buckets
 
 ```text
-"Load my work bucket" - AI loads memories from specific bucket
-"Remember this in my personal bucket: I prefer morning meetings" - AI stores in specific bucket
-"Search my project memories for deadlines" - AI searches within context
+"Load my work bucket" - AI loads memories from a specific bucket
+"Remember this in my personal bucket: I prefer morning meetings" - AI stores in a specific bucket
+"Search my project memories for deadlines" - AI searches within that context
 ```
-
-### Memory Shortcuts
-
-- **`\m`**: Add the preceding information to memory
-- **Automatic Storage**: AI detects and stores important information
-- **Smart Loading**: AI loads relevant memories based on conversation context
 
 ## Plugin Behavior
 
 ### Automatic Features
 
-- **Proactive Storage**: The AI automatically detects and stores important information
-- **Context Awareness**: Uses conversation context to determine what's worth remembering
-- **Date Stamping**: All memories include timestamps for better organization
-- **Error Handling**: Shows helpful messages if authentication fails
+- **Proactive Storage**: The AI detects and stores important information as you chat
+- **Context Awareness**: It uses the conversation to decide what is worth remembering
+- **Date Stamping**: Memories include a date so they stay in order
+- **Error Handling**: The plugin shows a clear message if authentication fails
 
 ### User Controls
 
-- **Explicit Memory**: Use `\m` to force storage of specific information
-- **Bucket Selection**: Direct the AI to use specific memory buckets
-- **Search Queries**: Find specific information from your memory collection
+- **Explicit Memory**: Ask the AI directly to remember something
+- **Bucket Selection**: Tell the AI which bucket to use
+- **Search Queries**: Ask it to find specific information from your memories
 
 ## Best Practices
 
@@ -171,8 +172,8 @@ Query your uploaded documents:
   <Card title="Be Specific" icon="target">
     Clear, specific information gets stored and retrieved more effectively
   </Card>
-  <Card title="Use \m Shortcut" icon="keyboard">
-    Explicitly mark important information you want remembered
+  <Card title="Ask It to Remember" icon="keyboard">
+    Tell the AI directly when something is important enough to save
   </Card>
   <Card title="Regular Review" icon="eye">
     Periodically check your stored memories through the dashboard
@@ -189,13 +190,13 @@ Query your uploaded documents:
     Check that the plugin is enabled and your internet connection is stable
   </Accordion>
   <Accordion title="Bucket errors">
-    Verify bucket names are correct - they're case-sensitive
+    Check that the bucket name you asked for matches one that exists in your dashboard.
   </Accordion>
   <Accordion title="Authentication failed">
     Regenerate your Auth Token from the MemoryPlugin dashboard
   </Accordion>
   <Accordion title="Chat history not finding results">
-    Make sure you've imported conversations via the browser extension first
+    Chat history search only covers conversations you have imported. Import an export from your dashboard, or sync with the browser extension, then try again. Chat History is a Pro feature.
   </Accordion>
 </AccordionGroup>
 

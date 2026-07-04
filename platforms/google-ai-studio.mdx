@@ -1,21 +1,52 @@
 ---
 title: 'Google AI Studio'
 description: 'Use MemoryPlugin with Google AI Studio'
-author: "asad"
-lastUpdated: "2025-08-20"
+icon: "/images/logos/google-ai-studio.svg"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-20" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-## How to Use
+<img src="/images/logos/google-ai-studio.svg" alt="Google AI Studio" width="56" height="56" noZoom style={{ background: "#fff", borderRadius: "14px", padding: "10px", boxShadow: "0 1px 2px rgba(0,0,0,0.12)", boxSizing: "border-box" }} />
 
-1. Install the [MemoryPlugin browser extension](/integrations/browser-extension)
-2. Navigate to [aistudio.google.com](https://aistudio.google.com)
-3. Click the MemoryPlugin button to inject memories
-4. Start chatting with memory context
+Google AI Studio is Google's build-and-test interface for Gemini models, at [aistudio.google.com](https://aistudio.google.com). MemoryPlugin adds long-term memory that carries across your other AI tools, through the browser extension.
 
-## Support
+## Set up
 
-For help with Google AI Studio integration, contact [support@memoryplugin.com](mailto:support@memoryplugin.com)
+<Steps>
+  <Step title="Install the extension">
+    Install the [browser extension](/integrations/browser-extension) and sign in to your MemoryPlugin account.
+  </Step>
+  <Step title="Open AI Studio">
+    Go to [aistudio.google.com](https://aistudio.google.com). A floating MemoryPlugin button appears on the page.
+  </Step>
+  <Step title="Activate for the chat">
+    Click the button to inject memories from your selected bucket into the prompt, then send your message. This also tells the model how to save new memories as you talk.
+  </Step>
+</Steps>
+
+<Frame caption="The MemoryPlugin floating button on aistudio.google.com. Click it to inject memories or open the panel.">
+  <img src="/images/screenshots/platforms/google-ai-studio.png" alt="MemoryPlugin floating button on Google AI Studio (aistudio.google.com)" />
+</Frame>
+## What works here
+
+- **Memory recall and save.** Injected memories give the model context; new memories are saved back as you talk.
+- **Extract memory pill.** Select text in a chat and click **Extract memory** to save that snippet.
+
+## Limitations
+
+- No chat history sync here. Direct sync covers ChatGPT, Claude, Gemini, Grok, DeepSeek, and TypingMind only.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    Full setup and features
+  </Card>
+  <Card title="Support" icon="envelope" href="mailto:support@memoryplugin.com">
+    Questions about this integration
+  </Card>
+</CardGroup>

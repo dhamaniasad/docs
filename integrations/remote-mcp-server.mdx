@@ -1,23 +1,27 @@
 ---
 title: "Remote MCP server (hosted)"
-description: "Connect any MCP client to MemoryPlugin’s hosted MCP server over HTTP/SSE with OAuth and Dynamic Client Registration"
+description: "Connect any MCP client to MemoryPlugin's hosted server over HTTP or SSE, with OAuth sign-in and no install"
 icon: "cloud"
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Use MemoryPlugin without installing a local server. Our hosted Remote MCP server lets any compatible MCP client connect over HTTPS with built‑in OAuth 2.0 (PKCE) and Dynamic Client Registration (DCR).
+Connect an MCP client to MemoryPlugin without running anything on your machine. The hosted Remote MCP server accepts connections over HTTPS, handles sign-in with OAuth 2.0 (PKCE), and supports Dynamic Client Registration (DCR) so most clients register themselves on the first connect.
+
+<Note>
+This is the recommended way to use MemoryPlugin over MCP. Compared with the [local MCP server](/integrations/mcp-server), there is no Node.js to install and no token to paste into a config file: you connect by URL and approve access in your browser. Reach for the local server only when you specifically want the process on your own machine, or when your client cannot do the browser OAuth flow. The tools and data are identical.
+</Note>
 
 <EmailIndependence />
 
 ## Endpoints
 
-Use one of the following URLs depending on your client's requirements:
+Use whichever URL your client asks for:
 
 **Base URL (with auto-discovery)**
 ```
@@ -35,40 +39,45 @@ https://www.memoryplugin.com/api/mcp/sse
 ```
 
 <Info>
-Most clients work with the full endpoint paths, but some may only need the base URL and will auto-discover the MCP endpoints.
+Most clients want the full endpoint path. Some only need the base URL and will auto-discover the rest.
 </Info>
-
-## When to use Remote MCP
-
-- Zero‑install: no Node.js or local process to manage
-- Auto‑updates: get the latest MemoryPlugin MCP features instantly
-- Firewall‑friendly: outbound HTTPS only
-- Works across devices with the same MemoryPlugin account
-
-If you prefer a local process (e.g., for fully offline), see the [MCP Server (local)](/integrations/mcp-server) page.
 
 ## Authentication
 
-The Remote MCP server uses OAuth 2.0 with PKCE and supports Dynamic Client Registration (DCR). In practice this means:
+The Remote MCP server uses OAuth 2.0 with PKCE and supports Dynamic Client Registration. What this means for you:
 
-- Clients that support DCR can register themselves automatically during the first connect flow
-- No long‑lived secrets are required from you; the client obtains tokens after authorization
-- Tokens are stored by your client according to its security model (e.g., OS keychain)
+- Clients that support DCR register themselves during the first connect. There is nothing to set up in advance.
+- You do not hand out any long-lived secret. The client gets tokens after you approve access.
+- Your client stores those tokens under its own security model, for example the OS keychain.
 
 <Warning>
-Do not paste raw API keys into third‑party clients unless their docs explicitly request it. Use the built‑in OAuth flow whenever available.
+Do not paste raw API keys into third-party clients unless their own docs tell you to. Use the built-in OAuth flow when it is available.
 </Warning>
 
-### High‑level flow
+### How the connect flow works
 
-1. Configure your MCP client with the Remote MCP endpoint(s) below
-2. Start or refresh the client; it opens the MemoryPlugin OAuth screen
-3. Approve access; the client exchanges the code for tokens
-4. The client connects to the Remote MCP server and lists available tools
+<Steps>
+  <Step title="Add the endpoint">
+    Configure your MCP client with one of the Remote MCP endpoints above.
+  </Step>
+  <Step title="Start the client">
+    Start or refresh the client. It opens the MemoryPlugin sign-in screen in your browser.
+  </Step>
+  <Step title="Approve access">
+    Sign in and approve the connection. The client exchanges the code for tokens behind the scenes.
+
+    <Frame caption="The MemoryPlugin consent screen: review the requested permissions, confirm the redirect URL, and continue.">
+      <img src="/images/screenshots/tools/oauth-approve.png" alt="MemoryPlugin OAuth consent screen for connecting with Claude, listing requested permissions with a trust-the-redirect checkbox and a Continue button" />
+    </Frame>
+  </Step>
+  <Step title="Connected">
+    The client connects and lists the MemoryPlugin tools. You are done.
+  </Step>
+</Steps>
 
 ## Client configuration examples
 
-Each MCP client has its own config schema for Remote MCP. Use these templates as a guide and consult your client's documentation for exact keys and capabilities.
+Each client has its own config schema for remote servers. Use these as a starting point and check your client's docs for exact keys.
 
 ### Claude Desktop
 
@@ -90,7 +99,7 @@ Config file location:
 ```
 
 <Info>
-Claude Desktop will automatically handle OAuth with Dynamic Client Registration during the first connection. No API keys or tokens needed in the config.
+Claude Desktop handles OAuth with Dynamic Client Registration on the first connection. No keys or tokens go in the config.
 </Info>
 
 ### VS Code / GitHub Copilot Chat
@@ -109,22 +118,22 @@ Project file: `.vscode/mcp.json`
 ```
 
 <Info>
-VS Code supports both HTTP and SSE transports. It will automatically try HTTP first and fall back to SSE if needed. OAuth with DCR is handled automatically.
+VS Code supports both HTTP and SSE. It tries HTTP first and falls back to SSE if needed. OAuth with DCR is automatic.
 </Info>
 
 ### Cursor, Windsurf, and other clients
 
-- Look for "Remote MCP", "HTTP transport", or "Add server" in your client settings
-- Try these URLs in order of preference:
+- Look for "Remote MCP", "HTTP transport", or "Add server" in your client's settings.
+- Try these URLs in order:
   1. `https://www.memoryplugin.com/api/mcp/mcp` (full HTTP endpoint)
   2. `https://www.memoryplugin.com` (base URL with auto-discovery)
-- Set type to `"http"` if your client requires it
-- Enable OAuth/DCR if available; most modern clients handle this automatically
-- If your client asks for static credentials, use the local server instead
+- Set the type to `"http"` if your client requires it.
+- Turn on OAuth or DCR if offered. Most current clients do this automatically.
+- If your client insists on static credentials, use the local server instead.
 
 ### Clients without native remote support
 
-If your client doesn't support remote MCP servers yet, you can use a local proxy like `mcp-remote`:
+If your client cannot talk to a remote MCP server yet, run a local proxy like `mcp-remote`:
 
 ```json
 {
@@ -140,40 +149,40 @@ If your client doesn't support remote MCP servers yet, you can use a local proxy
 }
 ```
 
-This runs a local proxy that connects to the remote server, making it appear as a local MCP server to your client.
+This starts a local proxy that forwards to the remote server, so it looks like a local MCP server to your client.
 
 ## Capabilities
 
-Once connected, MemoryPlugin exposes the same capabilities as the [local MCP server](/integrations/mcp-server), plus some extras:
+Once connected, the Remote MCP server exposes the same tools as the [local MCP server](/integrations/mcp-server#available-tools), plus a chat-history overview:
 
-- **Memories** — store, retrieve, and search memories across buckets
-- **Smart Memory** — access AI-organized categories and summaries
-- **Chat History** — search and synthesize context from your imported conversations
-- **File Search** — query your uploaded documents
-- **Chat History Overview** — AI-generated summary based on your chat history, automatically shared with the AI for richer context
+- **Memories** to store, retrieve, and search across buckets
+- **Smart Memory** categories and summaries
+- **Chat History** search and synthesized context from your imported conversations
+- **File search** over your uploaded documents
+- **Chat History Overview**, an AI-generated summary of your chat history that is shared with the AI automatically for richer context
 
-Refer to the [MCP Server](/integrations/mcp-server#available-tools) page for the full tool list.
+See the [MCP Server](/integrations/mcp-server#available-tools) page for the full 12-tool list.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Unauthorized (401) or repeated sign‑in prompts">
-    Complete the OAuth flow in your default browser. If the issue persists, sign out in your client and try again.
+  <Accordion title="Unauthorized (401) or repeated sign-in prompts">
+    Finish the OAuth flow in your default browser. If it keeps happening, sign out in your client and connect again.
   </Accordion>
   <Accordion title="Client does not support Remote MCP">
-    Use the [local MCP server](/integrations/mcp-server) or check for a newer client version that adds HTTP/SSE transport.
+    Use the [local MCP server](/integrations/mcp-server), or check for a newer client version with HTTP/SSE transport.
   </Accordion>
-  <Accordion title="Claude Desktop doesn’t pick up config changes">
-    Close the app completely, then reopen. On macOS, verify edits in `~/Library/Application Support/Claude/claude_desktop_config.json`.
+  <Accordion title="Claude Desktop doesn't pick up config changes">
+    Quit the app fully, then reopen it. On macOS, confirm your edits in `~/Library/Application Support/Claude/claude_desktop_config.json`.
   </Accordion>
   <Accordion title="Network or proxy issues">
-    Allow outbound HTTPS to `www.memoryplugin.com`. Some corporate proxies block SSE; prefer the HTTP streamable endpoint if your client supports it.
+    Allow outbound HTTPS to `www.memoryplugin.com`. Some corporate proxies block SSE, so prefer the HTTP streamable endpoint if your client supports it.
   </Accordion>
   <Accordion title="I need static client credentials">
-    Some clients require pre‑registered OAuth clients instead of DCR. Check your client docs; if unsupported, use the local server as a fallback.
+    Some clients require a pre-registered OAuth client instead of DCR. Check your client docs; if that is not supported, fall back to the local server.
   </Accordion>
   <Accordion title="My client doesn't support remote MCP at all">
-    Use the `mcp-remote` proxy approach shown above. This creates a local stdio server that forwards requests to the remote endpoint, making it compatible with any MCP client.
+    Use the `mcp-remote` proxy shown above. It creates a local server that forwards to the remote endpoint, which works with any MCP client.
   </Accordion>
 </AccordionGroup>
 
@@ -184,10 +193,10 @@ Refer to the [MCP Server](/integrations/mcp-server#available-tools) page for the
     Run MemoryPlugin as a local MCP process via Node.js
   </Card>
   <Card title="API reference" icon="book" href="/api-reference/introduction">
-    Explore REST endpoints, schemas, and examples
+    REST endpoints, schemas, and examples
   </Card>
   <Card title="MemoryPlugin website" icon="globe" href="https://memoryplugin.com">
-    Learn more about MemoryPlugin features and pricing
+    Features and pricing
   </Card>
   <Card title="Dashboard" icon="gauge" href="https://memoryplugin.com/dashboard">
     Manage your account and settings

@@ -1,0 +1,45 @@
+<svg viewBox="0 0 720 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One memory. Every AI. A central memory hub connects over MCP to ChatGPT, Claude, Gemini, and Cursor.">
+  <style>
+    .card{fill:#27272a;stroke:#3f3f46;stroke-width:1;}
+    .card-accent{fill:rgba(129,140,248,0.16);stroke:#818cf8;stroke-width:1.5;}
+    .card-dash{fill:#27272a;stroke:#3f3f46;stroke-width:1;stroke-dasharray:5 4;}
+    .pill{fill:#27272a;stroke:#3f3f46;stroke-width:1;}
+    .pill-accent{fill:rgba(129,140,248,0.16);stroke:#818cf8;stroke-width:1.5;}
+    .t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#fafafa;font-size:15px;}
+    .t-strong{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#fafafa;font-size:15px;font-weight:600;}
+    .sub{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#a1a1aa;font-size:12.5px;}
+    .accent-t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#818cf8;font-size:12.5px;font-weight:600;}
+    .faint{fill:#a1a1aa;}
+    .edge{fill:none;stroke:#52525b;stroke-width:1.5;}
+    .edge-accent{fill:none;stroke:#818cf8;stroke-width:1.75;}
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#52525b"/>
+    </marker>
+    <marker id="aa" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#818cf8"/>
+    </marker>
+  </defs>
+
+  <!-- spokes (bidirectional; no arrowheads) -->
+  <line class="edge" x1="316" y1="130" x2="182" y2="86"/>
+  <line class="edge" x1="404" y1="130" x2="538" y2="86"/>
+  <line class="edge" x1="316" y1="170" x2="182" y2="214"/>
+  <line class="edge" x1="404" y1="170" x2="538" y2="214"/>
+
+  <!-- clients -->
+  <rect class="card" x="54" y="62" width="128" height="48" rx="10"/>
+  <text x="118" y="91" class="t" text-anchor="middle">ChatGPT</text>
+  <rect class="card" x="538" y="62" width="128" height="48" rx="10"/>
+  <text x="602" y="91" class="t" text-anchor="middle">Claude</text>
+  <rect class="card" x="54" y="214" width="128" height="48" rx="10"/>
+  <text x="118" y="243" class="t" text-anchor="middle">Gemini</text>
+  <rect class="card" x="538" y="214" width="128" height="48" rx="10"/>
+  <text x="602" y="243" class="t" text-anchor="middle">Cursor</text>
+
+  <!-- hub: the one accent element -->
+  <rect class="card-accent" x="296" y="122" width="128" height="56" rx="12"/>
+  <text x="360" y="147" class="t-strong" text-anchor="middle">Your memory</text>
+  <text x="360" y="166" class="sub" text-anchor="middle">Shared over MCP</text>
+</svg>

@@ -1,13 +1,17 @@
 ---
 title: 'API Introduction'
 description: 'Learn how to integrate with the MemoryPlugin API'
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
 ## Welcome to the MemoryPlugin API
 
-The MemoryPlugin API allows you to programmatically manage and query user memories across different AI platforms. Our RESTful API provides endpoints for storing, retrieving, and managing memory buckets.
+The MemoryPlugin API lets you store, retrieve, and search memories programmatically, and query your imported chat history. It is the same API the browser extension and integrations use.
 
 <Card
   title="MemoryPlugin API Specification"
@@ -27,55 +31,47 @@ https://www.memoryplugin.com
 
 ## Authentication
 
-All API endpoints require authentication using an API key. You can obtain your API key from the [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard).
+Every endpoint requires your API token. Get it from the [dashboard](https://memoryplugin.com/dashboard): open **Settings** → **Integrations** and copy your token.
 
-Include your API key in the request headers:
+Include it as a bearer token in the request headers:
 
 ```bash
-Authorization: Bearer YOUR_API_KEY
+Authorization: Bearer YOUR_API_TOKEN
 ```
 
-## Rate Limits
-
-API requests are rate-limited to ensure fair usage:
-- **Core plan**: 100 requests per hour
-- **Pro plan**: 1,000 requests per hour
+Treat the token like a password. It grants full access to your memories and chat history, and you can regenerate it from the same settings tab if it leaks.
 
 ## Response Format
 
-All API responses are returned in JSON format with the following structure:
+Endpoints return plain JSON objects. There is no shared envelope; each endpoint documents its own response shape. For example, `GET /api/v2/memory` returns:
 
 ```json
 {
-  "success": true,
-  "data": {
-    // Response data
-  },
-  "error": null
+  "memories": [
+    "Prefers concise answers without preamble",
+    "Works as a product designer at a fintech startup"
+  ],
+  "buckets": [
+    { "id": 1, "name": "General" },
+    { "id": 2, "name": "Work" }
+  ]
 }
 ```
 
 ## Error Handling
 
-When an error occurs, the API returns an appropriate HTTP status code along with an error message:
+Errors use standard HTTP status codes (`400` for invalid input, `401` for a missing or bad token, `404` when something does not exist) with a JSON body:
 
 ```json
 {
-  "success": false,
-  "data": null,
-  "error": {
-    "code": "ERROR_CODE",
-    "message": "Human-readable error message"
-  }
+  "error": "Human-readable error message"
 }
 ```
 
 ## Available Endpoints
 
-The MemoryPlugin API provides the following endpoints:
+- **Memory endpoints**: store, retrieve, search, update, and delete memories
+- **Bucket endpoints**: list and create memory buckets
+- **Chat history endpoints**: recall, search, upload, and manage imported conversations
 
-- **Memory Management**: Store and retrieve memories
-- **Bucket Management**: Organize memories into buckets
-- **Search**: Query memories using semantic search
-
-Explore the endpoint documentation to learn more about each operation.
+Explore the endpoint documentation for request and response details.

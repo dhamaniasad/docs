@@ -1,90 +1,106 @@
 ---
 title: "Bulk Operations"
-description: "Manage multiple memories at once with bulk selection and operations"
+description: "Select and act on many memories at once"
 icon: "list"
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Bulk operations let you select multiple memories and perform actions on all of them at once, making it easy to organize large memory collections.
+Bulk operations let you select many memories and move or delete them in one go. Useful when you are reorganizing a large bucket or clearing out memories you no longer want.
 
-## How Bulk Operations Work
+## Entering selection mode
 
-### Entering Selection Mode
+<Steps>
+  <Step title="Open a bucket">
+    In your [dashboard](https://memoryplugin.com/dashboard), open the bucket you want to work in. The memory list header reads **Memories ({count})**.
 
-1. **Go to your Dashboard** - Navigate to the Memories tab
-2. **Click "Select Multiple"** - Click this button to enter selection mode
-3. **Select memories** - Checkboxes now appear - click them to select memories
-4. **Choose action** - Use the bulk actions toolbar that appears
+    <Frame caption="The memory list header, with the Select Multiple button.">
+      <img src="/images/screenshots/dashboard/bulk-1-header.png" alt="Memory list header showing the Select Multiple, Import, and Export buttons" />
+    </Frame>
+  </Step>
+  <Step title="Click Select Multiple">
+    Click **Select Multiple** in the list header. The button changes to **Cancel Selection**, and a checkbox appears on each memory.
 
-### Available Operations
+    <Frame caption="Selection mode: a checkbox appears on each memory, with a Select all control at the top.">
+      <img src="/images/screenshots/dashboard/bulk-2-selection.png" alt="Memory list in selection mode with a checkbox on each memory" />
+    </Frame>
+  </Step>
+  <Step title="Select memories">
+    Check the memories you want. The header shows a running count as **{x} of {n} selected**, and a **Select all** control selects every memory in the bucket (**All {n} selected**).
 
-Once you've selected memories, you can:
+    <Frame caption="Three memories selected, showing the running count and the bulk actions bar.">
+      <img src="/images/screenshots/dashboard/bulk-3-selected.png" alt="Three memories selected showing the 3 of 6 selected count and the bulk actions bar" />
+    </Frame>
+  </Step>
+</Steps>
 
-<CardGroup cols={2}>
-  <Card title="Move to Bucket" icon="folder">
-    Transfer selected memories to a different bucket
-  </Card>
-  <Card title="Delete Multiple" icon="trash">
-    Permanently delete all selected memories
-  </Card>
-</CardGroup>
+## Moving memories
 
-## Managing Selection
+<Steps>
+  <Step title="Open the Move menu">
+    With memories selected, open the **Move to** dropdown in the bulk actions bar. It is headed **Select destination bucket**.
 
-- **Select memories**: Click checkboxes after entering selection mode
-- **Add/remove**: Click checkboxes to toggle selection
-- **Range selection**: Hold Shift and click to select a range of memories between your last selection and the current click
-- **Cancel**: Click "Cancel Selection" to exit selection mode
+    <Frame caption="The Move to dropdown, headed Select destination bucket.">
+      <img src="/images/screenshots/dashboard/bulk-4-move.png" alt="Move to dropdown open showing destination buckets Work and Side Project" />
+    </Frame>
+  </Step>
+  <Step title="Pick a bucket">
+    Choose the destination. The memories move (the bar shows **Moving...**), and you get a **Memories moved successfully** toast.
+  </Step>
+</Steps>
 
-## Using Bulk Operations
+<Note>
+Moving memories into a bucket that is shared with you asks for confirmation first, since the memories become visible to everyone with access to that bucket.
+</Note>
 
-### Moving Memories
+## Deleting memories
 
-1. Click "Select Multiple" → select memories → click "Move to..." → choose bucket
-2. Memories move immediately to the selected bucket
+<Steps>
+  <Step title="Click Delete">
+    With memories selected, click **Delete** in the bulk actions bar.
+  </Step>
+  <Step title="Confirm">
+    The **Delete {n} memories?** dialog appears. Confirm with **Delete {n} Memories**. The bar shows **Deleting...**, then a **Memories deleted successfully** toast.
 
-### Deleting Memories
-
-1. Click "Select Multiple" → select memories → click "Delete" 
-2. Confirm in the dialog - **deletion is permanent**
+    <Frame caption="The bulk delete confirmation dialog.">
+      <img src="/images/screenshots/dashboard/bulk-5-delete.png" alt="Delete 3 memories confirmation dialog" />
+    </Frame>
+  </Step>
+</Steps>
 
 <Warning>
-Bulk deletion is permanent and cannot be undone. Double-check your selection before confirming.
+Bulk deletion is permanent and cannot be undone. Check your selection before confirming.
 </Warning>
+
+## Exporting a selection
+
+While in selection mode you can also export. Once memories are checked, the **Export** button becomes **Export Selected ({n})** and opens the export dialog, where you can copy the memories to your clipboard or download them as CSV, JSON, or text. See [Import & Export](/features/import-export) for the details.
+
+## Leaving selection mode
+
+Click **Cancel Selection** to exit without acting on your selection.
 
 ## Tips
 
-- **Search first** to narrow results before selecting
-- **Work in batches** rather than selecting hundreds at once
-- **Switch buckets** to avoid selecting from wrong bucket
-- **Double-check** before deleting - it's permanent
+- **Search or filter first** to narrow the list, then select. Easier than scrolling.
+- **Check the bucket** you are in before selecting, so you don't act on the wrong one.
+- **Double-check before deleting.** It is permanent.
 
-## Current Limitations
+<Note>
+Bulk operations cover move, delete, and export. There is no bulk editing of memory text; edit memories one at a time from their row.
+</Note>
 
-Bulk operations do **not** currently support:
-- Select all functionality
-- Bulk editing of memory text
-
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Memory Buckets"
-    icon="folder"
-    href="/features/memory-buckets"
-  >
-    Learn about organizing with buckets
+  <Card title="Memory Buckets" icon="folder" href="/features/memory-buckets">
+    Organize memories into separate contexts
   </Card>
-  <Card
-    title="Dashboard Guide" 
-    icon="gauge"
-    href="/features/dashboard"
-  >
-    Master the Dashboard interface
+  <Card title="Import & Export" icon="file-export" href="/features/import-export">
+    Bring memories in or take them out in bulk
   </Card>
 </CardGroup>

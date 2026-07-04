@@ -1,66 +1,85 @@
 ---
 title: "ChatGPT"
 description: "Using MemoryPlugin with ChatGPT"
-icon: "robot"
-author: "asad"
-lastUpdated: "2026-03-23"
+icon: "/images/logos/chatgpt.svg"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Use MemoryPlugin with ChatGPT at [chat.openai.com](https://chat.openai.com) or [chatgpt.com](https://chatgpt.com).
+<img src="/images/logos/chatgpt.svg" alt="ChatGPT" width="56" height="56" noZoom style={{ background: "#fff", borderRadius: "14px", padding: "10px", boxShadow: "0 1px 2px rgba(0,0,0,0.12)", boxSizing: "border-box" }} />
 
-## How to Use
+ChatGPT is OpenAI's assistant at [chatgpt.com](https://chatgpt.com). MemoryPlugin gives it long-term memory that carries across your other AI tools, and lets you sync and search your ChatGPT chat history.
 
-### Browser Extension (Recommended)
-1. Install the [MemoryPlugin Browser Extension](/integrations/browser-extension)
-2. Go to ChatGPT
-3. Click the MemoryPlugin button to inject memories
-4. Start chatting with memory context
+## Set up
 
-### Custom GPT (Alternative)
-Use the [MemoryPlugin Custom GPT](https://chatgpt.com/g/g-pPRwrR7LI-memoryplugin) - memories load automatically.
+The browser extension is the recommended route. It works on the ChatGPT web app in any Chromium browser or Safari.
 
-### Add to Your Own GPT
-Follow the [Custom GPT Integration](/integrations/custom-gpt-integration) guide to add memory to your own GPTs.
+<Steps>
+  <Step title="Install the extension">
+    Install the [browser extension](/integrations/browser-extension) and sign in to your MemoryPlugin account.
+  </Step>
+  <Step title="Open ChatGPT">
+    Go to [chatgpt.com](https://chatgpt.com). A floating MemoryPlugin button appears on the page.
+  </Step>
+  <Step title="Activate for the chat">
+    Click the button to inject memories from your selected bucket into the composer, then send your message. This also tells ChatGPT how to save new memories as you talk.
+  </Step>
+</Steps>
 
-## Special Features
+<Frame caption="The MemoryPlugin floating button on chatgpt.com. Click it to inject memories or open the panel.">
+  <img src="/images/screenshots/platforms/chatgpt.png" alt="MemoryPlugin floating button on ChatGPT (chatgpt.com)" />
+</Frame>
+### Custom GPT (alternative)
 
-### Import ChatGPT Memories
-Transfer your existing ChatGPT memories to MemoryPlugin:
-1. Go to ChatGPT Settings → Personalization → Manage memories
-2. Click the "Sync Memories" button (MemoryPlugin logo)
-3. Wait for import to complete
-4. Check your [Dashboard](https://memoryplugin.com/dashboard) to see imported memories
+The [MemoryPlugin Custom GPT](https://chatgpt.com/g/g-pPRwrR7LI-memoryplugin) loads your memories automatically, with no extension. It works on the ChatGPT web app and mobile app. To add memory to a GPT you build yourself, follow the [Custom GPT Integration](/integrations/custom-gpt-integration) guide.
 
-<Info>
-Keep the browser tab open during sync - closing it will interrupt the process.
-</Info>
+## What works here
 
-### Chat History Import
-Import your full ChatGPT conversation history into MemoryPlugin:
-- **File upload**: Export your ChatGPT data from OpenAI and upload the `conversations.json` file
-- **Online sync**: Sync conversations directly from the browser extension
+This walkthrough covers both routes: the official Custom GPT (memory travels through GPT actions) and the browser extension on chatgpt.com (injection, auto-inject, AI-driven recall, and chat history sync).
 
-Once imported, your past ChatGPT conversations become searchable and available as context across all your AI tools. See the [Chat History](/features/chat-history/introduction) docs for more details.
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/using-with-chatgpt.mp4"></video>
 
-## Next Steps
+- **Memory recall and save.** Injected memories give ChatGPT context; new memories are saved back as you talk.
+- **Chat history sync.** ChatGPT is one of the six platforms the extension can sync directly. New conversations are captured for search and recall across your tools. You can also upload a ChatGPT export file instead.
+- **Extract memory pill.** Select text in a chat and click **Extract memory** to save that snippet.
+- **Import existing ChatGPT memories.** Transfer the memories ChatGPT already stores about you into MemoryPlugin.
+
+### Import ChatGPT memories
+
+<Steps>
+  <Step title="Open memory management">
+    In ChatGPT, go to Settings, then Personalization, then Manage memories.
+  </Step>
+  <Step title="Sync">
+    Click the **Sync Memories** button marked with the MemoryPlugin logo.
+  </Step>
+  <Step title="Wait">
+    Keep the tab open until the sync finishes. It runs in a few minutes and skips duplicates if you run it again.
+  </Step>
+</Steps>
+
+## Limitations
+
+- The extension does not inject on its own by default. You click the button to activate a chat, or turn on **Automatically add memories in new conversations** in the extension settings (it injects after a 5-second countdown you can cancel).
+- ChatGPT splits large history exports into multiple files (`conversations-001.json`, `conversations-002.json`, and so on). Select all of them when you import.
+
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Browser Extension Setup"
-    icon="browser"
-    href="/integrations/browser-extension"
-  >
-    Quick setup guide
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    Full setup and features
   </Card>
-  <Card
-    title="Import ChatGPT Memories"
-    icon="download"
-    href="/features/chatgpt-memory-import"
-  >
-    Transfer your memories
+  <Card title="Import ChatGPT Memories" icon="download" href="/features/chatgpt-memory-import">
+    Transfer your existing memories
+  </Card>
+  <Card title="Custom GPT Integration" icon="robot" href="/integrations/custom-gpt-integration">
+    Add memory to your own GPT
+  </Card>
+  <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
+    Import and search your conversations
   </Card>
 </CardGroup>

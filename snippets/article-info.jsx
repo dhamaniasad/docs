@@ -1,6 +1,9 @@
 export const ArticleInfo = ({ author, lastUpdated }) => {
-  // Default avatar for asad
-  const authorAvatar = author === 'asad' ? '/images/author-asad.jpeg' : null;
+  // Known author avatars ('asad' kept as a fallback for any stale references)
+  const authorAvatar =
+    author === 'Alara' ? '/images/author-alara.jpg'
+    : author === 'asad' ? '/images/author-alara.jpg'
+    : null;
   const formatDate = (dateInput) => {
     if (!dateInput) return '';
     if (typeof dateInput === 'string' && !dateInput.match(/^\d{4}-\d{2}-\d{2}/)) {

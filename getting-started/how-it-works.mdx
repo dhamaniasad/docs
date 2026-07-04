@@ -1,119 +1,102 @@
 ---
 title: "How MemoryPlugin Works"
-description: "Understanding how MemoryPlugin adds long-term memory capabilities to AI tools"
-author: "asad"
-lastUpdated: "2026-03-23"
+description: "The memory model, how memories are stored and recalled, and how tokens are spent"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-This page covers common questions about how MemoryPlugin works across various AI tools.
+Every new chat starts from zero. The model that felt like it knew you yesterday opens today with a blank slate, and you're back to re-explaining yourself. This page is about why that happens, and what MemoryPlugin does about it.
 
-## Introduction
+## Why AI forgets
 
-MemoryPlugin adds long-term memory capabilities to your favorite AI tools. At its core, MemoryPlugin solves a fundamental limitation of current AI models: they don't inherently "remember" information between sessions.
+Modern AI models have no persistent memory. A model seems to remember earlier turns only because the whole conversation is fed back into its context window with every message. The context window is the text the model can read at once. Think of it as a desk with limited space: new messages come in, older ones get pushed off the edge. The model isn't forgetting in a human sense, it just can't see what's no longer on the desk. Start a new chat and the desk is wiped clean.
 
-## Understanding AI Memory
+MemoryPlugin closes that gap. It keeps your memories, chat history, and files outside the model, and pages the relevant pieces into the context window when they're needed.
 
-Modern AI models don't actually have persistent memory. Even during a multi-turn conversation, the AI appears to "remember" previous exchanges only because the entire conversation history is fed back into its context window with each new message. 
+<Frame caption="The context window is small and wiped between chats. Your memory store persists, and only the relevant pieces get paged in.">
+  <img className="block dark:hidden" src="/images/diagrams/context-vs-memory-light.svg" alt="Diagram: a small volatile context window above a wide persistent memory store, with only relevant pieces paged up" />
+  <img className="hidden dark:block" src="/images/diagrams/context-vs-memory-dark.svg" alt="Diagram: a small volatile context window above a wide persistent memory store, with only relevant pieces paged up" />
+</Frame>
 
-<Info>
-The context window is essentially the amount of text an AI can process at one time.
-</Info>
+## Storing memories
 
-## How MemoryPlugin Bridges the Gap
+MemoryPlugin captures information two ways: **you ask for it** ("remember that I use TypeScript and Tailwind"), or **the AI recognizes it** and saves a detail worth keeping without you asking.
 
-MemoryPlugin works by:
-
-1. **Storing important information** from your conversations
-2. **Injecting those memories** back into the AI's context window when needed
-
-Think of it as creating a digital notepad of important information that gets automatically shared with your AI at the start of relevant conversations.
-
-## Three Core Capabilities
-
-MemoryPlugin does three things:
-
-### 1. Storing Memories
-
-Not everything should be remembered. MemoryPlugin is designed to capture truly relevant information through:
-
-- **User-directed storage**: Explicitly telling the AI what to remember
-- **AI-assisted recognition**: The AI identifying potentially important information worth remembering
-
-The storage mechanism varies slightly depending on which integration you're using:
+How the save happens depends on the integration:
 
 <Tabs>
   <Tab title="Browser Extension">
-    The AI formats important information in a specific way that our extension recognizes and sends to our secure servers
+    On plain web chat surfaces (ChatGPT, Claude, Gemini, and others), no memory tool is wired into the page. So the extension pastes a short instruction asking the AI to emit a marker line, for example `to=memoryplugin&&memory=User prefers morning meetings`. It watches the response, spots that line, and sends the memory to MemoryPlugin's servers.
+
+    Done well this is invisible. The tradeoff: it rides inside the conversation rather than a clean tool call, so it depends on the AI following the instruction.
   </Tab>
   <Tab title="Custom GPT">
-    Uses function/tool calls to store memories directly through OpenAI's system
+    ChatGPT Custom GPTs use OpenAI Actions, so memories are stored through a real function call rather than a marker in the text.
   </Tab>
   <Tab title="MCP Server">
-    Uses tool calls for memory storage through your MCP client
+    MCP clients call the `store_memory` tool directly. No markers, no pasted instructions.
   </Tab>
   <Tab title="TypingMind Plugin">
-    Uses tool calls to store memories through the plugin interface
+    TypingMind stores memories through the plugin's tool calls.
   </Tab>
 </Tabs>
 
+Where a real memory tool exists, MemoryPlugin uses it. The marker approach is the fallback for web-chat surfaces that don't expose one.
+
 <Note>
-Privacy: Only the memory text itself is sent to MemoryPlugin servers, never your full chat history. This applies to all integration methods.
+Only the memory text itself is sent to MemoryPlugin's servers, never your full conversation. This holds for every integration.
 </Note>
 
-### 2. Making Memories Available
+## Bringing memories back
 
-When you start a new conversation, MemoryPlugin makes your stored memories available to the AI through one of several methods:
+When you start a new conversation, MemoryPlugin makes your stored memories available to the AI:
 
-- **Browser Extension**: A button press injects your memories into the chat
-- **Custom GPT**: Automatically loads memories through function calls
-- **MCP Server**: Loads memories when instructed, either in project instructions or within a chat
-- **TypingMind Plugin**: Loads memories through the plugin system
+- **Browser Extension**: pressing the MemoryPlugin button injects your memories into the message before it's sent. You can also turn on automatic injection, which adds them to a new chat's first message after a five-second countdown you can cancel.
+- **Custom GPT, MCP Server, TypingMind Plugin**: the AI loads memories through a tool call, at the start of a chat or when you ask it to.
 
-In all cases, the system is taking your stored memory text and strategically placing it in the AI's context window, allowing the AI to "remember" important information from past interactions.
+## Chat history
 
-### 3. Chat History & Files
+Hold the two layers in your head this way: your memories are **the notebook**, short curated notes your AI keeps with it in every conversation. Chat History is **the archive**, the complete record of your past conversations, recalled when it's relevant. The notebook is small and always present; the archive is large and consulted on demand.
 
-Beyond individual memories, MemoryPlugin can store and search:
+Chat History works in three steps:
 
-- **Chat History** — Import your full conversation history from ChatGPT, Claude, Gemini, Grok, DeepSeek, and TypingMind. MemoryPlugin searches across thousands of past conversations and surfaces relevant context automatically.
-- **Files** — Upload PDFs, Word docs, and text files. Query them through the Ask tool, MCP server, or TypingMind plugin.
+- **Import** brings in an export file from a platform (ChatGPT, Claude, TypingMind, and a few others) to backfill everything you already have.
+- **Sync** captures new conversations automatically as you have them. Sync is browser-extension only and currently covers ChatGPT, Claude, Gemini, Grok, DeepSeek, and TypingMind.
+- **Recall** is how your AI uses that archive. It decides when your past chats are relevant, writes its own search query, and pulls back a concise, relevant slice. It does not load your entire history into context.
 
-Related docs: [Chat History](/features/chat-history/introduction), [File Buckets](/features/file-buckets)
+See [Chat History](/features/chat-history/introduction) for the full walkthrough.
 
-## Cross-Platform Power
+## What this costs in tokens
 
-What makes MemoryPlugin truly powerful is its ability to work across dozens of different AI platforms. Instead of being limited to the memory system of a single AI tool, your memories, chat history, and files travel with you across:
+Every memory or piece of history that lands in the context window is text the model has to read, and text costs tokens. A handful of memories is nothing. A few hundred, injected into every message, adds up and can crowd the window.
 
-- ChatGPT, Claude, Gemini, Grok, DeepSeek
-- Perplexity, Mistral, Poe, Qwen
-- Google AI Studio, TypingMind, LibreChat
-- Cursor, Windsurf, Claude Code, and 100+ other MCP clients
+Two things keep this in check:
 
-This creates a seamless experience regardless of which AI assistant you're using at any given moment.
+- **[Smart Memory](/features/smart-memory)** groups your memories into categories. Instead of loading everything every time, your AI loads only the category relevant to the current question. On large memory sets this cuts the tokens spent on memory by around 90% while keeping answers relevant.
+- **Chat History recall is bounded.** A recall pulls a small, targeted amount of context (roughly 600 tokens by default, capped well below what a full history would cost), not the whole archive.
 
-## In Summary
+## One memory. Every AI.
 
-MemoryPlugin enhances AI tools by creating a persistent memory, chat history, and file layer that works across platforms. By strategically storing relevant information and intelligently injecting it back into conversations when needed, MemoryPlugin makes AI interactions more personalized, efficient, and valuable.
+<Frame caption="One memory store, reachable from every tool you use.">
+  <img className="block dark:hidden" src="/images/diagrams/cross-tool-mcp-light.svg" alt="Hub and spoke diagram: your memory in the center, connected to ChatGPT, Claude, Gemini, and Cursor" />
+  <img className="hidden dark:block" src="/images/diagrams/cross-tool-mcp-dark.svg" alt="Hub and spoke diagram: your memory in the center, connected to ChatGPT, Claude, Gemini, and Cursor" />
+</Frame>
 
-## Ready to Get Started?
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/recall-in-action.mp4"></video>
+
+Your memories, chat history, and files live in one place and travel with you. Add to your memory in any tool, and every other tool has it from your next conversation there. You're not locked into one AI's memory system. See [Supported Platforms](/platforms/supported-platforms) for the full list of where MemoryPlugin works and what each platform can do.
+
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Choose Your Integration"
-    icon="puzzle-piece"
-    href="/integrations/overview"
-  >
-    Select the integration method that works best for your workflow
+  <Card title="Choose an Integration" icon="puzzle-piece" href="/integrations/overview">
+    Pick the method that fits your workflow
   </Card>
-  <Card
-    title="Learn About Features"
-    icon="star"
-    href="/features/memory-buckets"
-  >
-    Explore MemoryPlugin's powerful features and capabilities
+  <Card title="Explore Features" icon="star" href="/features/memory-buckets">
+    Memory buckets, Smart Memory, Ask, and more
   </Card>
 </CardGroup>

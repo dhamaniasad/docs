@@ -1,17 +1,17 @@
 ---
 title: 'Search Memories V2'
 openapi: 'GET /api/v2/memory'
-author: "asad"
-lastUpdated: "2026-05-01"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 ## Image Memories
 
 Search results may include image memories alongside text memories. Image memories are returned as objects with additional fields:
 
-- `content_type: "image"` — identifies this as an image memory
-- `image_url` — a signed URL to view the image (expires after 4 hours)
-- `image_description` — AI-generated description of the image content
+- `content_type: "image"`: identifies this as an image memory
+- `image_url`: a signed URL to view the image (expires after 4 hours)
+- `image_description`: AI-generated description of the image content
 
 Image memories are ranked by relevance alongside text memories using multimodal embeddings that enable cross-modal search (e.g., a text query can find visually relevant images).
 

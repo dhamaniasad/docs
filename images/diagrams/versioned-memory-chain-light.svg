@@ -1,0 +1,41 @@
+<svg viewBox="0 0 580 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One memory stored as a chain of versions: v1 Vue, then v2 React, then v3 React and TypeScript. Only the latest version is served.">
+  <style>
+    .card{fill:#fafafa;stroke:#d4d4d8;stroke-width:1;}
+    .card-accent{fill:rgba(99,102,241,0.10);stroke:#6366F1;stroke-width:1.5;}
+    .card-dash{fill:#fafafa;stroke:#d4d4d8;stroke-width:1;stroke-dasharray:5 4;}
+    .pill{fill:#fafafa;stroke:#d4d4d8;stroke-width:1;}
+    .pill-accent{fill:rgba(99,102,241,0.10);stroke:#6366F1;stroke-width:1.5;}
+    .t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#18181b;font-size:15px;}
+    .t-strong{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#18181b;font-size:15px;font-weight:600;}
+    .sub{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#52525b;font-size:12.5px;}
+    .accent-t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#6366F1;font-size:12.5px;font-weight:600;}
+    .faint{fill:#52525b;}
+    .edge{fill:none;stroke:#a1a1aa;stroke-width:1.5;}
+    .edge-accent{fill:none;stroke:#6366F1;stroke-width:1.75;}
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#a1a1aa"/>
+    </marker>
+    <marker id="aa" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6366F1"/>
+    </marker>
+  </defs>
+
+  <text x="30" y="42" class="sub">Preference · frontend framework</text>
+
+  <rect class="card" x="30" y="72" width="140" height="64" rx="12"/>
+  <text x="50" y="97" class="sub">v1</text>
+  <text x="100" y="120" class="t faint" text-anchor="middle">Vue</text>
+  <rect class="card" x="220" y="72" width="140" height="64" rx="12"/>
+  <text x="240" y="97" class="sub">v2</text>
+  <text x="290" y="120" class="t faint" text-anchor="middle">React</text>
+  <text x="480" y="62" class="accent-t" text-anchor="middle">Served now</text>
+  <rect class="card-accent" x="410" y="72" width="140" height="64" rx="12"/>
+  <text x="430" y="97" class="accent-t">v3</text>
+  <text x="480" y="120" class="t" text-anchor="middle">React + TS</text>
+
+  <line class="edge" x1="170" y1="104" x2="218" y2="104" marker-end="url(#a)"/>
+  <line class="edge" x1="360" y1="104" x2="408" y2="104" marker-end="url(#a)"/>
+  <text x="30" y="172" class="sub">Earlier versions kept as history</text>
+</svg>

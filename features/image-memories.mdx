@@ -1,0 +1,66 @@
+---
+title: "Image Memories"
+description: "Save an image as a memory, get an AI description, and recall it through the API"
+icon: "image"
+author: "Alara"
+lastUpdated: "2026-07-04"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+
+Not everything you want your AI to remember is text. A screenshot of a receipt, a whiteboard photo, a diagram someone sent you. Image memories let you save the picture itself as a memory. MemoryPlugin writes a description of what's in it, so your AI, which works in text, can recall the image later by what it shows.
+
+It works a bit like describing a photo to someone over the phone. You hold up the picture, and MemoryPlugin writes down what's in it so the description travels with the memory. Where that breaks: your AI mostly recalls the written description, not the pixels, and the link to the actual image is short-lived, as covered below.
+
+## Saving an image
+
+In the dashboard, the **Add Memory** input on your home page has an image button (tooltip **Upload image memory**). It opens the **Upload Image Memory** dialog:
+
+1. Drag and drop an image, or click to browse.
+2. Optionally add your own description in the text box. This gives the AI a head start on what matters about the image.
+3. Click **Upload**. You will see an **Image memory saved** confirmation.
+
+<Frame caption="The Upload Image Memory dialog. Drop an image or click to browse.">
+  <img src="/images/screenshots/tools/image-upload-dialog.png" alt="Upload Image Memory dialog with a dropzone reading Drag and drop or click to browse, and the hint PNG, JPEG, WebP, GIF up to 10MB" />
+</Frame>
+
+### Supported formats
+
+- **PNG, JPEG, WebP, GIF**
+- Up to **10 MB** per image
+
+Anything else is rejected with "Unsupported format. Allowed: PNG, JPEG, WebP, GIF", and files over the limit with "Image too large. Maximum: 10MB".
+
+## The AI description, and why it takes a moment
+
+Processing runs in the background. After you upload, MemoryPlugin kicks off a job that generates a description of the image and creates the vector embedding used for search. This is why you'll briefly see an **IMAGE** badge with "Generating description..." on the memory card. Once the job finishes, the description is attached and the memory is fully searchable.
+
+If you typed your own description at upload time, that is stored right away. The AI-generated description fills in once processing completes.
+
+## How recall serves an image
+
+When a tool reads your memories through the API, an image memory comes back differently from a text one. Instead of plain text, it returns an object with three things:
+
+- `content_type: "image"` so the client knows it's an image
+- `image_url`, a signed link to the image file
+- `image_description`, the text description used for recall
+
+The `image_url` is a **signed link that expires after 4 hours**. That is deliberate: the link is meant to be used soon after it's handed out, not stored and reused indefinitely. If a client needs the image again later, it recalls the memory again and gets a fresh link. The `image_description` does not expire, so the AI can reason about what the image shows even without loading the file.
+
+## Where image memories work, and where they don't
+
+- **Dashboard only for now.** Image upload lives in the dashboard's Add Memory input. Save your images there.
+- **Not in shared buckets yet.** Inside a bucket shared with you, the image button is disabled ("Image memories aren't supported in shared buckets yet"). Text memories are fine. See [Shared Buckets](/features/shared-buckets).
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Memory Buckets" icon="folder" href="/features/memory-buckets">
+    Organize image and text memories into buckets
+  </Card>
+  <Card title="Import & Export" icon="arrow-right-arrow-left" href="/features/import-export">
+    Bring memories in from a file or take them with you
+  </Card>
+</CardGroup>

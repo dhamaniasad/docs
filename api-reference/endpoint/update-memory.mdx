@@ -1,0 +1,95 @@
+---
+title: 'Update or Move Memory'
+openapi: 'POST /api/v2/memory/update'
+author: "Alara"
+lastUpdated: "2026-07-04"
+---
+
+## Overview
+
+Update a memory's text, move a memory to a different bucket, or do both in a single request. You can also move up to 100 memories into one bucket at once with the bulk form.
+
+This is the REST equivalent of the `update_or_move_memories` MCP tool. Both share the same behaviour.
+
+### Authentication
+
+Send your API key as a bearer token:
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+## Single memory update
+
+Provide a `memoryId` plus at least one of `text`, `bucketId`, or `bucketName`. If you send only a `memoryId` with none of these fields, the request is rejected.
+
+```bash
+curl -X POST https://www.memoryplugin.com/api/v2/memory/update \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "memoryId": "mem-abc-123",
+    "text": "User moved to San Francisco and now works at Stripe",
+    "bucketName": "Work"
+  }'
+```
+
+The response returns the updated memory:
+
+```json
+{
+  "success": true,
+  "memory": {
+    "id": "mem-abc-123",
+    "text": "User moved to San Francisco and now works at Stripe",
+    "bucketId": 65,
+    "version": 3,
+    "updatedAt": "2026-07-04T10:30:00Z",
+    "createdAt": "2026-04-06T10:30:00Z"
+  }
+}
+```
+
+<Note>
+Changing a memory's text re-embeds it, so search stays accurate against the new wording. Each text or bucket change increments the memory's `version` and records a snapshot in its edit history, so you can see what changed and when.
+</Note>
+
+## Bulk move
+
+To move several memories into the same bucket, send a `memoryIds` array (1 to 100 IDs) with either `bucketId` or `bucketName`. Bulk requests move memories only; they do not change text.
+
+```bash
+curl -X POST https://www.memoryplugin.com/api/v2/memory/update \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "memoryIds": ["mem-id-1", "mem-id-2", "mem-id-3"],
+    "bucketName": "Work"
+  }'
+```
+
+```json
+{
+  "success": true,
+  "updated": 3,
+  "bucketId": 65
+}
+```
+
+Bulk moves are all-or-nothing. If any ID in the list cannot be found, the whole request is rejected with a `404` and the unresolved IDs are returned so you can retry:
+
+```json
+{
+  "error": "Some memory IDs could not be resolved",
+  "rejectedIds": ["mem-id-2"]
+}
+```
+
+## Targeting a bucket
+
+You can point at a destination bucket two ways:
+
+- **`bucketId`**: a numeric bucket ID. The bucket must already exist, and you need write access to it.
+- **`bucketName`**: a bucket name. If no bucket with that name exists, it is created for you and the memory is moved into it.
+
+Send one or the other, not both. Provide either `memoryId` (single) or `memoryIds` (bulk) in a request, never both.

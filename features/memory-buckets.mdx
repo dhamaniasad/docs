@@ -2,186 +2,154 @@
 title: "Memory Buckets"
 description: "Organize your memories into separate contexts with MemoryPlugin's bucket system"
 icon: "folder"
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Memory Buckets are an organizational system that lets you group related memories together into separate, isolated collections. Think of them as folders for your memories.
+Keep everything in one pile and your AI starts mixing your side project into your day job, or your dinner preferences into a work question. Memory buckets group related memories into separate, isolated collections. Think of them as folders for your memories.
 
-## What are Memory Buckets?
+## What buckets are for
 
-Buckets let you organize your memories into completely separate contexts. Each bucket is isolated from others, so your work memories stay separate from personal ones, and project-specific information doesn't mix with general notes.
+Each bucket is isolated from the others, so your work memories stay apart from personal ones, and one project's details don't mix into another's. Common ways to split them up:
 
-**Perfect for organizing by:**
-- **Context**: Personal vs. Work vs. Hobbies
-- **Projects**: Different client work or personal projects
-- **Topics**: Learning materials, research, creative ideas
-- **Time periods**: Quarterly goals, event planning
+- **Context**: personal, work, hobbies
+- **Projects**: separate clients or personal projects
+- **Topics**: research, learning material, creative ideas
+- **Time periods**: quarterly goals, an event you are planning
 
 <Info>
-Every account starts with a **"General"** bucket where all memories go by default. This bucket cannot be deleted, ensuring you always have a place for new memories.
+Every account starts with a **General** bucket, and new memories land there by default. General cannot be deleted, shared, or reordered, so you always have a place for memories to go.
 </Info>
 
-## Creating a New Bucket
+## Two kinds of bucket
 
-Creating buckets is straightforward:
+- **Memory buckets** store text snippets, notes, and facts your AI can reference.
+- **File buckets** hold uploaded documents (PDF, Word, Markdown, text) that you can search through.
 
-1. **Open your [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard)**
-2. **Click the "New Bucket" button**
-3. **Give your bucket a descriptive name**
-4. **Click "Create" and you're done!**
+<Warning>
+File buckets are still under development. You can upload files through the dashboard and search them from the [Ask](/features/ask) tool, the MCP server, and the TypingMind plugin, but they are not yet wired into the browser extension. If you need memories your AI can read everywhere, use a memory bucket.
+</Warning>
 
-![Creating a new memory bucket in the dashboard](/images/memory-buckets/create-bucket.png)
+## Creating a bucket
+
+<Steps>
+  <Step title="Open the bucket selector">
+    In your [dashboard](https://memoryplugin.com/dashboard), click the bucket selector at the top of the sidebar.
+  </Step>
+  <Step title="Choose the type">
+    Click **New Memory Bucket** or **New File Bucket**. The **Create New Bucket** dialog opens with the matching **Bucket Type** already selected.
+  </Step>
+  <Step title="Name it">
+    Type a name in **Bucket Name** (for example, "Work Projects").
+  </Step>
+  <Step title="Create">
+    Click **Create Bucket**.
+  </Step>
+</Steps>
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/create-bucket-and-add-memory.mp4"></video>
+
+<Frame caption="The Create New Bucket dialog, with the Memory type selected.">
+  <img className="block dark:hidden" src="/images/screenshots/dashboard/create-bucket-dialog.png" alt="Create New Bucket dialog with Bucket Type set to Memory and the name Work Projects" />
+  <img className="hidden dark:block" src="/images/screenshots/dashboard/create-bucket-dialog-dark.png" alt="Create New Bucket dialog with Bucket Type set to Memory and the name Work Projects" />
+</Frame>
 
 <Note>
-**Naming requirements**:
-- Bucket names must be unique (case-insensitive — "Work" and "work" are considered the same name)
-- Bucket names cannot be numbers alone (like "123"). You can include numbers in your bucket name, but it needs other characters too (like "Project 123" or "Q1 Goals").
+**Naming rules:**
+- Names must be unique, ignoring case. "Work" and "work" count as the same name.
+- A name cannot be digits only, like "123". You can include numbers as long as there is other text too, like "Project 123" or "Q1 Goals".
 </Note>
 
-## Using Buckets
+## Using a bucket across tools
 
-### With Browser Extension
-When using the browser extension, you can switch between buckets using the MemoryPlugin interface. Click the MemoryPlugin button to see your buckets and select which one to use for the current conversation.
+### Browser extension
 
-### With MCP Server
-Specify which bucket to load memories from in your MCP client configuration or during conversations by asking the AI to load memories from a specific bucket.
+Click the MemoryPlugin button, then pick a bucket from the dropdown to set which one the current conversation uses.
 
-### With Custom GPT
-You can ask the MemoryPlugin Custom GPT to work with specific buckets:
-- "Load memories from my Work bucket"
-- "Store this in my Personal bucket"
-- "Use Project A bucket for this chat" (to load and add memories to that bucket by default)
+### MCP server
 
-## Benefits of Using Buckets
+Ask the AI to load or store memories in a named bucket, or set a default bucket in your MCP client configuration.
+
+### Custom GPT
+
+Ask the MemoryPlugin Custom GPT to work with a specific bucket, for example "Load memories from my Work bucket" or "Store this in my Personal bucket."
+
+## Managing buckets
+
+From the bucket selector you can sort buckets by **Last Updated**, **A to Z**, or **Custom Order** (drag to reorder), and each row has actions to view info, rename, share, and delete.
+
+### Bucket info
+
+The bucket info dialog shows the bucket ID, memory or file count, number of Smart Categories, and total tokens. It also breaks token usage down by model, so you can see how close the bucket is to each context window (see below). The bar turns yellow at 50% and red at 90%.
+
+### Renaming
+
+Use the **Rename bucket** action, type a new name, and confirm. The same naming rules apply.
+
+### Moving memories between buckets
+
+Move a single memory from its row, or use [bulk operations](/features/bulk-operations) to move many at once. Moving a memory into a bucket that is shared with you asks for confirmation first, since it becomes visible to everyone with access to that bucket.
+
+### Deleting
+
+You can delete any bucket except **General**. Deleting a bucket permanently deletes every memory in it, and it cannot be undone, so the confirm dialog tells you how many memories will go with it.
+
+## Limits
+
+### Number of buckets
+
+There is no limit on how many buckets you can create.
+
+### Smart Memory
+
+- Needs at least **30 memories** in a bucket before it can build categories.
+- Won't process a bucket over **600,000 tokens** or **2,000 memories**.
+
+### Memory Suggestions
+
+Suggestions skip any single memory over **10,000 tokens** during analysis.
+
+### Context windows
+
+The bucket info dialog compares your bucket's size against each model's context window so you can tell whether it will fit:
+
+| Model | Context window |
+|---|---|
+| ChatGPT Plus | 32,000 tokens |
+| ChatGPT Pro | 128,000 tokens |
+| Claude | 200,000 tokens |
+| Gemini | 1,000,000 tokens |
+
+A bucket larger than a model's window won't fit in a single load for that model. This is one reason to split large collections into focused buckets, or to use [Smart Memory](/features/smart-memory) so only relevant categories load.
+
+## Example structures
 
 <CardGroup cols={2}>
-  <Card title="Context Separation" icon="layer-group">
-    Keep work and personal memories completely separate
+  <Card title="Freelancer" icon="briefcase">
+    General, Client-Acme Corp, Client-Beta LLC, Personal Projects, Learning
   </Card>
-  <Card title="Project Organization" icon="folder-tree">
-    Organize memories by project, client, or topic
+  <Card title="Software developer" icon="code">
+    General, Project-WebApp, Project-MobileApp, Technical Research, Work Notes
   </Card>
-  <Card title="Focused Loading" icon="bullseye">
-    Load only relevant memories for better AI performance
+  <Card title="Content creator" icon="video">
+    General, YouTube Channel, Blog Content, Client Work, Research & Ideas
   </Card>
-  <Card title="Custom Ordering" icon="arrows-up-down">
-    Drag and drop buckets to reorder them to your preference
+  <Card title="Researcher" icon="flask">
+    General, Literature, Experiments, Methods, Writing
   </Card>
 </CardGroup>
 
-## Are there any limits on buckets?
-
-### Bucket Creation
-There are no limits on the number of buckets you can create. You can create as many buckets as you need to organize your memories effectively.
-
-### Feature Limitations
-Some advanced features have requirements or limits based on your bucket's size:
-
-**Minimum Requirements:**
-- **Smart Memory Categories**: Requires at least 30 memories in a bucket to generate meaningful category groupings
-
-**Maximum Limits:**
-- **Smart Memory Categories**: Won't process buckets larger than 600,000 tokens or 2,000 memories (for performance)
-- **Memory Suggestions**: Automatically skips individual memories with >10,000 tokens during analysis
-
-**Context Window Limits:**
-The dashboard shows how your bucket size compares to different AI model limits:
-- ChatGPT (GPT-4o): 32,000 tokens
-- ChatGPT (thinking models): ~200,000 tokens
-- Claude: 200,000 tokens
-- Gemini: 1,000,000 tokens
-
-These limitations help ensure optimal performance and meaningful results from AI-powered features.
-
-## Managing Buckets
-
-### Viewing Buckets
-All your buckets are visible in the MemoryPlugin Dashboard where you can:
-- See bucket names and memory counts
-- Access memories within each bucket
-- Switch between buckets easily
-- Drag and drop buckets to reorder them
-
-### Moving Memories
-You can move memories between buckets using:
-- The dashboard interface
-- [Bulk operations](/features/bulk-operations) for multiple memories
-- API calls for programmatic management
-
-### Deleting Buckets
-You can delete buckets you no longer need, with these restrictions:
-- The "General" bucket cannot be deleted
-- Deleting a bucket will also delete all memories within it
-- This action cannot be undone, so be careful!
-
-## Best Practices
-
-<AccordionGroup>
-  <Accordion title="Naming Convention">
-    Use clear, descriptive names that will make sense to you months later. Consider using prefixes like "Project-", "Client-", or "Personal-" for consistency.
-  </Accordion>
-  <Accordion title="Bucket Strategy">
-    Plan your bucket structure before creating many memories. Consider how you work and what contexts you need to keep separate.
-  </Accordion>
-  <Accordion title="Regular Review">
-    Periodically review your buckets and memories to ensure they're still organized in a way that serves your needs.
-  </Accordion>
-</AccordionGroup>
-
-## Example Bucket Structures
-
-### Freelancer/Consultant
-- `General` (default)
-- `Client-Acme Corp`
-- `Client-Beta LLC`
-- `Personal Projects`
-- `Learning & Development`
-
-### Software Developer
-- `General` (default)
-- `Project-WebApp`
-- `Project-MobileApp`
-- `Technical Research`
-- `Work Notes`
-- `Personal Coding`
-
-### Content Creator
-- `General` (default)
-- `YouTube Channel`
-- `Blog Content`
-- `Client Work`
-- `Research & Ideas`
-- `Personal Brand`
-
-## Integration with Other Features
-
-### Smart Memory
-[Smart Memory](/features/smart-memory) works at the bucket level, creating high-level overviews of memories within each bucket for more efficient AI interactions.
-
-### Bulk Operations
-Use [bulk operations](/features/bulk-operations) to move multiple memories between buckets or perform actions on entire bucket contents.
-
-
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Smart Memory"
-    icon="brain"
-    href="/features/smart-memory"
-  >
-    Learn how Smart Memory optimizes bucket performance
+  <Card title="Smart Memory" icon="brain" href="/features/smart-memory">
+    Group large buckets into categories for efficient recall
   </Card>
-  <Card
-    title="Bulk Operations"
-    icon="list"
-    href="/features/bulk-operations"
-  >
-    Manage multiple memories and buckets efficiently
+  <Card title="Bulk Operations" icon="list" href="/features/bulk-operations">
+    Move or delete many memories at once
   </Card>
 </CardGroup>

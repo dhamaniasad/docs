@@ -1,131 +1,121 @@
 ---
-title: "Custom GPT"
-description: "Use MemoryPlugin with OpenAI's Custom GPT system"
+title: "Official MemoryPlugin Custom GPT"
+description: "Use the ready-made MemoryPlugin Custom GPT in ChatGPT on web, desktop, and mobile"
 icon: "robot"
-author: "asad"
-lastUpdated: "2025-08-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Custom GPTs are plugins for the ChatGPT app that can be used on mobile, desktop, and web. MemoryPlugin is offered as a Custom GPT that automatically manages your memories.
+This page covers the official MemoryPlugin Custom GPT: a ready-made GPT you open in ChatGPT that loads and saves your memories for you. Nothing to build. If you want to add MemoryPlugin to a Custom GPT you are building yourself, see [Integrate into your own Custom GPT](/integrations/custom-gpt-integration) instead.
 
-## MemoryPlugin Custom GPT
+Custom GPTs run inside the ChatGPT app on web, desktop, and mobile.
 
-MemoryPlugin is available as an official Custom GPT:
+## Open the Custom GPT
 
 <Card
   title="MemoryPlugin Custom GPT"
   icon="external-link"
   href="https://chatgpt.com/g/g-pPRwrR7LI-memoryplugin"
 >
-  Access the official MemoryPlugin Custom GPT
+  Open the official MemoryPlugin Custom GPT
 </Card>
 
 <EmailIndependence />
 
-## How to Use
+## How to use it
 
-When using MemoryPlugin via the Custom GPT, you need to start chats with the Custom GPT for it to automatically add and load memories.
+Start your chat with the MemoryPlugin GPT and it loads your memories automatically, then saves new ones as you talk.
 
 <Warning>
-Custom GPTs only support GPT-4o and GPT-5 Auto models. If you want to use other ChatGPT models like GPT-5 Pro, GPT-4.1, or legacy models, the [browser extension](/integrations/browser-extension) is a better choice.
+As of mid-2026, a Custom GPT can only run on a limited set of ChatGPT models (currently GPT-4o and GPT-5 Auto). OpenAI changes which models this covers fairly often. If you want to stay on a specific model such as GPT-5 Pro or a legacy model, the [browser extension](/integrations/browser-extension) works across models and is the better choice.
 </Warning>
 
-### Starting a New Chat
+### Starting a new chat
 
-1. Navigate to the MemoryPlugin Custom GPT
-2. Start a new conversation - memories will load automatically
-3. The GPT will fetch your existing memories at the beginning of each chat
-4. You can ask it to load memories from a specific bucket if needed
+1. Open the MemoryPlugin Custom GPT.
+2. Start a new conversation. Your memories load at the start.
+3. The GPT fetches your existing memories at the beginning of each chat.
+4. Ask it to load memories from a specific bucket if you only want that context.
 
-![Custom GPT interface showing MemoryPlugin automatically loading memories](/images/custom-gpt/custom-gpt-interface.png)
+![Custom GPT interface showing MemoryPlugin automatically loading memories](/images/screenshots/custom-gpt/custom-gpt-interface.png)
 
-### Using in Existing Chats
+### Using it inside an existing chat
 
-On web and desktop, you can invoke the Custom GPT into an existing chat with certain models:
+On web and desktop you can pull the Custom GPT into a chat you already started:
 
-1. Type `@` in the chat input
-2. Type "MemoryPlugin" to find and select it
-3. Once selected, all messages will be processed by the Custom GPT's model (GPT-4o or GPT-5 Auto) instead of your chosen model
-4. You can ask it to load memories or add new memories while active
+1. Type `@` in the chat input.
+2. Type "MemoryPlugin" and select it.
+3. From that point, messages run on the Custom GPT's model instead of the one you had selected.
+4. Ask it to load memories or save new ones while it is active.
 
-![Using @MemoryPlugin to invoke the Custom GPT in an existing chat](/images/custom-gpt/at-mention.png)
+![Using @MemoryPlugin to invoke the Custom GPT in an existing chat](/images/screenshots/custom-gpt/at-mention.png)
 
-## Features
+## What it does
 
-### Automatic Memory Loading
-
-The Custom GPT is instructed to automatically load memories at the start of new chats, providing immediate context about you and your previous conversations.
-
-### Memory Management
-
-- **Add memories**: Ask the GPT to remember specific information
-- **Load from buckets**: Request memories from specific buckets
-
-### Cross-Platform Sync
-
-Memories created through the Custom GPT are synchronized with all other MemoryPlugin integrations, so they're available in the browser extension, MCP server, and other integrations.
+- **Loads memories automatically** at the start of a new chat, so the GPT has context about you right away.
+- **Saves memories** when you ask it to remember something.
+- **Loads from a specific bucket** when you name one.
+- **Syncs everywhere.** Memories you create here show up in the browser extension, the MCP server, and every other MemoryPlugin integration, because they all read one account.
 
 ## Limitations
 
-<Warning>
-Keep these limitations in mind when using the Custom GPT:
-</Warning>
+Worth knowing before you rely on it:
 
-- Only works with GPT-4o and GPT-5 Auto models
-- Cannot switch to other ChatGPT models while the Custom GPT is active
-- Requires starting new chats with the Custom GPT for automatic memory loading
-- When invoked with `@` in existing chats, all subsequent messages use the Custom GPT's model
+- It only runs on the models OpenAI allows for Custom GPTs (see the warning above).
+- You cannot switch to a different ChatGPT model while the Custom GPT is active.
+- Automatic memory loading happens when you start a chat with the GPT, not in arbitrary chats.
+- Once you invoke it with `@` in an existing chat, the rest of that chat uses the Custom GPT's model.
 
-## Use Cases
+## When this is the right fit
 
-The Custom GPT integration is ideal for:
+- You are on mobile and want memory without installing anything.
+- You want quick memory access with no browser extension.
+- The model restriction does not matter for how you work.
 
-- **Mobile users** who want memory functionality on their phones
-- **Quick memory access** without needing to install extensions
-- **GPT-4o workflows** where the model restriction isn't an issue
-- **Automatic memory management** with minimal setup required
-
-## Getting Started
+## Getting started
 
 <Steps>
-  <Step title="Visit Custom GPT">
-    Go to the [MemoryPlugin Custom GPT](https://chatgpt.com/g/g-pPRwrR7LI-memoryplugin)
+  <Step title="Open the Custom GPT">
+    Go to the [MemoryPlugin Custom GPT](https://chatgpt.com/g/g-pPRwrR7LI-memoryplugin).
   </Step>
-  <Step title="Start Conversation">
-    Begin a new chat - the GPT will automatically load your memories
+  <Step title="Start a chat">
+    Begin a new conversation. The GPT loads your memories automatically.
   </Step>
-  <Step title="Set Bucket (Optional)">
-    Ask to load memories from a specific bucket: "Load memories from my Work bucket"
+  <Step title="Pick a bucket (optional)">
+    Ask for a specific bucket: "Load memories from my Work bucket."
   </Step>
-  <Step title="Use Normally">
-    Chat normally - the GPT will automatically save important information
+  <Step title="Chat normally">
+    Keep chatting. The GPT saves important information as you go.
   </Step>
 </Steps>
 
-## Creating Your Own Custom GPT
-
-Want to integrate MemoryPlugin into your own Custom GPT? See our guide on [integrating into your own Custom GPT](/integrations/custom-gpt-integration) for detailed instructions.
-
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
+  <Card
+    title="Build your own Custom GPT"
+    icon="puzzle-piece"
+    href="/integrations/custom-gpt-integration"
+  >
+    Add MemoryPlugin actions to a GPT you create yourself
+  </Card>
   <Card
     title="Memory Buckets"
     icon="folder"
     href="/features/memory-buckets"
   >
-    Learn how to organize memories into different contexts
+    Organize memories into separate contexts
   </Card>
   <Card
     title="Browser Extension"
     icon="browser"
     href="/integrations/browser-extension"
   >
-    Try the browser extension for more model flexibility
+    Memory across models and 21+ platforms
   </Card>
 </CardGroup>

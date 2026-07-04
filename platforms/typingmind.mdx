@@ -1,32 +1,49 @@
 ---
 title: 'TypingMind'
 description: 'Use MemoryPlugin with TypingMind'
-author: "asad"
-lastUpdated: "2025-08-23"
+icon: "/images/logos/typingmind.png"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-08-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
+<img src="/images/logos/typingmind.png" alt="TypingMind" width="56" height="56" noZoom style={{ background: "#fff", borderRadius: "14px", padding: "10px", boxShadow: "0 1px 2px rgba(0,0,0,0.12)", boxSizing: "border-box" }} />
 
-## Integration Options
+TypingMind is a front end that runs many AI models through your own API keys, at [typingmind.com](https://typingmind.com). MemoryPlugin connects two ways here: a native plugin that gives the AI direct access to your memories, chat history, and files, and the browser extension.
 
-### TypingMind Plugin
+## Set up
 
-Install the official MemoryPlugin for TypingMind:
+The plugin is the better fit for TypingMind because the AI can call your memory directly rather than relying on injected text.
 
-[Install TypingMind Plugin](https://cloud.typingmind.com/plugins/p-01JFW700XGDXQ2WPJPW2JXN8MX)
+<Steps>
+  <Step title="Install the plugin">
+    Install the [TypingMind plugin](/integrations/typingmind-plugin) and paste your MemoryPlugin Auth Token into its settings. See that guide for the functions it exposes.
+  </Step>
+  <Step title="Or add the extension">
+    Alternatively, install the [browser extension](/integrations/browser-extension), open [typingmind.com](https://typingmind.com), and click the floating MemoryPlugin button to inject memories into a chat.
+  </Step>
+</Steps>
 
-See the [TypingMind Plugin guide](/integrations/typingmind-plugin) for setup instructions.
+## What works here
 
-### Browser Extension
+- **Memory recall and save.** Through the plugin the AI searches and saves memories directly; through the extension you inject them into the composer.
+- **Chat history sync.** TypingMind is one of the six platforms the extension can sync directly, or you can upload a TypingMind export file.
+- **Extract memory pill.** With the extension, select text in a chat and click **Extract memory** to save that snippet.
 
-1. Install the [MemoryPlugin browser extension](/integrations/browser-extension)
-2. Navigate to [typingmind.com](https://typingmind.com)
-3. Click the MemoryPlugin button to inject memories
-4. Start chatting with memory context
+## Limitations
 
-## Support
+- The plugin and the extension are separate paths. The plugin is the primary integration; add the extension only if you also want the in-page button and chat history sync.
 
-For help with TypingMind integration, contact [support@memoryplugin.com](mailto:support@memoryplugin.com)
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="TypingMind Plugin" icon="keyboard" href="/integrations/typingmind-plugin">
+    Setup and available functions
+  </Card>
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    In-page button and sync
+  </Card>
+</CardGroup>

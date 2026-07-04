@@ -2,49 +2,137 @@
 title: "Dashboard"
 description: "Manage your memories, files, and settings from the MemoryPlugin web dashboard"
 icon: "gauge"
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-The MemoryPlugin Dashboard is your central hub for managing memories, files, and settings. Access it at [memoryplugin.com/dashboard](https://memoryplugin.com/dashboard).
+The dashboard is where you manage memories, buckets, chat history, and settings. Open it at [memoryplugin.com/dashboard](https://memoryplugin.com/dashboard).
 
-## Dashboard Layout
+<Frame caption="The dashboard: bucket sidebar on the left, the add-memory box and memory list on the right.">
+  <img className="block dark:hidden" src="/images/screenshots/dashboard/dashboard-overview.png" alt="MemoryPlugin dashboard overview showing the bucket sidebar and a list of memories" />
+  <img className="hidden dark:block" src="/images/screenshots/dashboard/dashboard-overview-dark.png" alt="MemoryPlugin dashboard overview showing the bucket sidebar and a list of memories" />
+</Frame>
 
-The dashboard uses a sidebar layout that keeps your buckets visible and accessible at all times.
+## Layout
 
-### Sidebar
-The left sidebar shows:
-- **Memory buckets** — your organized memory collections
-- **File buckets** — uploaded documents
-- **Quick actions** — add memory, search, settings
-- **Navigation** — Ask, Chat History, Suggestions, and more
+The dashboard uses a fixed left sidebar plus a main content area. The sidebar stays put while you work; the main area shows whichever bucket or feature you have open. A vertical **Ask Docs** tab sits on the right edge of the screen and opens the docs help panel.
 
-### Main Area
-The main content area shows the selected bucket's contents or the current feature you're using.
+## Sidebar
 
-## Keyboard Shortcuts
+The sidebar is grouped into three sections.
 
-Navigate quickly without leaving your keyboard:
+### Buckets
 
-| Shortcut | Action |
-|----------|--------|
-| **⌘K / Ctrl+K** | Quick search chat history |
-| **⌘J / Ctrl+J** | Add a new memory |
-| **⌘Shift+O / Ctrl+Shift+O** | Open Ask tool |
+This section is where your memories live.
 
-<Tip>
-Hold the modifier key (⌘ or Ctrl) to see shortcut hints appear in the sidebar.
-</Tip>
+- **Bucket selector** at the top. Click it to switch buckets or create a new one. Hold ⌘ (or Ctrl) and it shows a **⌘B** badge.
+- **Browse** shows the memories in the selected bucket.
+- **Ask** opens the AI query tool scoped to the current bucket.
+- **New Memory** opens the add-memory dialog. Badge: **⌘J**.
+- **Suggestions** lists cleanup suggestions for the selected bucket. An amber count badge appears when there are pending suggestions.
+- **Get to Know You** starts a short conversational interview that turns your answers into memories.
+- **Knowledge Graph** (early beta) builds a concept map of a bucket. This item carries a **Pro** badge and only shows on the Pro plan.
 
-## Core Features
+When the selected bucket is a file bucket, the items below the bucket selector are hidden, since they apply to memory buckets only.
+
+### Chat History
+
+- **Import** goes to the uploads page, where you bring in ChatGPT and Claude exports.
+- **Browse** lists your imported and synced conversations.
+- **Search** opens semantic search across your chats. Badge: **⌘K**.
+- **Activity** shows usage stats and trends. It carries a **Beta** pill.
+- **Ask** opens the AI query tool over your chat history. Badge: **⇧⌘O**.
+
+### Resources
+
+**Feedback** and **Roadmap** open embedded boards. **Changelog** and **Help** open the help center in a new tab.
+
+### Footer
+
+The sidebar footer holds the **Setup Guide** button (with a `{completed}/{total}` step counter, see below), your account button, and a **Theme** row with the dark mode toggle.
+
+## Setup Guide
+
+The **Setup Guide** is a short onboarding checklist. The footer button shows how many steps you have finished as a `{completed}/{total}` counter, and clicking it reopens the checklist. It is separate from **Get to Know You**, which is a conversation that creates memories rather than a checklist.
+
+## Keyboard shortcuts
+
+Badges for these appear in the sidebar while you hold the modifier key.
+
+| Shortcut (Mac / Windows) | Action |
+|---|---|
+| **⌘K** / Ctrl+K | Search your chat history |
+| **⌘J** / Ctrl+J | Open the Add Memory dialog |
+| **⇧⌘O** / Shift+Ctrl+O | Go to the Ask page |
+| **⌘B** / Ctrl+B | Open the bucket switcher |
+| Escape | Close the open dialog |
+
+Inside the add and edit forms, **⌘↵** (Ctrl+Enter) saves. **⌘F** focuses the memory search box.
+
+## Account menu
+
+Click your account button in the sidebar footer to open the account menu. It shows your email, your current plan, and three actions: **Settings**, **Manage Subscription**, and **Logout**.
+
+## Settings
+
+Settings open as a modal, not a separate page, so you keep your place in the dashboard. Open it from the account menu. It has five tabs.
+
+<Tabs>
+  <Tab title="Profile">
+    Upload or change your avatar (JPEG, PNG, or WebP, up to 2MB), or fall back to your Google profile picture. Set a **Display name** shown across the app. Your email is read-only and managed through your Google account.
+  </Tab>
+  <Tab title="Account">
+    Shows your current plan, trial or billing status, and what your plan includes. Paid users get **Manage Subscription**; trial and Core users see upgrade options. Eligible Pro users see a **Go Lifetime** offer.
+  </Tab>
+  <Tab title="Integrations">
+    Your **Authentication Token** plus install cards for every platform (TypingMind, ChatGPT, Chrome, Safari, MCP Server, iOS). Copy the token into a plugin to connect it, or regenerate it to invalidate the old one.
+  </Tab>
+  <Tab title="Connected Apps">
+    Apps you connected via OAuth, what each can access, and when it was last used. Revoke any app's access here; you can reconnect it later through the OAuth flow.
+  </Tab>
+  <Tab title="Notifications">
+    Toggle marketing emails on or off. Essential account and onboarding emails are always sent regardless of this setting.
+  </Tab>
+</Tabs>
+
+<Warning>
+Keep your Authentication Token private. Anyone with it can read and write your memories. Regenerate it if it is ever exposed; regenerating invalidates the old token, so you will need to update any plugin that used it.
+</Warning>
+
+## Working with memories
+
+The main area is where you add, edit, move, and organize memories.
+
+- **Add**: type into the inline box on the home page, or press **⌘J** for the dialog. Turn on bulk mode to add one memory per line.
+- **Search**: use the search box (placeholder "Search memories... (Cmd+F)") to filter the current bucket.
+- **Edit**: each memory has an inline edit action. Memories you have edited show a version pill so you can view the edit history.
+
+<Frame caption="Edits never overwrite: each change adds a version, and only the latest one is served.">
+  <img className="block dark:hidden" src="/images/diagrams/versioned-memory-chain-light.svg" alt="Diagram: one memory as a chain of versions, with only the latest tagged as current" />
+  <img className="hidden dark:block" src="/images/diagrams/versioned-memory-chain-dark.svg" alt="Diagram: one memory as a chain of versions, with only the latest tagged as current" />
+</Frame>
+- **Move**: send a memory to another bucket from its row.
+- **Filter**: once a bucket has Smart Categories, filter the list by category.
+
+For selecting and acting on many memories at once, see [Bulk Operations](/features/bulk-operations). For CSV and JSON import and export, see [Import & Export](/features/import-export).
+
+## Organizing with buckets
+
+Create buckets to keep contexts separate, for example work apart from personal. Open the bucket selector to switch buckets, create a new memory or file bucket, rename, share, reorder, or delete. Your bucket order is kept in sync between the dashboard and the browser extension. See [Memory Buckets](/features/memory-buckets).
+
+For buckets with 30 or more memories, **Smart Memory** groups them into categories with summaries so your AI can load only what is relevant. See [Smart Memory](/features/smart-memory).
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/create-bucket-and-add-memory.mp4"></video>
+
+## Core features
 
 <CardGroup cols={2}>
-  <Card title="Memories" icon="brain" href="/features/memory-buckets">
-    View, search, add, and organize your memories across buckets
+  <Card title="Memory Buckets" icon="folder" href="/features/memory-buckets">
+    Organize memories into separate, isolated contexts
   </Card>
   <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
     Import and search your AI conversations from ChatGPT, Claude, Gemini, Grok, DeepSeek, and TypingMind
@@ -55,126 +143,28 @@ Hold the modifier key (⌘ or Ctrl) to see shortcut hints appear in the sidebar.
   <Card title="File Buckets" icon="folder-open" href="/features/file-buckets">
     Upload and query PDFs, Word docs, and text files
   </Card>
-  <Card title="Suggestions" icon="lightbulb">
-    AI-powered suggestions to clean up duplicates and improve memories
+  <Card title="Smart Memory" icon="brain" href="/features/smart-memory">
+    Group large buckets into categories for efficient recall
   </Card>
-  <Card title="Activity" icon="chart-mixed" href="/features/chat-history/dashboard#activity-page-beta">
-    Analytics and insights about your chat history usage
+  <Card title="Suggestions" icon="lightbulb" href="https://memoryplugin.com/dashboard/suggestions">
+    Clean up duplicates and combine related memories
   </Card>
 </CardGroup>
 
-## Managing Memories
+## Other tools in the dashboard
 
-### Viewing and Searching
-- **Browse** all memories in your selected bucket
-- **Search** using the search bar or ⌘K
-- **Filter** by Smart Memory categories when available
+- **Suggestions**: when a bucket has enough memories, MemoryPlugin can suggest removing duplicates, combining related memories, or updating an outdated one. You review each suggestion and accept or reject it. Open it from the sidebar or at [memoryplugin.com/dashboard/suggestions](https://memoryplugin.com/dashboard/suggestions).
+- **Knowledge Graph** (early beta): builds a map of how concepts in a bucket connect. Pro plan only; the sidebar entry is hidden on other plans.
+- **Get to Know You**: a short AI interview that creates memories from your answers, useful for filling an empty account quickly.
+- **Roadmap & Feedback**: embedded boards for seeing what is planned and sharing ideas.
 
-### Adding Memories
-- **Quick add** — press ⌘J or click the add button
-- **Bulk add** — paste multiple memories separated by line breaks
-- **Import** — upload CSV or JSON files
-
-Related docs: [Import & Export](/features/import-export)
-
-### Editing and Organizing
-- **Edit** any memory by clicking on it
-- **Move** memories between buckets
-- **Delete** individual memories or use bulk selection
-
-### Bulk Operations
-Select multiple memories using checkboxes:
-- **Shift-click** to select a range
-- **Move** selected memories to another bucket
-- **Delete** selected memories
-- **Export** selected memories
-
-Related docs: [Bulk Operations](/features/bulk-operations)
-
-## Organizing with Buckets
-
-### Memory Buckets
-Create buckets to organize memories by context:
-- Click **New Bucket** in the sidebar
-- Give it a descriptive name
-- Switch between buckets with one click
-
-Related docs: [Memory Buckets](/features/memory-buckets)
-
-### File Buckets
-Upload documents for semantic search:
-- Create a **File Bucket** from the sidebar
-- Drag and drop files to upload
-- Query through the Ask tool
-
-Related docs: [File Buckets](/features/file-buckets)
-
-### Smart Memory Categories
-For buckets with 30+ memories, enable Smart Memory to auto-organize:
-- Click **Create Smart Categories** in the bucket
-- Browse by category or filter results
-- Categories update as you add memories
-
-Related docs: [Smart Memory](/features/smart-memory)
-
-## Bucket Sorting
-
-Drag-and-drop reordering for your bucket list. Your preferred order is consistent across the dashboard and browser extension.
-
-## Settings
-
-Access settings from the sidebar or by clicking your profile. Settings open in a modal so you don't lose your place.
-
-### Profile
-- Set display name and avatar
-- View account email
-
-### Connected Apps
-View and manage your OAuth connections — see which apps have access, when they were last used, and revoke access with one click.
-
-### Integration & Access
-Your Auth Token is needed for integrations like MCP Server and TypingMind.
-
-<Warning>
-Keep your Auth Token confidential. Regenerate it if accidentally exposed.
-</Warning>
-
-1. Open Settings from the sidebar
-2. Find the **Auth Token** section
-3. Copy your token or regenerate if needed
-
-## Additional Features
-
-### Memory Suggestions
-AI analyzes your memories and suggests improvements:
-- Remove duplicates
-- Combine similar memories
-- Update outdated information
-
-### Life Context
-AI-generated monthly insights from your chat history. MemoryPlugin reviews your conversations and surfaces recurring themes, projects, and interests in a brief summary. Available for Pro users.
-
-### Get to Know You
-A guided conversation to quickly build your memory profile. The AI asks questions and creates memories based on your answers.
-
-### Roadmap & Feedback
-See what's coming and share your ideas directly from the dashboard.
-
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Ask Tool"
-    icon="messages"
-    href="/features/ask"
-  >
+  <Card title="Ask Tool" icon="messages" href="/features/ask">
     Query your memories, history, and files
   </Card>
-  <Card
-    title="Memory Buckets"
-    icon="folder"
-    href="/features/memory-buckets"
-  >
+  <Card title="Memory Buckets" icon="folder" href="/features/memory-buckets">
     Organize memories into contexts
   </Card>
 </CardGroup>

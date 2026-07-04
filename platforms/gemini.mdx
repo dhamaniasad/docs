@@ -1,46 +1,52 @@
 ---
 title: "Gemini"
 description: "Using MemoryPlugin with Google Gemini"
-icon: "robot"
-author: "asad"
-lastUpdated: "2026-03-23"
+icon: "/images/logos/gemini.svg"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Use MemoryPlugin with Google Gemini at [gemini.google.com](https://gemini.google.com).
+<img src="/images/logos/gemini.svg" alt="Gemini" width="56" height="56" noZoom style={{ background: "#fff", borderRadius: "14px", padding: "10px", boxShadow: "0 1px 2px rgba(0,0,0,0.12)", boxSizing: "border-box" }} />
 
-## How to Use
+Gemini is Google's assistant at [gemini.google.com](https://gemini.google.com). MemoryPlugin gives it long-term memory that carries across your other AI tools, through the browser extension.
 
-### Browser Extension
-1. Install the [MemoryPlugin Browser Extension](/integrations/browser-extension)
-2. Go to [gemini.google.com](https://gemini.google.com)
-3. Click the MemoryPlugin button to inject memories
-4. Start chatting with memory context
+## Set up
 
-## Chat History
+<Steps>
+  <Step title="Install the extension">
+    Install the [browser extension](/integrations/browser-extension) and sign in to your MemoryPlugin account.
+  </Step>
+  <Step title="Open Gemini">
+    Go to [gemini.google.com](https://gemini.google.com). A floating MemoryPlugin button appears on the page.
+  </Step>
+  <Step title="Activate for the chat">
+    Click the button to inject memories from your selected bucket into the composer, then send your message. This also tells Gemini how to save new memories as you talk.
+  </Step>
+</Steps>
 
-You can sync your Gemini conversation history into MemoryPlugin using the browser extension's online sync feature. Once synced, your past Gemini conversations become searchable and available as context across all your AI tools.
+<Frame caption="The MemoryPlugin floating button on gemini.google.com. Click it to inject memories or open the panel.">
+  <img src="/images/screenshots/platforms/gemini.png" alt="MemoryPlugin floating button on Gemini (gemini.google.com)" />
+</Frame>
+## What works here
 
-See the [Chat History](/features/chat-history/introduction) docs for more details.
+- **Memory recall and save.** Injected memories give Gemini context; new memories are saved back as you talk.
+- **Extract memory pill.** Select text in a chat and click **Extract memory** to save that snippet.
 
-## Next Steps
+## Limitations
+
+- **Chat history sync is experimental.** Gemini sync works through the extension, but Gemini's interface changes without warning, so this can break. If you hit an issue, contact support through our website.
+
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Browser Extension Setup"
-    icon="browser"
-    href="/integrations/browser-extension"
-  >
-    Quick setup guide
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    Full setup and features
   </Card>
-  <Card
-    title="Chat History"
-    icon="clock-rotate-left"
-    href="/features/chat-history/introduction"
-  >
+  <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
     Import and search your conversations
   </Card>
 </CardGroup>

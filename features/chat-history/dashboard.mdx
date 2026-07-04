@@ -2,364 +2,225 @@
 title: "Dashboard"
 description: "Manage, search, and analyze your chat history"
 icon: "table-columns"
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from "/snippets/article-info.jsx";
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-The Chat History dashboard has five main sections for managing and using your conversation history.
+The Chat History area of the dashboard has four tabs: **Import**, **Browse**, **Search**, and **Activity**. A fifth entry, **Ask**, opens the unified [Ask tool](/features/ask), which can answer questions from your chat history, files, or memories.
 
-## Uploads Tab
+## Imports Tab
 
-Monitor and manage your chat history imports.
+The **Import** tab (labeled **Imports** at the top of the page) is where you monitor and manage your uploads.
 
-{/* TODO: Replace screenshot — imports page was redesigned with platform-colored cards, status badges, and filters */}
-![Uploads Tab Overview](/images/chat-history/uploads-page-overview.png)
+<Frame caption="The Imports page: KPI cards summarize your totals, and each import is a card showing platform, status, and counts.">
+  <img className="block dark:hidden" src="/images/screenshots/chat-history/imports-page.png" alt="Redesigned Imports page with Imports, Conversations, and Messages KPI cards, platform and status filter pills, and import cards for a completed ChatGPT import, a processing Claude import, and a completed TypingMind import" />
+  <img className="hidden dark:block" src="/images/screenshots/chat-history/imports-page-dark.png" alt="Redesigned Imports page with Imports, Conversations, and Messages KPI cards, platform and status filter pills, and import cards for a completed ChatGPT import, a processing Claude import, and a completed TypingMind import" />
+</Frame>
 
-### Viewing Imports
+### Viewing imports
 
 Each import shows:
 
-- **Platform-colored card** identifying the source (ChatGPT, Claude, TypingMind, Grok, Gemini, DeepSeek)
-- **Status badge**: Queued, Processing, Completed, or Failed
-- **Progress**: Percentage complete and message count
-- **Relative timestamps** (e.g., "2 days ago")
-- **Actions**: Delete or retry failed imports
+- **Platform**, identified by a colored card (ChatGPT, Claude, TypingMind, Grok, Gemini, DeepSeek)
+- **Source**: File import or Online sync
+- **Status badge**: Queued, Processing, Completed, Completed with skips, or Failed
+- **Progress**: percentage complete plus conversation and message counts
+- **Relative timestamps** (for example, "2 days ago")
 
-At the top of the page, summary stats show your total files, conversations, and messages across all imports. You can filter by platform, status, or date range.
+Three KPI cards at the top of the page sum your total **Imports**, **Conversations**, and **Messages**. You can filter by platform and by status (All, Completed, Failed, In Progress).
 
-{/* TODO: Replace screenshot — imports page was redesigned */}
-![Upload List](/images/chat-history/uploads-page-list.png)
+<Frame caption="Starting a new import: pick the export source, choose how many chats to import, and drop in your JSON export.">
+  <img src="/images/screenshots/chat-history/import-modal.png" alt="New Import modal with a warning banner, an Export source selector (ChatGPT, Claude, TypingMind), chat-count presets, and a JSON drag-and-drop zone" />
+</Frame>
 
-### Processing Status
+### Processing status
 
-Processing happens automatically in the background with periodic progress updates. You can:
+Processing runs automatically in the background with periodic progress updates. You can close the tab and it keeps going. Large exports can take several minutes to hours. If an import fails, retry it from the import's menu. For imports that skipped conversations, you can view the skipped list and retry just those.
 
-- See progress percentage
-- View number of messages processed
-- **Retry** failed imports directly from the imports page
-- Close the tab—processing continues in the background
-- Large files can take several minutes to hours
-
-### Deleting Imports
+### Deleting imports
 
 <Warning>
-  Deleting an import removes all conversations from that upload, including from
-  search and your Chats list. This action cannot be undone.
+  Deleting an import permanently removes all conversations from that upload,
+  including from search and your Chats list. This cannot be undone. Re-importing
+  later uses your processing quota again.
 </Warning>
+
+Deleting an import asks you to type `confirm delete` first.
 
 ## Chats Tab
 
-Browse, organize, and manage your uploaded conversations.
+The **Browse** tab lists your imported conversations for browsing and management.
 
-### Viewing Your Chats
+### Viewing your chats
 
-All your uploaded conversations appear here in a searchable list showing:
+The list shows columns for **Title**, **Source**, **Messages**, and **Last activity**. Excluded conversations carry an **Excluded** badge. Click any row to open the full conversation.
 
-- **Conversation title**
-- **Date of last message** in the conversation
-- **Import time**
-- **Platform** (ChatGPT, Claude, TypingMind, Grok, Gemini, DeepSeek)
-- **Message count**
-- **Pin status** (if pinned)
-
-Click any conversation to view the full chat history with all messages.
+A counter at the top shows your usage: on Core, **{n} / 500 chats** with an **Upgrade for unlimited** link; on Pro, **Unlimited chats**. A **Summary** button opens an AI summary of your whole chat history.
 
 ![Chats Page](/images/chat-history/chats-page-simple.png)
 
-### Filtering Conversations
+### Filtering conversations
 
-Find specific chats using filters:
+Use the filters bar to narrow the list:
 
-- **By platform** - Show only a specific platform or all
-- **By date range** - Filter to specific time periods
-- **By title** - Keyword search in conversation titles
-- **Show only pinned** - See just your pinned favorites
+- **Search** conversation titles ("Search chats...")
+- **Provider**, or all providers
+- **Timeframe**: Any time, Today, Last 7 days, Last 30 days, This month, or a custom **Date range**
+- **Pinned only**, to see just your pinned chats
+- **Has summary**, to see chats that already have a summary
 
-You can also select multiple chats for bulk actions:
+Select multiple chats to act on them together. The bulk bar shows how many are selected (with **Select all** for the full set) and offers **Exclude**, **Delete**, and **Cancel**.
 
 ![Bulk Chat Actions](/images/chat-history/chats-page-bulk-actions.png)
 
-### Managing Individual Chats
+### Managing individual chats
 
-Each conversation has several actions available:
+Open a chat to reach its actions, or use the row menu.
 
 ![Individual Chat Actions](/images/chat-history/chat-page-chat-actions.png)
 
 <AccordionGroup>
   <Accordion title="Pin / Unpin" icon="thumbtack">
-    **Pin important conversations** to protect them from deletion.
+    Pin conversations you want to protect. A pinned chat cannot be deleted until you unpin it, so it won't be removed by accident or during a bulk delete. Use the **Pinned only** filter to see just your pinned chats.
 
-    Pinned chats:
-    - Are protected from deletion (must unpin before you can delete)
-    - Can be filtered using the "Show only pinned" filter
-    - **For Core Plan users**: Help ensure important conversations aren't removed when managing your 500-chat quota
-    - **Coming soon**: Will receive higher priority in search results
-
-    Great for protecting frequently referenced discussions and critical project conversations.
-
+    This is useful for frequently referenced discussions and critical project conversations, and for protecting chats you want to keep when managing your 500-chat Core quota.
   </Accordion>
 
-  <Accordion title="Open in Original Platform" icon="arrow-up-right-from-square">
-    **Click to view the conversation** in its original platform.
-
-    Requirements:
-    - You're logged in to the correct account on that platform
-    - The conversation hasn't been deleted from the platform
-
+  <Accordion title="Open in original platform" icon="arrow-up-right-from-square">
+    **Open in {platform}** takes you to the conversation on the platform it came from. You need to be signed in to the right account there, and the conversation must still exist on that platform.
   </Accordion>
 
-  <Accordion title="Exclude from Indexing" icon="eye-slash" id="excluding-chats">
-    **Exclude specific conversations** to delete their data while preventing them from being automatically re-processed in future imports.
+  <Accordion title="Exclude from search" icon="eye-slash" id="excluding-chats">
+    Excluding a chat removes its content while keeping a placeholder so you can undo later. From the bulk bar, **Exclude** opens a confirmation ("Excluding will remove all message content and vectors ... Titles and basic metadata remain so you can undo later").
 
     When you exclude a chat:
-    - ✅ A placeholder entry remains in your Chats list (marked as excluded, with title only)
-    - ❌ All conversation data is permanently deleted from the database
-    - ❌ It won't appear in search results
-    - ❌ It won't be injected as context
-    - ✅ It doesn't count toward your quota
-    - ✅ If you enable online sync or re-import the same JSON file, this chat will be automatically skipped
+    - All message content and vectors are permanently deleted
+    - The title and basic metadata stay as a placeholder, marked **Excluded**
+    - It won't appear in search results or be used as context
+    - It doesn't count toward your Core quota
+    - It won't be re-imported or re-indexed on future syncs or uploads
 
-    **Why exclude chats?**
-    - Free up quota space on Core plan (each exclusion frees one slot)
-    - Permanently remove sensitive conversations you don't want processed
-    - Prevent specific chats from being auto-synced via Browser Extension
-    - Delete data you don't want searchable or used as context
-
-    <Info>
-    Exclusion is perfect for managing your 500-chat quota on the Core plan. Exclude old or unwanted chats to make room for new ones. The placeholder ensures they won't be re-imported automatically.
-    </Info>
-
+    To reverse it, use **Unexclude** (you'll see an "Unexcluded" confirmation). Excluding is the clean way to free Core quota or permanently drop sensitive conversations.
   </Accordion>
 
-  <Accordion title="Delete Permanently" icon="trash">
-    **Permanently delete conversations** you don't want to keep.
+  <Accordion title="Delete permanently" icon="trash">
+    **Delete** removes a chat from MemoryPlugin. Your conversations on ChatGPT, Claude, or any other platform are not affected.
 
-    When you delete a chat:
-    - It's removed from all systems immediately
-    - It's deleted from backups after 30 days
-    - This action cannot be undone
-    - **Important**: Deleted chats can come back in future imports (online sync or JSON re-imports)
+    - It's removed immediately, and from backups after 30 days
+    - This cannot be undone
+    - A deleted chat **can come back** in a future import (online sync or a JSON re-import)
 
-    **Delete vs Exclude:**
-    - **Exclude** if you want to prevent the chat from being processed in future imports
-    - **Delete** if you just want to remove it now but don't mind if it comes back later
-
+    Use **Exclude** if you want to stop a chat from ever being re-imported. Use **Delete** if you just want it gone now and don't mind it returning later.
   </Accordion>
 </AccordionGroup>
+
+### Summaries
+
+Open a conversation to generate a summary of it. You can generate a general summary or pull out specific information using presets: **Key decisions**, **Action items**, **Ruled-out ideas**, **Style rules**, or **Technical specs**.
 
 ## Search Tab
 
-Perform powerful searches across your entire chat history to find specific conversations.
+Search across your imported chats to find specific conversations.
 
 ![Search Results](/images/chat-history/chat-history-search-results.png)
 
-### How It Works
+### How it works
 
-Search uses **hybrid search** combining semantic understanding with keyword matching to find the most relevant conversations across thousands of chats. Each result includes a summary explaining why the chat matched your query and what it discusses.
+Search combines semantic (meaning-based) matching with keyword matching to surface the most relevant conversations. Type in plain language, including time references like "last July" or "in 2024", and the parsed date range appears as a removable chip you can clear.
 
 <Note>
-  Search results are not deterministic—running the same query multiple times may
-  return different results as the system finds various relevant conversations.
+  Results are not deterministic. Running the same query again can return a
+  slightly different set as the system re-ranks relevant conversations. Search
+  covers your imported chats only.
 </Note>
 
-### How to Search
+### How to search
 
-1. Go to the **Search tab** in your [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history)
-2. Enter your query in natural language (e.g., "discussions about authentication")
-3. Optionally filter by platform (ChatGPT, Claude, TypingMind, or all)
-4. View results with summaries and conversation details
+1. Open the **Search** tab in your [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history)
+2. Type a natural-language query (for example, "pricing feedback last July")
+3. Optionally use the **Provider** toggle to limit to one platform, and **Sort** by **Relevance** or **Time**
+4. Click **Search**
 5. Click any result to open the full conversation
 
-### Search Features
+### Understanding results
 
-- **Hybrid search** - Combines semantic understanding with keyword matching for best results
-- **Natural language queries** - No boolean operators needed, just ask naturally
-- **Temporal queries** - Understands time references like "last year", "last month", "in 2024" and automatically filters to the correct time periods
-- **Result summaries** - Each result shows why it matched and what the conversation discusses
-- **Relevance ranking** - Best matches appear first
-- **Platform filtering** - Search across all platforms or filter by a specific one
-- **View full conversation** - Click any result to open the complete chat
+Each result row shows the conversation title, a relative date, the provider, and whether the matching message was from **You** or the **Assistant**, with a snippet you can expand using **Show more** / **Show less**.
 
-### Search Tips
+## Activity Tab
 
-<AccordionGroup>
-  <Accordion title="Be specific but natural" icon="message-question">
-    ✅ Good: "discussions about implementing JWT authentication"
+The **Activity** tab (marked **Beta**) shows analytics about your chat history.
 
-    ✅ Good: "discussions about vacation plans last year"
+<Frame caption="The Activity tab: KPI cards, conversation and message trends, a platform breakdown, and an activity heatmap.">
+  <img src="/images/screenshots/chat-history/activity-tab.png" alt="Activity tab showing Conversations, Messages, Tokens, and Active Days KPI cards, a stacked Conversations bar chart, a Platforms donut, a Messages trend chart, and an activity heatmap with a Less-to-More legend" />
+</Frame>
 
-    ❌ Avoid: "auth AND jwt OR security"
-
-    Use natural language—the system understands context better than boolean operators. You can include time references directly in your query.
-
-  </Accordion>
-
-  <Accordion title="Use temporal queries" icon="clock">
-    Include time references in your queries to automatically filter results:
-    - "conversations about the project last month"
-    - "feedback I received in 2024"
-    - "discussions from last year"
-
-    The search automatically interprets these time references and finds chats from the correct time periods.
-
-  </Accordion>
-
-<Accordion title="Try rephrasing if needed" icon="rotate">
-  If you don't find what you're looking for, try asking the same thing in
-  different words.
-</Accordion>
-
-  <Accordion title="Filter by platform" icon="filter">
-    If you remember which AI you were chatting with, filter to just that platform for faster results.
-  </Accordion>
-</AccordionGroup>
-
-### Understanding Results
-
-Each search result shows:
-
-- **Summary** explaining why the chat matched and what it discusses
-- **Conversation title**
-- **Platform** (ChatGPT, Claude, TypingMind, Grok, Gemini, DeepSeek)
-
-Click any result to view the full conversation with all messages.
-
-## Ask Tab
-
-Get AI-powered answers synthesized from your entire chat history. **Much more powerful than Search** for finding information.
-
-**Search vs Ask:**
-
-- **Search tab** → Find specific conversations
-- **Ask tab** → Get answers from your chat history
-
-![Ask Feature](/images/chat-history/chat-history-ask.png)
-
-### How It Works
-
-Ask uses **agentic multi-step retrieval** to answer your questions:
-
-1. **Initial search** - Searches your chat history for relevant conversations
-2. **Intelligent exploration** - AI decides whether to search again with different queries, dig deeper into specific chats, or fetch additional context
-3. **Multi-round searches** - Can perform up to 5 searches, refining based on what it learns
-4. **Comprehensive synthesis** - Combines information from multiple conversations into a detailed answer (typically 500+ words)
-
-The AI automatically determines what information to retrieve and from where, searching across different time periods, topics, and contexts as needed.
-
-<Note>
-  The Ask feature is actively being improved. We're continuously enhancing its
-  ability to find and synthesize information from your chat history.
-</Note>
-
-### How to Use
-
-1. Go to the **Ask tab** in your [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history)
-2. Ask a question in natural language about your chat history
-3. Wait while the AI searches and analyzes (can take 30-120 seconds)
-4. Get a comprehensive answer with citations to source conversations
-5. Follow up with related questions
-
-### Example Questions
-
-- "What recommendations did I get for my job search?"
-- "Summarize the advice I received about moving to a new city"
-- "What have I learned about meal planning and healthy recipes?"
-- "What feedback did I receive on my writing projects?"
-- "Show me conversations where I discussed hobby ideas"
-- "What strategies did I discuss for managing stress?"
-
-### Understanding Answers
-
-Each answer includes:
-
-- **Comprehensive synthesis** - Detailed response (3-6 paragraphs) directly answering your question
-- **Citations** - References to specific conversations in the format: "In 'Chat Title' on YYYY-MM-DD, ..."
-- **Supporting quotes** - Key excerpts from the cited conversations (3-8 short items)
-
-<Warning>
-  Complex queries can take 30-120 seconds as the AI performs multiple searches
-  and analyzes your history. Be patient while it works.
-</Warning>
-
-## Activity Page (Beta)
-
-The Activity page gives you analytics and insights about your chat history.
-
-### At a Glance
-- **KPI cards** — total conversations, messages, and active days
-- **Conversations over time** — bar chart showing your activity trends
-- **Messages over time** — area chart tracking message volume
-- **Platform breakdown** — see how your usage splits across platforms
-- **Activity heatmap** — GitHub-style grid showing when you chat most
-- **Time range selector** — filter by week, month, or all time
+- **KPI cards**: Conversations, Messages, Tokens, and Active Days
+- **Conversations** and **Messages** charts over time
+- **Platforms** breakdown, showing how your usage splits across tools
+- **Activity** heatmap, a grid of when you chat most (legend runs "Less" to "More")
+- **Range selector**: Last 30 days, Last 3 months, Last 6 months, Last year, or All time
 
 ### Monthly Insights
-AI-generated reflections appear on the Activity page, summarizing recurring themes, projects, and interests from your conversations each month.
+
+On the Pro plan, you can enable **Monthly Insights**: AI-generated reflections on each month's conversations, surfacing recurring themes and how your focus shifts over time. On other plans, this section shows as available on Pro.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Upload Failed or Stuck" icon="circle-exclamation">
-    **Symptoms**: Upload doesn't start, shows error, or stays at 0%
+  <Accordion title="Upload failed or stuck" icon="circle-exclamation">
+    **Symptoms**: upload doesn't start, shows an error, or stays at 0%.
 
-    **Solutions**:
-    - Try reuploading the file
-    - If the issue persists, contact support with a screenshot
-
+    **Try**:
+    - Retry the import from its menu
+    - If it persists, contact support with a screenshot
   </Accordion>
 
-  <Accordion title="Processing Takes Too Long" icon="clock">
-    **Symptoms**: Processing status doesn't update, seems stuck
+  <Accordion title="Processing takes too long" icon="clock">
+    **Symptoms**: progress seems stuck.
 
-    **Solutions**:
-    - Large files can take several minutes to hours
-    - Processing continues in the background—you can close the tab
-    - If stuck for over 24 hours, contact support with a screenshot
-
+    **Try**:
+    - Large exports can take several minutes to hours
+    - Processing continues in the background, so you can close the tab
+    - If it's stuck for over 24 hours, contact support with a screenshot
   </Accordion>
 
-  <Accordion title="Search Returns No Results" icon="magnifying-glass-minus">
-    **Symptoms**: Search doesn't find expected conversations
+  <Accordion title="Search returns no results" icon="magnifying-glass-minus">
+    **Symptoms**: search doesn't find conversations you expect.
 
-    **Solutions**:
-    - Wait for your first import to be completely processed
-    - Try different phrasings of your query
-    - Check if the chat was excluded from indexing
-    - If still no results, contact support
-
+    **Try**:
+    - Wait until your first import is fully processed
+    - Rephrase the query
+    - Check whether the chat was excluded from search
+    - If still nothing, contact support
   </Accordion>
 
-  <Accordion title="Excluded Chats Still Appearing" icon="eye">
-    **Symptoms**: Excluded conversations show up in your Chats list or search results
+  <Accordion title="Excluded chats still appearing" icon="eye">
+    **Symptoms**: excluded conversations show up in the list or in results.
 
-    **Solutions**:
-    - Wait a few minutes and refresh—exclusion takes time to take effect
-    - It's possible another chat has similar content and is appearing in results
+    **Try**:
+    - Wait a few minutes and refresh; exclusion takes a moment to apply
+    - Another chat with similar content may be the actual match
     - If the same excluded chat keeps appearing, contact support
-
   </Accordion>
 
-  <Accordion title="Reached Import Limit" icon="gauge-high">
-    **Symptoms**: Can't import more chats on Core plan
+  <Accordion title="Reached import limit" icon="gauge-high">
+    **Symptoms**: can't import more chats on the Core plan.
 
-    **Solutions**:
-    - **Exclude old chats** you don't need from the Chats tab (frees quota)
-    - **Delete imports** you no longer need from the Uploads tab
+    **Try**:
+    - **Exclude** old chats from the Chats tab (each frees one slot)
+    - **Delete** imports you no longer need from the Imports tab
     - **Upgrade to Pro** for unlimited chats
-
-    Each excluded chat frees up one slot in your 500-chat quota.
-
   </Accordion>
 </AccordionGroup>
 
 <Warning>
-  If issues persist, [contact support](https://memoryplugin.com) with: - A
-  screenshot of the issue - Description of what's happening - Steps you've
-  already tried
+  If issues persist, [contact support](https://memoryplugin.com) with a
+  screenshot, a description of what's happening, and the steps you've already
+  tried.
 </Warning>
 
 ## Next Steps
@@ -370,13 +231,13 @@ AI-generated reflections appear on the Activity page, summarizing recurring them
     icon="cloud-arrow-up"
     href="/features/chat-history/importing"
   >
-    Learn how to export and import more chat history
+    Export and import more of your chat history
   </Card>
   <Card
     title="Using Chat History"
     icon="sparkles"
     href="/features/chat-history/using"
   >
-    Set up auto-injection via Browser Extension or MCP Server
+    Add chat history context to your AI conversations
   </Card>
 </CardGroup>

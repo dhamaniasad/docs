@@ -1,0 +1,54 @@
+---
+title: 'Codex'
+description: 'Use MemoryPlugin with OpenAI Codex'
+icon: "/images/logos/codex.svg"
+author: "Alara"
+lastUpdated: "2026-07-04"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+
+<img src="/images/logos/codex.svg" alt="Codex" width="56" height="56" noZoom style={{ background: "#fff", borderRadius: "14px", padding: "10px", boxShadow: "0 1px 2px rgba(0,0,0,0.12)", boxSizing: "border-box" }} />
+
+Codex is OpenAI's agentic coding tool. It speaks MCP, so MemoryPlugin connects over the Model Context Protocol and brings your memory and chat history from every other AI tool into your coding sessions.
+
+## Set up
+
+Use the remote MCP server as your primary integration. There is no install and nothing to keep running.
+
+<Steps>
+  <Step title="Add the MCP server">
+    Add MemoryPlugin to Codex using the [remote MCP server](/integrations/remote-mcp-server) URL.
+  </Step>
+  <Step title="Approve access">
+    Sign in and approve when prompted. Your memories and chat history are then available from your next session.
+  </Step>
+</Steps>
+
+### Local MCP server
+
+If you prefer a local process, configure the [local MCP server](/integrations/mcp-server) instead of the remote one.
+
+## What works here
+
+- **All 12 MemoryPlugin tools over MCP.** Codex can recall and save memories, recall your chat history, and search your uploaded files.
+- **Cross-tool context.** What you told ChatGPT, Claude, or any other connected tool comes with you into your coding sessions.
+
+## Limitations
+
+- No browser extension in Codex. The connection is entirely over MCP.
+- Capturing your Codex sessions back into MemoryPlugin: a desktop sync app is coming soon.
+- Whether Codex calls the tools each turn is up to the model. If it forgets, ask it to check MemoryPlugin before answering.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Remote MCP Server" icon="cloud" href="/integrations/remote-mcp-server">
+    Recommended, no install
+  </Card>
+  <Card title="Local MCP Server" icon="server" href="/integrations/mcp-server">
+    For a local process
+  </Card>
+</CardGroup>

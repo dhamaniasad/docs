@@ -1,92 +1,61 @@
 ---
 title: "MemoryPlugin Documentation"
 description: "Persistent memory, chat history, and document search across all your AI platforms"
-author: "asad"
-lastUpdated: "2025-12-14"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2025-12-14" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-MemoryPlugin gives your AI persistent memory, searchable chat history, and document access—across every platform you use.
+AI tools like ChatGPT and Claude forget everything between conversations. MemoryPlugin fixes that: it stores the things that matter and hands them back in whichever AI you open. One memory. Every AI.
 
-## What MemoryPlugin Does
+<Frame caption="The MemoryPlugin dashboard, where you write, organize, and search everything your AI can recall.">
+  <img className="block dark:hidden" src="/images/screenshots/dashboard/dashboard-overview.png" alt="The MemoryPlugin dashboard showing memory buckets, the add memory box, and a list of saved memories" />
+  <img className="hidden dark:block" src="/images/screenshots/dashboard/dashboard-overview-dark.png" alt="The MemoryPlugin dashboard showing memory buckets, the add memory box, and a list of saved memories" />
+</Frame>
 
-AI tools like ChatGPT and Claude forget everything between conversations. MemoryPlugin fixes that by storing what matters and making it available whenever you need it.
+## What you can store
 
 <CardGroup cols={3}>
   <Card title="Memories" icon="brain" href="/features/memory-buckets">
-    Save facts, preferences, and context that your AI can recall in any conversation
+    Facts, preferences, and context your AI can recall in any conversation
   </Card>
   <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
-    Search and query your past AI conversations from ChatGPT, Claude, and TypingMind
+    Your past conversations from ChatGPT, Claude, and more, searchable in one place
   </Card>
   <Card title="Files" icon="folder-open" href="/features/file-buckets">
-    Upload documents and query them alongside your memories
+    PDFs and documents you can query alongside your memories
   </Card>
 </CardGroup>
 
-## Core Features
+## Start here
 
 <CardGroup cols={2}>
-  <Card title="Ask" icon="messages" href="/features/ask">
-    Query your memories, chat history, and files from one unified interface
+  <Card title="Quick Setup" icon="rocket" href="/getting-started/introduction">
+    Create an account, pick an integration, and be running in a few minutes
   </Card>
-  <Card title="Smart Memory" icon="sparkles" href="/features/smart-memory">
-    AI-powered organization that categorizes memories and saves tokens
+  <Card title="How It Works" icon="gear" href="/getting-started/how-it-works">
+    The memory model, injection and recall, and how tokens are spent
   </Card>
-  <Card title="Cross-Platform" icon="globe" href="/platforms/supported-platforms">
-    Works with 15+ AI platforms including ChatGPT, Claude, Gemini, and more
+  <Card title="Supported Platforms" icon="globe" href="/platforms/supported-platforms">
+    The full compatibility matrix for 21+ AI tools
   </Card>
-  <Card title="Multiple Integrations" icon="puzzle-piece" href="/integrations/overview">
+  <Card title="Integrations" icon="puzzle-piece" href="/integrations/overview">
     Browser extension, MCP server, TypingMind plugin, Custom GPT, and API
   </Card>
 </CardGroup>
 
-## Quick Start
-
-<Steps>
-  <Step title="Create Your Account">
-    Sign up at [memoryplugin.com](https://memoryplugin.com) to get your dashboard and API access.
-  </Step>
-  <Step title="Choose Your Integration">
-    Pick how you want to connect MemoryPlugin to your AI tools:
-    - **[Browser Extension](/integrations/browser-extension)** — Works with ChatGPT, Claude, Gemini, and more
-    - **[MCP Server](/integrations/mcp-server)** — For Claude Desktop, Cursor, Windsurf, and other MCP clients
-    - **[TypingMind Plugin](/integrations/typingmind-plugin)** — Native integration for TypingMind users
-  </Step>
-  <Step title="Start Building Memory">
-    Your AI will automatically save important information, or you can explicitly ask it to remember things. Import your existing ChatGPT memories or sync your chat history for instant context.
-  </Step>
-</Steps>
-
-## How It Works
-
-MemoryPlugin acts as a persistent layer between you and your AI assistants:
-
-1. **Save** — Important information is stored as you chat, either automatically or when you ask
-2. **Organize** — Memories go into buckets you control, with optional AI categorization
-3. **Recall** — In any new conversation, relevant context is retrieved and provided to your AI
-4. **Search** — Query your memories, past conversations, and documents anytime
-
-The result: Your AI knows your preferences, remembers your projects, and has the context it needs—every time.
-
-## What's New
-
-MemoryPlugin 2.0 brings a redesigned dashboard, the unified Ask tool, file buckets, keyboard shortcuts, and much more.
-
-<Card title="See What's New" icon="sparkles" href="/changelog">
-  Check the changelog for the latest features and improvements
-</Card>
-
-## Get Started
+## Key features
 
 <CardGroup cols={2}>
-  <Card title="Quick Setup Guide" icon="rocket" href="/getting-started/introduction">
-    Get up and running in minutes
+  <Card title="Ask" icon="messages" href="/features/ask">
+    Query your memories, chat history, and files from one interface
   </Card>
-  <Card title="Browse Integrations" icon="puzzle-piece" href="/integrations/overview">
-    Find the right integration for your workflow
+  <Card title="Smart Memory" icon="sparkles" href="/features/smart-memory">
+    Categorizes your memories so your AI loads only what's relevant, using far fewer tokens
   </Card>
 </CardGroup>
+
+Want the latest changes? See the [changelog](/changelog).

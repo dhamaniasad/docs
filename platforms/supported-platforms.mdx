@@ -1,167 +1,135 @@
 ---
 title: "Supported Platforms"
-description: "MemoryPlugin works with 16+ AI platforms and growing"
+description: "MemoryPlugin works with 21+ AI platforms and growing"
 icon: "globe"
-author: "asad"
-lastUpdated: "2026-03-23"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-MemoryPlugin supports a growing list of AI platforms, allowing you to maintain consistent memory across all your favorite AI tools.
+MemoryPlugin works across 21+ AI tools, so your memories, chat history, and files stay with you wherever you work. This page lists every platform, how to connect it, and what it can do with your chat history.
 
-## Platform Compatibility
+## Compatibility matrix
 
-| Platform | Recommended method | Alternatives | Reads chat history | Imports chat history |
-|----------|--------------------|-------------|--------------------|----------------------|
-| **ChatGPT** | Browser extension | Custom GPT | ✅ | ✅ |
-| **Claude** | Browser extension | MCP Server | ✅ | ✅ |
-| **Gemini** | Browser extension | - | ✅ | ✅ (online sync) |
-| **Grok** | Browser extension | - | ✅ | ✅ |
-| **DeepSeek** | Browser extension | - | ✅ | ✅ (online sync) |
-| **Perplexity** | Browser extension | - | ✅ | ❌ |
-| **AI Studio** | Browser extension | - | ✅ | ❌ |
-| **Mistral** | Browser extension | - | ✅ | ❌ |
-| **Poe** | Browser extension | - | ✅ | ❌ |
-| **TypingMind** | Browser extension | Plugin, MCP Server | ✅ | ✅ |
-| **LibreChat** | Browser extension | - | ✅ | ❌ |
-| **Qwen** | Browser extension | - | ✅ | ❌ |
-| **OpenRouter** | Browser extension | - | ✅ | ❌ |
-| **ChatLLM** | Browser extension | - | ✅ | ❌ |
-| **Chat Z.ai** | Browser extension | - | ✅ | ❌ |
-| **Kimi** | Browser extension | - | ✅ | ❌ |
-| **Cursor** | MCP Server | - | ✅ | ❌ |
+Two of the columns below are about chat history, and they mean different things:
+
+- **Recall chat history**: your AI can pull relevant context from your past conversations on demand. It decides when to search and writes its own query.
+- **Sync chat history**: new conversations on this platform are captured into MemoryPlugin automatically as you have them. Syncing is browser-extension only.
+
+You can also import chat history from an export file for a broader set of platforms. See [Chat History](/features/chat-history/introduction) for that path.
+
+| Platform | Recommended method | Alternatives | Recall chat history | Sync chat history |
+|----------|--------------------|-------------|:-------------------:|:-----------------:|
+| <img src="/images/logos/chatgpt.svg" alt="ChatGPT" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **ChatGPT** | Browser extension | Custom GPT | ✅ | ✅ |
+| <img src="/images/logos/claude.svg" alt="Claude" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Claude** | Remote MCP + extension for sync | Browser extension only | ✅ | ✅ |
+| <img src="/images/logos/gemini.svg" alt="Gemini" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Gemini** | Browser extension | - | ✅ | ✅ * |
+| <img src="/images/logos/grok.svg" alt="Grok" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Grok** | Browser extension | - | ✅ | ✅ |
+| <img src="/images/logos/deepseek.svg" alt="DeepSeek" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **DeepSeek** | Browser extension | - | ✅ | ✅ |
+| <img src="/images/logos/typingmind.png" alt="TypingMind" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **TypingMind** | Browser extension | Plugin, MCP Server | ✅ | ✅ |
+| <img src="/images/logos/perplexity.svg" alt="Perplexity" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Perplexity** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/google-ai-studio.svg" alt="Google AI Studio" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Google AI Studio** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/mistral.svg" alt="Mistral" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Mistral** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/poe.svg" alt="Poe" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Poe** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/librechat.jpg" alt="LibreChat" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **LibreChat** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/qwen.svg" alt="Qwen" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Qwen** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/openrouter.svg" alt="OpenRouter" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **OpenRouter** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/chatllm.png" alt="ChatLLM" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **ChatLLM (Abacus)** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/zai.svg" alt="Z.ai" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Z.ai** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/kimi.svg" alt="Kimi" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Kimi** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/minimax.svg" alt="MiniMax" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **MiniMax** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/notebooklm.svg" alt="NotebookLM" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **NotebookLM** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/xiaomi-mimo.svg" alt="Xiaomi MiMo" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Xiaomi MiMo** | Browser extension | - | ✅ | ❌ |
+| <img src="/images/logos/cursor.svg" alt="Cursor" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Cursor** | MCP Server | - | ✅ | ❌ |
 | **Windsurf** | MCP Server | - | ✅ | ❌ |
-| **Claude Code** | MCP Server | - | ✅ | ❌ |
+| <img src="/images/logos/claude-code.svg" alt="Claude Code" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Claude Code** | MCP Server | - | ✅ | ❌ |
 | **Sage** | MCP Server | - | ✅ | ❌ |
 | **Other MCP clients** | MCP Server | - | ✅ | ❌ |
-| **Any other platform** | OpenAPI spec | - | ❌ | ❌ |
+| **Any other platform** | API / OpenAPI | - | Via API | ❌ |
 
-## Primary Platforms
+\* Gemini sync is experimental and can break when Gemini's web UI changes. Treat it as a preview.
 
-### ChatGPT
-<Card title="ChatGPT Integration" icon="robot" href="/platforms/chatgpt">
-  OpenAI's flagship conversational AI
-  - **URLs**: chat.openai.com, chatgpt.com
-  - **Best Integration**: Browser Extension
-  - **Special Features**: Memory import from ChatGPT
-</Card>
+<Note>
+MCP clients (Cursor, Windsurf, Claude Code, and others) can recall your chat history through the `recall_chat_history` tool, but they can't capture it. Capturing new conversations happens only through the browser extension, on the six platforms marked above.
+</Note>
 
-### Claude
-<Card title="Claude Integration" icon="robot" href="/platforms/claude">
-  Anthropic's advanced AI assistant
-  - **URL**: claude.ai
-  - **Best Integration**: Browser Extension
-  - **Alternative**: MCP Server for Claude Desktop
-</Card>
+## Primary platforms
 
-### Gemini
-<Card title="Gemini Integration" icon="robot" href="/platforms/gemini">
-  Google's multimodal AI model
-  - **URL**: gemini.google.com
-  - **Best Integration**: Browser Extension
-</Card>
+<CardGroup cols={3}>
+  <Card title="ChatGPT" icon="robot" href="/platforms/chatgpt">
+    chatgpt.com, chat.openai.com. Browser extension, or a Custom GPT. Supports importing ChatGPT memories.
+  </Card>
+  <Card title="Claude" icon="robot" href="/platforms/claude">
+    claude.ai. Browser extension, or the MCP Server for Claude Desktop.
+  </Card>
+  <Card title="Gemini" icon="robot" href="/platforms/gemini">
+    gemini.google.com. Browser extension.
+  </Card>
+</CardGroup>
 
-## Additional Platforms
+## Other web platforms
 
-### Perplexity
-AI-powered search and research assistant
-- **URL**: perplexity.ai
-- **Integration**: Browser Extension
+All of these use the browser extension:
 
-### Grok
-xAI's conversational AI
-- **URL**: grok.com
-- **Integration**: Browser Extension
+- **Perplexity** (perplexity.ai)
+- **Grok** (grok.com)
+- **DeepSeek** (chat.deepseek.com)
+- **Google AI Studio** (aistudio.google.com)
+- **Mistral** (chat.mistral.ai)
+- **Poe** (poe.com)
+- **TypingMind** (typingmind.com), also supports the [plugin](/integrations/typingmind-plugin) and MCP Server
+- **Qwen** (chat.qwen.ai)
+- **OpenRouter** (openrouter.ai)
+- **Z.ai** (chat.z.ai)
+- **NotebookLM** (notebooklm.google.com)
+- **LibreChat**, **ChatLLM (Abacus)**, **Kimi**, **MiniMax**, and **Xiaomi MiMo**
 
-### Deepseek
-Deepseek's AI chat interface
-- **URL**: chat.deepseek.com
-- **Integration**: Browser Extension
+## MCP clients
 
-### Google AI Studio
-Google's AI development platform
-- **URL**: aistudio.google.com
-- **Integration**: Browser Extension
-
-### Mistral
-Mistral AI's chat interface
-- **URL**: chat.mistral.ai
-- **Integration**: Browser Extension
-
-### Poe
-Quora's multi-model AI platform
-- **URL**: poe.com
-- **Integration**: Browser Extension
-
-### TypingMind
-Enhanced UI for various AI models
-- **URL**: typingmind.com
-- **Integration**: Browser Extension, Plugin, MCP Server
-
-### LibreChat
-Open-source AI chat interface
-- **Integration**: Browser Extension
-
-### QwenLM
-Alibaba's Qwen language model interface
-- **URL**: chat.qwen.ai
-- **Integration**: Browser Extension
-
+Cursor, Windsurf, Claude Code, Sage, and other MCP-compatible clients connect through the [MCP Server](/integrations/mcp-server). They can store and search memories and recall your chat history, but they can't sync new conversations.
 
 <Info>
-Request support for your favorite platform by contacting us through the Dashboard.
+Don't see your platform? Request support by contacting us through the dashboard.
 </Info>
 
-## Integration Methods
+## Integration methods
 
-- **Browser Extension**: Works on any web-based AI platform listed above
-- **MCP Server**: For MCP-compatible clients (Claude Desktop, Cursor, etc.)
-- **Custom GPT**: ChatGPT action integration
-- **Plugin**: TypingMind plugin system
-- **API/OpenAPI**: Direct integration for developers
+- **Browser Extension**: works on any of the web platforms listed above
+- **MCP Server**: for MCP-compatible clients like Claude Desktop, Cursor, and Claude Code
+- **Custom GPT**: a ChatGPT-native option using OpenAI Actions
+- **TypingMind Plugin**: native TypingMind integration
+- **API / OpenAPI**: direct integration for developers
 
+See [Integrations](/integrations/overview) to pick the right one.
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="Extension not working">
     - Refresh the page
-    - Check extension is enabled for this site
-    - Update to latest extension version
-    - Contact support if issue persists
+    - Check the extension is enabled for this site
+    - Update to the latest extension version
+    - Contact support if the issue persists
   </Accordion>
   <Accordion title="Memory injection fails">
-    - Check that the platform hasn't updated their interface
-    - Try refreshing the page
-    - Contact support with platform details
+    - The platform may have changed its interface. Refresh the page first.
+    - Update the extension to the latest version
+    - Contact support with the platform details if it keeps happening
   </Accordion>
 </AccordionGroup>
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={3}>
-  <Card
-    title="ChatGPT Guide"
-    icon="robot"
-    href="/platforms/chatgpt"
-  >
+  <Card title="ChatGPT Guide" icon="robot" href="/platforms/chatgpt">
     Set up MemoryPlugin with ChatGPT
   </Card>
-  <Card
-    title="Claude Guide"
-    icon="robot"
-    href="/platforms/claude"
-  >
-    Configure Claude with MCP
+  <Card title="Claude Guide" icon="robot" href="/platforms/claude">
+    Configure Claude with the extension or MCP
   </Card>
-  <Card
-    title="Gemini Guide"
-    icon="robot"
-    href="/platforms/gemini"
-  >
+  <Card title="Gemini Guide" icon="robot" href="/platforms/gemini">
     Use MemoryPlugin with Gemini
   </Card>
 </CardGroup>

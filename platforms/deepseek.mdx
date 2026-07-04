@@ -1,45 +1,53 @@
 ---
 title: 'DeepSeek'
 description: 'Use MemoryPlugin with DeepSeek'
-author: "asad"
-lastUpdated: "2026-03-23"
+icon: "/images/logos/deepseek.svg"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Use MemoryPlugin with DeepSeek at [chat.deepseek.com](https://chat.deepseek.com).
+<img src="/images/logos/deepseek.svg" alt="DeepSeek" width="56" height="56" noZoom style={{ background: "#fff", borderRadius: "14px", padding: "10px", boxShadow: "0 1px 2px rgba(0,0,0,0.12)", boxSizing: "border-box" }} />
 
-## How to Use
+DeepSeek is the assistant at [chat.deepseek.com](https://chat.deepseek.com). MemoryPlugin gives it long-term memory that carries across your other AI tools, and can sync your DeepSeek chat history for search and recall.
 
-### Browser Extension
-1. Install the [MemoryPlugin Browser Extension](/integrations/browser-extension)
-2. Navigate to [chat.deepseek.com](https://chat.deepseek.com)
-3. Click the MemoryPlugin button to inject memories
-4. Start chatting with memory context
+## Set up
 
-## Chat History
+<Steps>
+  <Step title="Install the extension">
+    Install the [browser extension](/integrations/browser-extension) and sign in to your MemoryPlugin account.
+  </Step>
+  <Step title="Open DeepSeek">
+    Go to [chat.deepseek.com](https://chat.deepseek.com). A floating MemoryPlugin button appears on the page.
+  </Step>
+  <Step title="Activate for the chat">
+    Click the button to inject memories from your selected bucket into the composer, then send your message. This also tells DeepSeek how to save new memories as you talk.
+  </Step>
+</Steps>
 
-You can sync your DeepSeek conversation history into MemoryPlugin using the browser extension's online sync feature. Once synced, your past DeepSeek conversations become searchable and available as context across all your AI tools.
+<Frame caption="The MemoryPlugin floating button on chat.deepseek.com. Click it to inject memories or open the panel.">
+  <img src="/images/screenshots/platforms/deepseek.png" alt="MemoryPlugin floating button on DeepSeek (chat.deepseek.com)" />
+</Frame>
+## What works here
 
-See the [Chat History](/features/chat-history/introduction) docs for more details.
+- **Memory recall and save.** Injected memories give DeepSeek context; new memories are saved back as you talk.
+- **Chat history sync.** DeepSeek is one of the six platforms the extension can sync directly. New conversations are captured for search and recall across your tools. You can also upload a DeepSeek export file instead.
+- **Extract memory pill.** Select text in a chat and click **Extract memory** to save that snippet.
 
-## Next Steps
+## Limitations
+
+- The extension does not inject on its own by default. You click the button to activate a chat, or turn on **Automatically add memories in new conversations** in the extension settings.
+
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Browser Extension Setup"
-    icon="browser"
-    href="/integrations/browser-extension"
-  >
-    Quick setup guide
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    Full setup and features
   </Card>
-  <Card
-    title="Chat History"
-    icon="clock-rotate-left"
-    href="/features/chat-history/introduction"
-  >
+  <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
     Import and search your conversations
   </Card>
 </CardGroup>

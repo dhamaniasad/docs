@@ -1,0 +1,41 @@
+<svg viewBox="0 0 720 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A small context window card on top and a wide persistent memory store below. Only the relevant memory is paged up into the context window.">
+  <style>
+    .card{fill:#27272a;stroke:#3f3f46;stroke-width:1;}
+    .card-accent{fill:rgba(129,140,248,0.16);stroke:#818cf8;stroke-width:1.5;}
+    .card-dash{fill:#27272a;stroke:#3f3f46;stroke-width:1;stroke-dasharray:5 4;}
+    .pill{fill:#27272a;stroke:#3f3f46;stroke-width:1;}
+    .pill-accent{fill:rgba(129,140,248,0.16);stroke:#818cf8;stroke-width:1.5;}
+    .t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#fafafa;font-size:15px;}
+    .t-strong{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#fafafa;font-size:15px;font-weight:600;}
+    .sub{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#a1a1aa;font-size:12.5px;}
+    .accent-t{font-family:ui-sans-serif,-apple-system,'Segoe UI',system-ui,sans-serif;fill:#818cf8;font-size:12.5px;font-weight:600;}
+    .faint{fill:#a1a1aa;}
+    .edge{fill:none;stroke:#52525b;stroke-width:1.5;}
+    .edge-accent{fill:none;stroke:#818cf8;stroke-width:1.75;}
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#52525b"/>
+    </marker>
+    <marker id="aa" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#818cf8"/>
+    </marker>
+  </defs>
+
+  <!-- context window: small, on top -->
+  <rect class="card" x="250" y="26" width="220" height="58" rx="10"/>
+  <text x="360" y="52" class="t-strong" text-anchor="middle">Context window</text>
+  <text x="360" y="71" class="sub" text-anchor="middle">Small · cleared each chat</text>
+
+  <!-- paged-up arrow -->
+  <line class="edge-accent" x1="360" y1="150" x2="360" y2="88" marker-end="url(#aa)"/>
+  <text x="374" y="122" class="accent-t">Relevant memory paged in</text>
+
+  <!-- memory store: wide, persistent, holds memory pills -->
+  <rect class="card" x="70" y="150" width="580" height="82" rx="10"/>
+  <text x="94" y="178" class="t-strong">Memory store</text>
+  <text x="94" y="197" class="sub">Persistent · always kept</text>
+  <rect class="pill-accent" x="322" y="192" width="76" height="26" rx="8"/>
+  <rect class="pill" x="410" y="192" width="76" height="26" rx="8"/>
+  <rect class="pill" x="498" y="192" width="76" height="26" rx="8"/>
+</svg>

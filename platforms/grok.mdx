@@ -1,50 +1,53 @@
 ---
 title: 'Grok'
 description: 'Use MemoryPlugin with xAI Grok'
-author: "asad"
-lastUpdated: "2026-03-23"
+icon: "/images/logos/grok.svg"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-23" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-Use MemoryPlugin with Grok at [grok.com](https://grok.com).
+<img src="/images/logos/grok.svg" alt="Grok" width="56" height="56" noZoom style={{ background: "#fff", borderRadius: "14px", padding: "10px", boxShadow: "0 1px 2px rgba(0,0,0,0.12)", boxSizing: "border-box" }} />
 
-## How to Use
+Grok is xAI's assistant at [grok.com](https://grok.com). MemoryPlugin gives it long-term memory that carries across your other AI tools, and can sync your Grok chat history for search and recall.
 
-### Browser Extension
-1. Install the [MemoryPlugin Browser Extension](/integrations/browser-extension)
-2. Navigate to [grok.com](https://grok.com)
-3. Click the MemoryPlugin button to inject memories
-4. Start chatting with memory context
+## Set up
 
-## Chat History
+<Steps>
+  <Step title="Install the extension">
+    Install the [browser extension](/integrations/browser-extension) and sign in to your MemoryPlugin account.
+  </Step>
+  <Step title="Open Grok">
+    Go to [grok.com](https://grok.com). A floating MemoryPlugin button appears on the page.
+  </Step>
+  <Step title="Activate for the chat">
+    Click the button to inject memories from your selected bucket into the composer, then send your message. This also tells Grok how to save new memories as you talk.
+  </Step>
+</Steps>
 
-You can import your Grok conversation history into MemoryPlugin:
+<Frame caption="The MemoryPlugin floating button on grok.com. Click it to inject memories or open the panel.">
+  <img src="/images/screenshots/platforms/grok.png" alt="MemoryPlugin floating button on Grok (grok.com)" />
+</Frame>
+## What works here
 
-- **File upload**: Export your Grok data and upload the conversation file to MemoryPlugin
-- **Online sync**: Sync conversations directly from the browser extension
+- **Memory recall and save.** Injected memories give Grok context; new memories are saved back as you talk.
+- **Chat history sync.** Grok is one of the six platforms the extension can sync directly. New conversations are captured for search and recall across your tools. You can also upload a Grok export file instead.
+- **Extract memory pill.** Select text in a chat and click **Extract memory** to save that snippet.
 
-Once imported, your past Grok conversations become searchable and available as context across all your AI tools.
+## Limitations
 
-See the [Chat History](/features/chat-history/introduction) docs for more details.
+- The extension does not inject on its own by default. You click the button to activate a chat, or turn on **Automatically add memories in new conversations** in the extension settings.
 
-## Next Steps
+## Next steps
 
 <CardGroup cols={2}>
-  <Card
-    title="Browser Extension Setup"
-    icon="browser"
-    href="/integrations/browser-extension"
-  >
-    Quick setup guide
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    Full setup and features
   </Card>
-  <Card
-    title="Chat History"
-    icon="clock-rotate-left"
-    href="/features/chat-history/introduction"
-  >
+  <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
     Import and search your conversations
   </Card>
 </CardGroup>

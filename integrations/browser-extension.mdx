@@ -2,16 +2,16 @@
 title: "Browser Extension"
 description: "Use MemoryPlugin with any Chromium-based browser or Safari on iOS and macOS"
 icon: "browser"
-author: "asad"
-lastUpdated: "2026-03-24"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-24" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
-The Browser Extension for MemoryPlugin provides seamless integration with AI chat platforms through your web browser.
+The browser extension puts MemoryPlugin directly inside the AI sites you already use. It injects a small panel into the page so you can read and add memories, pull context from past chats, and sync your conversation history, all without leaving the chat. It works across 21+ platforms and is the most complete way to use MemoryPlugin.
 
 ## Browser Compatibility
 
@@ -63,264 +63,267 @@ Install the extension using the links below, or find them on your [MemoryPlugin 
 After installation, sign up or log in to your [MemoryPlugin Dashboard](https://memoryplugin.com/dashboard) to start using the extension.
 </Note>
 
-## How to Use the Browser Extension
+## The Panel
 
-Once you install the browser extension, when you open supported AI tool websites, you will see a round MemoryPlugin button on the page. If you click on this button, you will be able to see all your memories and switch between active buckets.
+On a supported site you get a round MemoryPlugin button floating on the page. Drag it anywhere; the extension remembers its position per site. Above it sits an **Add Memories** pill (it reads **Login** when you are signed out).
 
-![MemoryPlugin panel showing memories and bucket selector](/images/browser-extension/memory-panel.png)
+Click the button to open the panel. The header shows **MemoryPlugin**, your plan badge (**CORE**, **PRO**, or **PRO LT**), a dark-mode toggle, and a close button.
 
-### Draggable Button
+<Frame caption="The MemoryPlugin panel: bucket row, your memories, and the tab bar (Memories, Sync, History, Account, Settings) along the bottom.">
+  <img className="block dark:hidden" src="/images/screenshots/extension/panel-v4.png" alt="MemoryPlugin extension panel showing the General bucket, three memories, and the bottom tab bar with Memories, Sync, History, Account, and Settings" />
+  <img className="hidden dark:block" src="/images/screenshots/extension/panel-v4-dark.png" alt="MemoryPlugin extension panel showing the General bucket, three memories, and the bottom tab bar with Memories, Sync, History, Account, and Settings" />
+</Frame>
 
-The MemoryPlugin button can be dragged to any position on the page. The extension remembers your preferred position for each site, so the button stays where you put it.
+Under the header is the **Bucket** row: a dropdown that defaults to **All Memories**, plus a **Smart Mode** toggle that turns on Smart Memory for the current chat, for token-efficient loading (see [Smart Memory](#smart-memory)).
 
-<Tip>
-Drag the button to a spot that doesn't interfere with the AI platform's interface. Your position is saved per-site.
-</Tip>
+A tab bar runs along the bottom of the panel:
 
-### Extension Interface
+- **Memories** - view, add, edit, and delete memories in the selected bucket.
+- **Sync** - background sync of your chat history (only when Chat History is enabled; a `!` badge appears when more than 100 chats are unsynced).
+- **History** - open the Chat History search modal (also `Cmd+Shift+K` / `Ctrl+Shift+K`).
+- **Account** - your plan, stat tiles (Memories, Buckets, Chats, Messages), and links to the dashboard and help.
+- **Settings** - recall, auto-add, load limits, sync toggles, and the onboarding tour.
 
-The MemoryPlugin panel provides:
+### Memories tab
 
-- **Memory List**: View all memories in your selected bucket
-- **Bucket Selector**: Switch between different memory buckets (contexts)
-- **Memory Count**: See how many memories are in each bucket
-- **Smart Mode Toggle**: Enable Smart Mode for token-efficient memory loading
-- **Edit & Delete**: Manage memories directly from the panel
-- **Settings**: Access extension settings including chat sync and onboarding
+The Memories tab lists the memories in your selected bucket. Use **Add** to write one by hand, or the overflow menu for **Refresh memories**, **Copy memories**, **Export chat**, and **Load limit**. Each memory has inline edit and delete. When a bucket is empty you get a prompt to add your first memory or let the AI save them automatically as you chat.
 
-### Button Variations
+### Buckets
 
-Depending on the platform you are using, you will see:
-
-1. **Quick Inject Button**: A larger button with "Quick Inject" text on top
-2. **Small MemoryPlugin Button**: A smaller button near the chat input box
-
-![Quick Inject button near the chat input](/images/browser-extension/quick-inject-button.png)
-
-Both buttons perform the same function - activating MemoryPlugin for your current chat.
-
-### Memory Buckets
-
-Organize your memories into different contexts using buckets:
-
-- **Personal**: Personal information and preferences
-- **Work**: Professional context and work-related information
-- **Projects**: Specific project details and requirements
-- **Custom Buckets**: Create your own categories as needed
-
-<Tip>
-Switch between buckets using the dropdown in the MemoryPlugin panel before injecting memories to use the appropriate context for your conversation.
-</Tip>
+Buckets are separate contexts for your memories. Switch buckets with the dropdown before you inject, so the AI gets the right context for the conversation. Every account starts with a **General** bucket; create more from the dashboard for work, projects, or anything else you want to keep apart. See [Memory Buckets](/features/memory-buckets) for the full model.
 
 ## Injecting Memories
 
 <Warning>
-The browser extension does not automatically inject memories into your chats. You need to press the MemoryPlugin button to activate MemoryPlugin for a given chat.
+The extension does not inject memories on its own by default. Press the MemoryPlugin button to activate it for a chat, or turn on auto-add in Settings.
 </Warning>
 
-When you press the MemoryPlugin button, two things are added to the chat:
+Activating a chat pastes two things into the composer:
 
-1. **Your memories** from the chosen bucket in the MemoryPlugin window
-2. **Instructions for the AI** on how and when to add new memories
+1. Your memories from the chosen bucket.
+2. Instructions telling the AI what MemoryPlugin is and how to save new memories.
 
-Without this activation step, MemoryPlugin is not active for the chat and your AI will not be able to read existing memories or create new ones.
+Without this step the AI cannot read your memories or create new ones for that conversation.
 
-When you press the MemoryPlugin button, you will see text added to the chat input field that:
+Depending on the platform, activation happens through one of two controls:
 
-1. Instructs the AI about what MemoryPlugin is and how to use it
-2. Contains current memories from your chosen bucket  
-3. Instructs the AI on what to add to memory, and how
+- **Quick inject button** - a compact button inline in the composer where the platform's layout allows it. Its tooltip reads *"Inject Memories from chosen Bucket"*.
+- **Add Memories pill** - on platforms where the inline button doesn't fit, a glass **Add Memories** pill appears above the floating MemoryPlugin button instead.
+
+<Frame caption="The Add Memories pill sits above the floating button when the inline control doesn't fit.">
+  <img className="block dark:hidden" src="/images/screenshots/extension/add-memories-pill.png" alt="Add Memories pill above the MemoryPlugin floating button, next to the chat composer" />
+  <img className="hidden dark:block" src="/images/screenshots/extension/add-memories-pill-dark.png" alt="Add Memories pill above the MemoryPlugin floating button, next to the chat composer" />
+</Frame>
+
+### Auto-Inject in New Chats
+
+Turn on **Automatically add memories in new conversations** in Settings to skip the manual step. When you send your first message in a new chat, the extension shows an **Auto-injecting memories** prompt with a 5-second countdown and a **Cancel** button, then injects. Cancel if you do not want memories in that conversation.
 
 ## Adding New Memories
 
-When you activate MemoryPlugin for a chat, the AI is instructed how to add new memories using a specific format:
+Once a chat is active, the AI is told to save memories by emitting a marker line that the extension watches for:
 
 ```
 to=memoryplugin&&memory=[memory text here]
 ```
 
-The AI will trigger a new memory addition in one of two cases:
+On ChatGPT the marker uses `tool=memoryplugin&&memory=...` instead. The AI adds a memory in one of two cases:
 
-- **Automatic**: It thinks something is worth remembering long term
-- **Manual**: You explicitly ask it to remember something
+- **Automatic** - it decides something is worth remembering long term.
+- **Manual** - you explicitly ask it to remember something.
 
 ![AI adding a new memory with the special format](/images/browser-extension/memory-added.png)
 
-### Visual Feedback
+When the extension detects and saves a new memory, it shows a confirmation toast (for example *Memory saved: "User prefers morning meetings"*).
 
-When a new memory is added, you will see the round MemoryPlugin button briefly show a checkmark (✓) to indicate it has detected and successfully added the new memory.
+<Frame caption="The confirmation toast the extension shows after saving a memory.">
+  <img src="/images/screenshots/extension/memory-saved-toast.png" alt="Memory saved toast reading: Memory saved: User prefers TypeScript and Next.js for new projects" />
+</Frame>
 
-![Success indicator showing memory was saved](/images/browser-extension/success-indicator.png)
+### Save a highlight with "Extract memory"
 
-## Smart Mode
+You do not have to wait for the AI to save something. Select at least 3 characters of text anywhere in a chat and a floating **Extract memory** pill appears. Click it, the label changes to **Extracting...**, and a toast confirms *Memory saved: "..."*. It is the fastest way to keep a specific line from a conversation.
 
-Smart Mode optimizes token consumption and keeps the AI focused by intelligently organizing and presenting your memories.
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/extract-memory-pill.mp4"></video>
 
-### How It Works
+## Smart Memory
 
-1. **Automatic Categorization**: Analyzes all memories in a bucket and identifies 4-7 main categories
-2. **Category Summaries**: Creates concise summaries for each category
-3. **Smart Loading**: Only loads full category details when relevant to the conversation
-4. **Token Efficiency**: Reduces token usage by not overwhelming the AI with irrelevant memories
+Smart Memory keeps token use down and the AI focused by organizing a bucket into categories and loading only what a conversation needs.
 
-### Setup
+### How it works
 
-To enable Smart Mode:
-1. Select a specific bucket (Smart Mode doesn't work with "All memories")
-2. Activate Smart Mode for that bucket in the web app (one-time setup)
-3. New memories will automatically be assigned to appropriate categories
+1. **Automatic categorization** - it analyzes the memories in a bucket and groups them into a handful of categories.
+2. **Category summaries** - each category gets a short summary the AI can see at a glance.
+3. **On-demand loading** - full category detail is loaded only when it is relevant to what you are discussing.
+4. **Token efficiency** - the AI is not handed every memory on every message.
 
-### Benefits
-- **Reduced Token Usage**: Only relevant memories are loaded
-- **Better Focus**: AI isn't distracted by unrelated information
-- **Contextual Awareness**: AI knows high-level information about all categories
-- **Automatic Management**: New memories are categorized automatically
+### Turning it on
 
-## Chat History Sync
+1. Select a specific bucket. Smart Memory does not apply to **All Memories**.
+2. Enable it once for that bucket (via the **Smart Mode** toggle in the panel, or in the dashboard).
+3. New memories are assigned to categories automatically from then on.
 
-The extension can sync your conversations directly from supported platforms — no file exports needed.
+In-chat, the AI loads a category or adds a categorized memory using markers like `<memoryplugin command="load_category" category="[id]" reason="[why]" />` and `<memoryplugin command="add_memory">[what to remember]</memoryplugin>`. Smart Memory is included on the Core plan.
 
-### Supported Sync Platforms
-- **ChatGPT**
-- **Claude**
-- **Gemini**
-- **Grok**
-- **DeepSeek**
+## Chat History
 
-### How It Works
-Open the extension panel and go to the Sync tab. Select your platform using the icon-based provider selector, then start syncing. The extension shows real-time progress ("X/Y conversations synced") during batch operations.
+Beyond memories, the extension can bring your past conversations into a chat and keep your history synced.
 
-You can configure sync limits, cancel in-progress syncs, and the extension defaults to the platform you're currently using.
+### Recall in a chat
 
-### TypingMind Integration
-TypingMind users can also enable auto-sync from the extension settings. For the full experience, also install the [TypingMind Plugin](/integrations/typingmind-plugin) which gives AI direct access to your memories, chat history, and files.
+With **Chat History Recall** on (Settings), the AI can pull concise, relevant details from your past chats when it needs them. It decides when to search and writes its own queries. Before sending, you may see an **Add chat history context?** prompt with **Add** / **Skip this chat** / **Cancel**. To skip recall for a single message, include `#nohistory` anywhere in that message.
+
+### Sync tab
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/enable-auto-sync.mp4"></video>
+
+The Sync tab captures new conversations directly from the platform you are on, so no file export is needed. Supported sync platforms:
+
+- ChatGPT
+- Claude
+- Gemini (experimental)
+- Grok
+- DeepSeek
+- TypingMind
+
+Open the Sync tab, then use the **Sync** dropdown for **Sync All**, **Sync current page**, or **Choose chats...**. Progress shows as *"{x} of {y} unsynced chats"* and you can cancel mid-run. Auto-sync (every hour, per platform) is toggled in Settings under Background Sync.
+
+<Note>
+Gemini sync is experimental. Gemini can change without warning, so this integration may break; contact support if you hit a problem. For large backlogs, uploading an export from the dashboard is faster than syncing chat by chat. See [Chat History](/features/chat-history/introduction).
+</Note>
+
+### Search your history (Cmd+Shift+K)
+
+Press `Cmd+Shift+K` (`Ctrl+Shift+K` on Windows and Linux), or use the **History** tab, to open the Chat History modal without leaving the page. Search across your synced conversations, filter by provider (Claude, ChatGPT, Gemini, Grok, DeepSeek, TypingMind) or **Starred**, open a conversation, copy its transcript, or jump to the original. Each conversation can also generate an AI summary or extract specifics (Key decisions, Action items, Ruled-out ideas, Style rules, Technical specs).
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/chat-history-search.mp4"></video>
+
+## Import Your ChatGPT Memories
+
+The extension can copy the memories ChatGPT has saved about you into MemoryPlugin in one click. The full walkthrough lives on its own page:
+
+<Card
+  title="Import from ChatGPT memory"
+  icon="download"
+  href="/features/chatgpt-memory-import"
+>
+  Step-by-step guide to importing your ChatGPT memories
+</Card>
+
+## Settings
+
+Open the **Settings** tab in the panel to control extension behavior:
+
+- **Chat History Recall** - let the AI recall context from past conversations when it needs it.
+- **Automatically add memories in new conversations** - inject on your first message in a new chat, after a 5-second countdown you can cancel.
+- **Maximum memories to load** - `25`, `50`, `100`, `150`, or `200`. Lower values load faster.
+- **Background Sync** - per-platform auto-sync toggles (Auto-sync ChatGPT, Claude, Gemini, Grok, DeepSeek, and TypingMind conversations), plus a **View Sync Status & History** button.
+- **How MemoryPlugin Works** - reopen the onboarding tour.
+
+## Onboarding
+
+On first install the extension opens an interactive tour, **Essentials**, with four short chapters: what MemoryPlugin is, activating the plugin, saving memories, and chat history and sync. You can skip it, and reopen it any time from Settings via **How MemoryPlugin Works**.
 
 ## Supported Platforms
 
-The browser extension works with all major AI platforms:
+The extension injects into 21+ AI sites, including:
 
 <CardGroup cols={3}>
   <Card title="ChatGPT" icon="robot">
-    chat.openai.com, chatgpt.com
+    chatgpt.com
   </Card>
   <Card title="Claude" icon="robot">
-    claude.ai, anthropic.com
+    claude.ai
   </Card>
   <Card title="Gemini" icon="robot">
     gemini.google.com
   </Card>
-  <Card title="Chat Z.ai" icon="robot">
-    chat.z.ai
+  <Card title="Grok" icon="robot">
+    grok.com
   </Card>
-  <Card title="Kimi" icon="robot">
-    kimi.com
-  </Card>
-  <Card title="TypingMind" icon="robot">
-    typingmind.com
+  <Card title="DeepSeek" icon="robot">
+    chat.deepseek.com
   </Card>
   <Card title="Perplexity" icon="robot">
     perplexity.ai
   </Card>
-  <Card title="Grok" icon="robot">
-    grok.com
-  </Card>
-  <Card title="Deepseek" icon="robot">
-    chat.deepseek.com
-  </Card>
-  <Card title="Qwen" icon="robot">
-    chat.qwen.ai
-  </Card>
-  <Card title="Poe" icon="robot">
-    poe.com
-  </Card>
-  <Card title="AI Studio" icon="robot">
-    aistudio.google.com
+  <Card title="TypingMind" icon="robot">
+    typingmind.com
   </Card>
   <Card title="Mistral" icon="robot">
     chat.mistral.ai
   </Card>
-  <Card title="LibreChat" icon="robot">
-    Self-hosted instances
+  <Card title="Kimi" icon="robot">
+    kimi.com
+  </Card>
+  <Card title="Qwen" icon="robot">
+    chat.qwen.ai
+  </Card>
+  <Card title="Z.ai" icon="robot">
+    chat.z.ai
   </Card>
   <Card title="OpenRouter" icon="robot">
     openrouter.ai
   </Card>
+  <Card title="Poe" icon="robot">
+    poe.com
+  </Card>
+  <Card title="Google AI Studio" icon="robot">
+    aistudio.google.com
+  </Card>
+  <Card title="NotebookLM" icon="robot">
+    notebooklm.google.com
+  </Card>
+  <Card title="LibreChat" icon="robot">
+    Self-hosted instances
+  </Card>
   <Card title="ChatLLM" icon="robot">
     apps.abacus.ai
   </Card>
+  <Card title="MiniMax" icon="robot">
+    MiniMax Chat
+  </Card>
 </CardGroup>
-
-## Special Feature: Import from ChatGPT
-
-The browser extension allows you to import your existing ChatGPT memories into MemoryPlugin with one click.
-
-<Steps>
-  <Step title="Install Extension">
-    Ensure the browser extension is installed and you're logged in
-  </Step>
-  <Step title="Open ChatGPT Settings">
-    Navigate to ChatGPT and open Settings
-  </Step>
-  <Step title="Go to Personalization">
-    Select the "Personalization" tab
-  </Step>
-  <Step title="Access Memory Management">
-    Click "Manage memories"
-  </Step>
-  <Step title="Sync Memories">
-    Click the "Sync Memories" button with the MemoryPlugin logo
-  </Step>
-  <Step title="Wait for Completion">
-    The sync will complete in a few minutes
-  </Step>
-</Steps>
-
-<Info>
-The sync process is idempotent - duplicate memories won't be created if you run it multiple times.
-</Info>
-
-## Onboarding
-
-New users are greeted with an interactive walkthrough that covers the essentials — what MemoryPlugin is, how to activate it, how to save memories, and how chat history sync works. The onboarding opens automatically on first install and can be revisited from the Settings menu ("How MemoryPlugin Works").
 
 ## Privacy & Security
 
 <Info>
-Your memories are stored securely on MemoryPlugin servers and are only accessible to you when logged in.
+Your memories are stored on MemoryPlugin servers and are only accessible to you when logged in.
 </Info>
 
-### Data Handling
-- **Manual Activation**: Memories are only added when you explicitly activate MemoryPlugin
-- **Secure Transmission**: All data is transmitted over HTTPS
-- **Authentication**: Requires login to access your memories
-- **Bucket Isolation**: Memories are organized in separate buckets for different contexts
+- **You stay in control** - memories are added only when you activate a chat, turn on auto-add, or extract a highlight yourself.
+- **Encrypted transmission** - all data moves over HTTPS.
+- **Authentication** - access requires you to be logged in.
+- **Bucket isolation** - memories stay separated by bucket for different contexts.
 
 ### Permissions
-The extension requires certain permissions to function:
-- **Storage**: To cache authentication and preferences
-- **Host Access**: To inject UI into supported AI platforms
-- **Cookies**: To maintain your login session
+
+The extension needs a few browser permissions to work:
+
+- **Storage** - cache your authentication and preferences.
+- **Host access** - inject the panel into supported AI sites.
+- **Cookies** - keep your login session.
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="Button not appearing">
-    Make sure you're on a supported platform and the extension is enabled. Try refreshing the page.
+    Make sure you are on a supported platform and the extension is enabled, then refresh the page.
   </Accordion>
   <Accordion title="Memories not loading">
-    Check that you're signed in to your MemoryPlugin account and have an active internet connection.
+    Check that you are signed in to your MemoryPlugin account and have a working connection.
   </Accordion>
   <Accordion title="Sync not working">
-    Ensure you're signed in to both ChatGPT and MemoryPlugin, and that you have memories in ChatGPT to sync.
+    The Sync tab needs you signed in to both MemoryPlugin and the source platform. If you see "You might not be logged in", open that platform in a new tab, sign in, then come back and refresh.
   </Accordion>
   <Accordion title="Extension permissions">
-    Make sure the extension has permission to run on the AI platform websites you're using.
+    Confirm the extension is allowed to run on the AI sites you use.
   </Accordion>
   <Accordion title="Memory not being added">
-    Ensure the AI's response contains the proper format: `to=memoryplugin&&memory=[text]`
+    The AI's response has to contain the marker `to=memoryplugin&&memory=[text]` (or `tool=memoryplugin&&memory=...` on ChatGPT). Ask it again to remember the item if it did not.
   </Accordion>
   <Accordion title="Canvas mode issues">
-    The extension adapts to ChatGPT's Canvas mode - refresh if buttons don't appear correctly.
+    The extension adapts to ChatGPT's Canvas mode. Refresh if the buttons do not appear correctly.
   </Accordion>
 </AccordionGroup>
 

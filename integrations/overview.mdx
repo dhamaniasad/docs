@@ -2,13 +2,13 @@
 title: 'Integration Options'
 description: 'Choose the best way to integrate MemoryPlugin with your AI tools'
 icon: 'puzzle-piece'
-author: "asad"
-lastUpdated: "2026-03-24"
+author: "Alara"
+lastUpdated: "2026-07-04"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="asad" lastUpdated="2026-03-24" />
+<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
 
 MemoryPlugin offers multiple integration methods to fit your workflow. Each option has its own strengths - choose based on your needs and technical comfort level.
 
@@ -17,7 +17,7 @@ MemoryPlugin offers multiple integration methods to fit your workflow. Each opti
 | Integration | Best For | Setup Time | Platforms |
 |------------|----------|------------|-----------|
 | **Custom GPT** | ChatGPT users who want instant setup | 30 seconds | ChatGPT (web, desktop & mobile apps) |
-| **Browser Extension** | Best overall experience | 2 minutes | 16+ platforms (desktop & mobile) |
+| **Browser Extension** | Best overall experience | 2 minutes | 21+ platforms (desktop & mobile) |
 | **MCP Server** | MCP ecosystem users | 5 minutes | 100+ MCP clients (including some mobile) |
 | **Remote MCP Server** | MCP users without Node.js | 2 minutes | 100+ MCP clients |
 | **TypingMind Plugin** | TypingMind users | 1 minute | TypingMind |
@@ -106,7 +106,6 @@ MemoryPlugin offers multiple integration methods to fit your workflow. Each opti
   </Tab>
   <Tab title="Cons">
     - ChatGPT only
-    - Currently available to all users (OpenAI may restrict to paying users in future)
     - Limited customization
   </Tab>
 </Tabs>
@@ -114,13 +113,18 @@ MemoryPlugin offers multiple integration methods to fit your workflow. Each opti
 ### Browser Extension
 **[Install Extension →](/integrations/browser-extension)**
 
+<Frame caption="The browser extension panel, showing your buckets and memories right alongside the AI you are chatting with.">
+  <img className="block dark:hidden" src="/images/screenshots/extension/panel-v4.png" alt="The MemoryPlugin browser extension panel open next to an AI chat" />
+  <img className="hidden dark:block" src="/images/screenshots/extension/panel-v4-dark.png" alt="The MemoryPlugin browser extension panel open next to an AI chat" />
+</Frame>
+
 <Tabs>
   <Tab title="Pros">
     - Rich visual interface with bucket switching
-    - Works with 16+ AI platforms
+    - Works with 21+ AI platforms
     - Best user experience with full UI
     - Works on desktop and mobile (iOS Safari, [Quetta Browser](https://play.google.com/store/apps/details?id=net.quetta.browser))
-    - Chat history sync for ChatGPT, Claude, Gemini, Grok, and DeepSeek
+    - Chat history sync for ChatGPT, Claude, Gemini, Grok, DeepSeek, and TypingMind
     - Quick inject button for easy activation
   </Tab>
   <Tab title="Cons">
@@ -138,7 +142,7 @@ MemoryPlugin offers multiple integration methods to fit your workflow. Each opti
     - Works with 100+ MCP-compatible tools
     - Broad ecosystem compatibility
     - Standard protocol implementation
-    - Once configured, works seamlessly
+    - Once configured, runs without further clicks
   </Tab>
   <Tab title="Cons">
     - No visual UI
@@ -178,6 +182,10 @@ MemoryPlugin offers multiple integration methods to fit your workflow. Each opti
   
   <Accordion title="I use MCP-compatible tools" icon="plug">
     Set up the **[MCP Server](/integrations/mcp-server)** if you're already using Claude Desktop, Cline, Continue, or any of the 100+ MCP-compatible clients.
+  </Accordion>
+
+  <Accordion title="Can I combine them?" icon="circle-plus">
+    Yes, and on Claude it is the recommended setup: the **remote MCP server** lets Claude call your memory tools itself, and the **browser extension** keeps your chats syncing into chat history. The integrations share one memory, so mixing them never creates duplicates. Remember that ongoing chat history sync always needs the extension, whichever integration you read memories through.
   </Accordion>
   
   <Accordion title="I'm a developer" icon="code">
