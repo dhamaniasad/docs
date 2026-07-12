@@ -1,0 +1,31 @@
+---
+title: "How do I find my API token?"
+sidebarTitle: "Find your API token"
+description: "Where the token lives, and what to do if it leaks"
+icon: "key"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+In your [dashboard](https://memoryplugin.com/dashboard), open **Settings** → **Integrations** and copy your token from there.
+
+You need the token for the [local MCP server](/integrations/mcp-server), the [TypingMind plugin](/integrations/typingmind-plugin), [custom GPTs](/integrations/custom-gpt-integration), and [direct API access](/integrations/api-integration). The [remote MCP server](/integrations/remote-mcp-server) and the browser extension sign in with your account instead, so they don't need it.
+
+<Warning>
+Treat the token like a password. It grants full access to your memories and chat history. If it leaks, regenerate it from the same **Settings** → **Integrations** tab; the old token stops working immediately.
+</Warning>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
+    Endpoints, authentication, and response shapes
+  </Card>
+  <Card title="Connect your AI" icon="plug" href="/integrations/overview">
+    Every way to hook MemoryPlugin up to your tools
+  </Card>
+</CardGroup>

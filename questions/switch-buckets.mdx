@@ -1,0 +1,51 @@
+---
+title: "How do I switch or create memory buckets?"
+sidebarTitle: "Switch or create buckets"
+description: "Point a conversation at the right set of memories, and make new buckets when you need them"
+icon: "folder"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+**To switch:** open the extension panel and pick a bucket from the dropdown under the header. Do it before you inject, so the AI gets the right context for the conversation. **To create:** use the bucket selector at the top of the dashboard sidebar.
+
+## Switching buckets
+
+- **Browser extension:** click the floating MemoryPlugin button, then choose from the **Bucket** dropdown (defaults to **All Memories**).
+- **Dashboard:** the bucket selector sits at the top of the sidebar. Press **⌘B / Ctrl+B** to open it from the keyboard.
+- **MCP server or Custom GPT:** just ask, for example "Load memories from my Work bucket."
+
+## Creating a bucket
+
+<Steps>
+  <Step title="Open the bucket selector">
+    In your [dashboard](https://memoryplugin.com/dashboard), click the bucket selector at the top of the sidebar.
+  </Step>
+  <Step title="Choose the type">
+    Click **New Memory Bucket** (or **New File Bucket** for uploaded documents).
+  </Step>
+  <Step title="Name it and create">
+    Type a name like "Work Projects", then click **Create Bucket**. Names must be unique and cannot be digits only.
+  </Step>
+</Steps>
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/create-bucket-and-add-memory.mp4"></video>
+
+<Info>
+Every account starts with a **General** bucket, and new memories land there by default. There is no limit on how many buckets you can create.
+</Info>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Memory Buckets" icon="folder" href="/features/memory-buckets">
+    The full bucket model: renaming, moving memories, deleting, limits
+  </Card>
+  <Card title="Bulk Operations" icon="list" href="/features/bulk-operations">
+    Move many memories between buckets at once
+  </Card>
+</CardGroup>

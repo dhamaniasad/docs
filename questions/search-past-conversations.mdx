@@ -1,0 +1,46 @@
+---
+title: "How do I search my past AI conversations?"
+sidebarTitle: "Search past chats"
+description: "Find any synced conversation without leaving the page, or from the dashboard"
+icon: "magnifying-glass"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+Press **Cmd+Shift+K** (**Ctrl+Shift+K** on Windows and Linux) on any supported AI site. The Chat History modal opens right there, searching across everything you've synced or imported.
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/chat-history-search.mp4"></video>
+
+## In the extension
+
+Use the shortcut above, or open the panel and click the **History** tab. From the modal you can:
+
+- Search across your synced conversations
+- Filter by provider (Claude, ChatGPT, Gemini, Grok, DeepSeek, TypingMind) or **Starred**
+- Open a conversation, copy its transcript, or jump to the original
+- Generate an AI summary of a conversation, or extract specifics (Key decisions, Action items, Ruled-out ideas, Style rules, Technical specs)
+
+## In the dashboard
+
+The [Chat History dashboard](/features/chat-history/dashboard) has a **Search** tab with hybrid semantic and keyword search over your whole history, plus browsing, starring, and exclusions.
+
+For questions rather than lookups ("what did we decide about pricing?"), use [Ask](/features/ask): it synthesizes an answer from your history with citations, instead of handing you a list of matches.
+
+## Let the AI search for you
+
+You don't have to do the searching yourself. With **Chat History Recall** on (extension Settings) or the [Remote MCP Server](/integrations/remote-mcp-server) connected, the AI pulls relevant past context into the conversation on its own. See [Using Chat History](/features/chat-history/using).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Turn on auto-sync" icon="rotate" href="/questions/enable-auto-sync">
+    Search only finds what's synced
+  </Card>
+  <Card title="Ask" icon="message-question" href="/features/ask">
+    Get synthesized answers with citations
+  </Card>
+</CardGroup>

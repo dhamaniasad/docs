@@ -1,0 +1,53 @@
+---
+title: "How do I turn on auto-sync for my chat history?"
+sidebarTitle: "Turn on auto-sync"
+description: "Have the extension sync your conversations in the background, once an hour, per platform"
+icon: "rotate"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+Open the extension panel, go to the **Settings** tab, and flip on the platforms you want under **Background Sync**. From then on the extension syncs new conversations from each enabled platform once an hour, with no file exports involved.
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/enable-auto-sync.mp4"></video>
+
+## Steps
+
+<Steps>
+  <Step title="Open Settings">
+    Click the floating MemoryPlugin button on a supported site, then open the **Settings** tab in the panel.
+  </Step>
+  <Step title="Enable Background Sync per platform">
+    Toggle on the platforms you want: **Auto-sync ChatGPT**, **Claude**, **Gemini**, **Grok**, **DeepSeek**, or **TypingMind** conversations. Each platform has its own switch.
+  </Step>
+  <Step title="Check on it any time">
+    Use **View Sync Status & History** in the same section, or open the **Sync** tab to see what is synced and what isn't.
+  </Step>
+</Steps>
+
+<Note>
+Auto-sync needs you signed in to both MemoryPlugin and the source platform in that browser. Gemini sync is experimental and may break when Google changes things.
+</Note>
+
+## Syncing manually instead
+
+If you'd rather sync on your own schedule, open the **Sync** tab and use the **Sync** dropdown: **Sync All**, **Sync current page**, or **Choose chats...**. Progress shows as *"{x} of {y} unsynced chats"* and you can cancel mid-run.
+
+## Have a big backlog?
+
+For hundreds of old conversations, uploading an export file from the dashboard is faster than syncing chat by chat. See [Importing Chat History](/features/chat-history/importing).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
+    What syncing your history unlocks
+  </Card>
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    The full Sync tab and Settings reference
+  </Card>
+</CardGroup>

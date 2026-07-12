@@ -1,0 +1,48 @@
+---
+title: "How do I import my ChatGPT memories?"
+sidebarTitle: "Import ChatGPT memories"
+description: "Copy the memories ChatGPT has saved about you into MemoryPlugin in one click"
+icon: "download"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+With the [browser extension](/integrations/browser-extension) installed, open ChatGPT's saved-memories screen (**Settings** → **Personalization** → **Manage memories**) and click the **Sync Memories** button the extension adds there. Every memory ChatGPT has stored about you is copied into MemoryPlugin.
+
+## The short version
+
+<Steps>
+  <Step title="Open ChatGPT's memory settings">
+    In the browser where the extension is installed: **Settings** → **Personalization** → **Manage memories**. (OpenAI moves these around; you're looking for the screen that lists your saved memories.)
+  </Step>
+  <Step title="Click Sync Memories">
+    The button with the MemoryPlugin logo is added by the extension. It shows progress like **Syncing (3/12)...** as it copies.
+  </Step>
+  <Step title="Keep the tab open">
+    The sync runs in the page, so don't close the tab or switch conversations until it finishes.
+  </Step>
+</Steps>
+
+## Worth knowing
+
+- Imported memories land in your **General** bucket. Move them into other [buckets](/features/memory-buckets) afterward if you want.
+- Re-running the sync does not create duplicates, so it's safe to click again if you're unsure it finished.
+- Nothing is removed from ChatGPT. This is a copy, not a move.
+- This imports ChatGPT's **saved memories**, not your conversations. For those, see [Chat History](/features/chat-history/introduction).
+
+For screenshots and troubleshooting (like the button not appearing), see the [full walkthrough](/features/chatgpt-memory-import).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Full import walkthrough" icon="download" href="/features/chatgpt-memory-import">
+    Every step with screenshots and common issues
+  </Card>
+  <Card title="Import from a file" icon="arrow-right-arrow-left" href="/features/import-export">
+    Load memories from CSV or JSON instead
+  </Card>
+</CardGroup>

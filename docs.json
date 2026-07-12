@@ -35,6 +35,23 @@
             ]
           },
           {
+            "group": "Common Questions",
+            "pages": [
+              "questions/add-memories-to-a-chat",
+              "questions/save-a-memory",
+              "questions/auto-inject-memories",
+              "questions/enable-auto-sync",
+              "questions/search-past-conversations",
+              "questions/keep-a-chat-private",
+              "questions/switch-buckets",
+              "questions/turn-on-smart-memory",
+              "questions/import-chatgpt-memories",
+              "questions/export-my-memories",
+              "questions/find-api-token",
+              "questions/use-on-mobile"
+            ]
+          },
+          {
             "group": "Connect Your AI",
             "pages": [
               "integrations/overview",

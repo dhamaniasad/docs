@@ -1,0 +1,49 @@
+---
+title: "How do I save a new memory?"
+sidebarTitle: "Save a memory"
+description: "Three ways to get something into MemoryPlugin: ask the AI, highlight text, or type it yourself"
+icon: "floppy-disk"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+The fastest way: in an activated chat, tell the AI *"remember that I..."* and it saves the memory for you. There are three ways in total, and they all end up in the same place.
+
+## 1. Ask the AI (in an activated chat)
+
+Once you have [added your memories to a chat](/questions/add-memories-to-a-chat), the AI knows how to save. It adds a memory in two cases:
+
+- **You ask it to.** "Remember that my deadline is March 3."
+- **It decides something is worth keeping.** It saves important facts on its own as you chat.
+
+When the extension detects the save, it shows a confirmation toast (for example *Memory saved: "User prefers morning meetings"*).
+
+<Note>
+If the AI talked about remembering but no toast appeared, it did not emit the save marker. Just ask it again to remember the item.
+</Note>
+
+## 2. Highlight text with "Extract memory"
+
+Select at least 3 characters of text anywhere in a chat and a floating **Extract memory** pill appears. Click it and a toast confirms the save. This is the fastest way to keep one specific line from a conversation.
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/extract-memory-pill.mp4"></video>
+
+## 3. Type it yourself
+
+- **Extension:** open the panel, go to the **Memories** tab, and click **Add**.
+- **Dashboard:** press **⌘J / Ctrl+J** or click **New Memory** in the sidebar. For several at once, check **Bulk mode (one per line)** and paste one memory per line.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    How activation and the save marker work
+  </Card>
+  <Card title="Import & Export" icon="arrow-right-arrow-left" href="/features/import-export">
+    Load memories in bulk from a CSV or JSON file
+  </Card>
+</CardGroup>

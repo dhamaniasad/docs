@@ -1,0 +1,46 @@
+---
+title: "How do I keep MemoryPlugin out of a chat?"
+sidebarTitle: "Keep a chat private"
+description: "Have a conversation without memories, recall, or sync touching it"
+icon: "eye-slash"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+By default, MemoryPlugin only joins a chat when you invite it. If you never activate the chat, no memories go in. Here is how to stay in control of each piece.
+
+## Keep memories out
+
+- **Don't activate the chat.** No inject click, no memories. This is the default.
+- **Using auto-inject?** Every new chat shows an **Auto-injecting memories** prompt with a 5-second countdown. Click **Cancel** and that conversation stays memory-free.
+
+## Keep chat history recall out
+
+With **Chat History Recall** on, the AI can pull context from your past chats. Two ways to stop it:
+
+- **For one message:** include `#nohistory` anywhere in the message.
+- **Per chat:** when the **Add chat history context?** prompt appears before sending, choose **Skip this chat**.
+
+## Keep a conversation out of sync
+
+- **Before it happens:** auto-sync is off by default and per platform. Leave a platform's toggle off in Settings under **Background Sync**, and sync manually with **Choose chats...** to hand-pick what goes in.
+- **After it's synced:** exclude the conversation from the [Chat History dashboard](/features/chat-history/dashboard#excluding-chats). Excluding deletes the chat's content and vectors and stops it from ever being re-imported; a placeholder with the title remains so you can undo later.
+
+<Note>
+**Exclude** stops a chat from coming back on future syncs and uploads. **Delete** just removes it now, and it can return the next time that conversation syncs.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Chat History dashboard" icon="table-columns" href="/features/chat-history/dashboard">
+    Exclusions, deletion, and managing synced chats
+  </Card>
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    All the settings in one place
+  </Card>
+</CardGroup>

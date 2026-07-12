@@ -1,0 +1,47 @@
+---
+title: "How do I add memories to new chats automatically?"
+sidebarTitle: "Auto-inject in new chats"
+description: "Turn on auto-inject so every new conversation starts with your memories, no click needed"
+icon: "wand-magic-sparkles"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+Open the extension panel, go to the **Settings** tab, and turn on **Automatically add memories in new conversations**. That's it: when you send your first message in a new chat, your memories go in without you clicking anything.
+
+## What it looks like
+
+When you send the first message of a new chat, the extension shows an **Auto-injecting memories** prompt with a 5-second countdown and a **Cancel** button, then injects. The countdown is your escape hatch: hit **Cancel** for any conversation you want to keep memory-free.
+
+## Steps
+
+<Steps>
+  <Step title="Open Settings">
+    Click the floating MemoryPlugin button on a supported site, then open the **Settings** tab.
+  </Step>
+  <Step title="Turn on the toggle">
+    Enable **Automatically add memories in new conversations**.
+  </Step>
+  <Step title="Pick your bucket">
+    Auto-inject uses the bucket selected in the panel dropdown, so keep the right one selected for what you're working on.
+  </Step>
+</Steps>
+
+<Note>
+Auto-inject covers new conversations. For a chat that's already underway, activate it manually with the inject button or the **Add Memories** pill.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Add memories to a chat" icon="bolt" href="/questions/add-memories-to-a-chat">
+    The manual activation flow
+  </Card>
+  <Card title="Keep a chat private" icon="eye-slash" href="/questions/keep-a-chat-private">
+    Keeping MemoryPlugin out of specific conversations
+  </Card>
+</CardGroup>

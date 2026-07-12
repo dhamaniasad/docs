@@ -1,0 +1,45 @@
+---
+title: "How do I export my memories?"
+sidebarTitle: "Export memories"
+description: "Take your memories out as CSV, JSON, or text, or copy them straight into another AI"
+icon: "file-export"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+Click **Export** in the memory list header on your [dashboard](https://memoryplugin.com/dashboard). You can copy everything to the clipboard with AI instructions attached, or download the bucket as CSV, JSON, or plain text. Your data is yours; take a copy whenever you like.
+
+## Steps
+
+<Steps>
+  <Step title="Select a bucket">
+    Export covers the currently selected bucket. To export only specific memories, use **Select Multiple** first and check the ones you want; the button becomes **Export Selected ({n})**.
+  </Step>
+  <Step title="Open the export dialog">
+    Click **Export** in the memory list header.
+  </Step>
+  <Step title="Copy or download">
+    **Copy to Clipboard** copies your memories with AI instructions, ready to paste into a chat with any AI tool. Or download a file: **CSV** for spreadsheets and backups, **JSON** for re-importing later, **Text** for anything that takes plain text.
+  </Step>
+</Steps>
+
+A CSV export carries `text`, `createdAt`, `bucketName`, and `categoryName`, so timestamps, buckets, and Smart Memory categories survive the round trip.
+
+## Exporting a conversation
+
+Chat history exports too: in the dashboard's Chats list, open a conversation's **⋮** menu and choose **Export as Markdown** or **Export as JSON** to download that chat as a file.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Import & Export" icon="arrow-right-arrow-left" href="/features/import-export">
+    Formats, re-importing, and backup tips
+  </Card>
+  <Card title="Bulk Operations" icon="list" href="/features/bulk-operations">
+    Select many memories at once
+  </Card>
+</CardGroup>

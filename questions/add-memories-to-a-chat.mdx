@@ -1,0 +1,54 @@
+---
+title: "How do I add my memories to a chat?"
+sidebarTitle: "Add memories to a chat"
+description: "Activate MemoryPlugin in a conversation so the AI can read your memories"
+icon: "bolt"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+Click the MemoryPlugin button in the chat composer (or the **Add Memories** pill above the floating button) before you send your first message. That one click pastes your memories and the saving instructions into the chat.
+
+<Warning>
+The extension does not inject memories on its own by default. Until you activate a chat, the AI cannot read your memories or save new ones in that conversation.
+</Warning>
+
+## Steps
+
+<Steps>
+  <Step title="Pick a bucket">
+    Open the panel with the floating MemoryPlugin button and choose a bucket from the dropdown (it defaults to **All Memories**). The AI gets the memories from whichever bucket is selected.
+  </Step>
+  <Step title="Activate the chat">
+    Click the quick inject button inline in the composer (tooltip: *"Inject Memories from chosen Bucket"*). On platforms where the inline button doesn't fit, click the glass **Add Memories** pill above the floating button instead.
+  </Step>
+  <Step title="Send your message">
+    Your memories plus instructions for saving new ones are now part of the conversation. From here the AI knows you.
+  </Step>
+</Steps>
+
+## What actually gets added
+
+Activation pastes two things into the composer:
+
+1. Your memories from the chosen bucket.
+2. Instructions telling the AI what MemoryPlugin is and how to save new memories.
+
+## Skip the manual click
+
+Turn on **Automatically add memories in new conversations** in the extension's Settings tab. See [How do I add memories to new chats automatically?](/questions/auto-inject-memories)
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    The full guide to the panel, injection, and settings
+  </Card>
+  <Card title="Memory Buckets" icon="folder" href="/features/memory-buckets">
+    Keep work, personal, and project memories separate
+  </Card>
+</CardGroup>
