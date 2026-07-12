@@ -1,0 +1,53 @@
+---
+title: "How do I import my chat history?"
+sidebarTitle: "Import chat history"
+description: "Upload your ChatGPT, Claude, TypingMind, or Grok export, or sync chats with the extension"
+icon: "cloud-arrow-up"
+author: "Alara"
+lastUpdated: "2026-07-12"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+
+Export your history from the platform as JSON, then upload it on the [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history) under the **Import** tab. That's the fastest way to bring in your whole back catalog. For chats going forward, turn on [auto-sync](/questions/enable-auto-sync) in the extension so you never export by hand again.
+
+## Steps
+
+<Steps>
+  <Step title="Export from your platform">
+    - **ChatGPT:** follow the <a href="https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data" target="_blank" rel="noopener noreferrer">ChatGPT export guide</a> and grab `conversations.json`. Large exports come split into several files; select all of them at once.
+    - **Claude:** follow the <a href="https://support.claude.com/en/articles/9450526-how-can-i-export-my-claude-data" target="_blank" rel="noopener noreferrer">Claude export guide</a> and grab `conversations.json`.
+    - **TypingMind:** upload each file from the export's `chunks/` folder separately.
+    - **Grok:** export from your <a href="https://x.ai/account" target="_blank" rel="noopener noreferrer">xAI account settings</a>.
+    - **Gemini or DeepSeek:** no file export; these come in through [online sync](/questions/enable-auto-sync) in the extension.
+  </Step>
+  <Step title="Upload it">
+    On the [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history), open the **Import** tab, click **New Import**, pick your platform, and drop in the JSON file (up to 1 GB per file, multiple files at once is fine).
+  </Step>
+  <Step title="Let it process">
+    Processing keeps running even if you close the tab. Large exports can take hours; track progress in the Imports tab.
+  </Step>
+</Steps>
+
+<video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/import-chat-history.mp4"></video>
+
+## Worth knowing
+
+- **Duplicates are handled for you.** Re-uploading the same file, or syncing chats you already imported, won't create duplicates.
+- **On the Core plan** you pick how many chats to import (quota is 500 searchable chats from one platform). Pro has no limit. Importing your most recent conversations first is the easy way to stay within quota.
+- **File upload is a one-time import.** Ongoing capture always runs through the [browser extension's sync](/questions/enable-auto-sync); MCP clients and the Custom GPT can recall your history but never capture it.
+
+For per-platform details and quota management, see the [full importing guide](/features/chat-history/importing).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Turn on auto-sync" icon="rotate" href="/questions/enable-auto-sync">
+    Keep new conversations flowing in automatically
+  </Card>
+  <Card title="Search past chats" icon="magnifying-glass" href="/questions/search-past-conversations">
+    Put the imported history to work
+  </Card>
+</CardGroup>

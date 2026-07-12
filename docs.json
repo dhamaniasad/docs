@@ -41,6 +41,7 @@
               "questions/save-a-memory",
               "questions/auto-inject-memories",
               "questions/enable-auto-sync",
+              "questions/import-chat-history",
               "questions/search-past-conversations",
               "questions/keep-a-chat-private",
               "questions/switch-buckets",
