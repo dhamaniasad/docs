@@ -3,13 +3,13 @@ title: "MCP Server (local)"
 description: "Run MemoryPlugin as a local MCP process so any MCP client can read and write your memory"
 icon: "server"
 author: "Alara"
-lastUpdated: "2026-07-04"
+lastUpdated: "2026-08-07"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 import EmailIndependence from '/snippets/email-independence.mdx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-07" />
 
 The Model Context Protocol (MCP) lets AI clients call external tools. MemoryPlugin ships an MCP server, so any MCP client can store and recall your memory and chat history through it. This page covers the **local** server, which runs on your machine via Node.js.
 
@@ -46,10 +46,10 @@ You do not install the server like an app. You add a config entry to your MCP cl
 
 <Steps>
   <Step title="Copy your auth token">
-    In the [MemoryPlugin dashboard](https://memoryplugin.com/dashboard), open the account menu and go to **Settings → Integrations**. Under **Authentication Token**, click **Copy** to copy **Your Auth Token**.
+    In the MemoryPlugin dashboard, click **Connect** in the sidebar and open the **Access** tab. Under **Authentication Token**, click **Copy** to copy **Your Auth Token**. Direct link: [memoryplugin.com/dashboard/connect?tab=access](https://memoryplugin.com/dashboard/connect?tab=access).
 
-    <Frame caption="Settings → Integrations: copy Your Auth Token, or regenerate it if it ever leaks.">
-      <img src="/images/screenshots/tools/settings-integrations.png" alt="Settings modal with the Integrations tab active, showing the masked Authentication Token field with Copy and Regenerate buttons" />
+    <Frame caption="Connect → Access: copy Your Auth Token, or regenerate it if it ever leaks.">
+      <img src="/images/screenshots/tools/connect-access-token.png" alt="The Connect page with the Access tab active, showing the Authentication Token field with Copy and Regenerate buttons" />
     </Frame>
 
     <Warning>
@@ -183,7 +183,7 @@ Chat History recall returns about 600 tokens of context by default, up to a hard
     Confirm Node.js is installed and on your PATH. Run `node --version` in a terminal; you should see a version like `v20.10.0`.
   </Accordion>
   <Accordion title="Auth token invalid">
-    Recopy the token from **Settings → Integrations** and make sure you pasted the whole string. If in doubt, click **Regenerate** and update your config with the new token.
+    Recopy the token from **Connect → Access** and make sure you pasted the whole string. If in doubt, click **Regenerate** and update your config with the new token.
   </Accordion>
   <Accordion title="MCP server not connecting">
     1. Check the config file for typos.

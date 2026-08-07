@@ -2,12 +2,12 @@
 title: 'API Introduction'
 description: 'Learn how to integrate with the MemoryPlugin API'
 author: "Alara"
-lastUpdated: "2026-07-04"
+lastUpdated: "2026-08-07"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-07" />
 
 ## Welcome to the MemoryPlugin API
 
@@ -31,7 +31,7 @@ https://www.memoryplugin.com
 
 ## Authentication
 
-Every endpoint requires your API token. Get it from the [dashboard](https://memoryplugin.com/dashboard): open **Settings** → **Integrations** and copy your token.
+Every endpoint requires your API token. Get it from the [dashboard](https://memoryplugin.com/dashboard/connect?tab=access): click **Connect** in the sidebar, open the **Access** tab, and copy your token.
 
 Include it as a bearer token in the request headers:
 
@@ -39,7 +39,7 @@ Include it as a bearer token in the request headers:
 Authorization: Bearer YOUR_API_TOKEN
 ```
 
-Treat the token like a password. It grants full access to your memories and chat history, and you can regenerate it from the same settings tab if it leaks.
+Treat the token like a password. It grants full access to your memories and chat history, and you can regenerate it from the same Access tab if it leaks.
 
 ## Response Format
 

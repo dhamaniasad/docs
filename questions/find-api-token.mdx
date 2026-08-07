@@ -4,19 +4,23 @@ sidebarTitle: "Find your API token"
 description: "Where the token lives, and what to do if it leaks"
 icon: "key"
 author: "Alara"
-lastUpdated: "2026-07-12"
+lastUpdated: "2026-08-07"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-07" />
 
-In your [dashboard](https://memoryplugin.com/dashboard), open **Settings** → **Integrations** and copy your token from there.
+In your dashboard, click **Connect** in the sidebar and open the **Access** tab. Your token is under **Authentication Token**; click **Copy**. Direct link: [memoryplugin.com/dashboard/connect?tab=access](https://memoryplugin.com/dashboard/connect?tab=access).
+
+<Note>
+The token used to live under Settings → Integrations. It moved to Connect when the Connect page launched, and Settings no longer has an Integrations tab.
+</Note>
 
 You need the token for the [local MCP server](/integrations/mcp-server), the [TypingMind plugin](/integrations/typingmind-plugin), [custom GPTs](/integrations/custom-gpt-integration), and [direct API access](/integrations/api-integration). The [remote MCP server](/integrations/remote-mcp-server) and the browser extension sign in with your account instead, so they don't need it.
 
 <Warning>
-Treat the token like a password. It grants full access to your memories and chat history. If it leaks, regenerate it from the same **Settings** → **Integrations** tab; the old token stops working immediately.
+Treat the token like a password. It grants full access to your memories and chat history. If it leaks, click **Regenerate** on the same **Access** tab; the old token stops working immediately.
 </Warning>
 
 ## Related
