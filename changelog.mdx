@@ -10,17 +10,18 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 
 <ArticleInfo author="Alara" lastUpdated="2026-08-08" />
 
-<Update label="August 2026" description="Claude's New Export Format, ChatGPT Capture Fix, Smoother MCP Connections" tags={["Features", "Improvements"]}>
+<Update label="August 2026" description="Claude's New Export Format, Import Emails, ChatGPT Capture Fix, Smoother MCP Connections" tags={["Features", "Improvements"]}>
   ### Claude's chunked exports now import cleanly
   Claude changed its data export format: larger accounts get a manifest file plus several ZIP archives instead of one JSON. The importer now understands all of it. Select every ZIP at once and upload them together; the import modal walks you through where the files come from. And if you upload the manifest itself by mistake, the error tells you exactly what it is and what to upload instead.
 
-  Imports also email you now: one message when processing starts and one when it finishes, with any problems listed by file. Start a big import and close the tab.
+  ### Imports email you now
+  Large imports can take hours, so you no longer have to babysit them: you get one email when processing starts and one when it finishes, with any problem files listed. Start the import, close the tab, come back when it's done.
 
-  ### ChatGPT memory capture fixed, and this class of breakage now gets fixed remotely (Extension v4.2.1 and v4.2.2)
-  In early August ChatGPT changed the structure of its conversation page, which quietly stopped the extension from seeing new replies and the save commands inside them. v4.2.1 fixes capture so it follows the conversation as it grows. v4.2.2 goes further: every supported platform's conversation container can now be repaired remotely when a site redesigns, so the fix ships the moment it's ready instead of waiting on an extension store review. Open tabs pick it up within about an hour, no reload needed.
+  ### ChatGPT memory capture fixed (Extension v4.2.1 and v4.2.2)
+  In early August ChatGPT redesigned its conversation page, which quietly stopped the extension from saving new memories there. v4.2.1 fixes it. v4.2.2 makes the whole category of breakage less painful: when any supported site redesigns, we can now ship the repair server-side, so it reaches you in about an hour instead of waiting days for an extension store review.
 
   ### Smoother MCP connections
-  MCP clients can now discover the remote server before you sign in, and the default authorization scope includes memory writes, so a freshly connected tool can save memories right away instead of hitting a permissions error. Every tool also carries a proper display title, so tool lists in Claude, Cursor, and other clients read like features instead of function names.
+  Three fixes for connecting AI tools over MCP: newly connected tools can save memories right away instead of hitting a permissions error, some clients that failed during sign-in because of an overly strict handshake check now connect fine, and tools show clean display names in Claude, Cursor, and other clients instead of function names.
 
   ### Claude Memory Visualizer
   A new free tool that turns Claude's exported memory file into something you can actually read. Try it at [memoryplugin.com/tools/claude-memory-export](https://www.memoryplugin.com/tools/claude-memory-export).
@@ -34,7 +35,14 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   ### MemoryPlugin Sync: your coding chats, in your memory
   Claude Code, Codex, and Cursor conversations live in files on your Mac, invisible to every other AI tool you use. **MemoryPlugin Sync**, our new macOS desktop app, changes that. Sign in, tick the projects and chats you want, and it keeps them synced into your chat history in the background from then on. Privacy is the point: only your prompts and the assistant's replies sync. Tool output, file contents, terminal commands, and thinking never leave your machine.
 
-  The app moved fast after its July 8 launch. By month's end it had grown an embedded version of the full dashboard (memories, Ask, chat history, and imports without opening a browser) and a global **⌘⇧K** search that works from any app on your Mac and searches your entire synced history, ChatGPT and Claude chats included, not just coding tools.
+  The app moved fast after its July 8 launch, and by month's end it had grown into much more than a sync tool:
+
+  - **The full dashboard, embedded** - memories, Ask, chat history, and imports in the app, no browser needed.
+  - **Global search with ⌘⇧K** - a search window that opens over any app on your Mac and covers your entire synced history, ChatGPT and Claude chats included, not just coding tools. Filter by tool, jump to the chat in MemoryPlugin or on the platform it came from.
+  - **Projects stay attached** - every synced coding chat carries its repo or project name, and the dashboard's chat history gets a Project filter to match.
+  - **Focused sync** - by default the app syncs your prompts and each turn's final answer; the agent's play-by-play stays local. Turn it off if you want everything.
+  - **Full per-chat control** - pause auto-sync from the menu bar, exclude any chat, or **Remove from MemoryPlugin** to delete it from your history and stop it syncing again (the local file stays put).
+  - **Signed, notarized, and self-updating** - the app checks for updates daily and installs them only when you say so.
 
   [Download for macOS](https://www.memoryplugin.com/download) (Apple Silicon, macOS 12 or later; Intel and Windows are on the way). Syncing requires Pro; browsing your local chats in the app is free. Read the announcement: [Meet MemoryPlugin Sync](https://blog.memoryplugin.com/meet-memoryplugin-sync/), or see the [desktop app docs](/integrations/desktop-app).
 
@@ -61,10 +69,13 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   - **Errors that name the fix** - upload the wrong file from an export (like `memories.json`) and the message tells you what that file is and which one to upload instead.
   - **Paste text as memories** - a new tab in the Import Memories dialog: paste notes or markdown, and an AI pass splits them into individual memories you review before saving.
   - **Friendlier import files** - memory imports accept a simple `memory` column, plain one-per-line text files, and come with downloadable CSV and JSON samples.
-  - **Project names on coding chats** - conversations synced from Claude Code, Codex, and Cursor carry their project name, with a Project filter in chat history.
+  - **A redesigned Import Memories dialog** that confirms which bucket you're saving to before anything is written.
 
   ### A hub of free tools
   A new hub at [memoryplugin.com/tools](https://www.memoryplugin.com/tools) collects free, no-signup utilities that run entirely in your browser: converters that turn ChatGPT, Claude, Grok, and TypingMind exports into clean Markdown (plus PDF and Obsidian flavors for ChatGPT), an AI chat export viewer, a Claude Code session viewer, a ChatGPT memory exporter, an AI code extractor, and **AI Wrapped**, a year-in-review for your AI usage. Nothing you load into them is uploaded anywhere.
+
+  ### The Trust page
+  "Can you read my chats?" is a fair question to ask any memory product, so we answered it in public. [memoryplugin.com/trust](https://www.memoryplugin.com/trust) covers what we store, what we never see, and what leaves your machine, in plain language rather than legal boilerplate.
 
   ### MCP server: open source and in the registry
   - The MCP server is now **open source** at [github.com/memoryplugin/mcp-server](https://github.com/memoryplugin/mcp-server) and published on npm as `@memoryplugin/mcp-server`.
@@ -85,6 +96,8 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 
   ### Fixes
   - **Gemini conversations keep all their turns** - synced Gemini chats were collapsing to a single exchange; they now keep the full conversation in order, and existing imports were repaired.
+  - **Summaries unblocked** - some conversations were wrongly flagged as too large to summarize; that's fixed, including for chats already in your history.
+  - **Fewer transient errors** - momentary database hiccups in the dashboard now retry automatically instead of surfacing as errors.
   - **Activity heatmap** no longer times out on accounts with years of history.
 </Update>
 
