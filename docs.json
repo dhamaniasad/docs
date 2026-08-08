@@ -57,6 +57,7 @@
             "pages": [
               "integrations/overview",
               "integrations/browser-extension",
+              "integrations/desktop-app",
               "integrations/remote-mcp-server",
               "integrations/mcp-server",
               "integrations/custom-gpt",

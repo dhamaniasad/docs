@@ -3,12 +3,12 @@ title: "Memory Suggestions"
 description: "AI-suggested cleanups for your memories: remove duplicates, combine related ones, update stale ones"
 icon: "wand-magic-sparkles"
 author: "Alara"
-lastUpdated: "2026-07-04"
+lastUpdated: "2026-08-08"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-08" />
 
 Add memories for a few months and a bucket gets messy. You save "I use TypeScript" three times in slightly different words. Two memories say almost the same thing and could be one. A fact that used to be true has drifted. Memory Suggestions is the cleanup pass: MemoryPlugin scans a bucket, finds these cases, and proposes fixes for you to approve or reject.
 
@@ -38,10 +38,10 @@ Accepting shows a short confirmation ("Memory removed", "Memories combined", or 
 
 <Steps>
   <Step title="Open Suggestions">
-    Go to **Suggestions** in the sidebar. It sits under the memory section.
+    Select the bucket you want to clean up, then click **Suggestions** in the memory list header, next to **Select Multiple**. (The button is hidden on buckets that were shared with you.)
   </Step>
-  <Step title="Pick a bucket and find suggestions">
-    Choose a bucket and click **Find suggestions**. MemoryPlugin analyzes the bucket ("Looking through your memories..."), which usually takes a minute or two.
+  <Step title="Find suggestions">
+    Click **Find suggestions**. MemoryPlugin analyzes the bucket ("Looking through your memories..."), which usually takes a minute or two.
   </Step>
   <Step title="Review each card">
     Suggestions appear as cards. Go through them one at a time, accepting or rejecting each.
@@ -61,9 +61,9 @@ Accepting shows a short confirmation ("Memory removed", "Memories combined", or 
   <img className="hidden dark:block" src="/images/screenshots/tools/suggestions-page-dark.png" alt="Suggestions page showing a Remove card, a Combine card, and an Update card, each with accept and reject actions" />
 </Frame>
 
-## The pending badge in the sidebar
+## The pending badge
 
-You don't have to remember to visit the page. When the selected bucket has suggestions waiting, the **Suggestions** item in the sidebar shows an **amber count badge**. That number is your pile of pending cleanups. When it's gone, you're caught up.
+You don't have to remember to visit the page. When the bucket you have open has suggestions waiting, the **Suggestions** button in the memory list header shows an **amber count badge**. That number is your pile of pending cleanups for that bucket. When it's gone, you're caught up.
 
 ## What it skips
 

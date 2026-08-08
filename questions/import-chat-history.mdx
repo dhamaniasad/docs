@@ -1,33 +1,32 @@
 ---
 title: "How do I import my chat history?"
 sidebarTitle: "Import chat history"
-description: "Upload your ChatGPT, Claude, TypingMind, or Grok export, or sync chats with the extension"
+description: "Upload your ChatGPT, Claude, or TypingMind export, or sync chats with the extension"
 icon: "cloud-arrow-up"
 author: "Alara"
-lastUpdated: "2026-07-12"
+lastUpdated: "2026-08-08"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-08" />
 
-Export your history from the platform as JSON, then upload it on the [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history) under the **Import** tab. That's the fastest way to bring in your whole back catalog. For chats going forward, turn on [auto-sync](/questions/enable-auto-sync) in the extension so you never export by hand again.
+Export your history from the platform, then upload it on the [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history) via the **Import chats** button. ZIP archives work exactly as the platform gives them to you. That's the fastest way to bring in your whole back catalog. For chats going forward, turn on [auto-sync](/questions/enable-auto-sync) in the extension so you never export by hand again.
 
 ## Steps
 
 <Steps>
   <Step title="Export from your platform">
     - **ChatGPT:** follow the <a href="https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data" target="_blank" rel="noopener noreferrer">ChatGPT export guide</a> and grab `conversations.json`. Large exports come split into several files; select all of them at once.
-    - **Claude:** follow the <a href="https://support.claude.com/en/articles/9450526-how-can-i-export-my-claude-data" target="_blank" rel="noopener noreferrer">Claude export guide</a> and grab `conversations.json`.
+    - **Claude:** follow the <a href="https://support.claude.com/en/articles/9450526-how-can-i-export-my-claude-data" target="_blank" rel="noopener noreferrer">Claude export guide</a>. Large exports arrive as several ZIPs linked from a manifest file: download every ZIP and upload them all together (not the manifest).
     - **TypingMind:** upload each file from the export's `chunks/` folder separately.
-    - **Grok:** export from your <a href="https://x.ai/account" target="_blank" rel="noopener noreferrer">xAI account settings</a>.
-    - **Gemini or DeepSeek:** no file export; these come in through [online sync](/questions/enable-auto-sync) in the extension.
+    - **Grok, Gemini, or DeepSeek:** no file upload; these come in through [online sync](/questions/enable-auto-sync) in the extension.
   </Step>
   <Step title="Upload it">
-    On the [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history), open the **Import** tab, click **New Import**, pick your platform, and drop in the JSON file (up to 1 GB per file, multiple files at once is fine).
+    On the [Chat History dashboard](https://memoryplugin.com/dashboard/chat-history), click **Import chats**, then **New Import**, pick your platform, and drop in your export (ZIP up to 512 MB or JSON up to 1 GB per file, multiple files at once is fine).
   </Step>
   <Step title="Let it process">
-    Processing keeps running even if you close the tab. Large exports can take hours; track progress in the Imports tab.
+    Processing keeps running even if you close the tab. Large exports can take hours; we email you when processing starts and when it finishes, and you can track progress on the Imports page.
   </Step>
 </Steps>
 

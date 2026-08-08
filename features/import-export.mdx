@@ -3,39 +3,42 @@ title: "Import & Export"
 description: "Bring memories in from a file, or take them out for backup and portability"
 icon: "arrow-right-arrow-left"
 author: "Alara"
-lastUpdated: "2026-07-04"
+lastUpdated: "2026-08-08"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-08" />
 
-You can load memories into MemoryPlugin from a CSV or JSON file, and take them back out as CSV, JSON, or plain text. Your data is yours: import it, export it, move it, keep your own copy.
+You can load memories into MemoryPlugin from a CSV, JSON, or plain text file (or just paste your notes and let the AI split them), and take them back out as CSV, JSON, or plain text. Your data is yours: import it, export it, move it, keep your own copy.
 
 ## Import memories
 
-Import loads memories from a file into **one bucket at a time**: the bucket you have selected. The import dialog confirms the target ("Importing to ...") so you always know where the memories are going.
+Import loads memories into **one bucket at a time**: the bucket you have selected. A pill in the dialog's header confirms the target ("Saving to {bucket}") so you always know where the memories are going. There are two modes, switched with a toggle at the top of the dialog: **Upload file** and **Paste text**.
 
-<Frame caption="The Import Memories dialog after parsing a file. It confirms the target bucket and how many memories it found, then imports them on click.">
-  <img src="/images/screenshots/dashboard/import-modal.png" alt="Import Memories dialog showing a parsed CSV file with 142 memories found and an Import 142 Memories button" />
+<Frame caption="The Import Memories dialog: a Saving-to pill confirms the bucket, and the toggle switches between uploading a file and pasting text.">
+  <img src="/images/screenshots/dashboard/import-modal.png" alt="Import Memories dialog showing the Saving to General pill, the Upload file and Paste text toggle, a drag-and-drop zone, and CSV and JSON template downloads" />
 </Frame>
 
-### Supported formats
+### Upload a file
 
-<CardGroup cols={2}>
+<CardGroup cols={3}>
   <Card title="CSV" icon="file-csv">
-    One memory per row, with a header
+    One memory per row
   </Card>
   <Card title="JSON" icon="brackets-curly">
     An array of memory objects
   </Card>
+  <Card title="Plain text" icon="file-lines">
+    One memory per line
+  </Card>
 </CardGroup>
 
-The dropzone accepts `.csv` and `.json`. The format is auto-detected from the file.
+The dropzone accepts `.csv`, `.json`, and `.txt`, with drag-and-drop. The format is auto-detected, and the dialog offers downloadable CSV and JSON templates if you want a starting point.
 
 ### CSV format
 
-Your CSV needs a header row with a `text` column. That column is the only requirement; a file without it is rejected with "CSV must have a 'text' column".
+Use a header row with a `text` or `memory` column (if both are present, `memory` wins):
 
 ```csv
 text
@@ -44,11 +47,11 @@ text
 "I prefer dark mode in all applications"
 ```
 
-You can also include a `createdAt` (or `created_at`) column to set each memory's timestamp. Any other columns are ignored.
+You can also include a `createdAt` (or `created_at`) column to set each memory's timestamp. Any other columns are ignored. A file without a recognized header isn't rejected; it falls back to one memory per line.
 
 ### JSON format
 
-JSON imports expect an array of objects, each with a `text` field:
+JSON imports expect an array of objects, each with a `text` (or `memory`) field:
 
 ```json
 [
@@ -59,6 +62,10 @@ JSON imports expect an array of objects, each with a `text` field:
 
 An optional `createdAt` field sets the timestamp. Other fields are ignored.
 
+### Paste text instead
+
+The **Paste text** mode is for notes that aren't one-per-line yet: paste anything (meeting notes, a markdown doc, a braindump), or drop in a `.md` or `.txt` file, and click **Extract memories**. An AI pass splits the text into discrete memories, which you review (and prune) before saving. Nothing is stored until you click Save.
+
 ### How to import
 
 <Steps>
@@ -68,11 +75,11 @@ An optional `createdAt` field sets the timestamp. Other fields are ignored.
   <Step title="Open the import dialog">
     Click **Import** in the memory list header. The **Import Memories** dialog opens.
   </Step>
-  <Step title="Choose your file">
-    Click to select a `.csv` or `.json` file. MemoryPlugin parses it and shows how many memories it found.
+  <Step title="Choose your file (or paste text)">
+    Drop in or select a `.csv`, `.json`, or `.txt` file; MemoryPlugin parses it and shows how many memories it found. Or switch to **Paste text**, paste your notes, and click **Extract memories** to have the AI split them for review.
   </Step>
-  <Step title="Import">
-    Click **Import {n} Memories**. When it finishes, an **Import Complete** summary shows how many were imported, how many duplicates were skipped, and how many entries were invalid.
+  <Step title="Save">
+    Click **Save {n} memories**. When it finishes, a summary shows how many were imported, plus any duplicates or invalid entries that were skipped.
   </Step>
 </Steps>
 

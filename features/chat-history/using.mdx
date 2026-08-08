@@ -3,12 +3,12 @@ title: "Using Chat History"
 description: "Add chat history context to your AI conversations"
 icon: "sparkles"
 author: "Alara"
-lastUpdated: "2026-07-04"
+lastUpdated: "2026-08-08"
 ---
 
 import { ArticleInfo } from "/snippets/article-info.jsx";
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-08" />
 
 Importing your chat history is step one. The payoff is what comes next: your AI reaching back into months of past conversations and pulling the relevant slice into the chat you're having right now.
 
@@ -69,7 +69,7 @@ The [Remote MCP Server](/integrations/remote-mcp-server) is the most flexible wa
 - **Parallel queries.** Send up to **15** queries that all run at once, each hitting a topic from a different angle (timeline, people, decisions, outcomes)
 - **Per-query token budget.** `maxTokens` defaults to **600**, capped at **2000**; 300 to 1000 is the useful range. More tokens means richer detail but a bigger chunk of the conversation window
 - **Date bounds.** Constrain a query with `before` / `after` using ISO dates like `2025-01-15`. Bare dates are interpreted in UTC and inclusive on both ends
-- **Speed or quality mode.** Defaults to **speed**; ask for **quality** mode for slower but more thorough recall on hard or ambiguous queries
+- **Speed or quality mode.** Defaults to **speed**; ask for **quality** mode for slower but more thorough recall on hard or ambiguous queries. Quality mode grounds its answer in what the conversations actually said and writes it as connected prose. It's a Pro feature: on Core, quality requests run in speed mode (the response says so)
 
 **How you drive it:**
 
@@ -161,7 +161,7 @@ You can also search and question your history in the dashboard:
   <Accordion title="Irrelevant context" icon="filter">
     **Try**:
     - Be more specific in your prompt or instructions
-    - Exclude irrelevant chats from the Chats tab
+    - Exclude irrelevant chats from the Browse view
     - For MCP, ask the AI to use fewer tokens or narrower queries
   </Accordion>
 </AccordionGroup>

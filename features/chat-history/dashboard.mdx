@@ -3,18 +3,18 @@ title: "Dashboard"
 description: "Manage, search, and analyze your chat history"
 icon: "table-columns"
 author: "Alara"
-lastUpdated: "2026-07-04"
+lastUpdated: "2026-08-08"
 ---
 
 import { ArticleInfo } from "/snippets/article-info.jsx";
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-08" />
 
-The Chat History area of the dashboard has four tabs: **Import**, **Browse**, **Search**, and **Activity**. A fifth entry, **Ask**, opens the unified [Ask tool](/features/ask), which can answer questions from your chat history, files, or memories.
+The Chat History area of the dashboard has three views: **Browse**, **Search**, and **Activity**. Imports live on their own page, reached with the **Import chats** button next to the view tabs (or through **Connect**). And [Ask](/features/ask) can answer questions from your chat history, files, or memories.
 
-## Imports Tab
+## Imports page
 
-The **Import** tab (labeled **Imports** at the top of the page) is where you monitor and manage your uploads.
+The Imports page is where you monitor and manage your uploads.
 
 <Frame caption="The Imports page: KPI cards summarize your totals, and each import is a card showing platform, status, and counts.">
   <img className="block dark:hidden" src="/images/screenshots/chat-history/imports-page.png" alt="Redesigned Imports page with Imports, Conversations, and Messages KPI cards, platform and status filter pills, and import cards for a completed ChatGPT import, a processing Claude import, and a completed TypingMind import" />
@@ -33,8 +33,8 @@ Each import shows:
 
 Three KPI cards at the top of the page sum your total **Imports**, **Conversations**, and **Messages**. You can filter by platform and by status (All, Completed, Failed, In Progress).
 
-<Frame caption="Starting a new import: pick the export source, choose how many chats to import, and drop in your JSON export.">
-  <img src="/images/screenshots/chat-history/import-modal.png" alt="New Import modal with a warning banner, an Export source selector (ChatGPT, Claude, TypingMind), chat-count presets, and a JSON drag-and-drop zone" />
+<Frame caption="Starting a new import: pick the export source, choose how many chats to import, and drop in your export ZIP or JSON.">
+  <img src="/images/screenshots/chat-history/import-modal.png" alt="New Import modal with an Export source selector (ChatGPT, Claude, TypingMind), chat-count presets, and a drag-and-drop zone accepting ZIP and JSON exports" />
 </Frame>
 
 ### Processing status
@@ -51,13 +51,13 @@ Processing runs automatically in the background with periodic progress updates. 
 
 Deleting an import asks you to type `confirm delete` first.
 
-## Chats Tab
+## Browse
 
-The **Browse** tab lists your imported conversations for browsing and management.
+The **Browse** view lists your imported conversations for browsing and management.
 
 ### Viewing your chats
 
-The list shows columns for **Title**, **Source**, **Messages**, and **Last activity**. Excluded conversations carry an **Excluded** badge. Click any row to open the full conversation.
+The list shows columns for **Title**, **Source**, **Messages**, and **Last activity**. Conversations synced from coding tools (Claude Code, Codex, Cursor) also show their project name under the title. Excluded conversations carry an **Excluded** badge. Click any row to open the full conversation.
 
 A counter at the top shows your usage: on Core, **{n} / 500 chats** with an **Upgrade for unlimited** link; on Pro, **Unlimited chats**. A **Summary** button opens an AI summary of your whole chat history.
 
@@ -69,6 +69,7 @@ Use the filters bar to narrow the list:
 
 - **Search** conversation titles ("Search chats...")
 - **Provider**, or all providers
+- **Project**, once you have coding-tool chats that carry a project name
 - **Timeframe**: Any time, Today, Last 7 days, Last 30 days, This month, or a custom **Date range**
 - **Pinned only**, to see just your pinned chats
 - **Has summary**, to see chats that already have a summary
@@ -117,6 +118,19 @@ Open a chat to reach its actions, or use the row menu.
     Use **Exclude** if you want to stop a chat from ever being re-imported. Use **Delete** if you just want it gone now and don't mind it returning later.
   </Accordion>
 </AccordionGroup>
+
+### Reading a conversation
+
+Opening a chat gives you a proper transcript, not a wall of chat bubbles: one centered reading column, with each turn under a speaker line that stays visible while you scroll through long answers.
+
+Conversations with 8 or more turns get a **conversation map** on wide screens: a slim rail along the right edge with one mark per message, sized by message length and colored by speaker. Touch the rail and a list of every turn opens beside it; click a turn (or a mark) to jump straight to it. When you search within the conversation, matches light up on the map too.
+
+<Frame caption="The conversation reader: a centered transcript with the conversation map open along the right edge.">
+  <img className="block dark:hidden" src="/images/screenshots/chat-history/chat-reader-map.png" alt="Full-page conversation reader showing a transcript with speaker lines and the conversation map rail expanded into a list of turns on the right" />
+  <img className="hidden dark:block" src="/images/screenshots/chat-history/chat-reader-map-dark.png" alt="Full-page conversation reader showing a transcript with speaker lines and the conversation map rail expanded into a list of turns on the right" />
+</Frame>
+
+From the reader's **⋮** menu you can also take a conversation with you: **Export as Markdown** for a readable document, or **Export as JSON** for structured data. Both download instantly and include the full transcript.
 
 ### Summaries
 
@@ -211,8 +225,8 @@ On the Pro plan, you can enable **Monthly Insights**: AI-generated reflections o
     **Symptoms**: can't import more chats on the Core plan.
 
     **Try**:
-    - **Exclude** old chats from the Chats tab (each frees one slot)
-    - **Delete** imports you no longer need from the Imports tab
+    - **Exclude** old chats from the Browse view (each frees one slot)
+    - **Delete** imports you no longer need from the Imports page
     - **Upgrade to Pro** for unlimited chats
   </Accordion>
 </AccordionGroup>
