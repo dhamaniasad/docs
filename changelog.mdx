@@ -3,14 +3,23 @@ title: "Changelog"
 description: "Product updates and announcements for MemoryPlugin"
 rss: true
 author: "Alara"
-lastUpdated: "2026-08-08"
+lastUpdated: "2026-08-20"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-08-08" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-20" />
 
-<Update label="August 2026" description="Native iPhone App, Claude's New Export Format, Import Emails, ChatGPT Capture Fix" tags={["Features", "Improvements"]}>
+<Update label="August 2026" description="Project Chats Sync, Account Switching, Sync 2.2.0, Native iPhone App" tags={["Features", "Improvements"]}>
+  ### ChatGPT Project chats now sync (Extension v4.2.3)
+  Conversations you keep inside ChatGPT Projects were invisible to sync. They show up now, same as the rest of your history. Auto-sync, Chat Sync, and Sync Chats all pick them up.
+
+  ### Switching ChatGPT accounts no longer mixes your chats (Extension v4.2.4)
+  Jump between ChatGPT accounts or workspaces and the extension used to keep syncing the old one. It now follows you within a few seconds. If you have a lot of Project chats, sync also backs off when ChatGPT asks it to slow down, instead of hammering and getting rate-limited.
+
+  ### MemoryPlugin Sync 2.2.0
+  The Mac app was signing you out when the main window, quick search, and a second copy all refreshed at once. They now share one session. Headless Claude Code automation runs no longer bury your real conversations under thousands of script sessions. Switching accounts from another window is clean. Needs macOS 12.3 or later. See the [desktop app docs](/integrations/desktop-app).
+
   ### A native iPhone app
   The iOS app used to be a thin shell around the Safari extension. It's now a real app:
 
@@ -38,6 +47,8 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   A new free tool that turns Claude's exported memory file into something you can actually read. Try it at [memoryplugin.com/tools/claude-memory-export](https://www.memoryplugin.com/tools/claude-memory-export).
 
   ### Fixes
+  - **Current chat in Chat Sync** - updates when you switch conversations, instead of showing the one you just left (Extension v4.2.5).
+  - **Sidebar sync bar** - the extra sync bar we injected into the ChatGPT and Claude sidebars is hidden for now. The per-chat dots are still there, and sync still runs from the panel.
   - The chat history import dialog now stays fully on screen on short laptop displays.
   - Selecting text on dark dashboard surfaces is visible again.
 </Update>
