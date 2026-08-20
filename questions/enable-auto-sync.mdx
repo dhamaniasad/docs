@@ -4,12 +4,12 @@ sidebarTitle: "Turn on auto-sync"
 description: "Have the extension sync your conversations in the background, once an hour, per platform"
 icon: "rotate"
 author: "Alara"
-lastUpdated: "2026-07-12"
+lastUpdated: "2026-08-20"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-12" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-20" />
 
 Open the extension panel, go to the **Settings** tab, and flip on the platforms you want under **Background Sync**. From then on the extension syncs new conversations from each enabled platform once an hour, with no file exports involved.
 
@@ -30,7 +30,7 @@ Open the extension panel, go to the **Settings** tab, and flip on the platforms 
 </Steps>
 
 <Note>
-Auto-sync needs you signed in to both MemoryPlugin and the source platform in that browser. Gemini sync is experimental and may break when Google changes things.
+Auto-sync needs you signed in to both MemoryPlugin and the source platform in that browser. Gemini sync is experimental and may break when Google changes things. ChatGPT Project chats are not visible to the current store extension (4.2.2), so they do not autosync. The fix ships in extension 4.2.3.
 </Note>
 
 ## Syncing manually instead

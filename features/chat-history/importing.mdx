@@ -3,12 +3,12 @@ title: "Importing Your Chats"
 description: "Export and upload your chat history from supported platforms"
 icon: "cloud-arrow-up"
 author: "Alara"
-lastUpdated: "2026-08-08"
+lastUpdated: "2026-08-20"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-08-08" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-20" />
 
 ## Two ways to add chat history
 
@@ -19,6 +19,10 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
 One thing to be clear about: **ongoing sync of browser-based chats always runs through the browser extension**, on every platform. File uploads are a one-time import; if you want new conversations to keep flowing in, install the [extension](/integrations/browser-extension) and leave sync on. MCP clients and the Custom GPT can recall your history, but they never capture it.
 
 There's one more source: coding tools. Claude Code, Codex, and Cursor conversations live in local files, and the [desktop app](/integrations/desktop-app) syncs them into your chat history the same way the extension handles browser chats.
+
+<Note>
+ChatGPT Project chats are not visible to the current store extension (4.2.2), so they do not autosync. The fix ships in extension 4.2.3.
+</Note>
 
 <Note>
 Gemini online sync is experimental and can break when Gemini's web UI changes.
