@@ -3,12 +3,12 @@ title: "Supported Platforms"
 description: "MemoryPlugin works with 21+ AI platforms and growing"
 icon: "globe"
 author: "Alara"
-lastUpdated: "2026-07-04"
+lastUpdated: "2026-08-25"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-07-04" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-25" />
 
 MemoryPlugin works across 21+ AI tools, so your memories, chat history, and files stay with you wherever you work. This page lists every platform, how to connect it, and what it can do with your chat history.
 
@@ -17,7 +17,7 @@ MemoryPlugin works across 21+ AI tools, so your memories, chat history, and file
 Two of the columns below are about chat history, and they mean different things:
 
 - **Recall chat history**: your AI can pull relevant context from your past conversations on demand. It decides when to search and writes its own query.
-- **Sync chat history**: new conversations on this platform are captured into MemoryPlugin automatically as you have them. Syncing is browser-extension only.
+- **Sync chat history**: new conversations on this platform are captured into MemoryPlugin automatically as you have them. Syncing happens through the browser extension, or through the desktop app for Claude Code, Codex, and Cursor.
 
 You can also import chat history from an export file for a broader set of platforms. See [Chat History](/features/chat-history/introduction) for that path.
 
@@ -42,9 +42,10 @@ You can also import chat history from an export file for a broader set of platfo
 | <img src="/images/logos/minimax.svg" alt="MiniMax" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **MiniMax** | Browser extension | - | ✅ | ❌ |
 | <img src="/images/logos/notebooklm.svg" alt="NotebookLM" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **NotebookLM** | Browser extension | - | ✅ | ❌ |
 | <img src="/images/logos/xiaomi-mimo.svg" alt="Xiaomi MiMo" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Xiaomi MiMo** | Browser extension | - | ✅ | ❌ |
-| <img src="/images/logos/cursor.svg" alt="Cursor" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Cursor** | MCP Server | - | ✅ | ❌ |
+| <img src="/images/logos/cursor.svg" alt="Cursor" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Cursor** | MCP Server | Desktop app | ✅ | ✅ (desktop app) |
 | **Windsurf** | MCP Server | - | ✅ | ❌ |
-| <img src="/images/logos/claude-code.svg" alt="Claude Code" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Claude Code** | MCP Server | - | ✅ | ❌ |
+| <img src="/images/logos/claude-code.svg" alt="Claude Code" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Claude Code** | MCP Server | Desktop app | ✅ | ✅ (desktop app) |
+| <img src="/images/logos/codex.svg" alt="Codex" width="20" height="20" noZoom style={{ display: "inline-block", background: "#fff", borderRadius: "4px", padding: "2px", verticalAlign: "middle", boxSizing: "border-box", margin: "0 6px 0 0" }} /> **Codex** | MCP Server | Desktop app | ✅ | ✅ (desktop app) |
 | **Sage** | MCP Server | - | ✅ | ❌ |
 | **Other MCP clients** | MCP Server | - | ✅ | ❌ |
 | **Any other platform** | API / OpenAPI | - | Via API | ❌ |
@@ -52,7 +53,7 @@ You can also import chat history from an export file for a broader set of platfo
 \* Gemini sync is experimental and can break when Gemini's web UI changes. Treat it as a preview.
 
 <Note>
-MCP clients (Cursor, Windsurf, Claude Code, and others) can recall your chat history through the `recall_chat_history` tool, but they can't capture it. Capturing new conversations happens only through the browser extension, on the six platforms marked above.
+MCP clients (Windsurf, Sage, and others) can recall your chat history through the `recall_chat_history` tool, but they can't capture it. Claude Code, Codex, and Cursor conversations sync through the [desktop app](/integrations/desktop-app); every other capture happens through the browser extension.
 </Note>
 
 ## Primary platforms
