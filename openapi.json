@@ -1086,14 +1086,21 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "required": ["message", "deletedCount", "errors"],
                   "properties": {
-                    "deleted": {
-                      "type": "integer",
-                      "description": "Number of memories successfully deleted."
-                    },
-                    "failed": {
-                      "type": "integer",
-                      "description": "Number of memories that failed to delete."
+                    "message": { "type": "string", "description": "Always \"Memories deleted\"." },
+                    "deletedCount": { "type": "integer", "description": "Number of memory rows deleted from the database. Unresolvable IDs are skipped, so this can be lower than the number of memoryIds submitted." },
+                    "errors": {
+                      "type": "array",
+                      "description": "Per-failure details; empty on full success. A partial failure still returns 200.",
+                      "items": {
+                        "type": "object",
+                        "required": ["memoryId", "error"],
+                        "properties": {
+                          "memoryId": { "type": "string", "description": "The memory ID that failed, or a batch identifier (\"zilliz_bulk\", \"supabase_bulk\") when a whole batch fails and individual IDs cannot be attributed." },
+                          "error": { "type": "string", "description": "Failure reason." }
+                        }
+                      }
                     }
                   }
                 }
