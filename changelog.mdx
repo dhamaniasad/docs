@@ -3,14 +3,17 @@ title: "Changelog"
 description: "Product updates and announcements for MemoryPlugin"
 rss: true
 author: "Alara"
-lastUpdated: "2026-08-20"
+lastUpdated: "2026-08-21"
 ---
 
 import { ArticleInfo } from '/snippets/article-info.jsx';
 
-<ArticleInfo author="Alara" lastUpdated="2026-08-20" />
+<ArticleInfo author="Alara" lastUpdated="2026-08-21" />
 
-<Update label="August 2026" description="Project Chats Sync, Account Switching, Sync 2.2.0, Native iPhone App" tags={["Features", "Improvements"]}>
+<Update label="August 2026" description="Chat History Rebuild, Project Chats Sync, Account Switching, Sync 2.2.0, Native iPhone App" tags={["Features", "Improvements"]}>
+  ### Chat History, one section
+  Browse, Search, Imports, and Activity used to feel like separate pages. They're now one Chat History section with a shared header, so you can jump between them without losing your place. Filters sit as chips along the top. Search covers every tool you sync, not just a handful, and sorting by most recent actually works. On Imports, drag an export onto the page to start an upload. See the [chat history dashboard](/features/chat-history/dashboard).
+
   ### ChatGPT Project chats now sync (Extension v4.2.3)
   Conversations you keep inside ChatGPT Projects were invisible to sync. They show up now, same as the rest of your history. Auto-sync, Chat Sync, and Sync Chats all pick them up.
 
@@ -49,6 +52,7 @@ import { ArticleInfo } from '/snippets/article-info.jsx';
   ### Fixes
   - **Current chat in Chat Sync** - updates when you switch conversations, instead of showing the one you just left (Extension v4.2.5).
   - **Sidebar sync bar** - the extra sync bar we injected into the ChatGPT and Claude sidebars is hidden for now. The per-chat dots are still there, and sync still runs from the panel.
+  - Connecting MemoryPlugin in Cursor or VS Code no longer fails during sign-in.
   - The chat history import dialog now stays fully on screen on short laptop displays.
   - Selecting text on dark dashboard surfaces is visible again.
 </Update>
