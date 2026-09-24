@@ -118,6 +118,7 @@
             "group": "AI Chat Platforms",
             "pages": [
               "platforms/chatgpt",
+              "platforms/chatgpt-business",
               "platforms/claude",
               "platforms/gemini",
               "platforms/grok",

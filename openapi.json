@@ -1147,7 +1147,7 @@
           },
           "bucketId": {
             "type": "integer",
-            "description": "The id of the bucket to add the memory to. If not provided, the memory will be added to the default bucket."
+            "description": "The id of the bucket to add the memory to. If not provided, the memory is added to your General bucket."
           },
           "source": {
             "type": "string",

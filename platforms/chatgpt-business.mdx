@@ -1,0 +1,97 @@
+---
+title: "ChatGPT Business"
+description: "Using MemoryPlugin in a ChatGPT Business or Enterprise workspace"
+icon: "/images/logos/chatgpt.svg"
+author: "Alara"
+lastUpdated: "2026-09-24"
+---
+
+import { ArticleInfo } from '/snippets/article-info.jsx';
+
+<ArticleInfo author="Alara" lastUpdated="2026-09-24" />
+
+A work ChatGPT account plays by slightly different rules than a personal one. Your workspace admin decides which apps you can connect, and you can't export your chat history yourself. MemoryPlugin works in both situations, but a couple of steps change.
+
+Everything on the [ChatGPT](/platforms/chatgpt) page still applies. This page covers what's different in a Business or Enterprise workspace.
+
+<Warning>
+Check your company's policy before you start. Syncing chats and saving memories copies that content into your MemoryPlugin account, which sits outside your ChatGPT workspace.
+</Warning>
+
+## Memory in your chats
+
+The browser extension works the same way in a workspace as in a personal account. Install the [browser extension](/integrations/browser-extension), open [chatgpt.com](https://chatgpt.com) in your workspace, and click the MemoryPlugin button to add memories to a chat.
+
+You don't need anything from your admin for this. The extension runs in your browser, not inside ChatGPT, so it isn't one of the workspace's apps.
+
+## Chat history
+
+Business and Enterprise workspaces don't offer self-service data export, so the export file route on [Importing Chat History](/features/chat-history/importing) isn't open to you. Sync your chats with the extension instead. It reads your conversations straight from chatgpt.com, including chats inside Projects.
+
+<Steps>
+  <Step title="Switch to your workspace">
+    In ChatGPT, switch to the workspace you want to sync. The extension syncs whichever account or workspace you're signed into.
+  </Step>
+  <Step title="Sync your existing chats">
+    Open the MemoryPlugin panel, go to the **Sync** tab, and choose **Sync All**.
+  </Step>
+  <Step title="Keep new chats coming in">
+    In the panel's **Settings** tab, turn on **Auto-sync ChatGPT** under **Background Sync**. See [auto-sync](/questions/enable-auto-sync) for details.
+  </Step>
+</Steps>
+
+The first sync of a long history takes a while, because there's no export file to upload in one go. If you also have a personal ChatGPT account, switch to it and sync it separately.
+
+## Connecting MemoryPlugin as an app
+
+If you'd rather ChatGPT call MemoryPlugin's tools itself, you can add MemoryPlugin as a custom app over MCP. In a Business or Enterprise workspace, only an admin or owner can turn on developer mode and publish custom apps, so this part starts with your admin. OpenAI covers the admin side in [Admin controls for apps](https://help.openai.com/en/articles/11509118-admin-controls-security-and-compliance-in-apps-enterprise-edu-and-business).
+
+**Your admin:**
+
+<Steps>
+  <Step title="Add the app">
+    Create a custom app with the MCP server URL `https://www.memoryplugin.com/api/mcp/mcp`. It signs in with OAuth, so there is no key to paste.
+  </Step>
+  <Step title="Publish it to the workspace">
+    Publish the app so members can find it in their apps list.
+  </Step>
+</Steps>
+
+**Then each person:**
+
+<Steps>
+  <Step title="Connect your own account">
+    Open the MemoryPlugin app in ChatGPT, connect it, then sign in to MemoryPlugin and approve access. Everyone connects their own MemoryPlugin account, so your memories stay yours.
+  </Step>
+  <Step title="Add it to a conversation">
+    Start a chat and add MemoryPlugin from the tools menu. Custom apps are added one conversation at a time.
+  </Step>
+</Steps>
+
+ChatGPT asks you to confirm before MemoryPlugin saves or changes a memory. That's ChatGPT's default for any app that writes data.
+
+<AccordionGroup>
+  <Accordion title="Saving a memory fails with a missing scope error">
+    The app was probably created before MemoryPlugin granted write access by default, and ChatGPT keeps the permissions it saw on first setup. Reconnecting doesn't refresh them. Ask your admin to delete the app and create it again with the same URL, then connect again.
+  </Accordion>
+  <Accordion title="The MemoryPlugin Custom GPT doesn't open">
+    Some workspaces limit GPTs from outside the workspace. Use the browser extension, or ask your admin whether outside GPTs are allowed.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="ChatGPT" icon="comments" href="/platforms/chatgpt">
+    Everything else about using MemoryPlugin with ChatGPT
+  </Card>
+  <Card title="Browser Extension" icon="browser" href="/integrations/browser-extension">
+    Setup, the Sync tab, and settings
+  </Card>
+  <Card title="Remote MCP Server" icon="cloud" href="/integrations/remote-mcp-server">
+    How the MCP connection and sign-in work
+  </Card>
+  <Card title="Chat History" icon="clock-rotate-left" href="/features/chat-history/introduction">
+    What syncing your history unlocks
+  </Card>
+</CardGroup>
